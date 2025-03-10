@@ -76,8 +76,7 @@ class UnitTests(absltest.TestCase):
             print(chunk.text)
             print("_" * 80)
 
-        # TODO: Uncomment once google.genai gets support for retrieving chat.get_history()
-        # print(chat.get_history())
+        print(chat.get_history())
         # [END chat_streaming]
 
     def test_chat_streaming_with_images(self):
