@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "main": "",
   "scripts": {
+<<<<<<< Updated upstream
     "test": ""
+=======
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "chat": "node chat.js",
+    "configure-model": "node configure_model_parameters.js"
+>>>>>>> Stashed changes
   },
   "keywords": [],
   "author": "",
@@ -12,5 +18,11 @@
   "type": "module",
   "dependencies": {
     "@google/genai": "^0.3.1"
+<<<<<<< Updated upstream
+=======
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+>>>>>>> Stashed changes
   }
 }
