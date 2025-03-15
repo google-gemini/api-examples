@@ -288,7 +288,7 @@ export async function tokensCachedContent() {
   const generateResponse = await ai.models.generateContent({
     model: 'gemini-1.5-flash-001',
     contents: prompt,
-    config: {cached_content: cache.name},
+    config: {cachedContent: cache.name},
   });
   console.log(generateResponse.usageMetadata);
 
@@ -318,7 +318,7 @@ export async function tokensSystemInstruction() {
   const countTokensWithSysInstResponse = await ai.models.countTokens({
     model: 'gemini-2.0-flash',
     contents: prompt,
-    config: {system_instruction: 'You are a cat. Your name is Neko.'},
+    config: {systemInstruction: 'You are a cat. Your name is Neko.'},
   });
   console.log(
     'total_tokens (with system instruction):',

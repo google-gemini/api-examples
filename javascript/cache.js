@@ -45,7 +45,7 @@ export async function cacheCreate() {
     model: modelName,
     config: {
       contents: contents,
-      system_instruction: 'You are an expert analyzing transcripts.',
+      systemInstruction: 'You are an expert analyzing transcripts.',
     },
   });
   console.log('Cache created:', cache);
@@ -53,7 +53,7 @@ export async function cacheCreate() {
   const response = await ai.models.generateContent({
     model: modelName,
     contents: 'Please summarize this transcript',
-    config: {cached_content: cache.name},
+    config: {cachedContent: cache.name},
   });
   console.log('Response text:', response.text);
   // [END cache_create]
@@ -83,7 +83,7 @@ export async function cacheCreateFromName() {
     model: modelName,
     config: {
       contents: contents,
-      system_instruction: 'You are an expert analyzing transcripts.',
+      systemInstruction: 'You are an expert analyzing transcripts.',
     },
   });
   const cacheName = cache.name; // Save the name for later
@@ -93,7 +93,7 @@ export async function cacheCreateFromName() {
   const response = await ai.models.generateContent({
     model: modelName,
     contents: 'Find a lighthearted moment from this transcript',
-    config: {cached_content: retrievedCache.name},
+    config: {cachedContent: retrievedCache.name},
   });
   console.log('Response text:', response.text);
   // [END cache_create_from_name]
@@ -113,7 +113,7 @@ export async function cacheCreateFromChat() {
   // Create a chat session with the system instruction.
   const chat = ai.chats.create({
     model: modelName,
-    config: {system_instruction: systemInstruction},
+    config: {systemInstruction: systemInstruction},
   });
   const filePath = path.join(media, 'a11.txt');
   const document = await ai.files.upload({
@@ -141,14 +141,14 @@ export async function cacheCreateFromChat() {
     model: modelName,
     config: {
       contents: chatHistory,
-      system_instruction: systemInstruction,
+      systemInstruction: systemInstruction,
     },
   });
 
   // Continue the conversation using the cached content.
   const chatWithCache = ai.chats.create({
     model: modelName,
-    config: {cached_content: cache.name},
+    config: {cachedContent: cache.name},
   });
   response = await chatWithCache.sendMessage({
     message:
@@ -182,7 +182,7 @@ export async function cacheDelete() {
     model: modelName,
     config: {
       contents: contents,
-      system_instruction: 'You are an expert analyzing transcripts.',
+      systemInstruction: 'You are an expert analyzing transcripts.',
     },
   });
   await ai.caches.delete({name: cache.name});
@@ -211,7 +211,7 @@ export async function cacheGet() {
     model: modelName,
     config: {
       contents: contents,
-      system_instruction: 'You are an expert analyzing transcripts.',
+      systemInstruction: 'You are an expert analyzing transcripts.',
     },
   });
   const retrievedCache = await ai.caches.get({name: cache.name});
@@ -244,7 +244,7 @@ export async function cacheList() {
     model: modelName,
     config: {
       contents: contents,
-      system_instruction: 'You are an expert analyzing transcripts.',
+      systemInstruction: 'You are an expert analyzing transcripts.',
     },
   });
 
@@ -284,7 +284,7 @@ export async function cacheUpdate() {
     model: modelName,
     config: {
       contents: contents,
-      system_instruction: 'You are an expert analyzing transcripts.',
+      systemInstruction: 'You are an expert analyzing transcripts.',
     },
   });
 
@@ -302,7 +302,7 @@ export async function cacheUpdate() {
     .replace(/\.\d{3}Z$/, 'Z');
   cache = await ai.caches.update({
     name: cache.name,
-    config: {expire_time: expireTime},
+    config: {expireTime: expireTime},
   });
   console.log('After update (expire_time):', cache);
   // [END cache_update]

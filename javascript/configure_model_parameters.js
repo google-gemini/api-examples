@@ -27,9 +27,9 @@ export async function configureModelParameters() {
     model: 'gemini-2.0-flash',
     contents: 'Tell me a story about a magic backpack.',
     config: {
-      candidate_count: 1,
-      stop_sequences: ['x'],
-      max_output_tokens: 20,
+      candidateCount: 1,
+      stopSequences: ['x'],
+      maxOutputTokens: 20,
       temperature: 1.0,
     },
   });
