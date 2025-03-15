@@ -24,13 +24,10 @@ class UnitTests(absltest.TestCase):
 
         client = genai.Client()
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.0-pro-exp-02-05",
             contents=(
-                "What is the sum of the first 50 prime numbers? "
-                "Generate and run code for the calculation, and make sure you get all 50."
-            ),
-            config=types.GenerateContentConfig(
-                tools=[types.Tool(code_execution=types.ToolCodeExecution())],
+                "Using Python, write and execute code that calculates the sum of the first 50 prime numbers. "
+                "Ensure that only the executable code and its resulting output are generated."
             ),
         )
         # Each part may contain text, executable code, or an execution result.
@@ -39,43 +36,41 @@ class UnitTests(absltest.TestCase):
 
         print("-" * 80)
         # The .text accessor concatenates the parts into a markdown-formatted text.
-        print("\n", response.executable_code)
-        print("\n", response.code_execution_result)
+        print("\n", response.text)
         # [END code_execution_basic]
 
         # [START code_execution_basic_return]
         # Expected output:
-        # video_metadata=None thought=None code_execution_result=None executable_code=None file_data=None function_call=None function_response=None inline_data=None text="Okay, I understand. I need to calculate the sum of the first 50 prime numbers. I'll use a Python code block to generate the prime numbers and calculate their sum. I'll make sure the code generates the first 50 primes correctly before summing them.\n\n"
-
-        # video_metadata=None thought=None code_execution_result=None executable_code=ExecutableCode(code='def is_prime(n):\n  """Returns True if n is a prime number, False otherwise."""\n  if n <= 1:\n    return False\n  for i in range(2, int(n**0.5) + 1):\n    if n % i == 0:\n      return False\n  return True\n\nprimes = []\nnum = 2\nwhile len(primes) < 50:\n  if is_prime(num):\n    primes.append(num)\n  num += 1\n\nprint(f\'{primes=}\')\nprint(f\'{sum(primes)=}\')\n', language=<Language.PYTHON: 'PYTHON'>) file_data=None function_call=None function_response=None inline_data=None text=None
-
-        # video_metadata=None thought=None code_execution_result=CodeExecutionResult(outcome=<Outcome.OUTCOME_OK: 'OUTCOME_OK'>, output='primes=[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229]\nsum(primes)=5117\n') executable_code=None file_data=None function_call=None function_response=None inline_data=None text=None
-
-        # video_metadata=None thought=None code_execution_result=None executable_code=None file_data=None function_call=None function_response=None inline_data=None text='The sum of the first 50 prime numbers is 5117.\n'
+        # video_metadata=None thought=None code_execution_result=None executable_code=None file_data=None function_call=None function_response=None inline_data=None text='```python\ndef is_prime(n):\n    if n <= 1:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\nsum_of_primes = 0\ncount = 0\nnum = 2\nwhile count < 50:\n    if is_prime(num):\n        sum_of_primes += num\n        count += 1\n    num += 1\n\nprint(sum_of_primes)\n```\n\nOutput:\n\n```\n5117\n```\n' 
 
         # --------------------------------------------------------------------------------
 
+        #  ```python
         # def is_prime(n):
-        #   """Returns True if n is a prime number, False otherwise."""
-        #   if n <= 1:
-        #     return False
-        #   for i in range(2, int(n**0.5) + 1):
-        #     if n % i == 0:
-        #       return False
-        #   return True
+        #     if n <= 1:
+        #         return False
+        #     for i in range(2, int(n**0.5) + 1):
+        #         if n % i == 0:
+        #             return False
+        #     return True
 
-        # primes = []
+        # sum_of_primes = 0
+        # count = 0
         # num = 2
-        # while len(primes) < 50:
-        #   if is_prime(num):
-        #     primes.append(num)
-        #   num += 1
+        # while count < 50:
+        #     if is_prime(num):
+        #         sum_of_primes += num
+        #         count += 1
+        #     num += 1
 
-        # print(f'{primes=}')
-        # print(f'{sum(primes)=}')
+        # print(sum_of_primes)
+        # ```
 
-        # primes=[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229]
-        # sum(primes)=5117
+        # Output:
+
+        # ```
+        # 5117
+        # ```
         # [END code_execution_basic_return]
 
     def test_code_execution_request_override(self):
@@ -101,26 +96,40 @@ class UnitTests(absltest.TestCase):
         # [START code_execution_request_override_return]
         # Expected output:
         # def is_prime(n):
-        #     """Check if a number is prime."""
-        #     if n <= 1:
-        #         return False
-        #     for i in range(2, int(n**0.5) + 1):
-        #         if n % i == 0:
-        #             return False
+        #   """Efficiently checks if a number is prime."""
+        #   if n <= 1:
+        #     return False
+        #   if n <= 3:
         #     return True
+        #   if n % 2 == 0 or n % 3 == 0:
+        #     return False
+        #   i = 5
+        #   while i * i <= n:
+        #     if n % i == 0 or n % (i + 2) == 0:
+        #       return False
+        #     i += 6
+        #   return True
 
-        # primes = []
-        # num = 2
-        # while len(primes) < 50:
+
+        # def get_first_n_primes(n):
+        #   """Generates the first n prime numbers."""
+        #   primes = []
+        #   num = 2
+        #   while len(primes) < n:
         #     if is_prime(num):
-        #         primes.append(num)
+        #       primes.append(num)
         #     num += 1
+        #   return primes
 
-        # sum_of_primes = sum(primes)
-        # print(f'{primes=}')
-        # print(f'{sum_of_primes=}')
 
-        # primes=[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229]
+        # first_50_primes = get_first_n_primes(50)
+        # sum_of_primes = sum(first_50_primes)
+
+        # print(f"{first_50_primes=}")
+        # print(f"{sum_of_primes=}")
+
+
+        # first_50_primes=[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229]
         # sum_of_primes=5117
         # [END code_execution_request_override_return]
 
@@ -152,7 +161,7 @@ class UnitTests(absltest.TestCase):
         # [START code_execution_chat_return]
         # Expected output:
         # def is_prime(n):
-        #   """Returns True if n is a prime number, False otherwise."""
+        #   """Return True if n is prime, False otherwise."""
         #   if n <= 1:
         #     return False
         #   for i in range(2, int(n**0.5) + 1):
