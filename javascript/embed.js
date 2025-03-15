@@ -15,18 +15,18 @@
  * limitations under the License.
  */
 
-import {GoogleGenAI} from '@google/genai';
+import { GoogleGenAI } from "@google/genai";
 
 export async function embedContent() {
   // [START embed_content]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
-  const text = 'Hello World!';
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  const text = "Hello World!";
   const result = await ai.models.embedContent({
-    model: 'text-embedding-004',
+    model: "text-embedding-004",
     contents: text,
-    config: {outputDimensionality: 10},
+    config: { outputDimensionality: 10 },
   });
   console.log(result.embeddings);
   // [END embed_content]
@@ -37,16 +37,16 @@ export async function batchEmbedContents() {
   // [START batch_embed_content]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
   const texts = [
-    'What is the meaning of life?',
-    'How much wood would a woodchuck chuck?',
-    'How does the brain work?',
+    "What is the meaning of life?",
+    "How much wood would a woodchuck chuck?",
+    "How does the brain work?",
   ];
   const result = await ai.models.embedContent({
-    model: 'text-embedding-004',
+    model: "text-embedding-004",
     contents: texts,
-    config: {outputDimensionality: 10},
+    config: { outputDimensionality: 10 },
   });
   console.log(result.embeddings);
   // [END batch_embed_content]

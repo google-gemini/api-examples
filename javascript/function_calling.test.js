@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-import assert from 'node:assert';
-import {test, describe} from 'node:test';
-import {functionCallingTest} from './function_calling.js';
+import assert from "node:assert";
+import { test, describe } from "node:test";
+import { functionCallingTest } from "./function_calling.js";
 
-describe('function_calling', () => {
-  test('functionCallingTest', async () => {
+describe("function_calling", () => {
+  test("functionCallingTest", async () => {
     const response = await functionCallingTest();
     // Check that the response text is non-empty.
     assert.ok(response.text.length > 0);

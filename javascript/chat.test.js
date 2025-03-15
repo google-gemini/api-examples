@@ -15,23 +15,23 @@
  * limitations under the License.
  */
 
-import assert from 'node:assert';
-import {test, describe} from 'node:test';
-import {chat, chatStreaming, chatStreamingWithImages} from './chat.js';
+import assert from "node:assert";
+import { test, describe } from "node:test";
+import { chat, chatStreaming, chatStreamingWithImages } from "./chat.js";
 
-describe('chat', () => {
-  test('chat', async () => {
-    const {response1, response2} = await chat();
+describe("chat", () => {
+  test("chat", async () => {
+    const { response1, response2 } = await chat();
     assert.ok(response1 && response1.length > 0);
     assert.ok(response2 && response2.length > 0);
   });
 
-  test('chatStreaming', async () => {
+  test("chatStreaming", async () => {
     const result = await chatStreaming();
     assert.strictEqual(result, true);
   });
 
-  test('chatStreamingWithImages', async () => {
+  test("chatStreamingWithImages", async () => {
     const result = await chatStreamingWithImages();
     assert.strictEqual(result, true);
   });

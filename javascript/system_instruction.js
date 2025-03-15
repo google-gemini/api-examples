@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-import {GoogleGenAI} from '@google/genai';
+import { GoogleGenAI } from "@google/genai";
 
 /**
  * systemInstructionsTest sends a prompt with a system instruction configuration.
@@ -27,12 +27,12 @@ export async function systemInstruction() {
   // [START system_instruction]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
   const response = await ai.models.generateContent({
-    model: 'gemini-2.0-flash',
-    contents: 'Good morning! How are you?',
+    model: "gemini-2.0-flash",
+    contents: "Good morning! How are you?",
     config: {
-      systemInstruction: 'You are a cat. Your name is Neko.',
+      systemInstruction: "You are a cat. Your name is Neko.",
     },
   });
   console.log(response.text);

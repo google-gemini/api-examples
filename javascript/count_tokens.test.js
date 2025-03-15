@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-import assert from 'node:assert';
-import {test, describe} from 'node:test';
+import assert from "node:assert";
+import { test, describe } from "node:test";
 import {
   tokensTextOnly,
   tokensChat,
@@ -27,60 +27,60 @@ import {
   tokensCachedContent,
   tokensSystemInstruction,
   tokensTools,
-} from './count_tokens.js';
+} from "./count_tokens.js";
 
-describe('count_tokens', () => {
-  test('tokensTextOnly', async () => {
+describe("count_tokens", () => {
+  test("tokensTextOnly", async () => {
     const result = await tokensTextOnly();
     assert.ok(result.totalTokens > 0);
     // Check that usage metadata has numeric values.
     assert.ok(result.usage.promptTokenCount >= 0);
   });
 
-  test('tokensChat', async () => {
+  test("tokensChat", async () => {
     const result = await tokensChat();
     assert.ok(result.historyTokenCount > 0);
     assert.ok(result.combinedTokenCount > result.historyTokenCount);
     assert.ok(result.usage.promptTokenCount >= 0);
   });
 
-  test('tokensMultimodalImageInline', async () => {
+  test("tokensMultimodalImageInline", async () => {
     const result = await tokensMultimodalImageInline();
     assert.ok(result.totalTokens > 0);
     assert.ok(result.usage.promptTokenCount >= 0);
   });
 
-  test('tokensMultimodalImageFileApi', async () => {
+  test("tokensMultimodalImageFileApi", async () => {
     const result = await tokensMultimodalImageFileApi();
     assert.ok(result.totalTokens > 0);
     assert.ok(result.usage.promptTokenCount >= 0);
   });
 
-  test('tokensMultimodalVideoAudioFileApi', async () => {
+  test("tokensMultimodalVideoAudioFileApi", async () => {
     const result = await tokensMultimodalVideoAudioFileApi();
     assert.ok(result.totalTokens > 0);
     assert.ok(result.usage.promptTokenCount >= 0);
   });
 
-  test('tokensMultimodalPdfFileApi', async () => {
+  test("tokensMultimodalPdfFileApi", async () => {
     const result = await tokensMultimodalPdfFileApi();
     assert.ok(result.totalTokens > 0);
     assert.ok(result.usage.promptTokenCount >= 0);
   });
 
-  test('tokensCachedContent', async () => {
+  test("tokensCachedContent", async () => {
     const result = await tokensCachedContent();
     assert.ok(result.totalTokens > 0);
     assert.ok(result.usage.promptTokenCount >= 0);
   });
 
-  test('tokensSystemInstruction', async () => {
+  test("tokensSystemInstruction", async () => {
     const result = await tokensSystemInstruction();
     assert.ok(result.responseTokenCount > 0);
     assert.ok(result.sysInstResponseTokenCount > 0);
   });
 
-  test('tokensTools', async () => {
+  test("tokensTools", async () => {
     const result = await tokensTools();
     assert.ok(result.responseTokenCount > 0);
     // Uncomment if the API gets support for tools in count_tokens.

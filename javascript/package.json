@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "",
   "scripts": {
-    "test": ""
+    "format": "prettier . --write"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +12,8 @@
   "type": "module",
   "dependencies": {
     "@google/genai": "^0.3.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3"
   }
 }

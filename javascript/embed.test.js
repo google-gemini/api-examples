@@ -15,19 +15,19 @@
  * limitations under the License.
  */
 
-import assert from 'node:assert';
-import {test, describe} from 'node:test';
-import {embedContent, batchEmbedContents} from './embed.js';
+import assert from "node:assert";
+import { test, describe } from "node:test";
+import { embedContent, batchEmbedContents } from "./embed.js";
 
-describe('embed', () => {
-  test('embedContent returns a valid embedding', async () => {
+describe("embed", () => {
+  test("embedContent returns a valid embedding", async () => {
     const embeddings = await embedContent();
     // Ensure the result is an array and non-empty.
     assert.ok(Array.isArray(embeddings));
     assert.ok(embeddings.length > 0);
   });
 
-  test('batchEmbedContents returns embeddings for all inputs', async () => {
+  test("batchEmbedContents returns embeddings for all inputs", async () => {
     const embeddings = await batchEmbedContents();
     // Expect an array with three embeddings, one per input text.
     assert.ok(Array.isArray(embeddings));

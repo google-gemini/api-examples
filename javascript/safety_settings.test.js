@@ -15,27 +15,27 @@
  * limitations under the License.
  */
 
-import assert from 'node:assert';
-import {test, describe} from 'node:test';
-import {safetySettings, safetySettingsMulti} from './safety_settings.js';
+import assert from "node:assert";
+import { test, describe } from "node:test";
+import { safetySettings, safetySettingsMulti } from "./safety_settings.js";
 
-describe('safety_settings', () => {
-  test('safetySettings', async () => {
+describe("safety_settings", () => {
+  test("safetySettings", async () => {
     const response = await safetySettings();
     assert.ok(response.text.length > 0);
     assert.ok(
       response.candidates[0].safetyRatings,
-      'Safety ratings should be present',
+      "Safety ratings should be present",
     );
   });
 
-  test('safetySettingsMulti', async () => {
+  test("safetySettingsMulti", async () => {
     const response = await safetySettingsMulti();
     assert.ok(response.text.length > 0);
     // Generated text might be empty if blocked, so we test for safety ratings.
     assert.ok(
       response.candidates[0].safetyRatings,
-      'Safety ratings should be present',
+      "Safety ratings should be present",
     );
   });
 });

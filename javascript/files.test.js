@@ -15,8 +15,8 @@
  * limitations under the License.
  */
 
-import assert from 'node:assert';
-import {test, describe} from 'node:test';
+import assert from "node:assert";
+import { test, describe } from "node:test";
 import {
   filesCreateText,
   filesCreateImage,
@@ -25,40 +25,40 @@ import {
   filesCreatePdf,
   filesList,
   filesGet,
-} from './files.js';
+} from "./files.js";
 
-describe('Files API Tests', () => {
-  test('filesCreateText', async () => {
+describe("Files API Tests", () => {
+  test("filesCreateText", async () => {
     const text = await filesCreateText();
     assert.ok(text && text.length > 0);
   });
 
-  test('filesCreateImage', async () => {
+  test("filesCreateImage", async () => {
     const text = await filesCreateImage();
     assert.ok(text && text.length > 0);
   });
 
-  test('filesCreateAudio', async () => {
+  test("filesCreateAudio", async () => {
     const text = await filesCreateAudio();
     assert.ok(text && text.length > 0);
   });
 
-  test('filesCreateVideo', async () => {
+  test("filesCreateVideo", async () => {
     const text = await filesCreateVideo();
     assert.ok(text && text.length > 0);
   });
 
-  test('filesCreatePdf', async () => {
+  test("filesCreatePdf", async () => {
     const text = await filesCreatePdf();
     assert.ok(text && text.length > 0);
   });
 
-  test('filesList', async () => {
+  test("filesList", async () => {
     const names = await filesList();
     assert.ok(Array.isArray(names) && names.length > 0);
   });
 
-  test('filesGet', async () => {
+  test("filesGet", async () => {
     const file = await filesGet();
     assert.ok(file && file.name);
   });

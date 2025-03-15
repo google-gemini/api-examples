@@ -20,33 +20,33 @@ import {
   createUserContent,
   createPartFromUri,
   createPartFromBase64,
-} from '@google/genai';
-import path from 'path';
-import fs from 'fs';
-import {fileURLToPath} from 'url';
+} from "@google/genai";
+import path from "path";
+import fs from "fs";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const media = path.join(__dirname, '..', 'third_party');
+const media = path.join(__dirname, "..", "third_party");
 
 // A simple sleep helper.
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export async function tokensTextOnly() {
   // [START tokens_text_only]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
-  const prompt = 'The quick brown fox jumps over the lazy dog.';
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  const prompt = "The quick brown fox jumps over the lazy dog.";
   const countTokensResponse = await ai.models.countTokens({
-    model: 'gemini-2.0-flash',
+    model: "gemini-2.0-flash",
     contents: prompt,
   });
   console.log(countTokensResponse.totalTokens);
 
   const generateResponse = await ai.models.generateContent({
-    model: 'gemini-2.0-flash',
+    model: "gemini-2.0-flash",
     contents: prompt,
   });
   console.log(generateResponse.usageMetadata);
@@ -61,42 +61,42 @@ export async function tokensChat() {
   // [START tokens_chat]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
   // Initial chat history.
   const history = [
-    {role: 'user', parts: [{text: 'Hi my name is Bob'}]},
-    {role: 'model', parts: [{text: 'Hi Bob!'}]},
+    { role: "user", parts: [{ text: "Hi my name is Bob" }] },
+    { role: "model", parts: [{ text: "Hi Bob!" }] },
   ];
   const chat = ai.chats.create({
-    model: 'gemini-2.0-flash',
+    model: "gemini-2.0-flash",
     history: history,
   });
 
   // Count tokens for the current chat history.
   const countTokensResponse = await ai.models.countTokens({
-    model: 'gemini-2.0-flash',
+    model: "gemini-2.0-flash",
     contents: chat.getHistory(),
   });
   console.log(countTokensResponse.totalTokens);
 
   const chatResponse = await chat.sendMessage({
-    message: 'In one sentence, explain how a computer works to a young child.',
+    message: "In one sentence, explain how a computer works to a young child.",
   });
   console.log(chatResponse.usageMetadata);
 
   // Add an extra user message to the history.
   const extraMessage = {
-    role: 'user',
-    parts: [{text: 'What is the meaning of life?'}],
+    role: "user",
+    parts: [{ text: "What is the meaning of life?" }],
   };
   const combinedHistory = chat.getHistory();
   combinedHistory.push(extraMessage);
   const combinedCountTokensResponse = await ai.models.countTokens({
-    model: 'gemini-2.0-flash',
+    model: "gemini-2.0-flash",
     contents: combinedHistory,
   });
   console.log(
-    'Combined history token count:',
+    "Combined history token count:",
     combinedCountTokensResponse.totalTokens,
   );
   // [END tokens_chat]
@@ -111,27 +111,27 @@ export async function tokensMultimodalImageInline() {
   // [START tokens_multimodal_image_inline]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
-  const prompt = 'Tell me about this image';
-  const imageBuffer = fs.readFileSync(path.join(media, 'organ.jpg'));
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  const prompt = "Tell me about this image";
+  const imageBuffer = fs.readFileSync(path.join(media, "organ.jpg"));
 
   // Convert buffer to base64 string.
-  const imageBase64 = imageBuffer.toString('base64');
+  const imageBase64 = imageBuffer.toString("base64");
 
   // Build contents using createUserContent and createPartFromBase64.
   const contents = createUserContent([
     prompt,
-    createPartFromBase64(imageBase64, 'image/jpeg'),
+    createPartFromBase64(imageBase64, "image/jpeg"),
   ]);
 
   const countTokensResponse = await ai.models.countTokens({
-    model: 'gemini-2.0-flash',
+    model: "gemini-2.0-flash",
     contents: contents,
   });
   console.log(countTokensResponse.totalTokens);
 
   const generateResponse = await ai.models.generateContent({
-    model: 'gemini-2.0-flash',
+    model: "gemini-2.0-flash",
     contents: contents,
   });
   console.log(generateResponse.usageMetadata);
@@ -147,15 +147,15 @@ export async function tokensMultimodalImageFileApi() {
   // [START tokens_multimodal_image_file_api]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
-  const prompt = 'Tell me about this image';
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  const prompt = "Tell me about this image";
   const organ = await ai.files.upload({
-    file: path.join(media, 'organ.jpg'),
-    config: {mimeType: 'image/jpeg'},
+    file: path.join(media, "organ.jpg"),
+    config: { mimeType: "image/jpeg" },
   });
 
   const countTokensResponse = await ai.models.countTokens({
-    model: 'gemini-2.0-flash',
+    model: "gemini-2.0-flash",
     contents: createUserContent([
       prompt,
       createPartFromUri(organ.uri, organ.mimeType),
@@ -164,7 +164,7 @@ export async function tokensMultimodalImageFileApi() {
   console.log(countTokensResponse.totalTokens);
 
   const generateResponse = await ai.models.generateContent({
-    model: 'gemini-2.0-flash',
+    model: "gemini-2.0-flash",
     contents: createUserContent([
       prompt,
       createPartFromUri(organ.uri, organ.mimeType),
@@ -182,23 +182,23 @@ export async function tokensMultimodalVideoAudioFileApi() {
   // [START tokens_multimodal_video_audio_file_api]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
-  const prompt = 'Tell me about this video';
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  const prompt = "Tell me about this video";
   let videoFile = await ai.files.upload({
-    file: path.join(media, 'Big_Buck_Bunny.mp4'),
-    config: {mimeType: 'video/mp4'},
+    file: path.join(media, "Big_Buck_Bunny.mp4"),
+    config: { mimeType: "video/mp4" },
   });
 
   // Poll until the video file is completely processed (state becomes ACTIVE).
-  while (!videoFile.state || videoFile.state.toString() !== 'ACTIVE') {
-    console.log('Processing video...');
-    console.log('File state: ', videoFile.state);
+  while (!videoFile.state || videoFile.state.toString() !== "ACTIVE") {
+    console.log("Processing video...");
+    console.log("File state: ", videoFile.state);
     await sleep(5000);
-    videoFile = await ai.files.get({name: videoFile.name});
+    videoFile = await ai.files.get({ name: videoFile.name });
   }
 
   const countTokensResponse = await ai.models.countTokens({
-    model: 'gemini-2.0-flash',
+    model: "gemini-2.0-flash",
     contents: createUserContent([
       prompt,
       createPartFromUri(videoFile.uri, videoFile.mimeType),
@@ -207,7 +207,7 @@ export async function tokensMultimodalVideoAudioFileApi() {
   console.log(countTokensResponse.totalTokens);
 
   const generateResponse = await ai.models.generateContent({
-    model: 'gemini-2.0-flash',
+    model: "gemini-2.0-flash",
     contents: createUserContent([
       prompt,
       createPartFromUri(videoFile.uri, videoFile.mimeType),
@@ -226,14 +226,14 @@ export async function tokensMultimodalPdfFileApi() {
   // [START tokens_multimodal_pdf_file_api]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
   const samplePdf = await ai.files.upload({
-    file: path.join(media, 'test.pdf'),
-    config: {mimeType: 'application/pdf'},
+    file: path.join(media, "test.pdf"),
+    config: { mimeType: "application/pdf" },
   });
-  const prompt = 'Give me a summary of this document.';
+  const prompt = "Give me a summary of this document.";
   const countTokensResponse = await ai.models.countTokens({
-    model: 'gemini-2.0-flash',
+    model: "gemini-2.0-flash",
     contents: createUserContent([
       prompt,
       createPartFromUri(samplePdf.uri, samplePdf.mimeType),
@@ -242,7 +242,7 @@ export async function tokensMultimodalPdfFileApi() {
   console.log(countTokensResponse.totalTokens);
 
   const generateResponse = await ai.models.generateContent({
-    model: 'gemini-2.0-flash',
+    model: "gemini-2.0-flash",
     contents: createUserContent([
       prompt,
       createPartFromUri(samplePdf.uri, samplePdf.mimeType),
@@ -260,17 +260,17 @@ export async function tokensCachedContent() {
   // [START tokens_cached_content]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
   const textFile = await ai.files.upload({
-    file: path.join(media, 'a11.txt'),
-    config: {mimeType: 'text/plain'},
+    file: path.join(media, "a11.txt"),
+    config: { mimeType: "text/plain" },
   });
 
   const cache = await ai.caches.create({
-    model: 'gemini-1.5-flash-001',
+    model: "gemini-1.5-flash-001",
     config: {
       contents: createUserContent([
-        'Here the Apollo 11 transcript:',
+        "Here the Apollo 11 transcript:",
         createPartFromUri(textFile.uri, textFile.mimeType),
       ]),
       system_instruction: null,
@@ -278,21 +278,21 @@ export async function tokensCachedContent() {
     },
   });
 
-  const prompt = 'Please give a short summary of this file.';
+  const prompt = "Please give a short summary of this file.";
   const countTokensResponse = await ai.models.countTokens({
-    model: 'gemini-2.0-flash',
+    model: "gemini-2.0-flash",
     contents: prompt,
   });
   console.log(countTokensResponse.totalTokens);
 
   const generateResponse = await ai.models.generateContent({
-    model: 'gemini-1.5-flash-001',
+    model: "gemini-1.5-flash-001",
     contents: prompt,
-    config: {cached_content: cache.name},
+    config: { cached_content: cache.name },
   });
   console.log(generateResponse.usageMetadata);
 
-  await ai.caches.delete({name: cache.name});
+  await ai.caches.delete({ name: cache.name });
   // [START tokens_cached_content]
   return {
     totalTokens: countTokensResponse.totalTokens,
@@ -304,24 +304,24 @@ export async function tokensSystemInstruction() {
   // [START tokens_system_instruction]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
-  const prompt = 'The quick brown fox jumps over the lazy dog.';
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  const prompt = "The quick brown fox jumps over the lazy dog.";
   const countTokensResponse = await ai.models.countTokens({
-    model: 'gemini-2.0-flash',
+    model: "gemini-2.0-flash",
     contents: prompt,
   });
   console.log(
-    'base_count (no system instruction):',
+    "base_count (no system instruction):",
     countTokensResponse.totalTokens,
   );
 
   const countTokensWithSysInstResponse = await ai.models.countTokens({
-    model: 'gemini-2.0-flash',
+    model: "gemini-2.0-flash",
     contents: prompt,
-    config: {system_instruction: 'You are a cat. Your name is Neko.'},
+    config: { system_instruction: "You are a cat. Your name is Neko." },
   });
   console.log(
-    'total_tokens (with system instruction):',
+    "total_tokens (with system instruction):",
     countTokensWithSysInstResponse.totalTokens,
   );
   // [START tokens_system_instruction]
@@ -336,93 +336,93 @@ export async function tokensTools() {
   // [START tokens_tools]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
   const prompt =
-    'I have 57 cats, each owns 44 mittens, how many mittens is that in total?';
+    "I have 57 cats, each owns 44 mittens, how many mittens is that in total?";
   const countTokensResponse = await ai.models.countTokens({
-    model: 'gemini-2.0-flash',
+    model: "gemini-2.0-flash",
     contents: prompt,
   });
-  console.log('total_tokens (no tools):', countTokensResponse.totalTokens);
+  console.log("total_tokens (no tools):", countTokensResponse.totalTokens);
 
   // Define function declarations for arithmetic operations.
   const addDeclaration = {
-    name: 'addNumbers',
+    name: "addNumbers",
     parameters: {
-      type: 'object',
-      description: 'Return the result of adding two numbers.',
+      type: "object",
+      description: "Return the result of adding two numbers.",
       properties: {
         firstParam: {
-          type: 'number',
+          type: "number",
           description:
-            'The first parameter which can be an integer or a floating point number.',
+            "The first parameter which can be an integer or a floating point number.",
         },
         secondParam: {
-          type: 'number',
+          type: "number",
           description:
-            'The second parameter which can be an integer or a floating point number.',
+            "The second parameter which can be an integer or a floating point number.",
         },
       },
-      required: ['firstParam', 'secondParam'],
+      required: ["firstParam", "secondParam"],
     },
   };
 
   const subtractDeclaration = {
-    name: 'subtractNumbers',
+    name: "subtractNumbers",
     parameters: {
-      type: 'object',
+      type: "object",
       description:
-        'Return the result of subtracting the second number from the first.',
+        "Return the result of subtracting the second number from the first.",
       properties: {
         firstParam: {
-          type: 'number',
-          description: 'The first parameter.',
+          type: "number",
+          description: "The first parameter.",
         },
         secondParam: {
-          type: 'number',
-          description: 'The second parameter.',
+          type: "number",
+          description: "The second parameter.",
         },
       },
-      required: ['firstParam', 'secondParam'],
+      required: ["firstParam", "secondParam"],
     },
   };
 
   const multiplyDeclaration = {
-    name: 'multiplyNumbers',
+    name: "multiplyNumbers",
     parameters: {
-      type: 'object',
-      description: 'Return the product of two numbers.',
+      type: "object",
+      description: "Return the product of two numbers.",
       properties: {
         firstParam: {
-          type: 'number',
-          description: 'The first parameter.',
+          type: "number",
+          description: "The first parameter.",
         },
         secondParam: {
-          type: 'number',
-          description: 'The second parameter.',
+          type: "number",
+          description: "The second parameter.",
         },
       },
-      required: ['firstParam', 'secondParam'],
+      required: ["firstParam", "secondParam"],
     },
   };
 
   const divideDeclaration = {
-    name: 'divideNumbers',
+    name: "divideNumbers",
     parameters: {
-      type: 'object',
+      type: "object",
       description:
-        'Return the quotient of dividing the first number by the second.',
+        "Return the quotient of dividing the first number by the second.",
       properties: {
         firstParam: {
-          type: 'number',
-          description: 'The first parameter.',
+          type: "number",
+          description: "The first parameter.",
         },
         secondParam: {
-          type: 'number',
-          description: 'The second parameter.',
+          type: "number",
+          description: "The second parameter.",
         },
       },
-      required: ['firstParam', 'secondParam'],
+      required: ["firstParam", "secondParam"],
     },
   };
 
