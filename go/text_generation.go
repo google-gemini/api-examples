@@ -24,7 +24,9 @@ func GenerateContentTextOnly() (*genai.GenerateContentResponse, error) {
 		ctx,
 		"gemini-2.0-flash",
 		genai.Text("Write a story about a magic backpack."),
-		nil,
+		&genai.GenerateContentConfig{
+			Temperature: genai.Ptr[float32](0.5),
+		},
 	)
 	printResponse(result)
 	// [END text_gen_text_only_prompt]
