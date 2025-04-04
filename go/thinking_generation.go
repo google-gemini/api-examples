@@ -2,7 +2,6 @@ package examples
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"log"
 	"os"
@@ -37,7 +36,7 @@ func ThinkingTextOnlyPrompt() (*genai.GenerateContentResponse, error) {
 
 	prompt := "Explain the concept of Occam's Razor and provide a simple, everyday example."
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(prompt),
+		genai.NewContentFromText(prompt, "user"),
 	}
 
 	resp, err := client.Models.GenerateContent(ctx, modelID, contents, nil)
@@ -62,7 +61,7 @@ func ThinkingTextOnlyPromptStreaming() (string, error) {
 
 	prompt := "Explain the concept of Occam's Razor and provide a simple, everyday example."
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(prompt),
+		genai.NewContentFromText(prompt, "user"),
 	}
 
 	var fullResponse strings.Builder
@@ -102,7 +101,7 @@ func ThinkingLogicPuzzle() (*genai.GenerateContentResponse, error) {
         would you draw from to correctly label all boxes, and why?
         `
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(prompt),
+		genai.NewContentFromText(prompt, "user"),
 	}
 
 	resp, err := client.Models.GenerateContent(ctx, modelID, contents, nil)
@@ -142,7 +141,7 @@ func ThinkingCodeExplanation() (*genai.GenerateContentResponse, error) {
         print(f"The factorial of 5 is: {result}")
         `
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(prompt),
+		genai.NewContentFromText(prompt, "user"),
 	}
 
 	resp, err := client.Models.GenerateContent(ctx, modelID, contents, nil)
@@ -170,7 +169,7 @@ func ThinkingCreativeWritingConstraints() (*genai.GenerateContentResponse, error
         mystery in a library, but the story must not contain the letter 'e'.
         `
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(prompt),
+		genai.NewContentFromText(prompt, "user"),
 	}
 
 	resp, err := client.Models.GenerateContent(ctx, modelID, contents, nil)
@@ -199,7 +198,7 @@ func ThinkingWithSearchTool() (*genai.GenerateContentResponse, error) {
 
 	prompt := "What were the major scientific breakthroughs announced last week?"
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(prompt),
+		genai.NewContentFromText(prompt, "user"),
 	}
 	config := &genai.GenerateContentConfig{
 		Tools: []*genai.Tool{googleSearchTool},
@@ -232,7 +231,7 @@ func ThinkingWithSearchToolStreaming() (string, error) {
 
 	prompt := "When is the next total solar eclipse visible from mainland Europe?"
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(prompt),
+		genai.NewContentFromText(prompt, "user"),
 	}
 	config := &genai.GenerateContentConfig{
 		Tools: []*genai.Tool{googleSearchTool},
@@ -283,7 +282,7 @@ func ThinkingCodeExecution() (*genai.GenerateContentResponse, error) {
 	}
 
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(prompt),
+		genai.NewContentFromText(prompt, "user"),
 	}
 	config := &genai.GenerateContentConfig{
 		Tools: []*genai.Tool{codeExecutionTool}, // Provide the tool
@@ -322,7 +321,7 @@ func ThinkingStructuredOutputJson() (*genai.GenerateContentResponse, error) {
         `
 
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(prompt),
+		genai.NewContentFromText(prompt, "user"),
 	}
 
 	resp, err := client.Models.GenerateContent(ctx, modelID, contents, nil)

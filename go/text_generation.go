@@ -22,7 +22,7 @@ func TextGenTextOnlyPrompt() (*genai.GenerateContentResponse, error) {
 		log.Fatal(err)
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromText("Write a story about a magic backpack."),
+		genai.NewContentFromText("Write a story about a magic backpack.", "user"),
 	}
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
 	if err != nil {
@@ -44,7 +44,7 @@ func TextGenTextOnlyPromptStreaming() error {
 		log.Fatal(err)
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromText("Write a story about a magic backpack."),
+		genai.NewContentFromText("Write a story about a magic backpack.", "user"),
 	}
 	for response, err := range client.Models.GenerateContentStream(
 		ctx,
@@ -88,8 +88,8 @@ func TextGenMultimodalOneImagePrompt() (*genai.GenerateContentResponse, error) {
 		},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromText("Tell me about this instrument"),
-		genai.NewUserContentFromParts([]*genai.Part{imagePart}),
+		genai.NewContentFromText("Tell me about this instrument", "user"),
+		genai.NewContentFromParts([]*genai.Part{imagePart}, "user"),
 	}
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
 	if err != nil {
@@ -127,8 +127,8 @@ func TextGenMultimodalOneImagePromptStreaming() error {
 		},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromText("Tell me about this instrument"),
-		genai.NewUserContentFromParts([]*genai.Part{imagePart}),
+		genai.NewContentFromText("Tell me about this instrument", "user"),
+		genai.NewContentFromParts([]*genai.Part{imagePart}, "user"),
 	}
 	for response, err := range client.Models.GenerateContentStream(
 		ctx,
@@ -180,10 +180,10 @@ func TextGenMultimodalMultiImagePrompt() (*genai.GenerateContentResponse, error)
 		{InlineData: &genai.Blob{Data: cajunData, MIMEType: "image/jpeg"}},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(
-			"What is the difference between both of these instruments?",
+		genai.NewContentFromText(
+			"What is the difference between both of these instruments?", "user",
 		),
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
 	if err != nil {
@@ -229,10 +229,10 @@ func TextGenMultimodalMultiImagePromptStreaming() error {
 		{InlineData: &genai.Blob{Data: cajunData, MIMEType: "image/jpeg"}},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(
-			"What is the difference between both of these instruments?",
+		genai.NewContentFromText(
+			"What is the difference between both of these instruments?", "user",
 		),
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	for result, err := range client.Models.GenerateContentStream(
 		ctx,
@@ -274,8 +274,8 @@ func TextGenMultimodalAudio() (*genai.GenerateContentResponse, error) {
 		InlineData: &genai.Blob{Data: data, MIMEType: "audio/mpeg"},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(prompt),
-		genai.NewUserContentFromParts([]*genai.Part{audioPart}),
+		genai.NewContentFromText(prompt, "user"),
+		genai.NewContentFromParts([]*genai.Part{audioPart}, "user"),
 	}
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
 	if err != nil {
@@ -311,8 +311,8 @@ func TextGenMultimodalAudioStreaming() error {
 		InlineData: &genai.Blob{Data: data, MIMEType: "audio/mpeg"},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(prompt),
-		genai.NewUserContentFromParts([]*genai.Part{audioPart}),
+		genai.NewContentFromText(prompt, "user"),
+		genai.NewContentFromParts([]*genai.Part{audioPart}, "user"),
 	}
 	for result, err := range client.Models.GenerateContentStream(
 		ctx,
@@ -354,7 +354,7 @@ func TextGenMultimodalVideoPrompt() (*genai.GenerateContentResponse, error) {
 		{InlineData: &genai.Blob{Data: data, MIMEType: "video/mp4"}},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
 	if err != nil {
@@ -390,7 +390,7 @@ func TextGenMultimodalVideoPromptStreaming() error {
 		{InlineData: &genai.Blob{Data: data, MIMEType: "video/mp4"}},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	for result, err := range client.Models.GenerateContentStream(
 		ctx,
@@ -431,8 +431,8 @@ func TextGenMultimodalPdf() (*genai.GenerateContentResponse, error) {
 		InlineData: &genai.Blob{Data: data, MIMEType: "application/pdf"},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromText("Give me a summary of this document:"),
-		genai.NewUserContentFromParts([]*genai.Part{pdfPart}),
+		genai.NewContentFromText("Give me a summary of this document:", "user"),
+		genai.NewContentFromParts([]*genai.Part{pdfPart}, "user"),
 	}
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
 	if err != nil {
@@ -467,8 +467,8 @@ func TextGenMultimodalPdfStreaming() error {
 		InlineData: &genai.Blob{Data: data, MIMEType: "application/pdf"},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromText("Give me a summary of this document:"),
-		genai.NewUserContentFromParts([]*genai.Part{pdfPart}),
+		genai.NewContentFromText("Give me a summary of this document:", "user"),
+		genai.NewContentFromParts([]*genai.Part{pdfPart}, "user"),
 	}
 	for result, err := range client.Models.GenerateContentStream(
 		ctx,

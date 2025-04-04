@@ -48,7 +48,7 @@ func TokensTextOnly() error {
 
 	// Convert prompt to a slice of *genai.Content using the helper.
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(prompt),
+		genai.NewContentFromText(prompt, "user"),
 	}
 	countResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
 	if err != nil {
@@ -98,7 +98,7 @@ func TokensMultimodalImageInline() error {
 		{InlineData: &genai.Blob{Data: data, MIMEType: "image/jpeg"}},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 
 	tokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
@@ -149,7 +149,7 @@ func TokensMultimodalVideoAudioInline() error {
 		{InlineData: &genai.Blob{Data: data, MIMEType: "video/mp4"}},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 
 	tokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
@@ -199,7 +199,7 @@ func TokensMultimodalPdfInline() error {
 		{InlineData: &genai.Blob{Data: data, MIMEType: "application/pdf"}},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 
 	tokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
@@ -249,7 +249,7 @@ func TokensCachedContent() error {
 		{InlineData: &genai.Blob{Data: data, MIMEType: "text/plain"}},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 
 	// Create cached content using a simple slice with text and a file.
@@ -262,14 +262,14 @@ func TokensCachedContent() error {
 
 	prompt := "Please give a short summary of this file."
 	countResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", []*genai.Content{
-		genai.NewModelContentFromText(prompt),
+		genai.NewContentFromText(prompt, "user"),
 	}, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("%d", countResp.TotalTokens)
 	response, err := client.Models.GenerateContent(ctx, "gemini-1.5-flash-001", []*genai.Content{
-		genai.NewModelContentFromText(prompt),
+		genai.NewContentFromText(prompt, "user"),
 	}, &genai.GenerateContentConfig{
 		CachedContent: cache.Name,
 	})

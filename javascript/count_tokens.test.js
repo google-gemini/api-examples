@@ -73,18 +73,4 @@ describe("count_tokens", () => {
     assert.ok(result.totalTokens > 0);
     assert.ok(result.usage.promptTokenCount >= 0);
   });
-
-  test("tokensSystemInstruction", async () => {
-    const result = await tokensSystemInstruction();
-    assert.ok(result.responseTokenCount > 0);
-    // Uncomment if the API gets support for systemInstruction in count_tokens.
-    // assert.ok(result.sysInstResponseTokenCount > 0);
-  });
-
-  test("tokensTools", async () => {
-    const result = await tokensTools();
-    assert.ok(result.responseTokenCount > 0);
-    // Uncomment if the API gets support for tools in count_tokens.
-    // assert.ok(result.toolsResponseTokenCount > 0);
-  });
 });

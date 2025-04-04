@@ -90,7 +90,9 @@ func FunctionCalling() error {
 
 	// Create the content prompt.
 	contents := []*genai.Content{
-		genai.NewUserContentFromText("I have 57 cats, each owns 44 mittens, how many mittens is that in total?"),
+		genai.NewContentFromText(
+			"I have 57 cats, each owns 44 mittens, how many mittens is that in total?", "user",
+		),
 	}
 
 	// Set up the generate content configuration with function calling enabled.
@@ -147,7 +149,7 @@ func FunctionCalling() error {
 
 	// Prepare the final result message as content.
 	resultContents := []*genai.Content{
-		genai.NewUserContentFromText("The final result is " + fmt.Sprintf("%v", result)),
+		genai.NewContentFromText("The final result is " + fmt.Sprintf("%v", result), "user"),
 	}
 
 	// Use GenerateContent to send the final result.

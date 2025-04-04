@@ -43,11 +43,13 @@ func CacheCreate() (*genai.GenerateContentResponse, error) {
 		{InlineData: &genai.Blob{Data: data, MIMEType: "text/plain"}},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents: contents,
-		SystemInstruction: genai.NewUserContentFromText("You are an expert analyzing transcripts."),
+		SystemInstruction: genai.NewContentFromText(
+			"You are an expert analyzing transcripts.", "user",
+		),
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -106,11 +108,13 @@ func CacheCreateFromName() (*genai.GenerateContentResponse, error) {
 		{InlineData: &genai.Blob{Data: data, MIMEType: "text/plain"}},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents:          contents,
-		SystemInstruction: genai.NewUserContentFromText("You are an expert analyzing transcripts."),
+		SystemInstruction: genai.NewContentFromText(
+			"You are an expert analyzing transcripts.", "user",
+		),
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -171,11 +175,13 @@ func CacheDelete() error {
 		{InlineData: &genai.Blob{Data: data, MIMEType: "text/plain"}},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents:          contents,
-		SystemInstruction: genai.NewUserContentFromText("You are an expert analyzing transcripts."),
+		SystemInstruction: genai.NewContentFromText(
+			"You are an expert analyzing transcripts.", "user",
+		),
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -219,11 +225,13 @@ func CacheGet() error {
 		{InlineData: &genai.Blob{Data: data, MIMEType: "text/plain"}},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents:          contents,
-		SystemInstruction: genai.NewUserContentFromText("You are an expert analyzing transcripts."),
+		SystemInstruction: genai.NewContentFromText(
+			"You are an expert analyzing transcripts.", "user",
+		),
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -271,11 +279,13 @@ func CacheList() error {
 		{InlineData: &genai.Blob{Data: data, MIMEType: "text/plain"}},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents:          contents,
-		SystemInstruction: genai.NewUserContentFromText("You are an expert analyzing transcripts."),
+		SystemInstruction: genai.NewContentFromText(
+			"You are an expert analyzing transcripts.", "user",
+		),
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -339,20 +349,21 @@ func CacheUpdate() error {
 		{InlineData: &genai.Blob{Data: data, MIMEType: "text/plain"}},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents:          contents,
-		SystemInstruction: genai.NewUserContentFromText("You are an expert analyzing transcripts."),
+		SystemInstruction: genai.NewContentFromText(
+			"You are an expert analyzing transcripts.", "user",
+		),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	// Update the TTL (2 hours).
-	ttl := "7200s"
 	cache, err = client.Caches.Update(ctx, cache.Name, &genai.UpdateCachedContentConfig{
-		TTL: ttl,
+		TTL: 7200 * time.Second,
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -363,7 +374,7 @@ func CacheUpdate() error {
 	// Alternatively, update expire_time directly.
 	expire := time.Now().Add(15 * time.Minute).UTC()
 	cache, err = client.Caches.Update(ctx, cache.Name, &genai.UpdateCachedContentConfig{
-		ExpireTime: &expire,
+		ExpireTime: expire,
 	})
 	if err != nil {
 		log.Fatal(err)

@@ -24,7 +24,7 @@ func EmbedContent() error {
 	text := "Hello World!"
 	outputDim := int32(10)
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(text),
+		genai.NewContentFromText(text, "user"),
 	}
 	result, err := client.Models.EmbedContent(ctx, "text-embedding-004", 
 		contents, &genai.EmbedContentConfig{
@@ -55,9 +55,9 @@ func BatchEmbedContents() error {
 	}
 
 	contents := []*genai.Content{
-		genai.NewUserContentFromText("What is the meaning of life?"),
-		genai.NewUserContentFromText("How much wood would a woodchuck chuck?"),
-		genai.NewUserContentFromText("How does the brain work?"),
+		genai.NewContentFromText("What is the meaning of life?", "user"),
+		genai.NewContentFromText("How much wood would a woodchuck chuck?", "user"),
+		genai.NewContentFromText("How does the brain work?", "user"),
 	}
 
 	outputDim := int32(10)

@@ -135,7 +135,7 @@ func JsonEnum() (*genai.GenerateContentResponse, error) {
 		{InlineData: &genai.Blob{Data: data, MIMEType: "image/jpeg"}},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash",
 		contents,
@@ -226,7 +226,7 @@ func JsonEnumRaw() (*genai.GenerateContentResponse, error) {
 		{InlineData: &genai.Blob{Data: data, MIMEType: "image/jpeg"}},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash",
 		contents,
@@ -298,7 +298,7 @@ func XEnum() (*genai.GenerateContentResponse, error) {
 		{InlineData: &genai.Blob{Data: data, MIMEType: "image/jpeg"}},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash",
 		contents,
@@ -350,7 +350,7 @@ func XEnumRaw() (*genai.GenerateContentResponse, error) {
 		{InlineData: &genai.Blob{Data: data, MIMEType: "image/jpeg"}},
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash",
 		contents,
