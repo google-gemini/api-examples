@@ -22,12 +22,10 @@ import com.google.genai.types.Content;
 import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
 import com.google.genai.types.Part;
-import org.apache.http.HttpException;
-
-import java.io.IOException;
+import org.jspecify.annotations.Nullable;
 
 public class SystemInstruction {
-    public static void main(String[] args) throws IOException, HttpException {
+    public static @Nullable String systemInstruction() throws Exception {
         // [START system_instruction]
         Client client = new Client();
 
@@ -47,5 +45,6 @@ public class SystemInstruction {
 
         System.out.println(response.text());
         // [END system_instruction]
+        return response.text();
     }
 }

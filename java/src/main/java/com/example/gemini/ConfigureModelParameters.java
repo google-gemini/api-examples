@@ -19,13 +19,12 @@ package com.example.gemini;
 import com.google.genai.Client;
 import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
-import org.apache.http.HttpException;
+import org.jspecify.annotations.Nullable;
 
-import java.io.IOException;
 import java.util.List;
 
 public class ConfigureModelParameters {
-    public static void main(String[] args) throws IOException, HttpException {
+    public static @Nullable String configureModelParameters() throws Exception {
         // [START configure_model_parameters]
         Client client = new Client();
 
@@ -45,5 +44,6 @@ public class ConfigureModelParameters {
 
         System.out.println(response.text());
         // [END configure_model_parameters]
+        return response.text();
     }
 }

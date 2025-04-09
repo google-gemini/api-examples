@@ -17,10 +17,15 @@
 package com.example.gemini;
 
 import com.google.genai.Client;
-import com.google.genai.types.*;
+import com.google.genai.types.FunctionCallingConfig;
+import com.google.genai.types.FunctionDeclaration;
+import com.google.genai.types.GenerateContentConfig;
+import com.google.genai.types.GenerateContentResponse;
+import com.google.genai.types.Schema;
+import com.google.genai.types.Tool;
+import com.google.genai.types.ToolConfig;
 import org.apache.http.HttpException;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -28,7 +33,7 @@ import java.util.Map;
 import java.util.function.BiFunction;
 
 public class FunctionCalling {
-    public static void main(String[] args) throws IOException {
+    public static Double functionCalling() throws Exception {
         // [START function_calling]
         Client client = new Client();
 
@@ -111,8 +116,8 @@ public class FunctionCalling {
         }
 
         if (response.functionCalls() == null || response.functionCalls().isEmpty()) {
-            System.err.println("No function call received.");
-            return;
+            System.err.println("No function call received");
+            return null;
         }
 
         var functionCall = response.functionCalls().getFirst();
@@ -133,5 +138,6 @@ public class FunctionCalling {
 
         System.out.println(result);
         // [END function_calling]
+        return result;
     }
 }
