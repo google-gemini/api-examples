@@ -22,7 +22,8 @@ class UnitTests(absltest.TestCase):
         
         from google import genai
         from google.genai.types import Tool, GenerateContentConfig, GoogleSearch
-        client = genai.Client(api_key="AIzaSyD88Vg05FndfYn4CBmUz4I9V-Ev3BAJnWk")
+        
+        client = genai.Client()
         model_id = "gemini-2.0-flash"
 
         google_search_tool = Tool(
@@ -44,7 +45,7 @@ class UnitTests(absltest.TestCase):
         # The next total solar eclipse visible in the contiguous United States will be on ...
         from google import genai
         from google.genai.types import Tool, GenerateContentConfig, GoogleSearch
-        client = genai.Client(api_key="AIzaSyD88Vg05FndfYn4CBmUz4I9V-Ev3BAJnWk")
+        client = genai.Client()
         model_id = "gemini-2.0-flash"
 
         google_search_tool = Tool(
