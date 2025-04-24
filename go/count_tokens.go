@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io"
+	"time"
 	"log"
 	"os"
 	"path/filepath"
@@ -33,7 +33,6 @@ func TokensContextWindow() error {
 	return err
 }
 
-// TokensTextOnly counts tokens for a text prompt and prints usage metadata.
 func TokensTextOnly() error {
 	// [START tokens_text_only]
 	ctx := context.Background()
@@ -48,7 +47,7 @@ func TokensTextOnly() error {
 
 	// Convert prompt to a slice of *genai.Content using the helper.
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(prompt),
+		genai.NewContentFromText(prompt, "user"),
 	}
 	countResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
 	if err != nil {
@@ -69,8 +68,8 @@ func TokensTextOnly() error {
 	return err
 }
 
-func TokensMultimodalImageInline() error {
-	// [START tokens_multimodal_image_inline]
+func TokensChat() error {
+	// [START tokens_chat]
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, &genai.ClientConfig{
 		APIKey:  os.Getenv("GEMINI_API_KEY"),
@@ -80,32 +79,79 @@ func TokensMultimodalImageInline() error {
 		log.Fatal(err)
 	}
 
-	// Open the file.
-	file, err := os.Open(filepath.Join(getMedia(), "organ.jpg"))
-	if err != nil {
-		log.Fatal("Error opening file:", err)
+	// Initialize chat with some history.
+	history := []*genai.Content{
+		{Role: "user", Parts: []*genai.Part{{Text: "Hi my name is Bob"}}},
+		{Role: "model", Parts: []*genai.Part{{Text: "Hi Bob!"}}},
 	}
-	defer file.Close()
-
-	// Read the file.
-	data, err := io.ReadAll(file)
+	chat, err := client.Chats.Create(ctx, "gemini-2.0-flash", nil, history)
 	if err != nil {
-		log.Fatal("Error reading file:", err)
+		log.Fatal(err)
 	}
 
+	firstTokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", chat.History(false), nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(firstTokenResp.TotalTokens)
+
+	resp, err := chat.SendMessage(ctx, genai.Part{
+		Text: "In one sentence, explain how a computer works to a young child."},
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("%#v\n", resp.UsageMetadata)
+
+	// Append an extra user message and recount.
+	extra := genai.NewContentFromText("What is the meaning of life?", "user")
+	hist := chat.History(false)
+	hist = append(hist, extra)
+
+	secondTokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", hist, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(secondTokenResp.TotalTokens)
+	// [END tokens_chat]
+
+	return nil
+}
+
+func TokensMultimodalImageFileApi() error {
+	// [START tokens_multimodal_image_file_api]
+	ctx := context.Background()
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		APIKey:  os.Getenv("GEMINI_API_KEY"),
+		Backend: genai.BackendGeminiAPI,
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	file, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "organ.jpg"), 
+		&genai.UploadFileConfig{
+			MIMEType : "image/jpeg",
+		},
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
 	parts := []*genai.Part{
-		{Text: "Tell me about this image"},
-		{InlineData: &genai.Blob{Data: data, MIMEType: "image/jpeg"}},
+		genai.NewPartFromText("Tell me about this image"),
+		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 
 	tokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Multimodal inline token count:", tokenResp.TotalTokens)
+	fmt.Println("Multimodal image token count:", tokenResp.TotalTokens)
 
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
 	if err != nil {
@@ -116,12 +162,12 @@ func TokensMultimodalImageInline() error {
 		log.Fatal(err)
 	}
 	fmt.Println(string(usageMetadata))
-	// [END tokens_multimodal_image_inline]
+	// [END tokens_multimodal_image_file_api]
 	return err
 }
 
-func TokensMultimodalVideoAudioInline() error {
-	// [START tokens_multimodal_video_audio_inline]
+func TokensMultimodalVideoAudioFileApi() error {
+	// [START tokens_multimodal_video_audio_file_api]
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, &genai.ClientConfig{
 		APIKey:  os.Getenv("GEMINI_API_KEY"),
@@ -131,25 +177,35 @@ func TokensMultimodalVideoAudioInline() error {
 		log.Fatal(err)
 	}
 
-	// Open the file.
-	file, err := os.Open(filepath.Join(getMedia(), "organ.jpg"))
+	file, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "Big_Buck_Bunny.mp4"), 
+		&genai.UploadFileConfig{
+			MIMEType : "video/mp4",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
 
-	// Read the file.
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
+	// Poll until the video file is completely processed (state becomes ACTIVE).
+	for file.State == genai.FileStateUnspecified || file.State != genai.FileStateActive {
+		fmt.Println("Processing video...")
+		fmt.Println("File state:", file.State)
+		time.Sleep(5 * time.Second)
+
+		file, err = client.Files.Get(ctx, file.Name, nil)
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 
 	parts := []*genai.Part{
-		{Text: "Tell me about this video"},
-		{InlineData: &genai.Blob{Data: data, MIMEType: "video/mp4"}},
+		genai.NewPartFromText("Tell me about this video"),
+		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 
 	tokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
@@ -166,12 +222,12 @@ func TokensMultimodalVideoAudioInline() error {
 		log.Fatal(err)
 	}
 	fmt.Println(string(usageMetadata))
-	// [END tokens_multimodal_video_audio_inline]
+	// [END tokens_multimodal_video_audio_file_api]
 	return err
 }
 
-func TokensMultimodalPdfInline() error {
-	// [START tokens_multimodal_pdf_inline]
+func TokensMultimodalPdfFileApi() error {
+	// [START tokens_multimodal_pdf_file_api]
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, &genai.ClientConfig{
 		APIKey:  os.Getenv("GEMINI_API_KEY"),
@@ -181,25 +237,22 @@ func TokensMultimodalPdfInline() error {
 		log.Fatal(err)
 	}
 
-	// Open the file.
-	file, err := os.Open(filepath.Join(getMedia(), "test.pdf"))
+	file, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "test.pdf"), 
+		&genai.UploadFileConfig{
+			MIMEType : "application/pdf",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-
-	// Read the file.
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
-	}
-
 	parts := []*genai.Part{
-		{Text: "Give me a summary of this document."},
-		{InlineData: &genai.Blob{Data: data, MIMEType: "application/pdf"}},
+		genai.NewPartFromText("Give me a summary of this document."),
+		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 
 	tokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
@@ -216,7 +269,7 @@ func TokensMultimodalPdfInline() error {
 		log.Fatal(err)
 	}
 	fmt.Println(string(usageMetadata))
-	// [END tokens_multimodal_pdf_inline]
+	// [END tokens_multimodal_pdf_file_api]
 	return err
 }
 
@@ -231,25 +284,22 @@ func TokensCachedContent() error {
 		log.Fatal(err)
 	}
 
-	// Open the file.
-	file, err := os.Open(filepath.Join(getMedia(), "a11.txt"))
+	file, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "a11.txt"), 
+		&genai.UploadFileConfig{
+			MIMEType : "text/plain",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-
-	// Read the file.
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
-	}
-
 	parts := []*genai.Part{
-		{Text: "Here the Apollo 11 transcript:"},
-		{InlineData: &genai.Blob{Data: data, MIMEType: "text/plain"}},
+		genai.NewPartFromText("Here the Apollo 11 transcript:"),
+		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 
 	// Create cached content using a simple slice with text and a file.
@@ -262,14 +312,14 @@ func TokensCachedContent() error {
 
 	prompt := "Please give a short summary of this file."
 	countResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", []*genai.Content{
-		genai.NewModelContentFromText(prompt),
+		genai.NewContentFromText(prompt, "user"),
 	}, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("%d", countResp.TotalTokens)
 	response, err := client.Models.GenerateContent(ctx, "gemini-1.5-flash-001", []*genai.Content{
-		genai.NewModelContentFromText(prompt),
+		genai.NewContentFromText(prompt, "user"),
 	}, &genai.GenerateContentConfig{
 		CachedContent: cache.Name,
 	})

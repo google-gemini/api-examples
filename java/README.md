@@ -1,34 +1,17 @@
 # Java examples
 
 This directory contains examples of working with the Gemini API using the
-Google Gen AI SDK for Java.
 
-## Prerequisites
+[Google Gen AI SDK for Java](https://github.com/googleapis/java-genai).
 
-- Java 11 or higher
-- Maven or Gradle for dependency management
+## Install dependencies
+open the project in intelliJ IDEA, load the maven build script.
 
-## Setup
+## Run a test file
+Before running the tests, set GOOGLE_API_KEY as environment variable for run/debug configuration. 
 
-Make sure to set your API key as an environment variable:
+    mvn -Dtest=<filename> test
 
-```bash
-export GOOGLE_API_KEY=your_api_key_here
-```
+For example:
 
-## Compile and run
-
-Using Maven:
-
-```bash
-mvn compile
-mvn exec:java -Dexec.mainClass="Main"
-```
-
-## Run tests
-
-Using Maven:
-
-```bash
-mvn test
-```
+    mvn -Dtest=CodeExecutionTest test

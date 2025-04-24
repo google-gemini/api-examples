@@ -153,9 +153,10 @@ class UnitTests(absltest.TestCase):
         prompt = "Tell me about this video"
         your_file = client.files.upload(file=media / "Big_Buck_Bunny.mp4")
 
-        # Wait for the video to be processed.
-        while your_file.state.name == "PROCESSING":
-            print("processing video...")
+        # Poll until the video file is completely processed (state becomes ACTIVE).
+        while not your_file.state or your_file.state.name != "ACTIVE":
+            print("Processing video...")
+            print("File state:", your_file.state)
             time.sleep(5)
             your_file = client.files.get(name=your_file.name)
 
@@ -228,140 +229,6 @@ class UnitTests(absltest.TestCase):
         # ( e.g., prompt_token_count: ..., cached_content_token_count: ..., candidates_token_count: ... )
         client.caches.delete(name=cache.name)
         # [END tokens_cached_content]
-
-    # ValueError: system_instruction parameter is not supported in Gemini API.
-    def test_tokens_system_instruction(self):
-        # [START tokens_system_instruction]
-        from google import genai
-        from google.genai import types
-
-        client = genai.Client()
-        prompt = "The quick brown fox jumps over the lazy dog."
-
-        base_count = client.models.count_tokens(
-            model="gemini-2.0-flash", contents=prompt
-        )
-        print("total_tokens (no system instruction):", base_count)
-        # ( e.g., total_tokens: 10 )
-
-        # When using a system instruction, include it in the count tokens config.
-        # TODO: Uncomment once the API stops failing
-
-        # count_with_sys = client.models.count_tokens(
-        #     model="gemini-2.0-flash",
-        #     contents=prompt,
-        #     config=types.CountTokensConfig(system_instruction="You are a cat. Your name is Neko.")
-        # )
-        # print("total_tokens (with system instruction):", count_with_sys)
-        # ( e.g., total_tokens: 21 )
-        # [END tokens_system_instruction]
-
-    # ValueError: tools parameter is not supported in Gemini API.
-    def test_tokens_tools(self):
-        # [START tokens_tools]
-        from google import genai
-        from google.genai import types
-
-        client = genai.Client()
-        prompt = (
-            "I have 57 cats, each owns 44 mittens, how many mittens is that in total?"
-        )
-        print(client.models.count_tokens(model="gemini-2.0-flash", contents=prompt))
-        # ( e.g., total_tokens: 22 )
-
-        # Define the function declarations for the arithmetic operations
-        add_function = types.FunctionDeclaration(
-            name="add",
-            description="Return the sum of a and b",
-            parameters=types.Schema(
-                type="OBJECT",
-                properties={
-                    "a": types.Schema(
-                        type="NUMBER",
-                        description="The first number",
-                    ),
-                    "b": types.Schema(
-                        type="NUMBER",
-                        description="The second number",
-                    ),
-                },
-                required=["a", "b"],
-            ),
-        )
-
-        subtract_function = types.FunctionDeclaration(
-            name="subtract",
-            description="Return the difference of a and b (a - b)",
-            parameters=types.Schema(
-                type="OBJECT",
-                properties={
-                    "a": types.Schema(
-                        type="NUMBER",
-                        description="The first number",
-                    ),
-                    "b": types.Schema(
-                        type="NUMBER",
-                        description="The second number",
-                    ),
-                },
-                required=["a", "b"],
-            ),
-        )
-
-        multiply_function = types.FunctionDeclaration(
-            name="multiply",
-            description="Return the product of a and b",
-            parameters=types.Schema(
-                type="OBJECT",
-                properties={
-                    "a": types.Schema(
-                        type="NUMBER",
-                        description="The first number",
-                    ),
-                    "b": types.Schema(
-                        type="NUMBER",
-                        description="The second number",
-                    ),
-                },
-                required=["a", "b"],
-            ),
-        )
-
-        divide_function = types.FunctionDeclaration(
-            name="divide",
-            description="Return the quotient of a divided by b",
-            parameters=types.Schema(
-                type="OBJECT",
-                properties={
-                    "a": types.Schema(
-                        type="NUMBER",
-                        description="The numerator",
-                    ),
-                    "b": types.Schema(
-                        type="NUMBER",
-                        description="The denominator (must not be zero)",
-                    ),
-                },
-                required=["a", "b"],
-            ),
-        )
-        tools = [
-            types.Tool(function_declarations=[add_function]),
-            types.Tool(function_declarations=[subtract_function]),
-            types.Tool(function_declarations=[multiply_function]),
-            types.Tool(function_declarations=[divide_function]),
-        ]
-
-        # Count tokens when tools are included. Tools increase the token count.
-        # TODO: Uncomment once the API stops failing
-        # tokens_with_tools = client.models.count_tokens(
-        #     model="gemini-2.0-flash",
-        #     contents=prompt,
-        #     config=types.CountTokensConfig(tools=tools)
-        # )
-        # print(tokens_with_tools)
-        # ( e.g., total_tokens: 206 )
-        # [END tokens_tools]
 
 
 if __name__ == "__main__":
