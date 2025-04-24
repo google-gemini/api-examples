@@ -131,7 +131,7 @@ func JsonEnum() (*genai.GenerateContentResponse, error) {
 		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash",
@@ -220,7 +220,7 @@ func JsonEnumRaw() (*genai.GenerateContentResponse, error) {
 		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash",
@@ -290,7 +290,7 @@ func XEnum() (*genai.GenerateContentResponse, error) {
 		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash",
 		contents,
@@ -339,7 +339,7 @@ func XEnumRaw() (*genai.GenerateContentResponse, error) {
 		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash",
 		contents,

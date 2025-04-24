@@ -21,12 +21,12 @@ func SystemInstruction() error {
 
 	// Construct the user message contents.
 	contents := []*genai.Content{
-		genai.NewContentFromText("Good morning! How are you?", "user"),
+		genai.NewContentFromText("Good morning! How are you?", genai.RoleUser),
 	}
 
 	// Set the system instruction as a *genai.Content.
 	config := &genai.GenerateContentConfig{
-		SystemInstruction: genai.NewContentFromText("You are a cat. Your name is Neko.", "user"),
+		SystemInstruction: genai.NewContentFromText("You are a cat. Your name is Neko.", genai.RoleUser),
 	}
 
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, config)

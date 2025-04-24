@@ -47,7 +47,7 @@ func TokensTextOnly() error {
 
 	// Convert prompt to a slice of *genai.Content using the helper.
 	contents := []*genai.Content{
-		genai.NewContentFromText(prompt, "user"),
+		genai.NewContentFromText(prompt, genai.RoleUser),
 	}
 	countResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
 	if err != nil {
@@ -81,8 +81,8 @@ func TokensChat() error {
 
 	// Initialize chat with some history.
 	history := []*genai.Content{
-		{Role: "user", Parts: []*genai.Part{{Text: "Hi my name is Bob"}}},
-		{Role: "model", Parts: []*genai.Part{{Text: "Hi Bob!"}}},
+		{Role: genai.RoleUser, Parts: []*genai.Part{{Text: "Hi my name is Bob"}}},
+		{Role: genai.RoleModel, Parts: []*genai.Part{{Text: "Hi Bob!"}}},
 	}
 	chat, err := client.Chats.Create(ctx, "gemini-2.0-flash", nil, history)
 	if err != nil {
@@ -104,7 +104,7 @@ func TokensChat() error {
 	fmt.Printf("%#v\n", resp.UsageMetadata)
 
 	// Append an extra user message and recount.
-	extra := genai.NewContentFromText("What is the meaning of life?", "user")
+	extra := genai.NewContentFromText("What is the meaning of life?", genai.RoleUser)
 	hist := chat.History(false)
 	hist = append(hist, extra)
 
@@ -144,7 +144,7 @@ func TokensMultimodalImageFileApi() error {
 		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
 	tokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
@@ -205,7 +205,7 @@ func TokensMultimodalVideoAudioFileApi() error {
 		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
 	tokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
@@ -252,7 +252,7 @@ func TokensMultimodalPdfFileApi() error {
 		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
 	tokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
@@ -299,7 +299,7 @@ func TokensCachedContent() error {
 		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
 	// Create cached content using a simple slice with text and a file.
@@ -312,14 +312,14 @@ func TokensCachedContent() error {
 
 	prompt := "Please give a short summary of this file."
 	countResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", []*genai.Content{
-		genai.NewContentFromText(prompt, "user"),
+		genai.NewContentFromText(prompt, genai.RoleUser),
 	}, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("%d", countResp.TotalTokens)
 	response, err := client.Models.GenerateContent(ctx, "gemini-1.5-flash-001", []*genai.Content{
-		genai.NewContentFromText(prompt, "user"),
+		genai.NewContentFromText(prompt, genai.RoleUser),
 	}, &genai.GenerateContentConfig{
 		CachedContent: cache.Name,
 	})

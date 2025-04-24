@@ -91,7 +91,7 @@ func FunctionCalling() error {
 	// Create the content prompt.
 	contents := []*genai.Content{
 		genai.NewContentFromText(
-			"I have 57 cats, each owns 44 mittens, how many mittens is that in total?", "user",
+			"I have 57 cats, each owns 44 mittens, how many mittens is that in total?", genai.RoleUser,
 		),
 	}
 
@@ -149,7 +149,7 @@ func FunctionCalling() error {
 
 	// Prepare the final result message as content.
 	resultContents := []*genai.Content{
-		genai.NewContentFromText("The final result is " + fmt.Sprintf("%v", result), "user"),
+		genai.NewContentFromText("The final result is " + fmt.Sprintf("%v", result), genai.RoleUser),
 	}
 
 	// Use GenerateContent to send the final result.

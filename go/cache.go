@@ -37,12 +37,12 @@ func CacheCreate() (*genai.GenerateContentResponse, error) {
 		genai.NewPartFromURI(document.URI, document.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents: contents,
 		SystemInstruction: genai.NewContentFromText(
-			"You are an expert analyzing transcripts.", "user",
+			"You are an expert analyzing transcripts.", genai.RoleUser,
 		),
 	})
 	if err != nil {
@@ -97,12 +97,12 @@ func CacheCreateFromName() (*genai.GenerateContentResponse, error) {
 		genai.NewPartFromURI(document.URI, document.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents:          contents,
 		SystemInstruction: genai.NewContentFromText(
-			"You are an expert analyzing transcripts.", "user",
+			"You are an expert analyzing transcripts.", genai.RoleUser,
 		),
 	})
 	if err != nil {
@@ -151,7 +151,7 @@ func CacheCreateFromChat() (*genai.GenerateContentResponse, error) {
 
 	// Create initial chat with a system instruction.
 	chat, err := client.Chats.Create(ctx, modelName, &genai.GenerateContentConfig{
-		SystemInstruction: genai.NewContentFromText(systemInstruction, "user"),
+		SystemInstruction: genai.NewContentFromText(systemInstruction, genai.RoleUser),
 	}, nil)
 	if err != nil {
 		log.Fatal(err)
@@ -199,7 +199,7 @@ func CacheCreateFromChat() (*genai.GenerateContentResponse, error) {
 	// To cache the conversation so far, pass the chat history as the list of contents.
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents:          chat.History(false),
-		SystemInstruction: genai.NewContentFromText(systemInstruction, "user"),
+		SystemInstruction: genai.NewContentFromText(systemInstruction, genai.RoleUser),
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -258,13 +258,13 @@ func CacheDelete() error {
 		genai.NewPartFromURI(document.URI, document.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents:          contents,
 		SystemInstruction: genai.NewContentFromText(
-			"You are an expert analyzing transcripts.", "user",
+			"You are an expert analyzing transcripts.", genai.RoleUser,
 		),
 	})
 	if err != nil {
@@ -306,13 +306,13 @@ func CacheGet() error {
 		genai.NewPartFromURI(document.URI, document.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents:          contents,
 		SystemInstruction: genai.NewContentFromText(
-			"You are an expert analyzing transcripts.", "user",
+			"You are an expert analyzing transcripts.", genai.RoleUser,
 		),
 	})
 	if err != nil {
@@ -358,12 +358,12 @@ func CacheList() error {
 		genai.NewPartFromURI(document.URI, document.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents:          contents,
 		SystemInstruction: genai.NewContentFromText(
-			"You are an expert analyzing transcripts.", "user",
+			"You are an expert analyzing transcripts.", genai.RoleUser,
 		),
 	})
 	if err != nil {
@@ -425,12 +425,12 @@ func CacheUpdate() error {
 		genai.NewPartFromURI(document.URI, document.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents:          contents,
 		SystemInstruction: genai.NewContentFromText(
-			"You are an expert analyzing transcripts.", "user",
+			"You are an expert analyzing transcripts.", genai.RoleUser,
 		),
 	})
 	if err != nil {

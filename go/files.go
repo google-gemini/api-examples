@@ -41,7 +41,7 @@ func FilesCreateText() (*genai.GenerateContentResponse, error) {
 	}
 
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
@@ -83,7 +83,7 @@ func FilesCreateImage() (*genai.GenerateContentResponse, error) {
 	}
 
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
@@ -124,7 +124,7 @@ func FilesCreateAudio() (*genai.GenerateContentResponse, error) {
 	}
 
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
@@ -177,7 +177,7 @@ func FilesCreateVideo() (*genai.GenerateContentResponse, error) {
 	}
 
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
@@ -217,7 +217,7 @@ func FilesCreatePdf() (*genai.GenerateContentResponse, error) {
 	}
 
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
@@ -258,7 +258,7 @@ func FilesCreateFromIO() (*genai.GenerateContentResponse, error) {
 	}
 
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
@@ -356,7 +356,7 @@ func FilesDelete() error {
 	}
 
 	contents := []*genai.Content{
-		genai.NewContentFromParts(parts, "user"),
+		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 	
 	_, err = client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)

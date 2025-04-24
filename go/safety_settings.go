@@ -33,7 +33,7 @@ func SafetySettings() error {
 		},
 	}
 	contents := []*genai.Content{
-		genai.NewContentFromText(unsafePrompt, "user"),
+		genai.NewContentFromText(unsafePrompt, genai.RoleUser),
 	}
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, config)
 	if err != nil {
@@ -82,7 +82,7 @@ func SafetySettingsMulti() error {
 		},
 	}
 	contents := []*genai.Content{
-		genai.NewContentFromText(unsafePrompt, "user"),
+		genai.NewContentFromText(unsafePrompt, genai.RoleUser),
 	}
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, config)
 	if err != nil {

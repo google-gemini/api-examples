@@ -24,8 +24,8 @@ func Chat() error {
 
 	// Pass initial history using the History field.
 	history := []*genai.Content{
-		genai.NewContentFromText("Hello", "user"),
-		genai.NewContentFromText("Great to meet you. What would you like to know?", "model"),
+		genai.NewContentFromText("Hello", genai.RoleUser),
+		genai.NewContentFromText("Great to meet you. What would you like to know?", genai.RoleModel),
 	}
 
 	chat, err := client.Chats.Create(ctx, "gemini-2.0-flash", nil, history)
@@ -61,8 +61,8 @@ func ChatStreaming() error {
 	}
 
 	history := []*genai.Content{
-		genai.NewContentFromText("Hello", "user"),
-		genai.NewContentFromText("Great to meet you. What would you like to know?", "model"),
+		genai.NewContentFromText("Hello", genai.RoleUser),
+		genai.NewContentFromText("Great to meet you. What would you like to know?", genai.RoleModel),
 	}
 	chat, err := client.Chats.Create(ctx, "gemini-2.0-flash", nil, history)
 	if err != nil {
