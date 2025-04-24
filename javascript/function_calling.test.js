@@ -17,7 +17,7 @@
 
 import assert from "node:assert";
 import { test, describe } from "node:test";
-import { functionCallingTest } from "./function_calling.js";
+import { functionCalling } from "./function_calling.js";
 
 describe("function_calling", () => {
   test("functionCalling", async () => {

@@ -5,7 +5,6 @@ import (
 	"path/filepath"
 	"os"
 	"log"
-	"io"
 
 	"google.golang.org/genai"
 )
@@ -117,26 +116,24 @@ func JsonEnum() (*genai.GenerateContentResponse, error) {
 		ResponseSchema:   schema,
 	}
 
-	// Open the file.
-	file, err := os.Open(filepath.Join(getMedia(), "organ.jpg"))
+	file, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "organ.jpg"), 
+		&genai.UploadFileConfig{
+			MIMEType : "image/jpeg",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-
-	// Read the file.
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
-	}
-
 	parts := []*genai.Part{
-		{Text: "What kind of instrument is this:"},
-		{InlineData: &genai.Blob{Data: data, MIMEType: "image/jpeg"}},
+		genai.NewPartFromText("What kind of instrument is this:"),
+		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
+
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash",
 		contents,
 		config,
@@ -208,26 +205,24 @@ func JsonEnumRaw() (*genai.GenerateContentResponse, error) {
 		},
 	}
 
-	// Open the file.
-	file, err := os.Open(filepath.Join(getMedia(), "organ.jpg"))
+	file, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "organ.jpg"), 
+		&genai.UploadFileConfig{
+			MIMEType : "image/jpeg",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-
-	// Read the file.
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
-	}
-
 	parts := []*genai.Part{
-		{Text: "What kind of instrument is this:"},
-		{InlineData: &genai.Blob{Data: data, MIMEType: "image/jpeg"}},
+		genai.NewPartFromText("What kind of instrument is this:"),
+		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
+
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash",
 		contents,
 		config,
@@ -280,25 +275,22 @@ func XEnum() (*genai.GenerateContentResponse, error) {
 		ResponseSchema:   schema,
 	}
 
-	// Open the file.
-	file, err := os.Open(filepath.Join(getMedia(), "organ.jpg"))
+	file, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "organ.jpg"), 
+		&genai.UploadFileConfig{
+			MIMEType : "image/jpeg",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-
-	// Read the file.
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
-	}
-
 	parts := []*genai.Part{
-		{Text: "What kind of instrument is this:"},
-		{InlineData: &genai.Blob{Data: data, MIMEType: "image/jpeg"}},
+		genai.NewPartFromText("What kind of instrument is this:"),
+		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash",
 		contents,
@@ -332,25 +324,22 @@ func XEnumRaw() (*genai.GenerateContentResponse, error) {
 		ResponseSchema:   rawSchema,
 	}
 
-	// Open the file.
-	file, err := os.Open(filepath.Join(getMedia(), "organ.jpg"))
+	file, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "organ.jpg"), 
+		&genai.UploadFileConfig{
+			MIMEType : "image/jpeg",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-
-	// Read the file.
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
-	}
-
 	parts := []*genai.Part{
-		{Text: "What kind of instrument is this:"},
-		{InlineData: &genai.Blob{Data: data, MIMEType: "image/jpeg"}},
+		genai.NewPartFromText("What kind of instrument is this:"),
+		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash",
 		contents,

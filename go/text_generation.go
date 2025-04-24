@@ -3,8 +3,8 @@ package examples
 import (
 	"context"
 	"fmt"
-	"io"
 	"log"
+	"time"
 	"os"
 	"path/filepath"
 
@@ -22,7 +22,7 @@ func TextGenTextOnlyPrompt() (*genai.GenerateContentResponse, error) {
 		log.Fatal(err)
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromText("Write a story about a magic backpack."),
+		genai.NewContentFromText("Write a story about a magic backpack.", "user"),
 	}
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
 	if err != nil {
@@ -44,7 +44,7 @@ func TextGenTextOnlyPromptStreaming() error {
 		log.Fatal(err)
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromText("Write a story about a magic backpack."),
+		genai.NewContentFromText("Write a story about a magic backpack.", "user"),
 	}
 	for response, err := range client.Models.GenerateContentStream(
 		ctx,
@@ -71,26 +71,25 @@ func TextGenMultimodalOneImagePrompt() (*genai.GenerateContentResponse, error) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	imagePath := filepath.Join(getMedia(), "organ.jpg")
-	file, err := os.Open(imagePath)
-	if err != nil {
-		log.Fatal("Error opening file:", err)
-	}
-	defer file.Close()
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
-	}
-	imagePart := &genai.Part{
-		InlineData: &genai.Blob{
-			Data:     data,
-			MIMEType: "image/jpeg",
+
+	file, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "organ.jpg"), 
+		&genai.UploadFileConfig{
+			MIMEType : "image/jpeg",
 		},
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	parts := []*genai.Part{
+		genai.NewPartFromText("Tell me about this instrument"),
+		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromText("Tell me about this instrument"),
-		genai.NewUserContentFromParts([]*genai.Part{imagePart}),
+		genai.NewContentFromParts(parts, "user"),
 	}
+
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
@@ -110,25 +109,22 @@ func TextGenMultimodalOneImagePromptStreaming() error {
 	if err != nil {
 		log.Fatal(err)
 	}
-	imagePath := filepath.Join(getMedia(), "organ.jpg")
-	file, err := os.Open(imagePath)
-	if err != nil {
-		log.Fatal("Error opening file:", err)
-	}
-	defer file.Close()
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
-	}
-	imagePart := &genai.Part{
-		InlineData: &genai.Blob{
-			Data:     data,
-			MIMEType: "image/jpeg",
+	file, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "organ.jpg"), 
+		&genai.UploadFileConfig{
+			MIMEType : "image/jpeg",
 		},
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	parts := []*genai.Part{
+		genai.NewPartFromText("Tell me about this instrument"),
+		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromText("Tell me about this instrument"),
-		genai.NewUserContentFromParts([]*genai.Part{imagePart}),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	for response, err := range client.Models.GenerateContentStream(
 		ctx,
@@ -155,36 +151,39 @@ func TextGenMultimodalMultiImagePrompt() (*genai.GenerateContentResponse, error)
 	if err != nil {
 		log.Fatal(err)
 	}
-	organPath := filepath.Join(getMedia(), "organ.jpg")
-	cajunPath := filepath.Join(getMedia(), "Cajun_instruments.jpg")
-	organFile, err := os.Open(organPath)
+
+	organ, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "organ.jpg"), 
+		&genai.UploadFileConfig{
+			MIMEType : "image/jpeg",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer organFile.Close()
-	organData, err := io.ReadAll(organFile)
+
+	cajun, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "Cajun_instruments.jpg"), 
+		&genai.UploadFileConfig{
+			MIMEType : "image/jpeg",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error reading file:", err)
+		log.Fatal(err)
 	}
-	cajunFile, err := os.Open(cajunPath)
-	if err != nil {
-		log.Fatal("Error opening file:", err)
-	}
-	defer cajunFile.Close()
-	cajunData, err := io.ReadAll(cajunFile)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
-	}
+
 	parts := []*genai.Part{
-		{InlineData: &genai.Blob{Data: organData, MIMEType: "image/jpeg"}},
-		{InlineData: &genai.Blob{Data: cajunData, MIMEType: "image/jpeg"}},
+		genai.NewPartFromText("What is the difference between both of these instruments?"),
+		genai.NewPartFromURI(organ.URI, organ.MIMEType),
+		genai.NewPartFromURI(cajun.URI, cajun.MIMEType),
 	}
+
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(
-			"What is the difference between both of these instruments?",
-		),
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
+
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
@@ -204,36 +203,39 @@ func TextGenMultimodalMultiImagePromptStreaming() error {
 	if err != nil {
 		log.Fatal(err)
 	}
-	organPath := filepath.Join(getMedia(), "organ.jpg")
-	cajunPath := filepath.Join(getMedia(), "Cajun_instruments.jpg")
-	organFile, err := os.Open(organPath)
+
+	organ, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "organ.jpg"), 
+		&genai.UploadFileConfig{
+			MIMEType : "image/jpeg",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer organFile.Close()
-	organData, err := io.ReadAll(organFile)
+
+	cajun, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "Cajun_instruments.jpg"), 
+		&genai.UploadFileConfig{
+			MIMEType : "image/jpeg",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error reading file:", err)
+		log.Fatal(err)
 	}
-	cajunFile, err := os.Open(cajunPath)
-	if err != nil {
-		log.Fatal("Error opening file:", err)
-	}
-	defer cajunFile.Close()
-	cajunData, err := io.ReadAll(cajunFile)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
-	}
+
 	parts := []*genai.Part{
-		{InlineData: &genai.Blob{Data: organData, MIMEType: "image/jpeg"}},
-		{InlineData: &genai.Blob{Data: cajunData, MIMEType: "image/jpeg"}},
+		genai.NewPartFromText("What is the difference between both of these instruments?"),
+		genai.NewPartFromURI(organ.URI, organ.MIMEType),
+		genai.NewPartFromURI(cajun.URI, cajun.MIMEType),
 	}
+
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(
-			"What is the difference between both of these instruments?",
-		),
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
+
 	for result, err := range client.Models.GenerateContentStream(
 		ctx,
 		"gemini-2.0-flash",
@@ -259,24 +261,27 @@ func TextGenMultimodalAudio() (*genai.GenerateContentResponse, error) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	prompt := "Give me a summary of this audio file."
-	audioPath := filepath.Join(getMedia(), "sample.mp3")
-	file, err := os.Open(audioPath)
+
+	file, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "sample.mp3"), 
+		&genai.UploadFileConfig{
+			MIMEType : "audio/mpeg",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
+
+	parts := []*genai.Part{
+		genai.NewPartFromText("Give me a summary of this audio file."),
+		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
-	audioPart := &genai.Part{
-		InlineData: &genai.Blob{Data: data, MIMEType: "audio/mpeg"},
-	}
+
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(prompt),
-		genai.NewUserContentFromParts([]*genai.Part{audioPart}),
+		genai.NewContentFromParts(parts, "user"),
 	}
+
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
@@ -296,24 +301,27 @@ func TextGenMultimodalAudioStreaming() error {
 	if err != nil {
 		log.Fatal(err)
 	}
-	prompt := "Give me a summary of this audio file."
-	audioPath := filepath.Join(getMedia(), "sample.mp3")
-	file, err := os.Open(audioPath)
+
+	file, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "sample.mp3"), 
+		&genai.UploadFileConfig{
+			MIMEType : "audio/mpeg",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
+
+	parts := []*genai.Part{
+		genai.NewPartFromText("Give me a summary of this audio file."),
+		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
-	audioPart := &genai.Part{
-		InlineData: &genai.Blob{Data: data, MIMEType: "audio/mpeg"},
-	}
+
 	contents := []*genai.Content{
-		genai.NewUserContentFromText(prompt),
-		genai.NewUserContentFromParts([]*genai.Part{audioPart}),
+		genai.NewContentFromParts(parts, "user"),
 	}
+
 	for result, err := range client.Models.GenerateContentStream(
 		ctx,
 		"gemini-2.0-flash",
@@ -339,23 +347,39 @@ func TextGenMultimodalVideoPrompt() (*genai.GenerateContentResponse, error) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	videoPath := filepath.Join(getMedia(), "Big_Buck_Bunny.mp4")
-	file, err := os.Open(videoPath)
+
+	file, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "Big_Buck_Bunny.mp4"), 
+		&genai.UploadFileConfig{
+			MIMEType : "video/mp4",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
+
+	// Poll until the video file is completely processed (state becomes ACTIVE).
+	for file.State == genai.FileStateUnspecified || file.State != genai.FileStateActive {
+		fmt.Println("Processing video...")
+		fmt.Println("File state:", file.State)
+		time.Sleep(5 * time.Second)
+
+		file, err = client.Files.Get(ctx, file.Name, nil)
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
+
 	parts := []*genai.Part{
-		{Text: "Describe this video clip"},
-		{InlineData: &genai.Blob{Data: data, MIMEType: "video/mp4"}},
+		genai.NewPartFromText("Describe this video clip"),
+		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
+
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
+
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
@@ -375,23 +399,39 @@ func TextGenMultimodalVideoPromptStreaming() error {
 	if err != nil {
 		log.Fatal(err)
 	}
-	videoPath := filepath.Join(getMedia(), "Big_Buck_Bunny.mp4")
-	file, err := os.Open(videoPath)
+
+	file, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "Big_Buck_Bunny.mp4"), 
+		&genai.UploadFileConfig{
+			MIMEType : "video/mp4",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
+
+	// Poll until the video file is completely processed (state becomes ACTIVE).
+	for file.State == genai.FileStateUnspecified || file.State != genai.FileStateActive {
+		fmt.Println("Processing video...")
+		fmt.Println("File state:", file.State)
+		time.Sleep(5 * time.Second)
+
+		file, err = client.Files.Get(ctx, file.Name, nil)
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
+
 	parts := []*genai.Part{
-		{Text: "Describe this video clip"},
-		{InlineData: &genai.Blob{Data: data, MIMEType: "video/mp4"}},
+		genai.NewPartFromText("Describe this video clip"),
+		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
+
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
+
 	for result, err := range client.Models.GenerateContentStream(
 		ctx,
 		"gemini-2.0-flash",
@@ -417,23 +457,27 @@ func TextGenMultimodalPdf() (*genai.GenerateContentResponse, error) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	pdfPath := filepath.Join(getMedia(), "test.pdf")
-	file, err := os.Open(pdfPath)
+
+	file, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "test.pdf"), 
+		&genai.UploadFileConfig{
+			MIMEType : "application/pdf",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
+
+	parts := []*genai.Part{
+		genai.NewPartFromText("Give me a summary of this document:"),
+		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
-	pdfPart := &genai.Part{
-		InlineData: &genai.Blob{Data: data, MIMEType: "application/pdf"},
-	}
+
 	contents := []*genai.Content{
-		genai.NewUserContentFromText("Give me a summary of this document:"),
-		genai.NewUserContentFromParts([]*genai.Part{pdfPart}),
+		genai.NewContentFromParts(parts, "user"),
 	}
+
 	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
@@ -453,23 +497,27 @@ func TextGenMultimodalPdfStreaming() error {
 	if err != nil {
 		log.Fatal(err)
 	}
-	pdfPath := filepath.Join(getMedia(), "test.pdf")
-	file, err := os.Open(pdfPath)
+
+	file, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "test.pdf"), 
+		&genai.UploadFileConfig{
+			MIMEType : "application/pdf",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
+
+	parts := []*genai.Part{
+		genai.NewPartFromText("Give me a summary of this document:"),
+		genai.NewPartFromURI(file.URI, file.MIMEType),
 	}
-	pdfPart := &genai.Part{
-		InlineData: &genai.Blob{Data: data, MIMEType: "application/pdf"},
-	}
+
 	contents := []*genai.Content{
-		genai.NewUserContentFromText("Give me a summary of this document:"),
-		genai.NewUserContentFromParts([]*genai.Part{pdfPart}),
+		genai.NewContentFromParts(parts, "user"),
 	}
+
 	for result, err := range client.Models.GenerateContentStream(
 		ctx,
 		"gemini-2.0-flash",

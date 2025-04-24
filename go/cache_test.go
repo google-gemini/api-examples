@@ -18,6 +18,13 @@ func TestCacheCreateFromName(t *testing.T) {
 	}
 }
 
+func TestCacheCreateFromChat(t *testing.T) {
+	_, err := CacheCreateFromChat()
+	if err != nil {
+		t.Errorf("CacheCreateFromChat returned an error.")
+	}
+}
+
 func TestCacheDelete(t *testing.T) {
 	err := CacheDelete()
 	if err != nil {

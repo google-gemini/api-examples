@@ -3,7 +3,6 @@ package examples
 import (
 	"context"
 	"fmt"
-	"io"
 	"log"
 	"os"
 	"path/filepath"
@@ -24,30 +23,27 @@ func CacheCreate() (*genai.GenerateContentResponse, error) {
 	}
 
 	modelName := "gemini-1.5-flash-001"
-
-	// Open the file.
-	file, err := os.Open(filepath.Join(getMedia(), "a11.txt"))
+	document, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "a11.txt"), 
+		&genai.UploadFileConfig{
+			MIMEType : "text/plain",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-
-	// Read the file.
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
-	}
-
 	parts := []*genai.Part{
-		{Text: "Please summarize this transcript"},
-		{InlineData: &genai.Blob{Data: data, MIMEType: "text/plain"}},
+		genai.NewPartFromURI(document.URI, document.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents: contents,
-		SystemInstruction: genai.NewUserContentFromText("You are an expert analyzing transcripts."),
+		SystemInstruction: genai.NewContentFromText(
+			"You are an expert analyzing transcripts.", "user",
+		),
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -67,7 +63,6 @@ func CacheCreate() (*genai.GenerateContentResponse, error) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Generated content:")
 	printResponse(response)
 	// [END cache_create]
 
@@ -88,29 +83,27 @@ func CacheCreateFromName() (*genai.GenerateContentResponse, error) {
 	}
 
 	modelName := "gemini-1.5-flash-001"
-	// Open the file.
-	file, err := os.Open(filepath.Join(getMedia(), "a11.txt"))
+	document, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "a11.txt"), 
+		&genai.UploadFileConfig{
+			MIMEType : "text/plain",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-
-	// Read the file.
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
-	}
-
 	parts := []*genai.Part{
-		{Text: "Please summarize this transcript"},
-		{InlineData: &genai.Blob{Data: data, MIMEType: "text/plain"}},
+		genai.NewPartFromURI(document.URI, document.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents:          contents,
-		SystemInstruction: genai.NewUserContentFromText("You are an expert analyzing transcripts."),
+		SystemInstruction: genai.NewContentFromText(
+			"You are an expert analyzing transcripts.", "user",
+		),
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -142,6 +135,103 @@ func CacheCreateFromName() (*genai.GenerateContentResponse, error) {
 	return response, err
 }
 
+func CacheCreateFromChat() (*genai.GenerateContentResponse, error) {
+	// [START cache_create_from_chat]
+	ctx := context.Background()
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		APIKey:  os.Getenv("GEMINI_API_KEY"),
+		Backend: genai.BackendGeminiAPI,
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	modelName := "gemini-1.5-flash-001"
+	systemInstruction := "You are an expert analyzing transcripts."
+
+	// Create initial chat with a system instruction.
+	chat, err := client.Chats.Create(ctx, modelName, &genai.GenerateContentConfig{
+		SystemInstruction: genai.NewContentFromText(systemInstruction, "user"),
+	}, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	document, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "a11.txt"), 
+		&genai.UploadFileConfig{
+			MIMEType : "text/plain",
+		},
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Send first message with the transcript.
+	parts := make([]genai.Part, 2)
+	parts[0] = genai.Part{Text: "Hi, could you summarize this transcript?"}
+	parts[1] = genai.Part{
+		FileData: &genai.FileData{
+			FileURI :      document.URI,
+			MIMEType: document.MIMEType,
+		},
+	}
+
+	// Send chat message.
+	resp, err := chat.SendMessage(ctx, parts...)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("\n\nmodel: ", resp.Text())
+
+	resp, err = chat.SendMessage(
+		ctx, 
+		genai.Part{
+			Text: "Okay, could you tell me more about the trans-lunar injection",
+		},
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("\n\nmodel: ", resp.Text())
+
+	// To cache the conversation so far, pass the chat history as the list of contents.
+	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
+		Contents:          chat.History(false),
+		SystemInstruction: genai.NewContentFromText(systemInstruction, "user"),
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Continue the conversation using the cached history.
+	chat, err = client.Chats.Create(ctx, modelName, &genai.GenerateContentConfig{
+		CachedContent: cache.Name,
+	}, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	resp, err = chat.SendMessage(
+		ctx, 
+		genai.Part{
+			Text: "I didn't understand that last part, could you explain it in simpler language?",
+		},
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("\n\nmodel: ", resp.Text())
+	// [END cache_create_from_chat]
+
+	// Clean up the cache.
+	if _, err := client.Caches.Delete(ctx, cache.Name, nil); err != nil {
+		log.Fatal(err)
+	}
+	return resp, nil
+}
+
 func CacheDelete() error {
 	// [START cache_delete]
 	ctx := context.Background()
@@ -154,28 +244,28 @@ func CacheDelete() error {
 	}
 
 	modelName := "gemini-1.5-flash-001"
-	// Open the file.
-	file, err := os.Open(filepath.Join(getMedia(), "a11.txt"))
+	document, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "a11.txt"), 
+		&genai.UploadFileConfig{
+			MIMEType : "text/plain",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-
-	// Read the file.
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
-	}
-
 	parts := []*genai.Part{
-		{InlineData: &genai.Blob{Data: data, MIMEType: "text/plain"}},
+		genai.NewPartFromURI(document.URI, document.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
+
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents:          contents,
-		SystemInstruction: genai.NewUserContentFromText("You are an expert analyzing transcripts."),
+		SystemInstruction: genai.NewContentFromText(
+			"You are an expert analyzing transcripts.", "user",
+		),
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -202,28 +292,28 @@ func CacheGet() error {
 	}
 
 	modelName := "gemini-1.5-flash-001"
-	// Open the file.
-	file, err := os.Open(filepath.Join(getMedia(), "a11.txt"))
+	document, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "a11.txt"), 
+		&genai.UploadFileConfig{
+			MIMEType : "text/plain",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-
-	// Read the file.
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
-	}
-
 	parts := []*genai.Part{
-		{InlineData: &genai.Blob{Data: data, MIMEType: "text/plain"}},
+		genai.NewPartFromURI(document.URI, document.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
+
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents:          contents,
-		SystemInstruction: genai.NewUserContentFromText("You are an expert analyzing transcripts."),
+		SystemInstruction: genai.NewContentFromText(
+			"You are an expert analyzing transcripts.", "user",
+		),
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -254,28 +344,27 @@ func CacheList() error {
 
 	// For demonstration, create a cache first.
 	modelName := "gemini-1.5-flash-001"
-	// Open the file.
-	file, err := os.Open(filepath.Join(getMedia(), "a11.txt"))
+	document, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "a11.txt"), 
+		&genai.UploadFileConfig{
+			MIMEType : "text/plain",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-
-	// Read the file.
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
-	}
-
 	parts := []*genai.Part{
-		{InlineData: &genai.Blob{Data: data, MIMEType: "text/plain"}},
+		genai.NewPartFromURI(document.URI, document.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents:          contents,
-		SystemInstruction: genai.NewUserContentFromText("You are an expert analyzing transcripts."),
+		SystemInstruction: genai.NewContentFromText(
+			"You are an expert analyzing transcripts.", "user",
+		),
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -322,48 +411,46 @@ func CacheUpdate() error {
 	}
 
 	modelName := "gemini-1.5-flash-001"
-	// Open the file.
-	file, err := os.Open(filepath.Join(getMedia(), "a11.txt"))
+	document, err := client.Files.UploadFromPath(
+		ctx, 
+		filepath.Join(getMedia(), "a11.txt"), 
+		&genai.UploadFileConfig{
+			MIMEType : "text/plain",
+		},
+	)
 	if err != nil {
-		log.Fatal("Error opening file:", err)
+		log.Fatal(err)
 	}
-	defer file.Close()
-
-	// Read the file.
-	data, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatal("Error reading file:", err)
-	}
-
 	parts := []*genai.Part{
-		{InlineData: &genai.Blob{Data: data, MIMEType: "text/plain"}},
+		genai.NewPartFromURI(document.URI, document.MIMEType),
 	}
 	contents := []*genai.Content{
-		genai.NewUserContentFromParts(parts),
+		genai.NewContentFromParts(parts, "user"),
 	}
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
 		Contents:          contents,
-		SystemInstruction: genai.NewUserContentFromText("You are an expert analyzing transcripts."),
+		SystemInstruction: genai.NewContentFromText(
+			"You are an expert analyzing transcripts.", "user",
+		),
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	// Update the TTL (2 hours).
-	ttl := "7200s"
 	cache, err = client.Caches.Update(ctx, cache.Name, &genai.UpdateCachedContentConfig{
-		TTL: ttl,
+		TTL: 7200 * time.Second,
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("After TTL update:")
+	fmt.Println("After update:")
 	fmt.Println(cache)
 
 	// Alternatively, update expire_time directly.
 	expire := time.Now().Add(15 * time.Minute).UTC()
 	cache, err = client.Caches.Update(ctx, cache.Name, &genai.UpdateCachedContentConfig{
-		ExpireTime: &expire,
+		ExpireTime: expire,
 	})
 	if err != nil {
 		log.Fatal(err)

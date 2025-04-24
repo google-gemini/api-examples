@@ -18,24 +18,30 @@ func TestTokensTextOnly(t *testing.T) {
 	}
 }
 
-func TestTokensMultimodalImageInline(t *testing.T) {
-	err := TokensMultimodalImageInline()
-	if err != nil {
-		t.Errorf("TokensMultimodalImageInline returned an error.")
+func TestTokensChat(t *testing.T) {
+	if err := TokensChat(); err != nil {
+		t.Errorf("TokensChat returned an error: %v", err)
 	}
 }
 
-func TestTokensMultimodalVideoAudioInline(t *testing.T) {
-	err := TokensMultimodalVideoAudioInline()
+func TestTokensMultimodalImageFileApi(t *testing.T) {
+	err := TokensMultimodalImageFileApi()
 	if err != nil {
-		t.Errorf("TokensMultimodalVideoAudioInline returned an error.")
+		t.Errorf("TokensMultimodalImageFileApi returned an error.")
 	}
 }
 
-func TestTokensMultimodalPdfInline(t *testing.T) {
-	err := TokensMultimodalPdfInline()
+func TestTokensMultimodalVideoAudioFileApi(t *testing.T) {
+	err := TokensMultimodalVideoAudioFileApi()
 	if err != nil {
-		t.Errorf("TokensMultimodalPdfInline returned an error.")
+		t.Errorf("TokensMultimodalVideoAudioFileApi returned an error.")
+	}
+}
+
+func TestTokensMultimodalPdfFileApi(t *testing.T) {
+	err := TokensMultimodalPdfFileApi()
+	if err != nil {
+		t.Errorf("TokensMultimodalPdfFileApi returned an error.")
 	}
 }
 

@@ -29,9 +29,9 @@ func ConfigureModelParameters() (*genai.GenerateContentResponse, error) {
 		"gemini-2.0-flash",
 		genai.Text("Tell me a story about a magic backpack."),
 		&genai.GenerateContentConfig{
-			CandidateCount:  &candidateCount,
+			CandidateCount:  candidateCount,
 			StopSequences:   []string{"x"},
-			MaxOutputTokens: &maxOutputTokens,
+			MaxOutputTokens: maxOutputTokens,
 			Temperature:     &temperature,
 		},
 	)

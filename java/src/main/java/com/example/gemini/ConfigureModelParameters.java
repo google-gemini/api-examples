@@ -17,23 +17,33 @@
 package com.example.gemini;
 
 import com.google.genai.Client;
+import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
-import org.apache.http.HttpException;
+import org.jspecify.annotations.Nullable;
 
-import java.io.IOException;
+import java.util.List;
 
-public class TextGenTextOnlyPrompt {
-    public static void main(String[] args) throws IOException, HttpException {
-        // [START text_gen_text_only_prompt]
+public class ConfigureModelParameters {
+    public static @Nullable String configureModelParameters() {
+        // [START configure_model_parameters]
         Client client = new Client();
+
+        GenerateContentConfig config =
+                GenerateContentConfig.builder()
+                        .candidateCount(1)
+                        .stopSequences(List.of("x"))
+                        .maxOutputTokens(20)
+                        .temperature(1.0F)
+                        .build();
 
         GenerateContentResponse response =
                 client.models.generateContent(
                         "gemini-2.0-flash",
-                        "Write a story about a magic backpack.",
-                        null);
+                        "Tell me a story about a magic backpack.",
+                        config);
 
         System.out.println(response.text());
-        // [END text_gen_text_only_prompt]
+        // [END configure_model_parameters]
+        return response.text();
     }
 }

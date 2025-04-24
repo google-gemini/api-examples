@@ -78,9 +78,10 @@ class UnitTests(absltest.TestCase):
         myfile = client.files.upload(file=media / "Big_Buck_Bunny.mp4")
         print(f"{myfile=}")
 
-        # Videos need to be processed before you can use them.
-        while myfile.state.name == "PROCESSING":
-            print("processing video...")
+        # Poll until the video file is completely processed (state becomes ACTIVE).
+        while not myfile.state or myfile.state.name != "ACTIVE":
+            print("Processing video...")
+            print("File state:", myfile.state)
             time.sleep(5)
             myfile = client.files.get(name=myfile.name)
 
