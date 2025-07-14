@@ -25,7 +25,7 @@ class UnitTests(absltest.TestCase):
         client = genai.Client()
         text = "Hello World!"
         result = client.models.embed_content(
-            model="text-embedding-004",
+            model="gemini-embedding-001",
             contents=text,
             config=types.EmbedContentConfig(output_dimensionality=10),
         )
@@ -44,7 +44,7 @@ class UnitTests(absltest.TestCase):
             "How does the brain work?",
         ]
         result = client.models.embed_content(
-            model="text-embedding-004",
+            model="gemini-embedding-001",
             contents=texts,
             config=types.EmbedContentConfig(output_dimensionality=10),
         )

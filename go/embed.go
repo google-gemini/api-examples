@@ -26,7 +26,7 @@ func EmbedContent() error {
 	contents := []*genai.Content{
 		genai.NewContentFromText(text, genai.RoleUser),
 	}
-	result, err := client.Models.EmbedContent(ctx, "text-embedding-004", 
+	result, err := client.Models.EmbedContent(ctx, "gemini-embedding-001", 
 		contents, &genai.EmbedContentConfig{
 			OutputDimensionality: &outputDim,
 	})
@@ -61,7 +61,7 @@ func BatchEmbedContents() error {
 	}
 
 	outputDim := int32(10)
-	result, err := client.Models.EmbedContent(ctx, "text-embedding-004", contents, &genai.EmbedContentConfig{
+	result, err := client.Models.EmbedContent(ctx, "gemini-embedding-001", contents, &genai.EmbedContentConfig{
 		OutputDimensionality: &outputDim,
 	})
 	if err != nil {
