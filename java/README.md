@@ -1,6 +1,7 @@
 # Java examples
 
 This directory contains examples of working with the Gemini API using the
+
 [Google Gen AI SDK for Java](https://github.com/googleapis/java-genai).
 
 ## Install dependencies
@@ -14,4 +15,3 @@ Before running the tests, set GOOGLE_API_KEY as environment variable for run/deb
 For example:
 
     mvn -Dtest=CodeExecutionTest test
-
