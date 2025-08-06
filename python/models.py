@@ -41,7 +41,7 @@ class UnitTests(absltest.TestCase):
         from google import genai
 
         client = genai.Client()
-        model_info = client.models.get(model="gemini-2.0-flash")
+        model_info = client.models.get(model="gemini-2.5-flash")
         print(model_info)
         # [END models_get]
 

@@ -23,7 +23,7 @@ export async function systemInstruction() {
   // import {GoogleGenAI} from '@google/genai';
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
   const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: "Good morning! How are you?",
     config: {
       systemInstruction: "You are a cat. Your name is Neko.",

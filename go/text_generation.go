@@ -24,7 +24,7 @@ func TextGenTextOnlyPrompt() (*genai.GenerateContentResponse, error) {
 	contents := []*genai.Content{
 		genai.NewContentFromText("Write a story about a magic backpack.", genai.RoleUser),
 	}
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -48,7 +48,7 @@ func TextGenTextOnlyPromptStreaming() error {
 	}
 	for response, err := range client.Models.GenerateContentStream(
 		ctx,
-		"gemini-2.0-flash",
+		"gemini-2.5-flash",
 		contents,
 		nil,
 	) {
@@ -90,7 +90,7 @@ func TextGenMultimodalOneImagePrompt() (*genai.GenerateContentResponse, error) {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -128,7 +128,7 @@ func TextGenMultimodalOneImagePromptStreaming() error {
 	}
 	for response, err := range client.Models.GenerateContentStream(
 		ctx,
-		"gemini-2.0-flash",
+		"gemini-2.5-flash",
 		contents,
 		nil,
 	) {
@@ -184,7 +184,7 @@ func TextGenMultimodalMultiImagePrompt() (*genai.GenerateContentResponse, error)
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -238,7 +238,7 @@ func TextGenMultimodalMultiImagePromptStreaming() error {
 
 	for result, err := range client.Models.GenerateContentStream(
 		ctx,
-		"gemini-2.0-flash",
+		"gemini-2.5-flash",
 		contents,
 		nil,
 	) {
@@ -282,7 +282,7 @@ func TextGenMultimodalAudio() (*genai.GenerateContentResponse, error) {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -324,7 +324,7 @@ func TextGenMultimodalAudioStreaming() error {
 
 	for result, err := range client.Models.GenerateContentStream(
 		ctx,
-		"gemini-2.0-flash",
+		"gemini-2.5-flash",
 		contents,
 		nil,
 	) {
@@ -380,7 +380,7 @@ func TextGenMultimodalVideoPrompt() (*genai.GenerateContentResponse, error) {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -434,7 +434,7 @@ func TextGenMultimodalVideoPromptStreaming() error {
 
 	for result, err := range client.Models.GenerateContentStream(
 		ctx,
-		"gemini-2.0-flash",
+		"gemini-2.5-flash",
 		contents,
 		nil,
 	) {
@@ -478,7 +478,7 @@ func TextGenMultimodalPdf() (*genai.GenerateContentResponse, error) {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -520,7 +520,7 @@ func TextGenMultimodalPdfStreaming() error {
 
 	for result, err := range client.Models.GenerateContentStream(
 		ctx,
-		"gemini-2.0-flash",
+		"gemini-2.5-flash",
 		contents,
 		nil,
 	) {

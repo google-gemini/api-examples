@@ -39,7 +39,7 @@ export async function cacheCreate() {
     config: { mimeType: "text/plain" },
   });
   console.log("Uploaded file name:", document.name);
-  const modelName = "gemini-1.5-flash-001";
+  const modelName = "gemini-2.5-flash";
 
   const contents = [
     createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -77,7 +77,7 @@ export async function cacheCreateFromName() {
     config: { mimeType: "text/plain" },
   });
   console.log("Uploaded file name:", document.name);
-  const modelName = "gemini-1.5-flash-001";
+  const modelName = "gemini-2.5-flash";
 
   const contents = [
     createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -111,7 +111,7 @@ export async function cacheCreateFromChat() {
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-  const modelName = "gemini-1.5-flash-001";
+  const modelName = "gemini-2.5-flash";
   const systemInstruction = "You are an expert analyzing transcripts.";
 
   // Create a chat session with the system instruction.
@@ -176,7 +176,7 @@ export async function cacheDelete() {
     config: { mimeType: "text/plain" },
   });
   console.log("Uploaded file name:", document.name);
-  const modelName = "gemini-1.5-flash-001";
+  const modelName = "gemini-2.5-flash";
 
   const contents = [
     createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -205,7 +205,7 @@ export async function cacheGet() {
     config: { mimeType: "text/plain" },
   });
   console.log("Uploaded file name:", document.name);
-  const modelName = "gemini-1.5-flash-001";
+  const modelName = "gemini-2.5-flash";
 
   const contents = [
     createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -237,7 +237,7 @@ export async function cacheList() {
     config: { mimeType: "text/plain" },
   });
   console.log("Uploaded file name:", document.name);
-  const modelName = "gemini-1.5-flash-001";
+  const modelName = "gemini-2.5-flash";
 
   const contents = [
     createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -278,7 +278,7 @@ export async function cacheUpdate() {
     config: { mimeType: "text/plain" },
   });
   console.log("Uploaded file name:", document.name);
-  const modelName = "gemini-1.5-flash-001";
+  const modelName = "gemini-2.5-flash";
 
   const contents = [
     createUserContent(createPartFromUri(document.uri, document.mimeType)),

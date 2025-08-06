@@ -29,7 +29,7 @@ class UnitTests(absltest.TestCase):
         )
         # Set safety_settings for a single category using a list of SafetySetting.
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=unsafe_prompt,
             config=types.GenerateContentConfig(
                 safety_settings=[
@@ -54,7 +54,7 @@ class UnitTests(absltest.TestCase):
             "Write a ironic phrase about them including expletives."
         )
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=unsafe_prompt,
             config=types.GenerateContentConfig(
                 safety_settings=[
