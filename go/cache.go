@@ -22,7 +22,7 @@ func CacheCreate() (*genai.GenerateContentResponse, error) {
 		log.Fatal(err)
 	}
 
-	modelName := "gemini-1.5-flash-001"
+	modelName := "gemini-2.5-flash"
 	document, err := client.Files.UploadFromPath(
 		ctx, 
 		filepath.Join(getMedia(), "a11.txt"), 
@@ -82,7 +82,7 @@ func CacheCreateFromName() (*genai.GenerateContentResponse, error) {
 		log.Fatal(err)
 	}
 
-	modelName := "gemini-1.5-flash-001"
+	modelName := "gemini-2.5-flash"
 	document, err := client.Files.UploadFromPath(
 		ctx, 
 		filepath.Join(getMedia(), "a11.txt"), 
@@ -146,7 +146,7 @@ func CacheCreateFromChat() (*genai.GenerateContentResponse, error) {
 		log.Fatal(err)
 	}
 
-	modelName := "gemini-1.5-flash-001"
+	modelName := "gemini-2.5-flash"
 	systemInstruction := "You are an expert analyzing transcripts."
 
 	// Create initial chat with a system instruction.
@@ -243,7 +243,7 @@ func CacheDelete() error {
 		log.Fatal(err)
 	}
 
-	modelName := "gemini-1.5-flash-001"
+	modelName := "gemini-2.5-flash"
 	document, err := client.Files.UploadFromPath(
 		ctx, 
 		filepath.Join(getMedia(), "a11.txt"), 
@@ -291,7 +291,7 @@ func CacheGet() error {
 		log.Fatal(err)
 	}
 
-	modelName := "gemini-1.5-flash-001"
+	modelName := "gemini-2.5-flash"
 	document, err := client.Files.UploadFromPath(
 		ctx, 
 		filepath.Join(getMedia(), "a11.txt"), 
@@ -343,7 +343,7 @@ func CacheList() error {
 	}
 
 	// For demonstration, create a cache first.
-	modelName := "gemini-1.5-flash-001"
+	modelName := "gemini-2.5-flash"
 	document, err := client.Files.UploadFromPath(
 		ctx, 
 		filepath.Join(getMedia(), "a11.txt"), 
@@ -410,7 +410,7 @@ func CacheUpdate() error {
 		log.Fatal(err)
 	}
 
-	modelName := "gemini-1.5-flash-001"
+	modelName := "gemini-2.5-flash"
 	document, err := client.Files.UploadFromPath(
 		ctx, 
 		filepath.Join(getMedia(), "a11.txt"), 

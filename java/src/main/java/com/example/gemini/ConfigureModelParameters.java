@@ -38,7 +38,7 @@ public class ConfigureModelParameters {
 
         GenerateContentResponse response =
                 client.models.generateContent(
-                        "gemini-2.0-flash",
+                        "gemini-2.5-flash",
                         "Tell me a story about a magic backpack.",
                         config);
 

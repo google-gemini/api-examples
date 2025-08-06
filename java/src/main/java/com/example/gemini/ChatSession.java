@@ -42,7 +42,7 @@ public class ChatSession {
                         ).build();
 
         Chat chat = client.chats.create(
-                "gemini-2.0-flash",
+                "gemini-2.5-flash",
                 GenerateContentConfig.builder()
                         .systemInstruction(userContent)
                         .systemInstruction(modelContent)

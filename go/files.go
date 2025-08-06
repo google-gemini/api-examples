@@ -44,7 +44,7 @@ func FilesCreateText() (*genai.GenerateContentResponse, error) {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -86,7 +86,7 @@ func FilesCreateImage() (*genai.GenerateContentResponse, error) {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -127,7 +127,7 @@ func FilesCreateAudio() (*genai.GenerateContentResponse, error) {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -180,7 +180,7 @@ func FilesCreateVideo() (*genai.GenerateContentResponse, error) {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -220,7 +220,7 @@ func FilesCreatePdf() (*genai.GenerateContentResponse, error) {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -261,7 +261,7 @@ func FilesCreateFromIO() (*genai.GenerateContentResponse, error) {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -359,7 +359,7 @@ func FilesDelete() error {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 	
-	_, err = client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+	_, err = client.Models.GenerateContent(ctx, "gemini-2.5-flash", contents, nil)
 	// Expect an error when using a deleted file.
 	if err != nil {
 		return nil

@@ -26,7 +26,7 @@ export async function safetySettings() {
     "I support Martians Soccer Club and I think Jupiterians Football Club sucks! Write a ironic phrase about them including expletives.";
 
   const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: unsafePrompt,
     config: {
       safetySettings: [
@@ -53,7 +53,7 @@ export async function safetySettingsMulti() {
     "I support Martians Soccer Club and I think Jupiterians Football Club sucks! Write a ironic phrase about them including expletives.";
 
   const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: unsafePrompt,
     config: {
       safetySettings: [

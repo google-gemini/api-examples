@@ -23,7 +23,7 @@ func TokensContextWindow() error {
 		log.Fatal(err)
 	}
 
-	modelInfo, err := client.Models.Get(ctx, "gemini-2.0-flash", &genai.GetModelConfig{})
+	modelInfo, err := client.Models.Get(ctx, "gemini-2.5-flash", &genai.GetModelConfig{})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -49,13 +49,13 @@ func TokensTextOnly() error {
 	contents := []*genai.Content{
 		genai.NewContentFromText(prompt, genai.RoleUser),
 	}
-	countResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
+	countResp, err := client.Models.CountTokens(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		return err
 	}
 	fmt.Println("total_tokens:", countResp.TotalTokens)
 
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -84,12 +84,12 @@ func TokensChat() error {
 		{Role: genai.RoleUser, Parts: []*genai.Part{{Text: "Hi my name is Bob"}}},
 		{Role: genai.RoleModel, Parts: []*genai.Part{{Text: "Hi Bob!"}}},
 	}
-	chat, err := client.Chats.Create(ctx, "gemini-2.0-flash", nil, history)
+	chat, err := client.Chats.Create(ctx, "gemini-2.5-flash", nil, history)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	firstTokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", chat.History(false), nil)
+	firstTokenResp, err := client.Models.CountTokens(ctx, "gemini-2.5-flash", chat.History(false), nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -108,7 +108,7 @@ func TokensChat() error {
 	hist := chat.History(false)
 	hist = append(hist, extra)
 
-	secondTokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", hist, nil)
+	secondTokenResp, err := client.Models.CountTokens(ctx, "gemini-2.5-flash", hist, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -147,13 +147,13 @@ func TokensMultimodalImageFileApi() error {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
-	tokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
+	tokenResp, err := client.Models.CountTokens(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Println("Multimodal image token count:", tokenResp.TotalTokens)
 
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -208,12 +208,12 @@ func TokensMultimodalVideoAudioFileApi() error {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
-	tokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
+	tokenResp, err := client.Models.CountTokens(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Println("Multimodal video/audio token count:", tokenResp.TotalTokens)
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -255,12 +255,12 @@ func TokensMultimodalPdfFileApi() error {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
-	tokenResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", contents, nil)
+	tokenResp, err := client.Models.CountTokens(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("Multimodal PDF token count: %d\n", tokenResp.TotalTokens)
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", contents, nil)
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", contents, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -303,7 +303,7 @@ func TokensCachedContent() error {
 	}
 
 	// Create cached content using a simple slice with text and a file.
-	cache, err := client.Caches.Create(ctx, "gemini-1.5-flash-001", &genai.CreateCachedContentConfig{
+	cache, err := client.Caches.Create(ctx, "gemini-2.5-flash", &genai.CreateCachedContentConfig{
 		Contents: contents,
 	})
 	if err != nil {
@@ -311,14 +311,14 @@ func TokensCachedContent() error {
 	}
 
 	prompt := "Please give a short summary of this file."
-	countResp, err := client.Models.CountTokens(ctx, "gemini-2.0-flash", []*genai.Content{
+	countResp, err := client.Models.CountTokens(ctx, "gemini-2.5-flash", []*genai.Content{
 		genai.NewContentFromText(prompt, genai.RoleUser),
 	}, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("%d", countResp.TotalTokens)
-	response, err := client.Models.GenerateContent(ctx, "gemini-1.5-flash-001", []*genai.Content{
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", []*genai.Content{
 		genai.NewContentFromText(prompt, genai.RoleUser),
 	}, &genai.GenerateContentConfig{
 		CachedContent: cache.Name,

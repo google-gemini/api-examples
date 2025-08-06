@@ -34,7 +34,7 @@ export async function jsonControlledGeneration() {
   // import {GoogleGenAI} from '@google/genai';
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
   const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: "List a few popular cookie recipes.",
     config: {
       responseMimeType: "application/json",
@@ -67,7 +67,7 @@ export async function jsonNoSchema() {
     "Recipe = {'recipeName': str, 'ingredients': list[str]}\n" +
     "Return: list[Recipe]";
   const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: prompt,
   });
   console.log(response.text);
@@ -86,7 +86,7 @@ export async function jsonEnum() {
     config: { mimeType: "image/jpeg" },
   });
   const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: createUserContent([
       "What kind of instrument is this?",
       createPartFromUri(organ.uri, organ.mimeType),
@@ -110,7 +110,7 @@ export async function enumInJson() {
   // import {GoogleGenAI} from '@google/genai';
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
   const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: "List about 10 cookie recipes, grade them based on popularity",
     config: {
       responseMimeType: "application/json",
@@ -143,7 +143,7 @@ export async function jsonEnumRaw() {
     config: { mimeType: "image/jpeg" },
   });
   const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: createUserContent([
       "What kind of instrument is this?",
       createPartFromUri(organ.uri, organ.mimeType),
@@ -172,7 +172,7 @@ export async function xEnum() {
     config: { mimeType: "image/jpeg" },
   });
   const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: createUserContent([
       "What kind of instrument is this?",
       createPartFromUri(organ.uri, organ.mimeType),
@@ -201,7 +201,7 @@ export async function xEnumRaw() {
     config: { mimeType: "image/jpeg" },
   });
   const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: createUserContent([
       "What kind of instrument is this?",
       createPartFromUri(organ.uri, organ.mimeType),
