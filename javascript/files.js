@@ -159,17 +159,12 @@ export async function filesList() {
   // import {GoogleGenAI} from '@google/genai';
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
   console.log("My files:");
-  // Using the pager style to list files
-  const pager = await ai.files.list({ config: { pageSize: 10 } });
-  let page = pager.page;
+  // Using the pager to list files across multiple API requests.
+  const files= await ai.files.list({ config: { pageSize: 10 } });
   const names = [];
-  while (true) {
-    for (const f of page) {
-      console.log("  ", f.name);
-      names.push(f.name);
-    }
-    if (!pager.hasNextPage()) break;
-    page = await pager.nextPage();
+  for await (const f of files) {
+    console.log("  ", f.name);
+    names.push(f.name);
   }
   // [END files_list]
   return names;
