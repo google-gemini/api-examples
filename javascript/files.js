@@ -160,7 +160,7 @@ export async function filesList() {
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
   console.log("My files:");
   // Using the pager to list files across multiple API requests.
-  const files= await ai.files.list({ config: { pageSize: 10 } });
+  const files = await ai.files.list({ config: { pageSize: 10 } });
   const names = [];
   for await (const f of files) {
     console.log("  ", f.name);
