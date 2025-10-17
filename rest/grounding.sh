@@ -1,7 +1,7 @@
 set -eu
 
 echo "[START grounding_maps]"
-# [START grounding_maps]"
+# [START grounding_maps]
 curl -X POST 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent' \
   -H 'Content-Type: application/json' \
   -H "x-goog-api-key: ${GEMINI_API_KEY}" \
