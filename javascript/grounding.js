@@ -67,7 +67,7 @@ export async function groundingWithMaps() {
     }
   }
 
-  return response.text;
+  return response;
   // [END grounding_maps]
 }
 

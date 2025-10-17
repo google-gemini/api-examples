@@ -26,7 +26,7 @@ describe("grounding", { timeout: 300000 }, () => {
   test("groundingWithMaps", async () => {
     const result = await groundingWithMaps();
     assert.ok(
-        result && result.length > 0,
+        result?.text?.length > 0,
         "Test failed: No result or empty result"
     );
     // TODO: test for grounding data in response
