@@ -1,4 +1,4 @@
-# **Gemini API Examples**
+# Gemini API Examples
 
 This repository contains example code for key features of the Gemini API.
 The repo is organized by programming language.
@@ -94,13 +94,17 @@ Each example is a Go test file such as `chat_test.go`, `code_execution_test.go`,
 
 ### Set Up
 
-1. Open the folder in IntelliJ IDEA
-2. Load Maven when prompted (`pom.xml`)
-3. Wait for dependencies to download
+1. Ensure you have a Java JDK (version 11 or higher) and Maven installed
+2. Open the `java/` folder in your preferred IDE or command line
+3. Run `mvn clean install` to download dependencies
 
 ### Set API Key
 
-Set `GOOGLE_API_KEY` in your Run/Debug environment variables.
+Export the API key to your environment:
+
+```bash
+export GOOGLE_API_KEY="YOUR_KEY"
+```
 
 ### Run a Test
 
@@ -125,7 +129,13 @@ npm install
 export GOOGLE_API_KEY="YOUR_KEY"
 ```
 
-### Run a Test File
+### Run Tests
+
+```bash
+npm test
+```
+
+To run a specific test file:
 
 ```bash
 node <feature>.test.js
