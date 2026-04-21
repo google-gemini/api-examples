@@ -24,7 +24,7 @@ class UnitTests(absltest.TestCase):
 
         client = genai.Client()
         response = client.models.generate_content(
-            model="gemini-2.0-pro-exp-02-05",
+            model="gemini-2.5-pro",
             contents=(
                 "Write and execute code that calculates the sum of the first 50 prime numbers. "
                 "Ensure that only the executable code and its resulting output are generated."
@@ -80,7 +80,7 @@ class UnitTests(absltest.TestCase):
 
         client = genai.Client()
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=(
                 "What is the sum of the first 50 prime numbers? "
                 "Generate and run code for the calculation, and make sure you get all 50."
@@ -140,7 +140,7 @@ class UnitTests(absltest.TestCase):
 
         client = genai.Client()
         chat = client.chats.create(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             config=types.GenerateContentConfig(
                 tools=[types.Tool(code_execution=types.ToolCodeExecution())],
             ),

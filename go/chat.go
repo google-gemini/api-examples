@@ -28,7 +28,7 @@ func Chat() error {
 		genai.NewContentFromText("Great to meet you. What would you like to know?", genai.RoleModel),
 	}
 
-	chat, err := client.Chats.Create(ctx, "gemini-2.0-flash", nil, history)
+	chat, err := client.Chats.Create(ctx, "gemini-2.5-flash", nil, history)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -64,7 +64,7 @@ func ChatStreaming() error {
 		genai.NewContentFromText("Hello", genai.RoleUser),
 		genai.NewContentFromText("Great to meet you. What would you like to know?", genai.RoleModel),
 	}
-	chat, err := client.Chats.Create(ctx, "gemini-2.0-flash", nil, history)
+	chat, err := client.Chats.Create(ctx, "gemini-2.5-flash", nil, history)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -102,7 +102,7 @@ func ChatStreamingWithImages() error {
 		log.Fatal(err)
 	}
 
-	chat, err := client.Chats.Create(ctx, "gemini-2.0-flash", nil, nil)
+	chat, err := client.Chats.Create(ctx, "gemini-2.5-flash", nil, nil)
 	if err != nil {
 		log.Fatal(err)
 	}

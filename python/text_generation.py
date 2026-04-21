@@ -27,7 +27,7 @@ class UnitTests(absltest.TestCase):
 
         client = genai.Client()
         response = client.models.generate_content(
-            model="gemini-2.0-flash", contents="Write a story about a magic backpack."
+            model="gemini-2.5-flash", contents="Write a story about a magic backpack."
         )
         print(response.text)
         # [END text_gen_text_only_prompt]
@@ -38,7 +38,7 @@ class UnitTests(absltest.TestCase):
 
         client = genai.Client()
         response = client.models.generate_content_stream(
-            model="gemini-2.0-flash", contents="Write a story about a magic backpack."
+            model="gemini-2.5-flash", contents="Write a story about a magic backpack."
         )
         for chunk in response:
             print(chunk.text)
@@ -53,7 +53,7 @@ class UnitTests(absltest.TestCase):
         client = genai.Client()
         organ = PIL.Image.open(media / "organ.jpg")
         response = client.models.generate_content(
-            model="gemini-2.0-flash", contents=["Tell me about this instrument", organ]
+            model="gemini-2.5-flash", contents=["Tell me about this instrument", organ]
         )
         print(response.text)
         # [END text_gen_multimodal_one_image_prompt]
@@ -66,7 +66,7 @@ class UnitTests(absltest.TestCase):
         client = genai.Client()
         organ = PIL.Image.open(media / "organ.jpg")
         response = client.models.generate_content_stream(
-            model="gemini-2.0-flash", contents=["Tell me about this instrument", organ]
+            model="gemini-2.5-flash", contents=["Tell me about this instrument", organ]
         )
         for chunk in response:
             print(chunk.text)
@@ -82,7 +82,7 @@ class UnitTests(absltest.TestCase):
         organ = PIL.Image.open(media / "organ.jpg")
         cajun_instrument = PIL.Image.open(media / "Cajun_instruments.jpg")
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=[
                 "What is the difference between both of these instruments?",
                 organ,
@@ -101,7 +101,7 @@ class UnitTests(absltest.TestCase):
         organ = PIL.Image.open(media / "organ.jpg")
         cajun_instrument = PIL.Image.open(media / "Cajun_instruments.jpg")
         response = client.models.generate_content_stream(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=[
                 "What is the difference between both of these instruments?",
                 organ,
@@ -120,7 +120,7 @@ class UnitTests(absltest.TestCase):
         client = genai.Client()
         sample_audio = client.files.upload(file=media / "sample.mp3")
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=["Give me a summary of this audio file.", sample_audio],
         )
         print(response.text)
@@ -133,7 +133,7 @@ class UnitTests(absltest.TestCase):
         client = genai.Client()
         sample_audio = client.files.upload(file=media / "sample.mp3")
         response = client.models.generate_content_stream(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=["Give me a summary of this audio file.", sample_audio],
         )
         for chunk in response:
@@ -159,7 +159,7 @@ class UnitTests(absltest.TestCase):
             myfile = client.files.get(name=myfile.name)
 
         response = client.models.generate_content(
-            model="gemini-2.0-flash", contents=[myfile, "Describe this video clip"]
+            model="gemini-2.5-flash", contents=[myfile, "Describe this video clip"]
         )
         print(f"{response.text=}")
         # [END text_gen_multimodal_video_prompt]
@@ -182,7 +182,7 @@ class UnitTests(absltest.TestCase):
             myfile = client.files.get(name=myfile.name)
 
         response = client.models.generate_content_stream(
-            model="gemini-2.0-flash", contents=[myfile, "Describe this video clip"]
+            model="gemini-2.5-flash", contents=[myfile, "Describe this video clip"]
         )
         for chunk in response:
             print(chunk.text)
@@ -196,7 +196,7 @@ class UnitTests(absltest.TestCase):
         client = genai.Client()
         sample_pdf = client.files.upload(file=media / "test.pdf")
         response = client.models.generate_content(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=["Give me a summary of this document:", sample_pdf],
         )
         print(f"{response.text=}")
@@ -209,7 +209,7 @@ class UnitTests(absltest.TestCase):
         client = genai.Client()
         sample_pdf = client.files.upload(file=media / "test.pdf")
         response = client.models.generate_content_stream(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             contents=["Give me a summary of this document:", sample_pdf],
         )
 

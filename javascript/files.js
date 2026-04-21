@@ -42,7 +42,7 @@ export async function filesCreateText() {
   console.log("Uploaded file:", myfile);
 
   const result = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: createUserContent([
       createPartFromUri(myfile.uri, myfile.mimeType),
       "\n\n",
@@ -66,7 +66,7 @@ export async function filesCreateImage() {
   console.log("Uploaded file:", myfile);
 
   const result = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: createUserContent([
       createPartFromUri(myfile.uri, myfile.mimeType),
       "\n\n",
@@ -90,7 +90,7 @@ export async function filesCreateAudio() {
   console.log("Uploaded file:", myfile);
 
   const result = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: createUserContent([
       createPartFromUri(myfile.uri, myfile.mimeType),
       "Describe this audio clip",
@@ -121,7 +121,7 @@ export async function filesCreateVideo() {
   }
 
   const result = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: createUserContent([
       createPartFromUri(myfile.uri, myfile.mimeType),
       "Describe this video clip",
@@ -142,7 +142,7 @@ export async function filesCreatePdf() {
     config: { mimeType: "application/pdf" },
   });
   const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: createUserContent([
       "Give me a summary of this pdf file.",
       createPartFromUri(samplePdf.uri, samplePdf.mimeType),

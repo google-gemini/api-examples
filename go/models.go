@@ -61,7 +61,7 @@ func ModelsGet() error {
 		log.Fatal(err)
 	}
 
-	modelInfo, err := client.Models.Get(ctx, "gemini-2.0-flash", nil)
+	modelInfo, err := client.Models.Get(ctx, "gemini-2.5-flash", nil)
 	if err != nil {
 		log.Fatal(err)
 	}

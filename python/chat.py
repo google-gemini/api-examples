@@ -28,7 +28,7 @@ class UnitTests(absltest.TestCase):
         client = genai.Client()
         # Pass initial history using the "history" argument
         chat = client.chats.create(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             history=[
                 types.Content(role="user", parts=[types.Part(text="Hello")]),
                 types.Content(
@@ -54,7 +54,7 @@ class UnitTests(absltest.TestCase):
 
         client = genai.Client()
         chat = client.chats.create(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             history=[
                 types.Content(role="user", parts=[types.Part(text="Hello")]),
                 types.Content(
@@ -84,7 +84,7 @@ class UnitTests(absltest.TestCase):
         from google import genai
 
         client = genai.Client()
-        chat = client.chats.create(model="gemini-2.0-flash")
+        chat = client.chats.create(model="gemini-2.5-flash")
 
         response = chat.send_message_stream(
             message="Hello, I'm interested in learning about musical instruments. Can I show you one?"

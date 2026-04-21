@@ -27,7 +27,7 @@ class UnitTests(absltest.TestCase):
 
         client = genai.Client()
         document = client.files.upload(file=media / "a11.txt")
-        model_name = "gemini-1.5-flash-001"
+        model_name = "gemini-2.5-flash"
 
         cache = client.caches.create(
             model=model_name,
@@ -54,7 +54,7 @@ class UnitTests(absltest.TestCase):
 
         client = genai.Client()
         document = client.files.upload(file=media / "a11.txt")
-        model_name = "gemini-1.5-flash-001"
+        model_name = "gemini-2.5-flash"
 
         cache = client.caches.create(
             model=model_name,
@@ -82,7 +82,7 @@ class UnitTests(absltest.TestCase):
         from google.genai import types
 
         client = genai.Client()
-        model_name = "gemini-1.5-flash-001"
+        model_name = "gemini-2.5-flash"
         system_instruction = "You are an expert analyzing transcripts."
 
         # Create a chat session with the given system instruction.
@@ -127,7 +127,7 @@ class UnitTests(absltest.TestCase):
 
         client = genai.Client()
         document = client.files.upload(file=media / "a11.txt")
-        model_name = "gemini-1.5-flash-001"
+        model_name = "gemini-2.5-flash"
 
         cache = client.caches.create(
             model=model_name,
@@ -145,7 +145,7 @@ class UnitTests(absltest.TestCase):
 
         client = genai.Client()
         document = client.files.upload(file=media / "a11.txt")
-        model_name = "gemini-1.5-flash-001"
+        model_name = "gemini-2.5-flash"
 
         cache = client.caches.create(
             model=model_name,
@@ -164,7 +164,7 @@ class UnitTests(absltest.TestCase):
 
         client = genai.Client()
         document = client.files.upload(file=media / "a11.txt")
-        model_name = "gemini-1.5-flash-001"
+        model_name = "gemini-2.5-flash"
 
         cache = client.caches.create(
             model=model_name,
@@ -187,7 +187,7 @@ class UnitTests(absltest.TestCase):
 
         client = genai.Client()
         document = client.files.upload(file=media / "a11.txt")
-        model_name = "gemini-1.5-flash-001"
+        model_name = "gemini-2.5-flash"
 
         cache = client.caches.create(
             model=model_name,

@@ -23,7 +23,7 @@ if (!process.env.GEMINI_API_KEY) {
 }
 
 // Define the thinking model centrally
-const MODEL_ID = "gemini-2.5-pro-exp-03-25";
+const MODEL_ID = "gemini-2.5-pro";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 

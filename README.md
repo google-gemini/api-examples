@@ -19,7 +19,7 @@ def test_text_gen_text_only_prompt(self):
 
     client = genai.Client()
     response = client.models.generate_content(
-        model="gemini-2.0-flash", contents="Write a story about a magic backpack."
+        model="gemini-2.5-flash", contents="Write a story about a magic backpack."
     )
     print(response.text)
     # [END text_gen_text_only_prompt]

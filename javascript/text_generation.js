@@ -38,7 +38,7 @@ export async function textGenTextOnlyPrompt() {
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
   const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: "Write a story about a magic backpack.",
   });
   console.log(response.text);
@@ -53,7 +53,7 @@ export async function textGenTextOnlyPromptStreaming() {
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
   const response = await ai.models.generateContentStream({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: "Write a story about a magic backpack.",
   });
   let text = "";
@@ -76,7 +76,7 @@ export async function textGenMultimodalOneImagePrompt() {
   });
 
   const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: [
       createUserContent([
         "Tell me about this instrument", 
@@ -100,7 +100,7 @@ export async function textGenMultimodalOneImagePromptStreaming() {
   });
 
   const response = await ai.models.generateContentStream({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: [
       createUserContent([
         "Tell me about this instrument", 
@@ -133,7 +133,7 @@ export async function textGenMultimodalMultiImagePrompt() {
   });
 
   const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: [
       createUserContent([
         "What is the difference between both of these instruments?",
@@ -162,7 +162,7 @@ export async function textGenMultimodalMultiImagePromptStreaming() {
   });
 
   const response = await ai.models.generateContentStream({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: [
       createUserContent([
         "What is the difference between both of these instruments?",
@@ -191,7 +191,7 @@ export async function textGenMultimodalAudio() {
   });
   
   const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: [
       createUserContent([
         "Give me a summary of this audio file.",
@@ -215,7 +215,7 @@ export async function textGenMultimodalAudioStreaming() {
   });
 
   const response = await ai.models.generateContentStream({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: [
       createUserContent([
         "Give me a summary of this audio file.",
@@ -251,7 +251,7 @@ export async function textGenMultimodalVideoPrompt() {
   }
 
   const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: [
       createUserContent([
         "Describe this video clip",
@@ -283,7 +283,7 @@ export async function textGenMultimodalVideoPromptStreaming() {
   }
 
   const response = await ai.models.generateContentStream({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: [
       createUserContent([
         "Describe this video clip",
@@ -311,7 +311,7 @@ export async function textGenMultimodalPdf() {
   });
 
   const response = await ai.models.generateContent({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: [
       createUserContent([
         "Give me a summary of this document:",
@@ -335,7 +335,7 @@ export async function textGenMultimodalPdfStreaming() {
   });
 
   const response = await ai.models.generateContentStream({
-    model: "gemini-2.0-flash",
+    model: "gemini-2.5-flash",
     contents: [
       createUserContent([
         "Give me a summary of this document:",

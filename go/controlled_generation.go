@@ -42,7 +42,7 @@ func JsonControlledGeneration() (*genai.GenerateContentResponse, error) {
 
 	response, err := client.Models.GenerateContent(
 		ctx,
-		"gemini-2.0-flash",
+		"gemini-2.5-flash",
 		genai.Text("List a few popular cookie recipes."),
 		config,
 	)
@@ -68,7 +68,7 @@ func JsonNoSchema() (*genai.GenerateContentResponse, error) {
 			  "Use this JSON schema:\n\n" +
 			  "Recipe = {'recipe_name': str, 'ingredients': list[str]}\n" +
 		      "Return: list[Recipe]"
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash", genai.Text(prompt), nil)
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash", genai.Text(prompt), nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -134,7 +134,7 @@ func JsonEnum() (*genai.GenerateContentResponse, error) {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash",
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash",
 		contents,
 		config,
 	)
@@ -173,7 +173,7 @@ func EnumInJson() (*genai.GenerateContentResponse, error) {
 		ResponseMIMEType: "application/json",
 		ResponseSchema:   schema,
 	}
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash",
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash",
 		genai.Text("List about 10 cookie recipes, grade them based on popularity"),
 		config,
 	)
@@ -223,7 +223,7 @@ func JsonEnumRaw() (*genai.GenerateContentResponse, error) {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash",
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash",
 		contents,
 		config,
 	)
@@ -292,7 +292,7 @@ func XEnum() (*genai.GenerateContentResponse, error) {
 	contents := []*genai.Content{
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash",
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash",
 		contents,
 		config,
 	)
@@ -341,7 +341,7 @@ func XEnumRaw() (*genai.GenerateContentResponse, error) {
 	contents := []*genai.Content{
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
-	response, err := client.Models.GenerateContent(ctx, "gemini-2.0-flash",
+	response, err := client.Models.GenerateContent(ctx, "gemini-2.5-flash",
 		contents,
 		config,
 	)
