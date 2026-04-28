@@ -24,12 +24,12 @@ export async function configureModelParameters() {
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
   const response = await ai.models.generateContent({
-    model: "gemini-2.5-flash",
+    model: "gemini-3-flash-preview",
     contents: "Tell me a story about a magic backpack.",
     config: {
       candidateCount: 1,
       stopSequences: ["x"],
-      maxOutputTokens: 20,
+      maxOutputTokens: 200,
       temperature: 1.0,
     },
   });
