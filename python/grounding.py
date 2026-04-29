@@ -15,7 +15,7 @@
 
 from absl.testing import absltest
 
-MODEL_ID = "gemini-2.5-flash"
+MODEL_ID = "gemini-3-flash-preview"
 
 
 class GroundingUnitTests(absltest.TestCase):

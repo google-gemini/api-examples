@@ -32,13 +32,13 @@ public class ConfigureModelParameters {
                 GenerateContentConfig.builder()
                         .candidateCount(1)
                         .stopSequences(List.of("x"))
-                        .maxOutputTokens(20)
+                        .maxOutputTokens(200)
                         .temperature(1.0F)
                         .build();
 
         GenerateContentResponse response =
                 client.models.generateContent(
-                        "gemini-2.5-flash",
+                        "gemini-3-flash-preview",
                         "Tell me a story about a magic backpack.",
                         config);
 

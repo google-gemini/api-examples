@@ -65,7 +65,7 @@ public class ControlledGeneration {
 
         GenerateContentResponse response =
                 client.models.generateContent(
-                        "gemini-2.5-flash",
+                        "gemini-3-flash-preview",
                         "List a few popular cookie recipes.",
                         config);
 
@@ -92,7 +92,7 @@ public class ControlledGeneration {
 
         GenerateContentResponse response =
                 client.models.generateContent(
-                        "gemini-2.5-flash",
+                        "gemini-3-flash-preview",
                         prompt,
                         null);
 
@@ -128,7 +128,7 @@ public class ControlledGeneration {
 
         GenerateContentResponse response =
                 client.models.generateContent(
-                        "gemini-2.5-flash",
+                        "gemini-3-flash-preview",
                         content,
                         config);
 
@@ -166,7 +166,7 @@ public class ControlledGeneration {
 
         GenerateContentResponse response =
                 client.models.generateContent(
-                        "gemini-2.5-flash",
+                        "gemini-3-flash-preview",
                         "List about 10 cookie recipes, grade them based on popularity",
                         config);
 
@@ -202,7 +202,7 @@ public class ControlledGeneration {
 
         GenerateContentResponse response =
                 client.models.generateContent(
-                        "gemini-2.5-flash",
+                        "gemini-3-flash-preview",
                         content,
                         config);
 

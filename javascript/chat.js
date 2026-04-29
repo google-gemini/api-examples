@@ -34,7 +34,7 @@ export async function chat() {
   // import {GoogleGenAI} from '@google/genai';
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
   const chat = ai.chats.create({
-    model: "gemini-2.5-flash",
+    model: "gemini-3-flash-preview",
     history: [
       {
         role: "user",
@@ -67,7 +67,7 @@ export async function chatStreaming() {
   // import {GoogleGenAI} from '@google/genai';
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
   const chat = ai.chats.create({
-    model: "gemini-2.5-flash",
+    model: "gemini-3-flash-preview",
     history: [
       {
         role: "user",
@@ -108,7 +108,7 @@ export async function chatStreamingWithImages() {
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-  const chat = ai.chats.create({ model: "gemini-2.5-flash" });
+  const chat = ai.chats.create({ model: "gemini-3-flash-preview" });
 
   console.log("Streaming response for initial text message:");
   const stream1 = await chat.sendMessageStream({

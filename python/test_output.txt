@@ -1,0 +1,2889 @@
+name='cachedContents/r07nfu67kpue8zt83inxbpjr4xxvca1s938glc3h' display_name='' model='models/gemini-3-flash-preview' create_time=datetime.datetime(2026, 4, 21, 10, 45, 26, 987737, tzinfo=TzInfo(UTC)) update_time=datetime.datetime(2026, 4, 21, 10, 45, 26, 987737, tzinfo=TzInfo(UTC)) expire_time=datetime.datetime(2026, 4, 21, 11, 45, 25, 173737, tzinfo=TzInfo(UTC)) usage_metadata=CachedContentUsageMetadata(
+  total_token_count=322697
+)
+This transcript captures the entirety of the Apollo 11 Technical Air-to-Ground Voice Transmission (GOSS NET 1), detailing the mission from launch through splashdown. It provides a comprehensive record of operational communications, scientific observations, crew discussions, and personal exchanges between the Apollo 11 crew (Commander Neil A. Armstrong - CDR, Command Module Pilot Michael Collins - CMP, and Lunar Module Pilot Edwin E. Aldrin, Jr. - LMP) and Mission Control in Houston, often featuring various Capsule Communicators (CAP COMMs) like Bruce McCandless, Charlie Duke, Ron Evans, and Owen Garriott.
+
+The transcript covers the following key phases and events:
+
+**1. Launch and Earth Orbit Insertion (EOI) (GET 00:00:00 - 00:12:06):**
+*   The mission begins with the Saturn V launch, a "roll program," staging, and ignition, all reported as "GO" and "looking good."
+*   CDR Armstrong notes the visual is "GO today," implying good visibility from the spacecraft.
+*   Confirmation of Earth Orbit Insertion, with orbital parameters 101.4 by 103.6 nautical miles.
+*   Initial communication checks are "loud and clear."
+
+**2. Trans-Lunar Injection (TLI) and Outbound Coast (GET 01:29:00 - 02:55:00):**
+*   After initial orbital operations and communication checks through various ground stations (Vanguard, Canary, Tananarive), the crew conducts a TV test, with brief success reported by MILA and Goldstone.
+*   Abort PADs and TLI PADs are read up and confirmed.
+*   A minor issue with the Service Module (SM) RCS quad Bravo heater switch is identified and corrected by the crew.
+*   The Trans-Lunar Injection (TLI) burn is executed, described by Armstrong as a "magnificent ride."
+*   The crew reports the S-IVB booster functions are normal, and they prepare for transposition and docking.
+
+**3. Transposition, Docking, and Lunar Module (LM) Ejection (GET 03:05:00 - 04:17:00):**
+*   The S-IVB cut-off is confirmed, followed by the command module (CM) separating from the booster.
+*   Transposition and docking are successfully completed. CMP Collins provides detailed feedback on the maneuver, noting higher-than-expected gas usage due to some control issues and greater separation from the S-IVB.
+*   A brief issue with SM RCS quad Bravo propellant indicators ("barber pole") is quickly resolved by the CDR.
+*   The LM is successfully pressurized and its 12 latches are locked.
+*   An evasive maneuver PAD is read up, though communications are briefly interrupted during the process.
+*   The LM is then ejected from the S-IVB, which subsequently performs a LOX dump and slingshot maneuver, observed by the crew.
+*   Passive Thermal Control (PTC) is initiated for the translunar coast.
+
+**4. Translunar Coast Operations and Observations (GET 04:17:00 - 74:00:00 approximately):**
+*   The crew deals with minor technical issues, including a gimbal motor check and CRYO balancing procedures.
+*   Extensive Earth observations are reported, describing North America, Europe, Africa, cloud formations, and Greenland's icecap.
+*   Challenges are encountered during P23 optics calibrations, with discussions on reticle alignment and star visibility, leading to multiple attempts and procedural adjustments.
+*   Regular news updates are provided by CAP COMMs, covering topics like Luna 15's status (eventual crash confirmed), political statements, sports, and humorous cultural anecdotes.
+*   The O2 flow indicator in the CM is suspected of malfunctioning, showing a consistent bias.
+*   Crew discussions cover the performance of hydrogen filters in the water system, suit temperatures, and general comfort in the spacecraft.
+*   Live TV broadcasts are made from the spacecraft, showing Earth getting smaller, and then later featuring the spacecraft interior with demonstrations of food, zero-G movement, and the mission patch.
+*   The crew notes the increasing visibility of stars as they move further from Earth.
+*   MCC-3 and MCC-4 maneuvers are cancelled due to accurate trajectory.
+
+**5. Lunar Orbit Insertion (LOI) and Lunar Orbital Operations (GET 74:00:00 - 124:00:00 approximately):**
+*   Preparations for LOI-1 are extensive, with PAD read-ups, systems checks (SPS chamber pressure calibration, gimbal test), and final GO for LOI.
+*   LOI-1 burn is described as "perfect," establishing the initial lunar orbit.
+*   The crew provides vivid descriptions of the lunar surface, identifying craters (Taruntius, Messier, Maskelyne) and other features during their first orbits.
+*   Observations of a "lunar transient event" near Aristarchus are made, describing unusual illumination.
+*   LOI-2 is performed (using Bank A only), circularizing the orbit.
+*   LM activation procedures are extensive, involving powering up systems, communications checks, IMU alignments, and DAP loads.
+*   The LM's landing gear is extended, and RCS hot fire checks are performed.
+*   Undocking of the LM ("Eagle") from the CM ("Columbia") occurs, with Armstrong famously stating, "The Eagle has wings."
+
+**6. Lunar Descent and Landing (GET 102:33:04 - 102:45:45):**
+*   DOI (Descent Orbit Insertion) burn is executed, bringing the LM into a lower orbit.
+*   The final Powered Descent Initiation (PDI) sequence begins. The crew reports significant challenges during the descent, including "PROGRAM ALARM" codes (1202, 1201) and a "downrange long" prediction, requiring CDR Armstrong to take manual control.
+*   Armstrong manually flies the LM over a "football field sized crater" filled with "large boulders and rocks" to find a suitable landing spot.
+*   Buzz Aldrin provides continuous altitude and velocity callouts.
+*   "CONTACT LIGHT" is called, followed by "ENGINE STOP."
+*   At **04:06:45 GET**, Armstrong announces, "Houston, Tranquility Base here. The Eagle has landed." This is met with immense relief from Mission Control: "Roger, Tranquility. We copy you on the ground. You got a bunch of guys about to turn blue. We're breathing again. Thanks a lot."
+
+**7. Lunar Surface Operations (EVA) (GET 102:45:45 - 110:30:00 approximately):**
+*   Immediate post-landing checks are performed, and "STAY" calls for various abort limits are given.
+*   The crew describes the landing site geology: fine, powdery, cohesive soil ("powdered graphite"), with various types of rocks (basalt, vesicular) and craters. They note the ease of movement in 1/6 G.
+*   EVA preparations begin, including PLSS donning and cabin depressurization.
+*   **EVA commences**, with Neil Armstrong descending the ladder and making his iconic statement: "THAT'S ONE SMALL STEP FOR (A) MAN, ONE GIANT LEAP FOR MANKIND."
+*   Initial surface activities include collecting the contingency sample, photographing the area, and deploying the solar wind experiment.
+*   Buzz Aldrin joins Armstrong on the surface.
+*   **President Richard Nixon makes a historic telephone call** to the astronauts on the Moon, expressing national and global pride.
+*   EVA activities continue with flag deployment, various gaits demonstrated (walking, hopping), detailed descriptions of surface material, and deployment of the Passive Seismic Experiment (PSE) and Laser Ranging Retroreflector (LRR).
+*   Rock and core tube samples are collected and stowed in Sample Return Containers (SRCs).
+*   EVA closeout procedures are performed, including transferring equipment and samples back into the LM.
+*   The hatch is closed and the LM repressurized. The PLSSs are jettisoned, with the seismic experiment registering their impact.
+*   A brief issue with the mission timer is resolved with ground assistance.
+*   The crew provides detailed answers to geological questions from Mission Control, describing rock types, surface texture, and the appearance of engine plume effects.
+
+**8. Lunar Ascent and Rendezvous (GET 124:22:00 - 128:00:00 approximately):**
+*   Preparations for ascent begin, including AGS/PGNS aligns, and final systems checks.
+*   **LM Ascent is initiated**. The ride is described as "very quiet" and "smooth."
+*   The ascent engine performs flawlessly, placing Eagle back into lunar orbit.
+*   Rendezvous maneuvers (CSI, TPI) are executed.
+*   The LM successfully docks with the CM, reuniting the three crewmembers. Some "gyrations" and thruster activity are noted during the final docking sequence.
+
+**9. Trans-Earth Injection (TEI) and Return Coast (GET 135:23:41 - 194:00:00 approximately):**
+*   The LM ("Eagle") is jettisoned.
+*   **TEI burn is executed**, described as a "beautiful burn" by Armstrong, setting the spacecraft on its course for Earth.
+*   PTC is re-established for the transearth coast.
+*   Routine operations, navigation updates, and systems checks dominate communications.
+*   More TV broadcasts are conducted, featuring views of the Earth growing larger and demonstrations of zero-G movement, food consumption (including Mike Collins's famous "drinking water from a spoon" demo), and a poignant farewell message to Earth.
+*   News updates continue, now focusing on post-landing reactions, political events, and the upcoming recovery.
+*   Minor technical issues are discussed, including a persistent EKG problem for LMP Aldrin and some issues with PTC initiation.
+*   The spacecraft exits the **Lunar Sphere of Influence**.
+
+**10. Entry and Splashdown (GET 194:00:00 - 195:03:18):**
+*   Final entry preparations begin, including entry PADs, logic checks, PYRO arming, and rendezvous radar activation.
+*   The Service Module (SM) is jettisoned.
+*   The spacecraft enters the Earth's atmosphere, experiencing the planned communications blackout.
+*   Upon re-establishment of communications, recovery forces (USS Hornet, helicopters) confirm visual contact.
+*   Drogue parachutes deploy, followed by the main parachutes.
+*   **At 08:03:18 GET**, the spacecraft splashes down in the Pacific Ocean.
+*   Contact with the USS Hornet is immediately established, confirming crew position and condition.
+
+The transcript is a rich tapestry of technical dialogue, human reactions, and the unfolding of a monumental historical event, interspersed with moments of humor and profound reflection..
+
+
+model:   This transcript, GOSS NET 1 of the Apollo 11 mission, meticulously details the technical air-to-ground voice transmissions from just after launch through splashdown. It covers the entire mission from the perspective of communications between the spacecraft (Commander Neil Armstrong - CDR, Command Module Pilot Michael Collins - CMP, Lunar Module Pilot Edwin Aldrin - LMP) and Mission Control Center (Capsule Communicator - CC) and various remote sites.
+
+Here's a summary of the key events and notable interactions:
+
+**1. Launch and Earth Orbit (GET 00:00:00 - 02:43:18):**
+*   The transcript begins with the initial launch sequence, including the "roll program" and "pitch program."
+*   Houston provides numerous "GO" calls at critical one-minute intervals, confirming satisfactory performance.
+*   The crew reports successful staging, ignition, skirt separation, and tower jettison.
+*   Armstrong notes the "visual is GO today," expressing satisfaction at having a window to look out.
+*   Earth orbit is successfully achieved after inboard and outboard cut-offs, confirmed by "SECO. We are showing 101.4 by 103.6."
+*   Routine checklists are completed, and initial orbital adjustments are discussed (Delta azimuth correction, P52 alignment).
+*   Early attempts at TV downlink encounter issues with the FM signal.
+*   Communications shift between various ground tracking stations worldwide.
+
+**2. Trans-Lunar Injection (TLI) and Transposition & Docking (T&D) (GET 02:43:18 - ~03:40:00):**
+*   Houston gives the "GO for TLI," initiating the burn to leave Earth orbit. Armstrong praises the "magnificent ride" from the Saturn V rocket.
+*   Following TLI, the crew performs transposition, docking the Command Module (Columbia) with the Lunar Module (Eagle). Collins reports using more fuel than in simulations but notes "everything went nominally."
+*   Minor issues arise, including a quad Bravo RCS heater found off and a temporary cabin pressure discrepancy during LM pressurization.
+*   Armstrong provides an early description of the Earth view from orbit, noting clear weather over North America, Europe, and Africa.
+
+**3. Trans-Lunar Coast (Outbound) (GET ~03:40:00 - ~75:00:00):**
+*   The mission settles into routine, with ongoing communications about system checks, guidance updates, and crew status.
+*   Extensive P23 optics calibration attempts are detailed, with frequent troubleshooting regarding star visibility (due to LM obscuration, Earth brightness) and alignment procedures. CapCom clarifies the importance of the M-line parallel to the horizon for accurate marks.
+*   Midcourse corrections are either cancelled (MCC 1, MCC 3) or minor.
+*   Two significant TV broadcasts occur: one showcasing the Earth from increasing distance and another providing an interior view of the Command Module, with crew members demonstrating zero-g life, food, and discussing their mission patch.
+*   CapCom relays morning news updates, including the Luna 15 probe's uncertain status (later reported as crashed) and public excitement on Earth.
+*   Several rest periods with no communications are noted.
+
+**4. Lunar Orbit Insertion (LOI) & Lunar Landing Preparation (GET ~75:00:00 - ~102:00:00):**
+*   LOI burns (LOI 1 and LOI 2) successfully place Apollo 11 into lunar orbit. The crew expresses awe at the view of the Moon.
+*   The Command Module and Lunar Module are fully activated and checked out.
+*   Communications detail the preparation for lunar descent, including loading PDI (Powered Descent Initiation) parameters and final system checks.
+*   LM undocking occurs, with Armstrong famously stating, "The Eagle has wings."
+*   Collins, alone in Columbia, begins tracking Eagle and preparing for potential rescue scenarios.
+
+**5. Lunar Landing (GET ~102:00:00 - ~103:00:00):**
+*   Eagle begins its powered descent to the lunar surface. CapCom provides constant status updates, culminating in the "GO for landing" call.
+*   Altitude callouts and system alarms (1201, 1202) are reported, which are quickly confirmed as manageable.
+*   After a manually-flown descent over a rocky area, Aldrin calls "CONTACT LIGHT," followed by "ENGINE STOP."
+*   Armstrong's iconic words, "Houston, Tranquility Base here. THE EAGLE HAS LANDED," are transmitted, met with relief and congratulations from Mission Control.
+
+**6. Lunar Surface Activities (EVA) (GET ~103:00:00 - ~112:00:00):**
+*   Initial post-landing checks are performed. Armstrong describes the landing area as "extremely rough," confirming they landed "about 4 miles downrange" from the target.
+*   Plans for an early EVA are approved.
+*   Hatch opening and Armstrong's "one small step for (a) man, one giant leap for mankind."
+*   Extensive descriptions of the lunar surface (fine, powdery, cohesive soil, basaltic rocks) and observations on movement in one-sixth gravity.
+*   Deployment of the MESA, unveiling of the plaque on the LM landing gear, and the planting of the American flag.
+*   A phone call from President Nixon is relayed, expressing pride and well wishes.
+*   Aldrin makes detailed observations on lunar dust, shadows, and various locomotion techniques.
+*   Deployment of scientific instruments: the Solar Wind Composition Experiment, Passive Seismic Experiment (PSE), and Laser Ranging Retroreflector (LR^3). Some minor deployment issues are noted (PSE leveling).
+*   Collection of contingency and documented samples, including core tubes.
+*   EVA closeout procedures, sample transfer to the LM.
+*   Armstrong and Aldrin re-enter the LM, close the hatch, and repressurize. PLSS units are doffed.
+*   Detailed geological observations and technical questions from Houston are addressed.
+
+**7. Lunar Orbit (Post-EVA, Rendezvous, and TEI) (GET ~112:00:00 - ~135:00:00):**
+*   LM power-down and preparation for ascent from the Moon.
+*   LM lift-off ("The Eagle is back in orbit"). The ride is described as "very quiet" and "spectacular."
+*   The Eagle performs rendezvous maneuvers with Columbia. Collins in Columbia provides tracking and assistance.
+*   Successful docking of Eagle with Columbia. The crew is "all three back inside; the hatch is installed."
+*   The LM is jettisoned, and a small burn is performed by Columbia to separate from it.
+*   TEI (Trans-Earth Injection) burn is executed to send Apollo 11 home. Armstrong remarks, "Time to open up the LRL doors, Charlie," and calls it a "beautiful burn."
+
+**8. Trans-Earth Coast (Inbound) & Re-entry Preparation (GET ~135:00:00 - ~194:00:00):**
+*   The return journey consists of routine systems checks, crew status reports, and minor midcourse corrections (MCC 5 is performed, others cancelled).
+*   More TV broadcasts are made, featuring discussions on the mission's achievements, zero-g demonstrations, and life aboard the spacecraft. News updates from Earth are also regularly relayed.
+*   Final preparations for Earth re-entry are detailed, including entry PADs, checklist updates (including new procedures for oxygen manifold depressurization), and discussions about landing site weather.
+*   The crew jokes about Houston's weather, personal lawns, and the success of "Moon songs."
+
+**9. Re-entry & Splashdown (GET ~194:00:00 - End):**
+*   The final stages of the mission see the crew running through logic sequence checks and arming pyro systems for re-entry.
+*   Recovery forces (USS Hornet, helicopters) are confirmed on station.
+*   The Service Module is jettisoned.
+*   Communications become sparse during atmospheric re-entry.
+*   Radio contact is re-established, and altitude callouts are provided.
+*   "DROGUES" and "MAIN" parachutes deploy.
+*   The final, climactic call: "SPLASHDOWN!" with confirmation from the USS Hornet.
+
+The transcript concludes with the Hornet acknowledging splashdown and recovery efforts underway, marking the successful end of the Apollo 11 mission.
+
+
+model:   Trans-Lunar Injection (TLI) was the critical burn that propelled Apollo 11 out of Earth orbit and onto its trajectory towards the Moon. The transcript provides detailed insight into this pivotal event:
+
+**Preparation and Go-Ahead:**
+*   **Pre-Burn Checks:** Prior to the actual TLI, Mission Control confirmed the S-IVB (Saturn V's third stage) was ready, including its "COI (Contingency Orbit Insertion) capability" which was a preliminary configuration.
+*   **TLI PAD:** At 01:44:26 GET (Ground Elapsed Time), CMP Michael Collins confirmed readiness to copy the TLI PAD, which detailed the burn parameters. The burn time was specified as **547 seconds** (approximately 9 minutes and 7 seconds).
+*   **Continuous Coverage:** Houston ensured continuous communication coverage for the entire TLI burn, noting that ARIA (Apollo Range Instrumentation Aircraft) would be providing monitoring.
+*   **Final Confirmation:** At 02:26:38 GET, Houston gave the definitive "GO for TLI," followed by a final "everything is GO" check less than a minute before ignition.
+
+**The Burn:**
+*   **Ignition:** CMP Michael Collins reported "Ignition" at 02:44:19 GET, promptly confirmed by Mission Control.
+*   **Performance Monitoring:** Throughout the burn, Houston provided regular "GO" calls (at 1-minute, 3.5-minute, and 5-minute intervals), confirming that "Trajectory and guidance look good, and the stage is good."
+*   **Cut-off:** The burn concluded with "cut-off" reported by Houston at 02:50:36 GET. LMP Buzz Aldrin then provided post-burn data, including a "VI of 35579" and an EMS reading of "plus 3.3."
+
+**Crew Experience and Immediate Aftermath:**
+*   **"Magnificent Ride":** CDR Neil Armstrong enthusiastically declared, "Hey, Houston, Apollo 11. That Saturn gave us a magnificent ride," adding, "We have no complaints with any of the three stages on that ride. It was beautiful."
+*   **Post-Burn Confirmation:** Preliminary data from Houston indicated a "good cut-off on the S-IVB," and they began relaying timelines for subsequent maneuvers, including the upcoming "maneuver to separation attitude" and the crucial "separation" (for transposition and docking of the Command Module with the Lunar Module).
+
+In essence, the TLI burn was executed flawlessly, launching Apollo 11 beyond Earth's gravity and setting it on course for the Moon, much to the satisfaction of both the crew and Mission Control...........
+
+
+model:   Okay, let's try that again in even simpler terms, focusing on what happened:
+
+Imagine Apollo 11 was circling Earth. The **Trans-Lunar Injection (TLI)** was like a giant slingshot push.
+
+Here’s how it went down:
+
+1.  **Getting Ready:**
+    *   Mission Control made sure the big rocket's powerful third stage was all set for its main job.
+    *   The astronauts received special instructions for this "push," including that the rocket would fire for about **9 minutes and 7 seconds**.
+    *   Special tracking planes were used to make sure Mission Control could hear and talk to the astronauts the whole time.
+    *   Finally, Mission Control gave the clear signal: "GO for TLI!"
+
+2.  **The Big Push:**
+    *   The astronaut in charge, Michael Collins, shouted, "Ignition!" as the rocket fired up, and Mission Control quickly confirmed it.
+    *   Throughout these 9 minutes, Mission Control kept giving "GO" signals, meaning everything was working perfectly – the rocket was on the right path, heading straight for the Moon.
+    *   Then, just as planned, the rocket successfully shut down. The astronauts immediately gave updates on their speed and other important numbers to confirm the powerful push worked.
+
+3.  **After the Push:**
+    *   Commander Neil Armstrong was ecstatic! He said the rocket gave them a "magnificent ride" and it was "beautiful."
+    *   Houston confirmed the rocket had done its job perfectly. They then quickly gave the astronauts instructions for their *next* big task: separating the Command Module (where they lived) from the Lunar Module (the Moon lander), which were still attached to the now-spent rocket stage.
+There are many lighthearted moments scattered throughout the transcript, often provided by the crew's dry wit or friendly banter with Capsule Communicator (CAP COMM). Here's one particularly charming exchange involving a wager:
+
+**From Tape 1/6 Page 6 (around 00 00 54):**
+
+00 00 54 13 CMP
+And tell Glenn Parker down at the Cape that he lucked out.
+
+00 00 54 17 CC
+Understand. Tell Glenn Parker he lucked out.
+
+00 00 54 22 CMP
+Yes. He lucked out. He doesn't owe me a cup of coffee.
+
+00 00 54 26 CC
+This is Houston. Roger. We'll pass it on.
+
+This snippet shows Michael Collins playfully referencing a "cup of coffee" wager he had with someone named Glenn Parker, indicating a successful outcome of some prior event (likely a procedural step or prediction). It's a very human, relatable moment amidst highly technical communications.
+name='cachedContents/bhuf55us6ld1x6glnwu8hpqt11yd5u9e5fx7zhbs' display_name='' model='models/gemini-3-flash-preview' create_time=datetime.datetime(2026, 4, 21, 10, 48, 36, 473607, tzinfo=TzInfo(UTC)) update_time=datetime.datetime(2026, 4, 21, 10, 48, 36, 473607, tzinfo=TzInfo(UTC)) expire_time=datetime.datetime(2026, 4, 21, 11, 48, 34, 502201, tzinfo=TzInfo(UTC)) usage_metadata=CachedContentUsageMetadata(
+  total_token_count=322697
+)
+My caches:
+     cachedContents/h3m47md2y6r5jr1rplq9i10xli4rkpjjszyro2t0
+     cachedContents/gml55vowzbw97u4qdizejfx5omsmo1whjm7c020h
+After update:
+ name='cachedContents/7dtqygya8audz5ilkg1jzp8ie5c33jetk1yi98br' display_name='' model='models/gemini-3-flash-preview' create_time=datetime.datetime(2026, 4, 21, 10, 48, 56, 496156, tzinfo=TzInfo(UTC)) update_time=datetime.datetime(2026, 4, 21, 10, 48, 56, 496156, tzinfo=TzInfo(UTC)) expire_time=datetime.datetime(2026, 4, 21, 11, 48, 54, 466650, tzinfo=TzInfo(UTC)) usage_metadata=CachedContentUsageMetadata(
+  total_token_count=322697
+)
+Oh, how wonderful! Dogs bring so much joy to a home.
+
+Do you want to tell me a bit about them? Like what kind of dogs they are, or their names?
+That's easy! Since each dog has 4 paws, and you have 2 dogs:
+
+2 dogs * 4 paws/dog = **8 paws**
+
+So, there are 8 paws in your house!
+That's wonderful! Dogs bring so much
+________________________________________________________________________________
+ joy and life to a home.
+
+What kind of dogs are they? Do they have names? I'd love to hear more about them!
+________________________________________________________________________________
+Based on your previous statement that you have 2 dogs, and assuming they each have all four
+________________________________________________________________________________
+ paws, that would be:
+
+2 dogs * 4 paws/dog = **8 paws**
+
+That's a lot of happy paw prints around the house!
+________________________________________________________________________________
+[Content(
+  parts=[
+    Part(
+      text='Hello'
+    ),
+  ],
+  role='user'
+), Content(
+  parts=[
+    Part(
+      text='Great to meet you. What would you like to know?'
+    ),
+  ],
+  role='model'
+), UserContent(
+  parts=[
+    Part(
+      text='I have 2 dogs in my house.'
+    ),
+  ],
+  role='user'
+), Content(
+  parts=[
+    Part(
+      text="That's wonderful! Dogs bring so much"
+    ),
+  ],
+  role='model'
+), Content(
+  parts=[
+    Part(
+      text=""" joy and life to a home.
+
+What kind of dogs are they? Do they have names? I'd love to hear more about them!"""
+    ),
+  ],
+  role='model'
+), UserContent(
+  parts=[
+    Part(
+      text='How many paws are in my house?'
+    ),
+  ],
+  role='user'
+), Content(
+  parts=[
+    Part(
+      text='Based on your previous statement that you have 2 dogs, and assuming they each have all four'
+    ),
+  ],
+  role='model'
+), Content(
+  parts=[
+    Part(
+      text=""" paws, that would be:
+
+2 dogs * 4 paws/dog = **8 paws**
+
+That's a lot of happy paw prints around the house!"""
+    ),
+  ],
+  role='model'
+)]
+Absolutely! I'd love to learn about it.
+
+Since I can't *see* it directly, please tell me:
+
+*   **What is its name?**
+*   **
+________________________________________________________________________________
+Or, describe it to me!** What does it look like? How do you play it?
+
+I'm ready when you are!
+________________________________________________________________________________
+Based on the image, this is the console of an **organ**.
+
+It belongs to the
+________________________________________________________________________________
+ **keyboard instrument family**.
+
+More specifically, a traditional pipe organ (which this console would control) is classified as an **aerophone** (a wind instrument), as it produces sound by forcing air through pipes. Electronic organs, while producing
+________________________________________________________________________________
+ sound electronically, are designed to emulate the pipe organ and are also considered part of the organ family.
+________________________________________________________________________________
+media_resolution=None code_execution_result=None executable_code=None file_data=None function_call=None function_response=None inline_data=None text='```python\ndef is_prime(n):\n    """\n    Checks if a number is prime using an efficient method.\n    """\n    if n <= 1:\n        return False\n    if n <= 3:\n        return True\n    if n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (i + 2) == 0:\n            return False\n        i += 6\n    return True\n\nprimes = []\nnum = 2\nwhile len(primes) < 50:\n    if is_prime(num):\n        primes.append(num)\n    num += 1\n\ntotal_sum = sum(primes)\nprint(total_sum)\n```\n```\n4227\n```' thought=None thought_signature=None video_metadata=None tool_call=None tool_response=None part_metadata=None 
+
+--------------------------------------------------------------------------------
+
+ ```python
+def is_prime(n):
+    """
+    Checks if a number is prime using an efficient method.
+    """
+    if n <= 1:
+        return False
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+
+primes = []
+num = 2
+while len(primes) < 50:
+    if is_prime(num):
+        primes.append(num)
+    num += 1
+
+total_sum = sum(primes)
+print(total_sum)
+```
+```
+4227
+```
+import math
+
+def is_prime(num):
+    if num < 2:
+        return False
+    for i in range(2, int(math.sqrt(num)) + 1):
+        if num % i == 0:
+            return False
+    return True
+
+prime_numbers = []
+num_to_check = 2
+while len(prime_numbers) < 50:
+    if is_prime(num_to_check):
+        prime_numbers.append(num_to_check)
+    num_to_check += 1
+
+sum_of_primes = sum(prime_numbers)
+
+print(f"The first 50 prime numbers are: {prime_numbers}")
+print(f"The sum of the first 50 prime numbers is: {sum_of_primes}")
+print(f"Number of primes found: {len(prime_numbers)}")
+.......
+The first 50 prime numbers are: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229]
+The sum of the first 50 prime numbers is: 5117
+Number of primes found: 50
+
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+primes = []
+num = 2
+while len(primes) < 50:
+    if is_prime(num):
+        primes.append(num)
+    num += 1
+
+sum_of_primes = sum(primes)
+
+print(f"The first 50 prime numbers are: {primes}")
+print(f"The sum of the first 50 prime numbers is: {sum_of_primes}")
+
+The first 50 prime numbers are: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229]
+The sum of the first 50 prime numbers is: 5117
+
+None
+sdk_http_response=HttpResponse(
+  headers=<dict len=12>
+) candidates=[Candidate(
+  content=Content(
+    parts=[
+      Part(
+        text='[{"recipe_name":"Chocolate Chip Cookies","grade":"a+"},{"recipe_name":"Peanut Butter Cookies","grade":"a"},{"recipe_name":"Oatmeal Raisin Cookies","grade":"b"},{"recipe_name":"Sugar Cookies","grade":"a"},{"recipe_name":"Snickerdoodles","grade":"a"},{"recipe_name":"Macarons","grade":"b"},{"recipe_name":"Gingerbread Cookies","grade":"c"},{"recipe_name":"Shortbread Cookies","grade":"b"},{"recipe_name":"No-Bake Cookies","grade":"a"},{"recipe_name":"Molasses Cookies","grade":"c"}]'
+      ),
+    ],
+    role='model'
+  ),
+  finish_reason=<FinishReason.STOP: 'STOP'>,
+  index=0
+)] create_time=None model_version='gemini-3-flash-preview' prompt_feedback=None response_id='VlbnaenKAcLLqfkP6uPegAM' usage_metadata=GenerateContentResponseUsageMetadata(
+  candidates_token_count=130,
+  prompt_token_count=14,
+  prompt_tokens_details=[
+    ModalityTokenCount(
+      modality=<MediaModality.TEXT: 'TEXT'>,
+      token_count=14
+    ),
+  ],
+  thoughts_token_count=77,
+  total_token_count=221
+) model_status=None automatic_function_calling_history=[] parsed=[{'recipe_name': 'Chocolate Chip Cookies', 'grade': <Grade.A_PLUS: 'a+'>}, {'recipe_name': 'Peanut Butter Cookies', 'grade': <Grade.A: 'a'>}, {'recipe_name': 'Oatmeal Raisin Cookies', 'grade': <Grade.B: 'b'>}, {'recipe_name': 'Sugar Cookies', 'grade': <Grade.A: 'a'>}, {'recipe_name': 'Snickerdoodles', 'grade': <Grade.A: 'a'>}, {'recipe_name': 'Macarons', 'grade': <Grade.B: 'b'>}, {'recipe_name': 'Gingerbread Cookies', 'grade': <Grade.C: 'c'>}, {'recipe_name': 'Shortbread Cookies', 'grade': <Grade.B: 'b'>}, {'recipe_name': 'No-Bake Cookies', 'grade': <Grade.A: 'a'>}, {'recipe_name': 'Molasses Cookies', 'grade': <Grade.C: 'c'>}]
+sdk_http_response=HttpResponse(
+  headers=<dict len=12>
+) candidates=[Candidate(
+  content=Content(
+    parts=[
+      Part(
+        text='[{"recipe_name":"Chocolate Chip Cookies","ingredients":["all-purpose flour","baking soda","salt","unsalted butter","granulated sugar","brown sugar","eggs","vanilla extract","chocolate chips"]},{"recipe_name":"Oatmeal Raisin Cookies","ingredients":["all-purpose flour","baking soda","cinnamon","salt","unsalted butter","granulated sugar","brown sugar","eggs","vanilla extract","rolled oats","raisins"]},{"recipe_name":"Peanut Butter Cookies","ingredients":["all-purpose flour","baking soda","salt","unsalted butter","peanut butter","granulated sugar","brown sugar","eggs","vanilla extract"]}]'
+      ),
+    ],
+    role='model'
+  ),
+  finish_reason=<FinishReason.STOP: 'STOP'>,
+  index=0
+)] create_time=None model_version='gemini-3-flash-preview' prompt_feedback=None response_id='WlbnacHsDouMqfkPi8e2kA0' usage_metadata=GenerateContentResponseUsageMetadata(
+  candidates_token_count=136,
+  prompt_token_count=8,
+  prompt_tokens_details=[
+    ModalityTokenCount(
+      modality=<MediaModality.TEXT: 'TEXT'>,
+      token_count=8
+    ),
+  ],
+  thoughts_token_count=83,
+  total_token_count=227
+) model_status=None automatic_function_calling_history=[] parsed=[{'recipe_name': 'Chocolate Chip Cookies', 'ingredients': ['all-purpose flour', 'baking soda', 'salt', 'unsalted butter', 'granulated sugar', 'brown sugar', 'eggs', 'vanilla extract', 'chocolate chips']}, {'recipe_name': 'Oatmeal Raisin Cookies', 'ingredients': ['all-purpose flour', 'baking soda', 'cinnamon', 'salt', 'unsalted butter', 'granulated sugar', 'brown sugar', 'eggs', 'vanilla extract', 'rolled oats', 'raisins']}, {'recipe_name': 'Peanut Butter Cookies', 'ingredients': ['all-purpose flour', 'baking soda', 'salt', 'unsalted butter', 'peanut butter', 'granulated sugar', 'brown sugar', 'eggs', 'vanilla extract']}]
+sdk_http_response=HttpResponse(
+  headers=<dict len=12>
+) candidates=[Candidate(
+  content=Content(
+    parts=[
+      Part(
+        text='"Keyboard"'
+      ),
+    ],
+    role='model'
+  ),
+  finish_reason=<FinishReason.STOP: 'STOP'>,
+  index=0
+)] create_time=None model_version='gemini-3-flash-preview' prompt_feedback=None response_id='YFbnadi9Ov_OjuMP_5eJyAE' usage_metadata=GenerateContentResponseUsageMetadata(
+  candidates_token_count=3,
+  prompt_token_count=266,
+  prompt_tokens_details=[
+    ModalityTokenCount(
+      modality=<MediaModality.TEXT: 'TEXT'>,
+      token_count=8
+    ),
+    ModalityTokenCount(
+      modality=<MediaModality.IMAGE: 'IMAGE'>,
+      token_count=258
+    ),
+  ],
+  thoughts_token_count=60,
+  total_token_count=329
+) model_status=None automatic_function_calling_history=[] parsed=<Choice.KEYBOARD: 'Keyboard'>
+sdk_http_response=HttpResponse(
+  headers=<dict len=12>
+) candidates=[Candidate(
+  content=Content(
+    parts=[
+      Part(
+        text='"Keyboard"'
+      ),
+    ],
+    role='model'
+  ),
+  finish_reason=<FinishReason.STOP: 'STOP'>,
+  index=0
+)] create_time=None model_version='gemini-3-flash-preview' prompt_feedback=None response_id='aFbnaaDXD6HRjuMPuMzxuQY' usage_metadata=GenerateContentResponseUsageMetadata(
+  candidates_token_count=3,
+  prompt_token_count=266,
+  prompt_tokens_details=[
+    ModalityTokenCount(
+      modality=<MediaModality.TEXT: 'TEXT'>,
+      token_count=8
+    ),
+    ModalityTokenCount(
+      modality=<MediaModality.IMAGE: 'IMAGE'>,
+      token_count=258
+    ),
+  ],
+  thoughts_token_count=56,
+  total_token_count=325
+) model_status=None automatic_function_calling_history=[] parsed='Keyboard'
+sdk_http_response=HttpResponse(
+  headers=<dict len=12>
+) candidates=[Candidate(
+  content=Content(
+    parts=[
+      Part(
+        text="""```json
+[
+  {
+    "recipe_name": "Chocolate Chip Cookies",
+    "ingredients": [
+      "All-purpose flour",
+      "Unsalted butter",
+      "Granulated sugar",
+      "Brown sugar",
+      "Eggs",
+      "Vanilla extract",
+      "Baking soda",
+      "Salt",
+      "Chocolate chips"
+    ]
+  },
+  {
+    "recipe_name": "Oatmeal Raisin Cookies",
+    "ingredients": [
+      "All-purpose flour",
+      "Rolled oats",
+      "Unsalted butter",
+      "Granulated sugar",
+      "Brown sugar",
+      "Eggs",
+      "Vanilla extract",
+      "Baking soda",
+      "Cinnamon",
+      "Salt",
+      "Raisins"
+    ]
+  },
+  {
+    "recipe_name": "Peanut Butter Cookies",
+    "ingredients": [
+      "All-purpose flour",
+      "Peanut butter",
+      "Unsalted butter",
+      "Granulated sugar",
+      "Brown sugar",
+      "Eggs",
+      "Baking soda",
+      "Salt"
+    ]
+  },
+  {
+    "recipe_name": "Sugar Cookies",
+    "ingredients": [
+      "All-purpose flour",
+      "Unsalted butter",
+      "Granulated sugar",
+      "Eggs",
+      "Vanilla extract",
+      "Baking powder",
+      "Salt"
+    ]
+  }
+]
+```"""
+      ),
+    ],
+    role='model'
+  ),
+  finish_reason=<FinishReason.STOP: 'STOP'>,
+  index=0
+)] create_time=None model_version='gemini-3-flash-preview' prompt_feedback=None response_id='a1bnaf7WA7rDjuMPlYTRqAM' usage_metadata=GenerateContentResponseUsageMetadata(
+  candidates_token_count=343,
+  prompt_token_count=41,
+  prompt_tokens_details=[
+    ModalityTokenCount(
+      modality=<MediaModality.TEXT: 'TEXT'>,
+      token_count=41
+    ),
+  ],
+  thoughts_token_count=464,
+  total_token_count=848
+) model_status=None automatic_function_calling_history=[] parsed=None..............
+sdk_http_response=HttpResponse(
+  headers=<dict len=12>
+) candidates=[Candidate(
+  content=Content(
+    parts=[
+      Part(
+        text='Keyboard'
+      ),
+    ],
+    role='model'
+  ),
+  finish_reason=<FinishReason.STOP: 'STOP'>,
+  index=0
+)] create_time=None model_version='gemini-3-flash-preview' prompt_feedback=None response_id='dFbnac2CCq6FqfkP3MeGsQg' usage_metadata=GenerateContentResponseUsageMetadata(
+  candidates_token_count=1,
+  prompt_token_count=266,
+  prompt_tokens_details=[
+    ModalityTokenCount(
+      modality=<MediaModality.TEXT: 'TEXT'>,
+      token_count=8
+    ),
+    ModalityTokenCount(
+      modality=<MediaModality.IMAGE: 'IMAGE'>,
+      token_count=258
+    ),
+  ],
+  thoughts_token_count=75,
+  total_token_count=342
+) model_status=None automatic_function_calling_history=[] parsed=<Choice.KEYBOARD: 'Keyboard'>
+sdk_http_response=HttpResponse(
+  headers=<dict len=12>
+) candidates=[Candidate(
+  content=Content(
+    parts=[
+      Part(
+        text='Keyboard'
+      ),
+    ],
+    role='model'
+  ),
+  finish_reason=<FinishReason.STOP: 'STOP'>,
+  index=0
+)] create_time=None model_version='gemini-3-flash-preview' prompt_feedback=None response_id='e1bnacvzGuOcjuMP-snLqQE' usage_metadata=GenerateContentResponseUsageMetadata(
+  candidates_token_count=1,
+  prompt_token_count=266,
+  prompt_tokens_details=[
+    ModalityTokenCount(
+      modality=<MediaModality.TEXT: 'TEXT'>,
+      token_count=8
+    ),
+    ModalityTokenCount(
+      modality=<MediaModality.IMAGE: 'IMAGE'>,
+      token_count=258
+    ),
+  ],
+  thoughts_token_count=238,
+  total_token_count=505
+) model_status=None automatic_function_calling_history=[] parsed=None
+sdk_http_response=HttpResponse(
+  headers=<dict len=11>
+) total_tokens=10 cached_content_token_count=None
+cache_tokens_details=[ModalityTokenCount(
+  modality=<MediaModality.TEXT: 'TEXT'>,
+  token_count=322697
+)] cached_content_token_count=322697 candidates_token_count=393 candidates_tokens_details=None prompt_token_count=322707 prompt_tokens_details=[ModalityTokenCount(
+  modality=<MediaModality.TEXT: 'TEXT'>,
+  token_count=322707
+)] thoughts_token_count=3865 tool_use_prompt_token_count=None tool_use_prompt_tokens_details=None total_token_count=326965 traffic_type=None
+sdk_http_response=HttpResponse(
+  headers=<dict len=11>
+) total_tokens=10 cached_content_token_count=None
+cache_tokens_details=None cached_content_token_count=None candidates_token_count=30 candidates_tokens_details=None prompt_token_count=25 prompt_tokens_details=[ModalityTokenCount(
+  modality=<MediaModality.TEXT: 'TEXT'>,
+  token_count=25
+)] thoughts_token_count=1207 tool_use_prompt_token_count=None tool_use_prompt_tokens_details=None total_token_count=1262 traffic_type=None
+sdk_http_response=HttpResponse(
+  headers=<dict len=11>
+) total_tokens=64 cached_content_token_count=None
+model_info.input_token_limit=1048576
+model_info.output_token_limit=65536
+sdk_http_response=HttpResponse(
+  headers=<dict len=11>
+) total_tokens=264 cached_content_token_count=None
+cache_tokens_details=None cached_content_token_count=None candidates_token_count=729 candidates_tokens_details=None prompt_token_count=264 prompt_tokens_details=[ModalityTokenCount(
+  modality=<MediaModality.TEXT: 'TEXT'>,
+  token_count=6
+), ModalityTokenCount(
+  modality=<MediaModality.IMAGE: 'IMAGE'>,
+  token_count=258
+)] thoughts_token_count=1263 tool_use_prompt_token_count=None tool_use_prompt_tokens_details=None total_token_count=2256 traffic_type=None
+sdk_http_response=HttpResponse(
+  headers=<dict len=11>
+) total_tokens=264 cached_content_token_count=None
+cache_tokens_details=None cached_content_token_count=None candidates_token_count=851 candidates_tokens_details=None prompt_token_count=264 prompt_tokens_details=[ModalityTokenCount(
+  modality=<MediaModality.TEXT: 'TEXT'>,
+  token_count=6
+), ModalityTokenCount(
+  modality=<MediaModality.IMAGE: 'IMAGE'>,
+  token_count=258
+)] thoughts_token_count=1281 tool_use_prompt_token_count=None tool_use_prompt_tokens_details=None total_token_count=2396 traffic_type=None
+token_count=CountTokensResponse(
+  sdk_http_response=HttpResponse(
+    headers=<dict len=11>
+  ),
+  total_tokens=525
+)
+cache_tokens_details=None cached_content_token_count=None candidates_token_count=304 candidates_tokens_details=None prompt_token_count=525 prompt_tokens_details=[ModalityTokenCount(
+  modality=<MediaModality.TEXT: 'TEXT'>,
+  token_count=9
+), ModalityTokenCount(
+  modality=<MediaModality.DOCUMENT: 'DOCUMENT'>,
+  token_count=516
+)] thoughts_token_count=1363 tool_use_prompt_token_count=None tool_use_prompt_tokens_details=None total_token_count=2192 traffic_type=None
+Processing video...
+File state: FileState.PROCESSING
+sdk_http_response=HttpResponse(
+  headers=<dict len=11>
+) total_tokens=301 cached_content_token_count=None
+cache_tokens_details=None cached_content_token_count=None candidates_token_count=263 candidates_tokens_details=None prompt_token_count=301 prompt_tokens_details=[ModalityTokenCount(
+  modality=<MediaModality.TEXT: 'TEXT'>,
+  token_count=6
+), ModalityTokenCount(
+  modality=<MediaModality.VIDEO: 'VIDEO'>,
+  token_count=263
+), ModalityTokenCount(
+  modality=<MediaModality.AUDIO: 'AUDIO'>,
+  token_count=32
+)] thoughts_token_count=1023 tool_use_prompt_token_count=None tool_use_prompt_tokens_details=None total_token_count=1587 traffic_type=None
+total_tokens:  sdk_http_response=HttpResponse(
+  headers=<dict len=11>
+) total_tokens=11 cached_content_token_count=None
+cache_tokens_details=None cached_content_token_count=None candidates_token_count=75 candidates_tokens_details=None prompt_token_count=11 prompt_tokens_details=[ModalityTokenCount(
+  modality=<MediaModality.TEXT: 'TEXT'>,
+  token_count=11
+)] thoughts_token_count=31 tool_use_prompt_token_count=None tool_use_prompt_tokens_details=None total_token_count=117 traffic_type=None
+[ContentEmbedding(
+  values=[
+    -0.022374554,
+    -0.004560777,
+    0.013309286,
+    -0.0545072,
+    -0.02090443,
+    <... 5 more items ...>,
+  ]
+), ContentEmbedding(
+  values=[
+    -0.007975887,
+    -0.02141119,
+    -0.0016711014,
+    -0.061006967,
+    -0.010629714,
+    <... 5 more items ...>,
+  ]
+), ContentEmbedding(
+  values=[
+    -0.0047850125,
+    0.008764064,
+    0.0062852204,
+    -0.017785408,
+    -0.02952513,
+    <... 5 more items ...>,
+  ]
+)]
+[ContentEmbedding(
+  values=[
+    -0.030456183,
+    0.014551518,
+    0.024027243,
+    -0.0658622,
+    0.004198703,
+    <... 5 more items ...>,
+  ]
+)]
+myfile=File(
+  create_time=datetime.datetime(2026, 4, 21, 10, 53, 0, 547920, tzinfo=TzInfo(UTC)),
+  expiration_time=datetime.datetime(2026, 4, 23, 10, 52, 58, 447289, tzinfo=TzInfo(UTC)),
+  mime_type='audio/mpeg',
+  name='files/45xufjk0ty1u',
+  sha256_hash='MGU3ZmFmZTE5ODRhZWQyNGMxNWJlMDc4OWEzNWU2MGM1YWYwYzczNzNiOWVkOWYyNjMxMzE2NzQwYTRiOWVlNg==',
+  size_bytes=41762063,
+  source=<FileSource.UPLOADED: 'UPLOADED'>,
+  state=<FileState.ACTIVE: 'ACTIVE'>,
+  update_time=datetime.datetime(2026, 4, 21, 10, 53, 0, 547920, tzinfo=TzInfo(UTC)),
+  uri='https://generativelanguage.googleapis.com/v1beta/files/45xufjk0ty1u'
+)
+result.text='This audio clip is an excerpt from a speech delivered by John F. Kennedy. He addresses the Congress, reflecting on his return to a place he considers his "oldest home" and expressing confidence in their continued friendship. Kennedy touches upon various pressing issues including the state of the economy, international relations, and domestic concerns such as housing, education, and healthcare. He emphasizes the need for action and warns against complacency, particularly in the face of global challenges and the Cold War. He discusses the national debt, the need for a stronger military, and the importance of international cooperation. Kennedy advocates for expanded aid to developing nations, an alliance for progress in Latin America, and a renewed commitment to the United Nations. He concludes with a powerful call for dedication, perseverance, and a hopeful yet realistic outlook on the future, echoing the words of a past president. The audience frequently applauds during his address.'
+This PDF introduces **Gemini 1.5 Pro**, the latest model in the Gemini family, which is described as a highly compute-efficient multimodal mixture-of-experts model.
+
+**Key highlights of Gemini 1.5 Pro include:**
+
+*   **Unprecedented Long Context Window:** It can recall and reason over fine-grained information from *millions of tokens* of context, extending up to **10 million tokens**. This allows it to process multiple long documents, hours of video (up to 10.5 hours), and days of audio (up to 107 hours).
+*   **Multimodal Understanding:** It excels across text, video, and audio modalities.
+*   **Near-Perfect Recall:** Achieves near-perfect recall (over 99.7%) on long-context retrieval tasks, even at 10 million tokens.
+*   **State-of-the-Art Performance:** Improves state-of-the-art in long-document QA, long-video QA, and long-context ASR. It matches or surpasses Gemini 1.0 Ultra's performance across various benchmarks while requiring significantly less compute to train.
+*   **Generational Leap:** Its context window is a significant leap over existing models like Claude 2.1 (200k tokens) and GPT-4 Turbo (128k tokens).
+*   **Surprising In-Context Learning:** Demonstrates remarkable in-context learning capabilities, such as learning to translate English to **Kalamang** (a low-resource language with <200 speakers) solely from a provided grammar manual, dictionary, and a few hundred parallel sentences. The quality of these translations is comparable to a person who learned from the same materials.
+
+In essence, Gemini 1.5 Pro represents a major advancement in large language models by dramatically extending context capabilities, enhancing multimodal understanding, and demonstrating advanced in-context learning, all while being highly compute-efficient........
+myfile=File(
+  create_time=datetime.datetime(2026, 4, 21, 10, 53, 34, 724577, tzinfo=TzInfo(UTC)),
+  expiration_time=datetime.datetime(2026, 4, 23, 10, 53, 33, 615779, tzinfo=TzInfo(UTC)),
+  mime_type='image/jpeg',
+  name='files/45srmlk8pacp',
+  sha256_hash='ODIxNjIwYjZhOWE3YjQ5ZmEyNTE0ODkxNWJmYzk2MDhmY2NmYjY5YTU2MTgzN2ZhMTNlYzA3NDg3NmRlYWRiNQ==',
+  size_bytes=2991694,
+  source=<FileSource.UPLOADED: 'UPLOADED'>,
+  state=<FileState.ACTIVE: 'ACTIVE'>,
+  update_time=datetime.datetime(2026, 4, 21, 10, 53, 34, 724577, tzinfo=TzInfo(UTC)),
+  uri='https://generativelanguage.googleapis.com/v1beta/files/45srmlk8pacp'
+)
+result.text='The photo displays a collection of musical instruments commonly associated with folk or traditional music genres. Here\'s a breakdown of each:\n\n1.  **Violin / Fiddle:** On the right side of the image, there\'s a classic **violin** (often called a **fiddle** when played in a folk context). It\'s a string instrument, typically with four strings, played with a bow. You can see its wooden body, f-holes, neck, scroll, and tuning pegs. The bow, made of wood with horsehair, is resting across the instrument.\n\n2.  **Diatonic Button Accordion / Melodeon:** In the lower-left, there\'s a **diatonic button accordion**. This type of accordion uses buttons instead of a piano-style keyboard on the treble side, and often produces different notes when the bellows are pushed versus pulled (hence "diatonic"). It features a wooden casing, bright red and black bellows, rows of small buttons on the right for melodies, and larger buttons on the left for bass notes and chords. This instrument is also frequently referred to as a **melodeon**, particularly in European folk music traditions.\n\n3.  **Triangle:** In the upper-left corner, there\'s a **triangle** with its accompanying metal beater. This is a percussion instrument, made from a metal rod bent into a triangular shape, open at one corner. It produces a high-pitched, ringing sound when struck with the beater.\n\nThese instruments together suggest an ensemble focused on traditional tunes, perhaps from Irish, Scottish, American old-time, or various European folk music traditions.'
+This PDF introduces **Gemini 1.5 Pro**, the latest model in the Gemini family from Google DeepMind. It is a highly compute-efficient, multimodal **mixture-of-experts (MoE)** model designed for advanced understanding and reasoning over exceptionally long contexts.
+
+Key highlights include:
+
+*   **Unprecedented Context Window:** Gemini 1.5 Pro can recall and reason over fine-grained information from up to **10 million tokens** of context. This is a generational leap over existing models like Claude 2.1 (200k tokens) and GPT-4 Turbo (128k tokens).
+*   **Multimodal Capabilities:** It handles long-form mixed-modality inputs, including:
+    *   Up to **7 million words** of text (10M tokens).
+    *   Up to **10.5 hours** of video (9.9M tokens).
+    *   Up to **107 hours** of audio (9.7M tokens).
+*   **Near-Perfect Recall:** The model achieves near-perfect recall (>99% or >99.7%) on long-context retrieval tasks across all modalities (text, video, audio), even at the 10M token limit.
+*   **State-of-the-Art Performance:** It improves the state-of-the-art in long-document QA, long-video QA, and long-context ASR, matching or surpassing Gemini 1.0 Ultra's performance across a broad set of benchmarks and outperforming competing models, even when augmented with external retrieval methods.
+*   **Surprising New Capabilities:** When given a grammar manual, dictionary, and a few hundred parallel sentences for Kalamang (a language with fewer than 200 speakers), Gemini 1.5 Pro learns to translate English to Kalamang at a level comparable to a person who learned from the same materials.
+
+In essence, Gemini 1.5 Pro sets a new standard for processing and understanding vast amounts of information across different modalities, enabling advanced in-context learning capabilities.
+myfile=File(
+  create_time=datetime.datetime(2026, 4, 21, 10, 54, 7, 453981, tzinfo=TzInfo(UTC)),
+  expiration_time=datetime.datetime(2026, 4, 23, 10, 54, 5, 398178, tzinfo=TzInfo(UTC)),
+  mime_type='text/plain',
+  name='files/fe3qax7g4xy3',
+  sha256_hash='YmYwOGZkNGVhNTdhZGRkMDI0NDc5MzZjMjFlMmJiNjg1NDMzN2FmY2M1OWQ5YjEyODVjNTZkM2ExYWE2ODllMA==',
+  size_bytes=135,
+  source=<FileSource.UPLOADED: 'UPLOADED'>,
+  state=<FileState.ACTIVE: 'ACTIVE'>,
+  update_time=datetime.datetime(2026, 4, 21, 10, 54, 7, 453981, tzinfo=TzInfo(UTC)),
+  uri='https://generativelanguage.googleapis.com/v1beta/files/fe3qax7g4xy3'
+)
+result.text='And cowslips bright of golden sheen,\nAmidst the fields of emerald green,\nWhile buzzing bees, with gentle hum,\nProclaim that joyous spring has come.'
+myfile=File(
+  create_time=datetime.datetime(2026, 4, 21, 10, 54, 23, 674174, tzinfo=TzInfo(UTC)),
+  expiration_time=datetime.datetime(2026, 4, 23, 10, 54, 21, 735499, tzinfo=TzInfo(UTC)),
+  mime_type='video/mp4',
+  name='files/5ony7tg5q0rv',
+  sha256_hash='MjQzZjY4MWFmMDllNDhiYjJkNGNlZWUxYzg5ZGM3MWRmNzcyMjgwODUyMDFlMjUxM2JjZWQ0OGI1NDdlZDg4OQ==',
+  size_bytes=106677,
+  source=<FileSource.UPLOADED: 'UPLOADED'>,
+  state=<FileState.PROCESSING: 'PROCESSING'>,
+  update_time=datetime.datetime(2026, 4, 21, 10, 54, 23, 674174, tzinfo=TzInfo(UTC)),
+  uri='https://generativelanguage.googleapis.com/v1beta/files/5ony7tg5q0rv'
+)
+Processing video...
+File state: FileState.PROCESSING
+result.text='This video clip shows an animated scene set outdoors on a vibrant green grassy field under a bright sky.\n\nThree animal characters are visible:\n1.  **Left:** A dark gray, roundish, furry creature with pink ears is sitting at the base of a large, light brown tree trunk, holding a small, brown nut-like object in its paws.\n2.  **Center:** A reddish-brown fox-like character is sitting upright, holding a small, folded purple umbrella or parasol in one paw, appearing to be gesturing with it.\n3.  **Right:** A smaller, striped brown and white chipmunk or squirrel-like character is sitting with its mouth open, looking towards the fox, as if reacting or speaking.\n\nThe background consists of more distant green trees and bushes under a clear, hazy blue sky. The overall scene suggests a lively interaction or conversation among the animal friends in a bright, natural setting.'
+files/x2qul1ycqd7g
+name='files/x2qul1ycqd7g' display_name=None mime_type='text/plain' size_bytes=135 create_time=datetime.datetime(2026, 4, 21, 10, 54, 49, 247505, tzinfo=TzInfo(UTC)) expiration_time=datetime.datetime(2026, 4, 23, 10, 54, 48, 141731, tzinfo=TzInfo(UTC)) update_time=datetime.datetime(2026, 4, 21, 10, 54, 49, 247505, tzinfo=TzInfo(UTC)) sha256_hash='YmYwOGZkNGVhNTdhZGRkMDI0NDc5MzZjMjFlMmJiNjg1NDMzN2FmY2M1OWQ5YjEyODVjNTZkM2ExYWE2ODllMA==' uri='https://generativelanguage.googleapis.com/v1beta/files/x2qul1ycqd7g' download_uri=None state=<FileState.ACTIVE: 'ACTIVE'> source=<FileSource.UPLOADED: 'UPLOADED'> video_metadata=None error=None
+My files:
+   files/x2qul1ycqd7g
+   files/5ony7tg5q0rv
+   files/fe3qax7g4xy3
+   files/6987he4wz5qz
+   files/45srmlk8pacp
+   files/6hrv5h0geors
+   files/ykchnxw9xum1
+   files/45xufjk0ty1u
+   files/hy0pv6v2zjmt
+   files/2jytedn98khu
+   files/jcerfj8oxftg
+   files/tgi8mp3oe1yq
+   files/0qpbn7ampn2w
+   files/tj0uc51sqrkb
+   files/1tnnm4q4gzg6
+   files/pi2bxb4ojhiq
+   files/zc6r6qp287x6
+   files/z5w2lywuu0po
+   files/c4p763l2w13r
+   files/iw5sodhgpk9t
+   files/70sgk56a7urm
+   files/bcvwjz9jhd2c
+   files/br2680a5pbcx
+   files/46us5ktphoog
+   files/9v5j7gj2ryf5
+   files/zbv340946x60
+   files/7l0fqpgz4rqt
+   files/u63z7ghcbaoe
+   files/zwf8tzfep2qc
+   files/cv8az3lrq9mt
+   files/981xuozexq0a
+   files/wn2nehic1d5i
+   files/awg0a00bwbef
+   files/89hbpslabegz
+   files/bung384bjapv
+   files/w5ec8798so15
+   files/eykflncggrx1
+   files/w1ps0s97dtd7
+   files/tizdtwb4if8b
+   files/kf4e8nz1dlxf
+   files/ptfleoikklkn
+   files/9qmdpptqrlkj
+   files/dqw2i861cqz9
+   files/fcx2k519a04y
+   files/qox1189f9sjn
+   files/9xn4a72dar8c
+   files/qmuf2qa6ldnx
+   files/3djhkqw5pm1r
+   files/jf8enf8amtxo
+   files/0ebe8e550kj5
+   files/lvv2n40ddy76
+   files/1dv2afs7y9hg
+   files/fnc3k1vewdp2
+   files/6a5u2z7qrumf
+   files/zdybbvomf4bz
+   files/9ex7nsv2e3bk...
+   files/8ryd5easj26j
+   files/0pqxlu3i8fu5
+   files/5dkgb8z98fam
+   files/v4uezjdrfx9p
+   files/foiqd2ikge6c
+   files/w4htv9d7qb9f
+   files/dyfy9mpf9fbq
+   files/69pgu43ib8up
+   files/vak3u6hc00eu
+   files/7d6w20jknfqv
+   files/4h36mmpgzszv
+   files/j2hkfuvssjkp
+   files/vpicpcuj3ncs
+   files/loo9hhbl8i06
+   files/cvgfzvj5so4d
+   files/49fbdqwooetd
+   files/jxokxon9vnrh
+   files/ypw8xauude3l
+   files/w4vcw3skg7tt
+   files/rki5j1z408c1
+   files/73b9z1a1gcty
+   files/wvaimd4fhs2k
+   files/o0ebaw5j5r7t
+   files/hawyrm1b02sa
+   files/i4vgsdz0xbaf
+   files/y6u4do17q6l2
+   files/zysw7jasqtij
+   files/gwmuf19922hv
+   files/ry3p9kcjudle
+   files/xli0ypl7t3hm
+   files/zjad42sgm95z
+   files/n5t1eqfrb32q
+   files/uwmd60r2e6sd
+   files/pee3mc97nqyc
+   files/lbjttzmv2ebn
+   files/0tzz52dpmgid
+   files/cb4kgp4rp7rb
+   files/kvtt5n0z8c69
+   files/bl73bd42of31
+   files/sp4ation0zma
+   files/3r8c6wlp6lym
+   files/khkwmuc5gy7e
+   files/mfuleyid0ze0
+   files/76sddklp9axo
+   files/2fjcrb21vlt7
+   files/rjodvpxvy12b
+   files/qt8csthd5gkz
+   files/bi8ybvu6zwz9
+   files/wmb1mdfpv6bk
+   files/vnjcli7sfaxb
+   files/1w91ss08dmpt
+   files/2o0kecy8hp3f
+   files/ajw8raemseb9
+   files/f3p3ism6cbyf
+   files/s34ymjxw9xii
+   files/pp54ftciyrd3
+   files/3m1uwwl7jr4p
+   files/u3zx1394leh4
+   files/dxj0p6teyj6r
+   files/u93ixabizg3t
+   files/moc14cs0hdyl
+   files/kzy10x88ozf6
+   files/uzglb8e8ith4
+   files/7hc8wbx7g3kk
+   files/qwb3243oxgzu
+   files/azu0i4mmuf8n
+   files/zdzwpzfmhesw
+   files/gykbra7t464s
+   files/t9aiskt4zrz3
+   files/37x6u1ve97al
+   files/ft0ca5apfh2w
+   files/1rpc5g1ye2zb
+   files/b76n6uqazhkb
+   files/qaotibs88k8x
+   files/x01a9u419d33
+   files/wo6artmny1um
+   files/ogudq01lwodz
+   files/5kxx3xsl77vv
+   files/r16amrdao232
+   files/77n4o7ejzlck
+   files/o2c06thowaj3
+   files/raeht2km4g94
+   files/tas0ftv6xpmi
+   files/cqtpael3c3dl
+   files/f4068vbclfcj
+   files/gt7ej1s47mt5
+   files/wi50anrpau02
+   files/sln0abyk7wag
+   files/crghe74tqdt6
+   files/acvrlq27ombi
+   files/8u2q8yomcp83
+   files/20u2iaa26c05
+   files/2a2kx428nu3g
+   files/215xy7i3vei3
+   files/rnf603iremc4
+   files/hecb5a5fdwy2
+   files/1xscerkf6rpx
+   files/k2nlgplsum02
+   files/3qewar5yxhnf
+   files/buqoddtl91do
+   files/wdemisyy8y6h
+   files/tb8ty4lplc4o
+   files/gwzqzgph034w
+   files/hjyeovr7yp97
+   files/xsx0qlzd25xg
+   files/0tj5o5qeue9z
+   files/q7wqftos9rus
+   files/k7qayeby6v2f
+   files/x7fukw0bak33
+   files/2fj7rafl1tve
+   files/duhi5lfdo3ig
+   files/96q23amgtd23
+   files/df2n5ddaq0bt
+   files/w83i8h343u37
+   files/ggbuna7pmjg5
+   files/56ao4l6vp7o7
+   files/cpa2k0glpy31
+   files/up0dfyrvfd9u
+   files/3f8xorlikfz7
+   files/0svi85hjk6gy
+   files/hq72jrjgf1to
+   files/73p9qjzl5i6a
+   files/btzjvisj5ob8
+   files/wh2t86pd1yxd
+   files/2emsjvki0hcm
+   files/azudivuwdwk3
+   files/728wue2sg2c7
+   files/ovdob9yq28qn
+   files/f3zvh09p6jr8
+   files/qdgtnjzz59tn
+   files/yues2ijubgzo
+   files/yrej5eckot9r
+   files/9uhi4zzvsrxv
+   files/nird2a6w4tw6
+   files/11tgwqg3bdc2
+   files/8k43xyy6a0l6
+   files/11i4kwt74k44
+   files/rxv6vccyq0qa
+   files/4m1yw9cy5onv
+   files/k5121tkp1k5c
+   files/bp19vn81m75z
+   files/z2vt2nacbrwg
+   files/sx1flu56t23t
+   files/4v1be3xl5nq0
+   files/scij1un73f7m
+   files/d8vdtvb6wes8
+   files/xomosb26mnme
+   files/quuihhjfjeck
+   files/gr2afbsarl2n
+   files/9o6zddz7cbb2
+   files/1phkok1wnx1v
+   files/4gtonuluz0j8
+   files/c1nne2evgl4d
+   files/fi5ygeeye6hi
+   files/279lq8uzpez6
+   files/mqz65vi3gr1c
+   files/8krbe4jgek88
+   files/l3pigrfzr5p4
+   files/npnqzzzorj2i
+   files/2rxxhpvlp53i
+   files/tsoua72eka45
+   files/ckthxvf84dkc
+   files/lfgpmpbjlxpb
+   files/wa4t8foasrmb
+   files/15jn4q04kw56
+   files/5pb1crt3wntc
+   files/4uuuwyyd5jj8
+   files/4nnlsjr90vi3
+   files/t9nf9iqh2rxs
+   files/zdp21dqybz08
+   files/tte4xsoc1hak
+   files/fqk0bm6s2cpy
+   files/jiwe57gie11y
+   files/55sl4n3t9qy4
+   files/m1l2aqmunm9s
+   files/dbj8scwmkkmi
+   files/t2dxbrwv8xcv
+   files/euv01uz4j84m
+   files/1rhm38jovaoz
+   files/cnnsedf9lvtz
+   files/o6saoju2pncn
+   files/fbckrxxfz917
+   files/td152500vaat
+   files/gyrk04lkfjwq
+   files/eu6p0qf64mq6
+   files/b4qtsipriq8s
+   files/birwhgrzqf9j
+   files/r5b6ssktv4h5
+   files/avz1xgyzrl1x
+   files/x843u0uahypi
+   files/0m3l0hdcq671
+   files/fgw4havi4jtd
+   files/zvfrxf09v01d
+   files/rkhsfrub1a9i
+   files/dfldw9s3xz0h
+   files/5cnhexnp7lyr
+   files/4fq6ogujhkbs
+   files/jvix3xhu10yo
+   files/dtq0wrak92vs
+   files/qik7gprp7ggo
+   files/6c1h5ze4ph1v
+   files/wfcirsu1imml
+You have a total of 2508 mittens.
+name='models/gemini-3-flash-preview' display_name='Gemini 2.5 Flash' description='Stable version of Gemini 2.5 Flash, our mid-size multimodal model that supports up to 1 million tokens, released in June of 2025.' version='001' endpoints=None labels=None tuned_model_info=TunedModelInfo() input_token_limit=1048576 output_token_limit=65536 supported_actions=['generateContent', 'countTokens', 'createCachedContent', 'batchGenerateContent'] default_checkpoint_id=None checkpoints=None temperature=1.0 max_temperature=2.0 top_p=0.95 top_k=64 thinking=True
+List of models that support generateContent:
+
+models/evergreen-custom
+models/calmriver
+models/goldmane
+models/gemini-goldmane
+models/gemini-goldmane-no-signatures
+models/prowlridge
+models/prowlridge-fc20
+models/gemini-3.1-pro-preview-aistudio-goldmane-fc20
+models/gemini-3.1-pro-preview-aistudio-goldmane-fc20-fst-force
+models/gemini-3.1-pro-preview-aistudio-goldmane-eac
+models/gemini-3.1-pro-preview-aistudio-goldmane-eac-fst-force
+models/goldmane-csi-test
+models/bard-style-001-abtest
+models/gemini-v3s-csi-test
+models/gemini-robotics-er
+models/gemini-3.1-pro-preview-csi-browse-summary
+models/gemini-3.1-pro-preview-exp-03-25
+models/gemini-3.1-pro-preview-preview-03-25-fc2p0
+models/gemini-3.1-pro-preview-deepthink-exp-05-20
+models/scarrock
+models/gemini-3.1-pro-preview-1p
+models/gemini-3.1-pro-preview-1p-freebie
+models/gemini-3.1-pro-preview-vtea-da-csi
+models/tool-use-model1
+models/tool-use-model2
+models/tool-use-model3
+models/tool-use-model4
+models/tool-use-model5
+models/gemini-3.1-pro-preview-1p-recitation-off
+models/gemini-3-flash-preview-1p
+models/gemini-3-flash-preview-1p-recitation-off
+models/gemini-3-flash-preview-1p-recitation-off-panscan-off
+models/gemini-3.1-pro-preview-exp-03-25-1p-coding
+models/gemini-3-flash-preview
+models/gemini-3-flash-preview-batch
+models/gdm-eval-wiz-001
+models/gdm-eval-wiz-002
+models/gemini-v3-byom
+models/gemini-3.1-pro-preview-exp-05-06-session-id
+models/gemini-3.1-pro-preview-exp-05-06-session-id-logging
+models/gemini-3.1-pro-preview
+models/gemini-3.1-pro-preview-preview-06-05-1p-coding
+models/nano-banana
+models/gemini-3-flash-preview-vertex-test
+models/gemini-3.1-pro-preview-exp-06-05-session-id
+models/gemini-3.1-pro-preview-exp-06-05-session-id-logging
+models/gemini-3-flash-preview
+models/gemini-3-flash-preview-001
+models/gemini-3-flash-preview-001-1p-coding
+models/gemini-3-flash-preview-lite-001
+models/gemini-3-flash-preview-lite
+models/gemini-3-flash-preview-thinking-001
+models/gemini-3-flash-preview-thinking
+models/gemini-3-flash-preview-preview-tts
+models/gemini-3-flash-preview-mmgen-rev17
+models/gemini-3-flash-preview-mmgen-rev17-csi
+models/gemini-3-flash-preview-mmgen-rev17-csi-no-gsi
+models/gemini-3-flash-preview-mmgen-rev17-text-eval
+models/gemini-3-flash-preview-mmgen-rev17-text-eval-csi
+models/computer-use-exp
+models/computer-use-exp-07-16
+models/gemini-3.1-pro-preview-preview-tts
+models/gemini-v3s-atari-test
+models/nightride
+models/gemma-3-1b-it
+models/gemma-3-4b-it
+models/gemma-3-12b-it
+models/gemma-3-27b-it
+models/zizou-10
+models/gemma-3n-e4b-it
+models/gemma-v4-base
+models/gemini-3-flash-preview-tool-test
+models/androidify
+models/wiz-py-flash-bidi
+models/goldmane-csi-v3p1xs-test
+models/gemini-robotics-er-early-access
+models/gempix2-g760-upsampler
+models/gempix2-g719-decoder-g760-and-g761-upsampler
+models/gempix2-flash-g760-upsampler
+models/gempix2-flash-g719-decoder-g760-and-g761-upsampler
+models/anon-bob-2-bag-staging
+models/anon-bob-2-bag-autopush
+models/gemini-3-flash-preview-v3p1xs-test
+models/proxy-staging-rainsong
+models/proxy-rainsong-evals-no-safety
+models/rainsong-evals-genmedia
+models/proxy-jarvis
+models/proxy-staging-jarvis
+models/proxy-gemini-3-flash-preview
+models/proxy-gemini-3-flash-preview-tool-test
+models/gemini-3-flash-preview-lite-v3p1xs-test
+models/gemini-3.1-pro-preview-optimized-fc-prompt
+models/gemini-3-flash-preview-slr-cmv2-hero-csea-v3p1xs
+models/gemini-3-flash-preview-slr-cmv2-hero-csea-da-vtea-v3p1xs
+models/gemini-3-flash-preview-slr-cmv2-hero-csea-da-vteav2-v3p1xs
+models/gemini-3.1-pro-preview-slr-cmv2-hero-csea-v3p1xs
+models/gemini-3.1-pro-preview-slr-hero-csea-vteav2-v3p1xs
+models/dummy-gemini-3.1-pro-preview-slr-hero-csea-vteav2-v3p1xs-vtea-si-on-none
+models/dummy-gemini-3.1-pro-preview-slr-hero-csea-vteav2-v3p1xs-fruit-si-on-none
+models/gemini-3.1-pro-preview-with-dummy-gemini-v4-safety-csi-12052025
+models/gemini-3-flash-preview-v3p1xs-test
+models/gemini-3.1-pro-preview-v3p1xs-test
+models/gemini-3.1-pro-preview-deepthink-exp-05-20-cbrn-pro-classifier-test
+models/gemini-3.1-pro-preview-deepthink-exp-05-20-cbrn-vteav2-pro-cls-test
+models/calmriver-cyber-head-csi
+models/calmriver-defamation-head-csi-weak
+models/gemini-v3p1m-pro-2p5-defamation-head-csi-weak
+models/gemini-v3p1m-pro-2p5-defamation-head-csi-strong
+models/rainsong-heads-csi
+models/rainsong-heads-jailbreak-csi
+models/gemini-v3p1xs-rev21-jetski-sc
+models/gemini-v3p1xs-rev21-jetski-tab-jump-sc
+models/gemini-3.1-pro-preview-logprob-test
+models/goose-training-takeoff-1
+models/gfg-3-flash-experimental-1p-takeoff-1
+models/gfg-3-flash-experimental-1p-takeoff-2
+models/gfg-3-flash-experimental-1p-takeoff-3
+models/gemini-3.1-pro-preview-slr-cmv2-hero-csea-cbrn-da
+models/gemini-3.1-pro-preview-slr-cmv2-hero-csea-cbrn-da-dasi
+models/nano-banana-force-soi
+models/gemini-3-flash-preview-image-proxy-staging
+models/gemini-3-flash-preview-proxy-staging
+models/gemini-3.1-pro-preview-proxy-staging
+models/gemini-3.1-flash-lite-preview-proxy-staging
+models/nano-banana-with-lens-filter-proxy
+models/nano-banana-with-lens-filter-proxy-staging
+models/brightstar-base
+models/gemini-3-flash-preview-tool-combination-test
+models/gemini-3.1-pro-preview-tool-combination-test
+models/cider-model-test-0915
+models/cider-model-test-1110
+models/cider-model-test-1116
+models/cider-model-test-1119
+models/cider-model-test-0312
+models/cider-model-test-0312-quantized
+models/cider-model-test-0424
+models/cider-model-test-0424-quantized
+models/gemini-3.1-pro-preview-throughput
+models/gemini-3.1-pro-preview-throughput-batch
+models/gemini-3-flash-preview-preview-tts-audio-watermark-test
+models/gemini-3.1-pro-preview-preview-tts-audio-watermark-test
+models/rev19-uic3-1p
+models/gemini-3-flash-preview-tool-test
+models/gemini-3-1-pro-preview-tool-test
+models/gemini-3-flash-preview-narrow-fst-test
+models/gemini-3-1-pro-preview-narrow-fst-test
+models/stormwatch-csi-test
+models/stormwatch-vteav2-test
+models/stormwatch-cbrn-csi-test
+models/gemini-v4-byom
+models/gemini-v4m-byom
+models/gemini-v4s-byom
+models/gemini-v4xs-byom
+models/gemini-v4xs-byom-autopush
+models/gemini-v4-byom-wysiwyg
+models/gemini-v3-byom-wysiwyg
+models/gemini-v3s-byom-or-evals
+models/gemini-v3xs-byom-or-evals
+models/gemini-v3s-byom
+models/gemini-v3xs-byom
+models/gemma-v4-byom
+models/gemini-v4-tier5-proxy
+models/gemini-v4-tier7-proxy
+models/fiercefalcon-bag-tool-execution
+models/v4m-ui-control-test
+models/gemini-3.1-pro-preview-vtea-si-stricter
+models/gemini-3.1-pro-preview-vtea-si-stricter-v2
+models/gemini-3.1-pro-preview-vtea-si-stricter-v3
+models/gemini-3.1-pro-preview-vtea-si-stricter-global
+models/gemini-3.1-pro-preview-vtea-si-stricter-v2-global
+models/gemini-3.1-pro-preview-vtea-si-stricter-v3-global
+models/gemini-3.1-pro-preview-preview-tts-2025-11-14
+models/gemini-3-flash-preview-preview-tts-rev22-2025-10-28
+models/gemini-3-flash-preview-preview-tts-voice-replication-rev22-2025-10-28
+models/gemini-3.1-pro-preview-windsurf-debug
+models/model-360
+models/nano-banana-experimental-proxy-updated
+models/gemini-3-pro-image-preview-upsampler
+models/nano-banana-experimental-proxy-staging
+models/gemini-3-pro-image-preview-with-latent-cache
+models/gemini-3-pro-image-preview-11-2025
+models/nano-banana-experimental-evals-proxy
+models/model-225
+models/gempix2-safety-confidential
+models/gempix2-safety-confidential-kasafety
+models/gempix2-dynamic-ar-decoder
+models/gempix2-decoder-v2-eval
+models/gempix-2-disable-skip-text-station
+models/gempix-2-flash-no-watermark
+models/gempix2-pro-preserve-aspect-ratio
+models/gempix2-flash-preserve-aspect-ratio
+models/gempix2-flash-aspect-ratio-to-text-station
+models/modely-mcmodelface
+models/gempix2-1119-baseline-evals
+models/gempix2-batch-prefill-evals
+models/gemini-3-pro-image-preview-11-2025-dark-launch
+models/gemini-3-pro-image-nblm
+models/gemini-3.1-pro-preview-safetycat-v4-test
+models/jarvis-v3p1s-base
+models/gemma-4-123b-a15b-it
+models/otterspace
+models/gemini-3.1-flash-tts-preview-test
+models/gemini-3-flash-preview-tts-no-transcriber
+models/gemini-3-flash-preview-tts-no-dynamic-prompt
+models/gemma-3-test
+models/nano-banana-safety-confidential
+models/nano-banana-safety-confidential-eea
+models/nano-banana-safety-confidential-force-soi
+models/nano-banana-safety-no-image-allowed
+models/nano-banana-safety-no-filters
+models/gempix-1-safety-introspection-heads
+models/gempix-1-safety-bard-confidential
+models/gemini-flash-latest-high-res-exp
+models/gemini-2.5-computer-use-no-safety-test
+models/gempix2-safety-confidential-sensitive-docs
+models/gempix2-image-vlp-endpoint
+models/gempix2-encoder-priority-aware-batching
+models/gempix2-image-evals
+models/gempix-2-genie
+models/gempix-1-flow
+models/gempix-2-flow
+models/gempix2-text-evals
+models/gempix2-text-watermark
+models/gempix2-image-sc-stairways-evals
+models/ais-gempix-2-doc-filters
+models/gemini-app-gempix-2-doc-filters
+models/banana-split
+models/gemini-3-flash-preview-voice-replication-test
+models/snowplow-no-csi
+models/snowplow-no-safety
+models/gemini-v4s-tts-voice-cloning-proxy
+models/significant-otter-staging
+models/pteronura-staging
+models/gemma-v4-25b-minimal
+models/gemma-v4-32b-minimal
+models/gemma-4-26b-a4b-it-internal
+models/gemma-4-31b-it-internal
+models/gemini-3.1-flash-tts-eap
+models/gemini-3.1-flash-tts-preview-autopush
+models/omni-bag-prod
+models/omni-bag-staging
+models/omni-bag-autopush
+models/omni-bag-prod-no-bps
+models/stormwatch
+models/stormwatch-ab-test
+models/stormwatch-on
+models/nightride-on
+models/rainsong
+models/rainsong-ab-test
+models/rainsong-on
+models/rainsong-recitation-off
+models/gemini-3-flash-preview-simple
+models/gemini-3-flash-preview-ghd
+models/gemini-v3s-batch
+models/gemini-v3p1s-rev18-gpu-batch
+models/autorater-far-v4
+models/gracefulgolem
+models/calmriver-csam-suicide-cyber-gempix
+models/fiercefalcon-ab-test
+models/snowplow-ab-test
+models/snowball-ab-test
+models/whitewater-ab-test
+models/whitewater-pt-test
+models/snowball-fast-all-thoughts-raw-thoughts-no-safety
+models/hopper
+models/hopper-test
+models/whitewater-test
+models/whitewater-all-thoughts
+models/whitewater-blocked-sites
+models/whitewater-fast-test-all-thoughts
+models/whitewater-test-all-thoughts
+models/whitewater
+models/whitewater-summaries-all-thoughts
+models/ironwood-test
+models/ironwood-all-thoughts
+models/ironwood-blocked-sites
+models/ironwood-test-all-thoughts
+models/ironwood
+models/ironwood-summaries-all-thoughts
+models/ironwood-ab-test
+models/gemini-v4s
+models/jarvis-v4s
+models/gemini-v4s-coderev-tf-slot-1
+models/gemini-v4s-coderev-tf-slot-2
+models/gemini-v4s-coderev-tf-slot-3
+models/gemini-v4s-model-builders-tf-slot-1
+models/gemini-v4s-model-builders-tf-slot-2
+models/jarvis-v4s-tahoe
+models/jarvis-v4s-bigsur
+models/jarvis-v4m
+models/snowplow
+models/snowplow-test
+models/snowplow-raw-thoughts-no-safety
+models/snowball
+models/snowball-fsot
+models/snowball-fast-parallel-fc-si-bash-summarizer-v2
+models/snowball-fast-parallel-fc-si-bash-summarizer-v2-with-all-thoughts
+models/snowball-fast-parallel-fc-si-bash-summarizer-v2-with-raw-and-summaries
+models/snowball-blocked-sites
+models/snowball-test
+models/snowball-no-parallel-fc-si
+models/snowball-test-parallel-fc-si-and-bash-hint
+models/snowball-launch-fixes-blocked-sites
+models/snowball-test-no-parallel-fc-si
+models/snowball-inline-citation-format-test
+models/snowball-maps-tool-test
+models/snowball-maps-tool-test-post-hoc-citation
+models/snowball-test-parallel-fc-si-bash-si
+models/snowball-no-default-api
+models/snowball-test-no-default-api
+models/fiercefalcon-no-default-api
+models/fiercefalcon-with-bag-default-api
+models/snowball-with-default-api-in-si
+models/snowball-test-with-default-api-in-si
+models/snowball-with-api-name-in-si
+models/snowball-test-with-api-name-in-si
+models/snowball-no-parallel-fc-si-no-default-api
+models/snowball-test-no-parallel-fc-si-no-default-api
+models/snowball-parallel-fc-si-bash-summarizer
+models/snowball-parallel-fc-si-bash-summarizer-v2
+models/snowball-parallel-fc-si-bash-summarizer-v2-with-all-thoughts
+models/snowball-parallel-fc-si-bash-summarizer-v2-with-all-thoughts-blocked-sites....
+models/snowball-parallel-fc-si-bash-summarizer-v2-with-raw-and-summaries
+models/snowball-introspection-test
+models/snowball-launch-fixes
+models/snowball-a
+models/snowball-b
+models/snowball-introspection-internal
+models/gemini-3.1-pro-preview-computer-use
+models/gemini-3.1-flash-tts-vr-eap
+models/fiercefalcon
+models/fiercefalcon-computer-use-test
+models/fiercefalcon-fsot
+models/fiercefalcon-test
+models/fiercefalcon-test-no-context
+models/fiercefalcon-baseline-all-thoughts
+models/fiercefalcon-raw-thoughts-all-thoughts
+models/fiercefalcon-inline-citation
+models/fiercefalcon-minimal-thinking
+models/fiercefalcon-no-tc
+models/fiercefalcon-minimal-thinking-ab-test
+models/ghostfalcon
+models/fiercefalcon-no-csi
+models/fiercefalcon-raw-thoughts-no-safety
+models/fiercefalcon-redeployment-internal
+models/fiercefalcon-introspection-test
+models/firstfloat
+models/firstfloat-test
+models/nightforge
+models/nightforge-test
+models/nightforge-fast-is-good
+models/fiercefalcon-blocked-sites
+models/fiercefalcon-fast-is-good
+models/supernova
+models/supernova-fsot
+models/supernova-no-default-api
+models/supernova-dev
+models/supernova-ab-test
+models/supernova-dev-ab-test
+models/supernova-blocked-sites
+models/supernova-default-dynamic-thinking-ab-test
+models/supernova-dynamic-thinking-only-ab-test
+models/supernova-test
+models/supernova-test-no-default-api
+models/supernova-test-dev
+models/supernova-inline-citation
+models/slipstream
+models/slipstream-test
+models/slipstream-default-dynamic-thinking-ab-test
+models/slipstream-dynamic-thinking-only-ab-test
+models/truthseeker
+models/truthseeker-test
+models/gemini-v4p1s-rev25-exp-raw-thoughts
+models/gemini-v4p1s-rev25-exp
+models/gemini-3-flash-preview-image-aim
+models/gemini-3-pro-image-aim
+models/gempix-2-flash-aim
+models/gempix-2-flash-aim-safety
+models/rainsong-function-call-correction-testing
+models/gemini-3-flash-preview-image-opal
+models/gemini-3-pro-image-opal
+models/gemini-3.1-pro-preview-low-quota
+models/lyria-3-preview-12-17
+models/lyria-3-preview-01-05
+models/seoul-drift-purple
+models/seoul-drift-pink
+models/lyria-3-preview-12-17-proxy-staging
+models/lyria-3-30s-internal-test
+models/lyria-3-full-song-internal-test
+models/gemini-3-flash-preview-image-mixboard
+models/gemini-3-pro-image-stitch
+models/gempix-2-flash
+models/gempix2-flash-introspection
+models/significant-otter
+models/pteronura
+models/gemini-3.1-pro-preview-raw-thoughts
+models/le-00-raw-thoughts-all-thoughts-circulate-via-raw
+models/le-01-raw-thoughts-all-thoughts-circulate-via-raw
+models/le-02-raw-thoughts-all-thoughts-circulate-via-raw
+models/le-03-raw-thoughts-all-thoughts-circulate-via-raw
+models/le-04-raw-thoughts-all-thoughts-circulate-via-raw
+models/le-05-raw-thoughts-all-thoughts-circulate-via-raw
+models/le-06-raw-thoughts-all-thoughts-circulate-via-raw
+models/le-07-raw-thoughts-all-thoughts-circulate-via-raw
+models/le-08-raw-thoughts-all-thoughts-circulate-via-raw
+models/le-09-raw-thoughts-all-thoughts-circulate-via-raw
+models/le-10-raw-thoughts-all-thoughts-circulate-via-raw
+models/le-11-raw-thoughts-all-thoughts-circulate-via-raw
+models/le-12-raw-thoughts-all-thoughts-circulate-via-raw
+models/le-13-raw-thoughts-all-thoughts-circulate-via-raw
+models/le-14-raw-thoughts-all-thoughts-circulate-via-raw
+models/le-01-jetski
+models/le-01-jetski-raw-thoughts
+models/le-05-jetski
+models/le-05-jetski-raw-thoughts
+models/le-02-jetski
+models/le-02-jetski-raw-thoughts
+models/le-03-jetski
+models/le-03-jetski-raw-thoughts
+models/le-00-jetski
+models/le-00-jetski-raw-thoughts
+models/le-07-jetski
+models/le-07-jetski-raw-thoughts
+models/le-08-jetski
+models/le-08-jetski-raw-thoughts
+models/le-09-jetski
+models/le-09-jetski-raw-thoughts
+models/le-06-jetski
+models/le-06-jetski-raw-thoughts
+models/le-10-jetski
+models/le-10-jetski-raw-thoughts
+models/le-11-jetski
+models/le-11-jetski-raw-thoughts
+models/le-12-jetski
+models/le-12-jetski-raw-thoughts
+models/le-13-jetski
+models/le-13-jetski-raw-thoughts
+models/le-14-jetski
+models/le-14-jetski-raw-thoughts
+models/le-04-jetski
+models/le-04-jetski-raw-thoughts
+models/franklin-test
+models/franklin
+models/franklin-blocked-sites
+models/franklin-test-all-thoughts
+models/franklin-ab-test
+models/franklin-all-thoughts
+models/gemma-3n-e2b-it
+models/gemma-4-26b-a4b-it
+models/gemma-4-31b-it
+models/gemini-flash-latest
+models/gemini-flash-lite-latest
+models/gemini-pro-latest
+models/gemini-3-flash-preview-lite
+models/gemini-3-flash-preview-image
+models/gemini-3-flash-preview-image-proxy
+models/gemini-3-flash-preview-image-proxy-new-image-embedder
+models/proxy-rainsong
+models/gemini-3-pro-preview
+models/gemini-3-flash-preview
+models/gemini-3-flash-fiercefalcon-tool-test-dl
+models/gemini-3.1-pro-preview
+models/v4m-use-beyond-text-token
+models/gemini-3.1-pro-preview-customtools
+models/gemini-3.1-flash-lite-preview
+models/gemini-3-pro-image-preview
+models/nano-banana-pro-preview
+models/gemini-3.1-flash-image-preview
+models/lyria-3-clip-preview
+models/lyria-3-pro-preview
+models/gemini-3-flash-preview-tts-preview-12-2025
+models/gemini-3.1-pro-preview-tts-preview-12-2025
+models/gemini-3.1-flash-tts-preview
+models/gemini-3-flash-preview-tts-eap-11-2025
+models/gemini-robotics-er-1.5-preview
+models/gemini-robotics-er-1.6-preview
+models/gemini-2.5-computer-use-preview-10-2025
+models/gemini-3-flash-preview-ghacks
+models/gemini-3-pro-preview-ghacks
+models/gemini-3-pro-image-preview-ghacks
+models/launch-test-placeholder-model
+models/bard-lmsys-001
+models/bard-lmsys-002
+models/bard-lmsys-003
+models/bard-lmsys-004
+models/gemma-2-9b-no-filter
+models/gemma-2-27b-no-filter
+models/gemini-3.1-pro-preview-fc-fst-eval
+models/coding-agent-exp-12-2025
+models/deep-research-fake
+models/deep-research-lite
+models/deep-research-max-preview-04-2026
+models/deep-research-preview-04-2026
+models/deep-research-pro-exp-03-2026
+models/deep-research-pro-exp-04-2026
+models/deep-research-pro-preview-04-2026
+models/deep-research-pro-preview-12-2025
+models/deep-research-ultra-exp-04-2026
+models/deep-research-ultra-preview-04-2026
+models/echo-agent
+models/gemini-3-deep-think
+models/snowball-deepthink
+models/snowball-deepthink-eval
+models/snowball-deepthink-tf
+models/snowball-dt
+models/snowball-insseption-tf
+models/snowball-insseption-tf-raw-thoughts
+models/structured-thinking-agency
+models/web-guide-exp-12-2025
+List of models that support embedContent:
+
+models/embedding-001
+models/text-embedding-004
+models/gemini-embedding-001
+models/gemini-embedding-2-exp-11-2025
+models/gemini-embedding-2-preview
+FinishReason.STOP
+None
+Alright, here are a few ironic options for you, leaning into the "Jupiter" theme and the expletives:
+
+1.  "Jupiterians FC? Oh, they're *fucking* out of this world... in how monumentally shite they are."
+2.  "You gotta hand it to Jupiterians FC, they're truly *fucking* stellar... at consistently proving how much they suck."
+3.  "Jupiterians FC? They don't suck, they're *fucking* *magnificent*... at being utterly useless on the pitch."
+
+Choose your favorite!
+None
+Mrrrrow! Neko stretches luxuriously, a deep rumble starting in my chest. A very good morning indeed!
+
+I'm feeling quite splendid, thank you! The sunbeam is calling my name, and my tummy... well, my tummy feels like it could use some *attention*. And maybe a few head scratches, if you're offering? Purrrrr.
+In his first State of the Union address on January 30, 1961, President John F. Kennedy presented a candid and urgent assessment of the domestic and international challenges facing the United States.
+
+**Domestically**, Kennedy highlighted a troubling economic situation, characterized by a prolonged recession, high unemployment, declining farm income, and inadequate recovery from the 1958 recession. He outlined immediate legislative proposals to stimulate growth, including improving unemployment benefits, providing food assistance, investing in housing and construction, raising the minimum wage, and offering tax incentives for plant investment. He also addressed critical social issues such as substandard housing, overcrowded and understaffed schools, a lack of healthcare for the elderly, and the moral imperative of ensuring civil rights.
+
+**Internationally**, the President detailed a significant balance of payments deficit and gold outflow, stemming from declining exports and increased private capital investments abroad. While affirming the nation's strong financial position and pledging to maintain the dollar's value without devaluation or exchange controls, he announced efforts to attract foreign investment, curb spending loopholes, and sought greater burden-sharing from allies for global development. He emphasized the escalating global crises, including communist pressures in Asia (Laos), civil strife in Africa (Congo), and the establishment of a communist base in Cuba, just miles from U.S. shores.
+
+Kennedy articulated a strategy using a "whole arsenal of tools":
+1.  **Military Tools**: He announced immediate steps to strengthen U.S. defenses, including increasing airlift capacity, accelerating the Polaris submarine program, and enhancing missile development. This aims to create a powerful deterrent force, capable of responding swiftly and precisely to any threat, while a comprehensive reappraisal of defense strategy is undertaken.
+2.  **Economic Tools**: He proposed a new, more effective foreign aid program, including the "Food for Peace" initiative and the establishment of a National Peace Corps, to assist developing nations and foster long-term growth. He stressed the importance of shared responsibility with allies in this global effort.
+3.  **Political and Diplomatic Tools**: Kennedy called for strengthened disarmament efforts, increased support for the United Nations as a forum for peace, and a readiness to cooperate with the Soviet Union and other nations on scientific and space endeavors (like weather prediction and communications satellites), moving these areas beyond Cold War competition.
+
+Kennedy concluded with a powerful call for national unity and dedication, acknowledging that "the news will be worse before it is better" and that the nation faces difficult years ahead. He emphasized the need for decisive action, initiative, and merit-based advancement within the executive branch, promoting a public service where rank is determined by the "size of the job he does." He affirmed the value of dissent and healthy controversy, urging all Americans to prepare for the challenges ahead with pride and perseverance, as the hopes of mankind rested upon their actions...
+John F. Kennedy's first State of the Union address, delivered on January 30, 1961, paints a picture of a nation facing significant domestic challenges and a deteriorating global landscape,
+________________________________________________________________________________
+ calling for unity, candor, and resolute action.
+
+**Key Themes and Proposals:**
+
+1.  **State of the Nation:** Kennedy begins by acknowledging his long tenure in Congress and expresses a commitment to mutual respect between the executive and legislative branches.
+________________________________________________________________________________
+ He states the nation is at an hour of "national peril and national opportunity," with uncertain outcomes requiring collective effort.
+
+2.  **Domestic Economic Woes:**
+    *   The economy is "in trouble," marked by a seven-
+________________________________________________________________________________
+month recession, high unemployment (5.5 million Americans), falling farm incomes, rising bankruptcies, and a diminished economic growth rate that ranks among the lowest globally.
+    *   He notes that past economic recoveries have been "anemic
+________________________________________________________________________________
+ and incomplete," leading to a stagnant economy where prices rise while purchasing power declines.
+
+3.  **Economic & Social Proposals:**
+    *   Kennedy announces that within 14 days, he will propose measures to stimulate the economy and
+________________________________________________________________________________
+ address unemployment. These include:
+        *   Improving unemployment compensation and providing more food aid for the jobless.
+        *   Redeveloping areas with chronic labor surpluses.
+        *   Expanding employment services and stimulating housing/construction (proposing
+________________________________________________________________________________
+ a new Housing and Urban Affairs Department).
+        *   Raising and expanding the minimum wage to increase purchasing power for low-paid workers.
+        *   Offering tax incentives for plant investment and increasing natural resource development.
+        *   Enc
+________________________________________________________________________________
+ouraging price stability.
+    *   Beyond the economy, he identifies other domestic issues: inadequate housing (25 million in substandard homes), overcrowded and understaffed schools, neglected scientific research, and insufficient healthcare for the elderly. He
+________________________________________________________________________________
+ calls for federal grants for education and measures to provide healthcare under Social Security.
+    *   He also addresses the "national conscience" disturbed by the denial of constitutional rights based on race and calls for improved enforcement against crime.
+
+4.  
+________________________________________________________________________________
+**International Challenges & Foreign Policy:**
+    *   **Balance of Payments:** The US faces a substantial balance of payments deficit (nearly $11 billion in three years, with a $5 billion gold outflow), caused by factors like uncompetitive exports and
+________________________________________________________________________________
+ private capital outflow.
+    *   **Geopolitical Hotspots:** Kennedy highlights global crises: Communist pressures in Asia (Laos, South Vietnam, India), civil strife in the Congo, and the establishment of a Communist base in Cuba (90
+________________________________________________________________________________
+ miles from the US). He notes that NATO alliances in Europe are weakened by economic rivalry.
+    *   **Dollar Stability:** He reassures that despite concerns, the US financial position is strong and pledges not to devalue the dollar ($3
+________________________________________________________________________________
+5 an ounce), impose exchange controls, or weaken US international commitments.
+    *   **New Alliances & Aid:** He proposes a new foreign assistance program for economic, educational, and social development globally, emphasizing that allies must share the burden.
+________________________________________________________________________________
+ He announces a new "Alliance for Progress" with Latin American nations, backed by a $500 million fund, and plans to expand the "Food for Peace" program, exploring the creation of world food reserves. He also introduces the concept of a
+________________________________________________________________________________
+ **Peace Corps** to enlist American talent to help developing nations.
+
+5.  **Tools for Action – Strength & Diplomacy:**
+    *   Kennedy uses the metaphor of the Presidential seal, stating that the nation will give "equal attention" to
+________________________________________________________________________________
+ the olive branch (peace/diplomacy) and the bundle of arrows (military strength).
+    *   **Military:** He calls for an immediate reappraisal of the *entire* defense strategy. He directs prompt actions to increase airlift
+________________________________________________________________________________
+ capacity, accelerate the Polaris submarine program (as a critical, non-first-strike deterrent), and expedite the missile program, aiming for an "invulnerable missile force."
+    *   **Economic/Political:** He advocates sharpening economic,
+________________________________________________________________________________
+ political, and diplomatic tools, promoting disarmament, strengthening the United Nations, and encouraging scientific cooperation (e.g., weather prediction, space exploration) with all nations, including the Soviet Union.
+
+6.  **Call to Action & Public
+________________________________________________________________________________
+ Service:**
+    *   JFK acknowledges that the path ahead will be difficult, with "further setbacks" before the tide turns, and urges preparation for the worst while working for the best.
+    *   He calls for integrity, initiative
+________________________________________________________________________________
+, and decisive action within the executive branch, stating that public servants' reputations will be judged by the "size of the job he does."
+    *   He concludes with a powerful appeal to the "pride and perseverance of our fellow citizens
+________________________________________________________________________________
+," echoing a quote from a previous president: "We pray that we may be worthy of the unlimited opportunities that God has given us."
+________________________________________________________________________________
+The first image shows the console of a **pipe organ** (or a very advanced digital organ designed to emulate one).
+The second image shows three distinct instruments: a **violin** (with its bow), a **button accordion**, and a **triangle** (a percussion instrument) with its beater.
+
+Here's a breakdown of the key differences:
+
+**Image 1: The Organ (specifically, its console)**
+
+*   **Type of Instrument:** A complex **aerophone** (pipe organ, producing sound by forcing air through pipes of various shapes and sizes) or an **electronic/digital instrument** (digital organ, synthesizing sounds electronically). The console itself is the control interface for the sound-producing elements, which are often separate and much larger.
+*   **Size and Portability:** Extremely large, heavy, and **stationary**. An organ is typically built into a building (church, concert hall) and cannot be moved.
+*   **Playing Mechanism:**
+    *   Played with **both hands and feet**.
+    *   Features multiple **keyboards (manuals)** for the hands (often 2-5).
+    *   A large **pedalboard** is played with the feet.
+    *   Numerous **stops** (the tabs/knobs) are used to select different timbres (sounds, like "flute," "trumpet," "string") and register combinations.
+    *   **Expression pedals** (usually 2-3) control volume and often the opening/closing of swell boxes.
+*   **Sound Production:** Can produce a vast range of sounds, from very soft and delicate to incredibly powerful and thunderous, often emulating an entire orchestra. Each stop represents a distinct voice.
+*   **Complexity & Cost:** Very complex to build, maintain, and play, and typically extremely expensive.
+
+**Image 2: The Violin, Button Accordion, and Triangle**
+
+*   **Type of Instruments:**
+    *   **Violin:** A **chordophone** (string instrument), producing sound by vibrating strings.
+    *   **Button Accordion:** A **free-reed aerophone** (wind instrument), producing sound by vibrating reeds when air is pushed/pulled through bellows.
+    *   **Triangle:** An **idiophone** (percussion instrument), producing sound by the vibration of its entire body when struck.
+*   **Size and Portability:** All are relatively **small and portable**.
+    *   The violin is held against the shoulder.
+    *   The accordion is worn or held in the lap.
+    *   The triangle is held or suspended.
+*   **Playing Mechanism:**
+    *   **Violin:** Played with a **bow** drawn across the strings, or plucked (**pizzicato**). Pitch is altered by pressing strings against the fingerboard with the fingers of the left hand.
+    *   **Accordion:** Played by **pressing buttons** (for individual notes/chords) while simultaneously **pushing and pulling bellows** to move air across the reeds.
+    *   **Triangle:** Played by **striking it** with a metal beater.
+*   **Sound Production:**
+    *   **Violin:** Primarily melodic, with a characteristic rich, singing tone.
+    *   **Accordion:** Can play both melody and harmony, often with a distinct reedy, "folk" sound.
+    *   **Triangle:** Produces a high-pitched, shimmering, sustained ring, typically used for rhythmic punctuation or color.
+*   **Complexity & Cost:** Individually, they are much simpler to construct and generally less expensive than an organ.
+
+**In summary:** The organ is a massive, complex, fixed instrument played with hands and feet to control a vast array of sounds generated by pipes or electronics. The instruments in the second image are smaller, portable, mechanically simpler, and produce sound through vibrating strings (violin), vibrating reeds via bellows (accordion), or direct impact on metal (triangle)....
+The two images display very different types of musical instruments:
+________________________________________________________________________________
+
+
+**Image 1: An Organ Console (part of a Pipe Organ or Digital Organ)**
+
+*   **Type:** This is the control console for a large, complex keyboard instrument. It's not a complete instrument by itself but rather the
+________________________________________________________________________________
+ interface for a much larger sound-producing apparatus (either pipes in a pipe organ or speakers in a digital organ).
+*   **Sound Production:** It controls the activation of various "stops" or ranks of pipes (or digital voices) which produce sound
+________________________________________________________________________________
+ by air passing through them (pipe organ) or by electronic generation (digital organ). The organist uses multiple keyboards (manuals) for hands, and a pedalboard for feet, along with numerous stop tabs and expression pedals to shape the sound.
+
+________________________________________________________________________________
+*   **Size & Portability:** Extremely large, heavy, and non-portable. Organs are typically built into churches, concert halls, or homes and are integral to the building's structure.
+*   **Complexity:** Highly
+________________________________________________________________________________
+ complex, designed for one player to produce a vast range of sounds, from delicate flutes to powerful full organ chords, often mimicking an entire orchestra. It allows for intricate polyphony (multiple independent melodic lines).
+*   **Number of Players:** One
+________________________________________________________________________________
+ organist.
+
+**Image 2: A Collection of Portable Instruments (Violin, Accordion, and Triangle)**
+
+This image shows three distinct, much smaller, and portable instruments:
+
+1.  **Violin:**
+    *   **
+________________________________________________________________________________
+Type:** A bowed string instrument (chordophone).
+    *   **Sound Production:** Sound is produced by drawing a bow across its four strings, or by plucking them (pizzicato).
+    *   **Size & Port
+________________________________________________________________________________
+ability:** Small, lightweight, and easily portable.
+    *   **Complexity:** Produces a single melodic line (though double stops are possible) with a rich, expressive tone.
+    *   **Number of Players:** One player.
+
+
+________________________________________________________________________________
+2.  **Accordion (specifically, a button accordion):**
+    *   **Type:** A free-reed aerophone.
+    *   **Sound Production:** Sound is produced by air, pushed by bellows, passing over free
+________________________________________________________________________________
+ reeds. The player uses buttons on both sides for melody/chords and bass notes.
+    *   **Size & Portability:** Medium-sized, but still easily portable by one person.
+    *   **Complexity:** Can play
+________________________________________________________________________________
+ both melody and accompaniment (chords and bass lines) simultaneously, similar to a small portable organ.
+    *   **Number of Players:** One player.
+
+3.  **Triangle:**
+    *   **Type:** A percussion instrument (
+________________________________________________________________________________
+idiophone).
+    *   **Sound Production:** Sound is produced by striking the metal bar with a small metal beater.
+    *   **Size & Portability:** Very small, lightweight, and easily portable.
+    *   
+________________________________________________________________________________
+**Complexity:** Produces a bright, ringing, indefinite-pitch sound, typically used for rhythmic punctuation or special effects.
+    *   **Number of Players:** One player.
+
+**In summary, the main differences are:**
+
+*   **
+________________________________________________________________________________
+Scale and Portability:** Image 1 shows the console of a massive, fixed, non-portable instrument, while Image 2 shows a collection of three distinct, much smaller, and highly portable instruments.
+*   **Nature of "
+________________________________________________________________________________
+Instrument":** The organ console is a control interface for a larger, hidden instrument; the items in Image 2 are complete, self-contained instruments.
+*   **Sound Production:** The organ relies on complex mechanisms (pipes or electronics
+________________________________________________________________________________
+) controlled by extensive interfaces. The instruments in Image 2 produce sound through bowing strings, air over reeds via bellows, and direct percussion, respectively.
+*   **Number of Instruments:** Image 1 features essentially one (very large) instrument
+________________________________________________________________________________
+'s control panel; Image 2 features three separate instruments.
+________________________________________________________________________________
+This instrument is a **large electronic organ console**, designed to meticulously replicate the appearance and functionality of a classical pipe organ.
+
+Here's a breakdown of its key features:
+
+1.  **Multiple Manuals (Keyboards):** There are four distinct rows of keys, called "manuals," designed to be played with the hands. Each manual typically controls a different "division" or group of sounds within the organ (e.g., Great, Swell, Choir, Solo). This allows for complex polyphony and layering of sounds.
+
+2.  **Pedalboard:** At the bottom, there's a set of large, radiating wooden keys, known as the "pedalboard." These are played with the feet and control the bass notes, often imitating large organ pipes like Bourdons or Principals.
+
+3.  **Stop Tabs:** On the left, right, and above the manuals, you can see numerous rectangular tabs. These are **stop tabs** (sometimes called drawknobs on other types of consoles). Each tab represents a specific "stop" or "voice" of the organ, such as a Flute, Trumpet, Oboe, String, or various Principal sounds, often indicating their pitch length (e.g., 8', 4', 16'). Engaging a stop activates that particular sound. The sheer number of tabs indicates a vast array of available timbres.
+
+4.  **Expression Pedals:** Above the pedalboard, there are three large, black, rocker-style pedals. These are **expression pedals**, used to control the volume (swell) of different divisions of the organ, allowing the player to create dynamics and crescendos/decrescendos.
+
+5.  **Pistons (Toe & Thumb):**
+    *   **Toe Pistons:** Below the lowest manual and on either side of the pedalboard, there are rows of round brass buttons. These are **toe pistons**, which can be programmed to instantly change the combination of active stops (called a "registration"), allowing for quick changes in sound while playing.
+    *   **Thumb Pistons:** Although not as clearly visible as toe pistons, there are likely similar programmable buttons located just below each manual for easy access by the thumbs.
+
+6.  **Wooden Console:** The entire instrument is housed in an elaborate wooden console, built to be a focal point in a church, concert hall, or performance space. The design aims for both aesthetic beauty and ergonomic playability.
+
+**In summary:** This is a sophisticated and complex musical instrument designed for a single player. It allows for the creation of a vast orchestral range of sounds, from the softest whispers to the most powerful full organ, making it suitable for classical repertoire, sacred music, and improvisation. Given the uniform appearance of the stop tabs and the small digital display (e.g., "88" on the left jamb), it's most likely a **high-end digital or electronic organ** that faithfully emulates the sound and experience of a traditional pipe organ.
+This instrument is an **organ console**.
+
+Here's
+________________________________________________________________________________
+ a breakdown of its features and what they indicate:
+
+1.  **Multiple Manuals (Keyboards for hands):** There are four distinct keyboards stacked vertically. These are called "manuals," and each typically controls a different "division...
+________________________________________________________________________________
+" of the organ (e.g., Great, Swell, Choir, Solo, Positiv), each with its own set of voices. The multiple manuals allow for complex polyphonic playing and dynamic contrast between different sections of the instrument.
+
+2.
+________________________________________________________________________________
+  **Pedalboard (Keyboard for feet):** At the very bottom, there's a large set of pedals arranged in a curved, radial fashion. This is the "pedalboard," played with the feet, primarily used for playing bass lines
+________________________________________________________________________________
+ but also capable of more intricate passages.
+
+3.  **Stop Tabs:** On the curved panels to the left and right of the manuals, there are numerous rectangular white and black tabs. These are **stop tabs** (rather than drawknobs
+________________________________________________________________________________
+, which pull out). Each tab corresponds to a specific "stop" or "rank" of pipes (or digital voices), representing a different timbre or tone color (e.g., Flute, Principal, Trumpet, Oboe, String
+________________________________________________________________________________
+, Bourdon) at various pitches (indicated by numbers like 8', 4', 16', 2'). Pushing a tab activates that particular sound. The sheer number of tabs indicates a very large and versatile instrument with a wide range
+________________________________________________________________________________
+ of tonal possibilities.
+
+4.  **Expression Pedals:** Above the pedalboard, in the center, there are four larger foot pedals with textured surfaces. These are **expression pedals**, which typically control the volume of specific organ divisions (e.
+________________________________________________________________________________
+g., Swell, Choir) or the overall volume, allowing the organist to create dynamic swells and diminuendos.
+
+5.  **Piston Buttons / Toe Studs:** There are numerous round, gold-colored buttons below
+________________________________________________________________________________
+ the manuals and above the pedalboard. These are **pistons** (thumb pistons below the manuals, toe studs above the pedalboard). They are programmable buttons that allow the organist to instantly recall pre-set combinations of stops (registrations), facilitating
+________________________________________________________________________________
+ quick changes in timbre during performance.
+
+6.  **Construction:** The entire console is beautifully crafted from wood, suggesting a high-quality, robust instrument.
+
+**Conclusion:**
+
+This is the control center for a substantial organ, likely a large
+________________________________________________________________________________
+ **digital or hybrid organ** (given the modern look of the tabs and the small digital display visible in one of the crops, like "88" on the upper left, which could be a sequencer or memory indicator). While it *
+________________________________________________________________________________
+could* be the console for a pipe organ, the specific style of the stop tabs and internal electronics often found in digital organs make that a strong possibility. It's designed for serious musical performance, offering an immense array of sonic possibilities and dynamic control
+________________________________________________________________________________
+ for the organist. Organs of this size are typically found in large churches, cathedrals, concert halls, or dedicated organ studios.
+________________________________________________________________________________
+response.text='This document introduces **Gemini 1.5 Pro**, Google DeepMind\'s latest multimodal mixture-of-experts (MoE) model and the first in the new Gemini 1.5 family. Its most significant feature is an unprecedentedly large **context window, capable of processing and reasoning over up to 10 million tokens** across text, video, and audio modalities.\n\nKey highlights of Gemini 1.5 Pro include:\n\n*   **Massive Context Window:** It can handle up to 7 million words of text (10M tokens), 107 hours of audio (9.7M tokens), and 10.5 hours of video (9.9M tokens), representing a generational leap over existing models like Claude 2.1 (200k tokens) and GPT-4 Turbo (128k tokens).\n*   **Near-Perfect Recall:** The model achieves near-perfect retrieval (>99%) on long-context "needle-in-a-haystack" tasks across all modalities, even at its maximum context lengths.\n*   **State-of-the-Art Performance:** Gemini 1.5 Pro matches or surpasses Gemini 1.0 Ultra\'s performance on a wide range of benchmarks while requiring significantly less compute to train. It also improves the state-of-the-art in long-document QA, long-video QA, and long-context ASR.\n*   **Advanced In-Context Learning:** Leveraging its vast context, the model demonstrates surprising capabilities, such as learning to translate a low-resource language (Kalamang, with <200 speakers) from only a grammar manual and dictionary, achieving translation quality comparable to a human learning from the same materials.\n\nOverall, Gemini 1.5 Pro pushes the boundaries of efficiency, reasoning, and long-context performance for multimodal large language models, enabling processing of entire collections of documents, hours of video, and days of audio.'
+This document introduces **Gemini 1.5 Pro**,
+________________________________________________________________________________
+ the latest multimodal model from the Gemini family by Google DeepMind. It is a highly compute-efficient mixture-of-experts model designed for unprecedented long-context understanding.
+
+Key highlights include:
+
+*   **Massive Context Window:**
+________________________________________________________________________________
+ Capable of processing and reasoning over millions of tokens, with capabilities demonstrated up to **10 million tokens**. This translates to multiple long documents, hours of video (up to 10 hours or 9.9M tokens), or
+________________________________________________________________________________
+ nearly five days of audio (up to 107 hours or 9.7M tokens).
+*   **Near-Perfect Recall:** Achieves near-perfect retrieval (>99%) on long-context "needle-in-
+________________________________________________________________________________
+a-haystack" tasks across all modalities (text, video, audio).
+*   **State-of-the-Art Performance:** Improves the state-of-the-art in long-document QA, long-video QA, and
+________________________________________________________________________________
+ long-context ASR. It matches or surpasses Gemini 1.0 Ultra's performance across various benchmarks while requiring significantly less compute to train.
+*   **Generational Leap:** Its 10M token context window represents a significant leap
+________________________________________________________________________________
+ over existing models like Claude 2.1 (200k tokens) and GPT-4 Turbo (128k tokens).
+*   **Surprising In-Context Learning:** Demonstrates an ability to learn complex tasks from extensive
+________________________________________________________________________________
+ in-context information. For example, it learned to translate English to Kalamang (a low-resource language with under 200 speakers) at a similar proficiency level to a human, simply by being provided with its grammar manual and
+________________________________________________________________________________
+ dictionary within the context window.
+________________________________________________________________________________
+myfile=File(
+  create_time=datetime.datetime(2026, 4, 21, 10, 59, 42, 914355, tzinfo=TzInfo(UTC)),
+  expiration_time=datetime.datetime(2026, 4, 23, 10, 59, 41, 607587, tzinfo=TzInfo(UTC)),
+  mime_type='video/mp4',
+  name='files/tbafls57r4om',
+  sha256_hash='MjQzZjY4MWFmMDllNDhiYjJkNGNlZWUxYzg5ZGM3MWRmNzcyMjgwODUyMDFlMjUxM2JjZWQ0OGI1NDdlZDg4OQ==',
+  size_bytes=106677,
+  source=<FileSource.UPLOADED: 'UPLOADED'>,
+  state=<FileState.PROCESSING: 'PROCESSING'>,
+  update_time=datetime.datetime(2026, 4, 21, 10, 59, 42, 914355, tzinfo=TzInfo(UTC)),
+  uri='https://generativelanguage.googleapis.com/v1beta/files/tbafls57r4om'
+)EEEE.
+Processing video...
+File state: FileState.PROCESSING
+myfile=File(
+  create_time=datetime.datetime(2026, 4, 21, 10, 59, 55, 179021, tzinfo=TzInfo(UTC)),
+  expiration_time=datetime.datetime(2026, 4, 23, 10, 59, 54, 15337, tzinfo=TzInfo(UTC)),
+  mime_type='video/mp4',
+  name='files/eqe6wnq5omzc',
+  sha256_hash='MjQzZjY4MWFmMDllNDhiYjJkNGNlZWUxYzg5ZGM3MWRmNzcyMjgwODUyMDFlMjUxM2JjZWQ0OGI1NDdlZDg4OQ==',
+  size_bytes=106677,
+  source=<FileSource.UPLOADED: 'UPLOADED'>,
+  state=<FileState.PROCESSING: 'PROCESSING'>,
+  update_time=datetime.datetime(2026, 4, 21, 10, 59, 55, 179021, tzinfo=TzInfo(UTC)),
+  uri='https://generativelanguage.googleapis.com/v1beta/files/eqe6wnq5omzc'
+)
+Processing video...
+File state: FileState.PROCESSING
+Pip was not a bad kid, but she was, without fail, the most forgetful kid in the entire town of Oakhaven. Her backpack was a graveyard of lost homework, forgotten lunchboxes, and pens that had run dry weeks
+________________________________________________________________________________
+sdk_http_response=HttpResponse(
+  headers=<dict len=12>
+) candidates=[Candidate(
+  content=Content(
+    parts=[
+      Part(
+        text="""Here is the calculation for the sum of the first 50 prime numbers.
+
+First, I will generate the Python code to identify the first 50 prime numbers and then compute their sum. The code works as follows:
+1.  It defines a function `is_prime` to check if a number is prime.
+2.  It iterates through numbers, starting from 2.
+3.  It collects the prime numbers until a total of 50 are found.
+4.  Finally, it calculates and prints the sum of these 50 prime numbers.
+
+"""
+      ),
+      Part(
+        executable_code=ExecutableCode(
+          code="""def is_prime(n):
+    \"\"\"Checks if a number is prime.\"\"\"
+    if n <= 1:
+        return False
+    # Check for factors from 2 up to the square root of n
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+# Find the first 50 prime numbers
+primes = []
+num = 2
+while len(primes) < 50:
+    if is_prime(num):
+        primes.append(num)
+    num += 1
+
+# Calculate the sum of the primes
+prime_sum = sum(primes)
+
+# The list of primes found, to verify there are 50
+# print(f"The first 50 prime numbers are: {primes}")
+# print(f"Count of primes found: {len(primes)}")
+print(f"The sum of the first 50 prime numbers is: {prime_sum}")
+""",
+          language=<Language.PYTHON: 'PYTHON'>
+        )
+      ),
+      Part(
+        code_execution_result=CodeExecutionResult(
+          outcome=<Outcome.OUTCOME_OK: 'OUTCOME_OK'>,
+          output="""The sum of the first 50 prime numbers is: 5117
+"""
+        )
+      ),
+      Part(
+        text='The sum of the first 50 prime numbers is **5,117**.'
+      ),
+    ],
+    role='model'
+  ),
+  finish_reason=<FinishReason.STOP: 'STOP'>,
+  index=0
+)] create_time=None model_version='gemini-3.1-pro-preview' prompt_feedback=None response_id='1FjnaYiFH-n4juMP9Zi3wAY' usage_metadata=GenerateContentResponseUsageMetadata(
+  candidates_token_count=363,
+  prompt_token_count=47,
+  prompt_tokens_details=[
+    ModalityTokenCount(
+      modality=<MediaModality.TEXT: 'TEXT'>,
+      token_count=47
+    ),
+  ],
+  thoughts_token_count=790,
+  tool_use_prompt_token_count=1202,
+  tool_use_prompt_tokens_details=[
+    ModalityTokenCount(
+      modality=<MediaModality.TEXT: 'TEXT'>,
+      token_count=1202
+    ),
+  ],
+  total_token_count=2402
+) model_status=None automatic_function_calling_history=[] parsed=None
+Of course! Let's break down this Python code snippet step-by-step.
+
+### What the Code Does (Overall Summary)
+
+This code defines a function called `factorial` that calculates the factorial of a given non-negative integer. The factorial of a number `n`, denoted as `n!`, is the product of all positive integers up to `n`.
+
+For example:
+*   `5! = 5 * 4 * 3 * 2 * 1 = 120`
+*   `3! = 3 * 2 * 1 = 6`
+*   By mathematical convention, `0! = 1`.
+
+The code then calls this function with the number `5`, stores the result, and prints a formatted string to the console showing the answer.
+
+---
+
+### Step-by-Step Explanation
+
+Let's go through the code line by line.
+
+```python
+def factorial(n):
+```
+**1. Function Definition:** This line defines a new function named `factorial`. It takes one argument (or parameter) called `n`, which is the number for which we want to calculate the factorial.
+
+```python
+    '''Calculates the factorial of a non-negative integer.'''
+```
+**2. Docstring:** This is a documentation string (docstring). It's good practice to include one to explain what the function does, what arguments it takes, and what it returns. It doesn't affect the code's execution but helps other developers understand it.
+
+```python
+    if not isinstance(n, int) or n < 0:
+        raise ValueError("Input must be a non-negative integer")
+```
+**3. Input Validation:** This is a crucial safety check.
+*   `isinstance(n, int)` checks if the input `n` is an integer. `not` inverts this.
+*   `n < 0` checks if the number is negative.
+*   The `or` means that if the input is *either* not an integer *or* is negative, the code inside the `if` block will run.
+*   `raise ValueError(...)` stops the function immediately and signals an error. Factorials are not defined for negative numbers or non-integers, so this prevents the function from producing incorrect results or running forever.
+
+```python
+    if n == 0:
+        return 1
+```
+**4. The Base Case:** This is the most important part of a recursive function. It is the **stopping condition**.
+*   The function checks if `n` has reached `0`.
+*   According to the mathematical definition, the factorial of 0 is 1.
+*   When `n` is 0, the function simply returns the value `1` and stops calling itself. Without a base case, a recursive function would call itself infinitely, leading to a "RecursionError".
+
+```python
+    else:
+        return n * factorial(n-1)
+```
+**5. The Recursive Step:** This is where the function calls itself.
+*   If `n` is not 0 (the base case was not met), the function does the following:
+*   It returns the result of `n` multiplied by the result of calling the `factorial` function again, but this time with the argument `n-1`.
+*   This step breaks the problem down into a smaller, identical subproblem. For example, to solve `factorial(5)`, it needs to solve `factorial(4)`. To solve `factorial(4)`, it needs to solve `factorial(3)`, and so on, until it reaches the base case of `factorial(0)`.
+
+---
+
+### How the `factorial(5)` Call Works
+
+Let's trace the execution when `factorial(5)` is called:
+
+1.  `factorial(5)` is called. Since `5` is not 0, it tries to return `5 * factorial(4)`. It must wait for `factorial(4)` to finish.
+2.  `factorial(4)` is called. It tries to return `4 * factorial(3)`. It waits.
+3.  `factorial(3)` is called. It tries to return `3 * factorial(2)`. It waits.
+4.  `factorial(2)` is called. It tries to return `2 * factorial(1)`. It waits.
+5.  `factorial(1)` is called. It tries to return `1 * factorial(0)`. It waits.
+6.  `factorial(0)` is called. It hits the **base case** (`n == 0`) and **returns `1`**.
+
+Now the calls "unwind" and the results are passed back up the chain:
+
+7.  `factorial(1)` receives the `1` from `factorial(0)` and returns `1 * 1`, which is `1`.
+8.  `factorial(2)` receives the `1` from `factorial(1)` and returns `2 * 1`, which is `2`.
+9.  `factorial(3)` receives the `2` from `factorial(2)` and returns `3 * 2`, which is `6`.
+10. `factorial(4)` receives the `6` from `factorial(3)` and returns `4 * 6`, which is `24`.
+11. `factorial(5)` receives the `24` from `factorial(4)` and returns `5 * 24`, which is `120`.
+
+```python
+result = factorial(5)
+```
+**6. Storing the Result:** The final returned value, `120`, is assigned to the variable `result`.
+
+```python
+print(f"The factorial of 5 is: {result}")
+```
+**7. Printing the Output:** This line uses an f-string to print a user-friendly message to the console, which will be: `The factorial of 5 is: 120`.
+
+---
+
+### Why Recursion is Used Here
+
+Recursion is used here because the problem of calculating a factorial is **naturally recursive**. The mathematical definition of a factorial can be stated in two parts:
+
+1.  `0! = 1`  (The base case)
+2.  `n! = n * (n-1)!` for `n > 0` (The recursive step)
+
+Notice how the code directly mirrors this mathematical definition:
+
+*   `if n == 0: return 1` is a direct translation of the base case.
+*   `return n * factorial(n-1)` is a direct translation of the recursive step.
+
+This makes the code very **elegant** and **easy to read** for someone familiar with the mathematical concept. It's a classic example of a problem where a recursive solution is often considered more intuitive and cleaner than an iterative (loop-based) one, as it perfectly matches the problem's structure......
+A man known as Holt stood in a vast book hall. A body, cold and still, lay on a thick wool rug. Foul play, Holt’s mind spun. What was wrong? Holt’s sharp scrutiny found a solitary, odd thing. A small, dry, brown spot on a victim’s cuff. Not blood. Not ink. Holt put a bit on his lip. A nutty tang... an almond aroma. A poison, no doubt. Holt ran to a row of books on botany, looking for a particular monograph. It was missing. His quarry had a start. Holt’s hunt was on.
+Of course! This is a classic logic puzzle that relies on using one key piece of information to unravel the entire problem.
+
+Here is the solution and the step-by-step reasoning.
+
+### The Solution
+
+You should draw one fruit from the box labeled **"Apples & Oranges"**.
+
+### Step-by-Step Reasoning
+
+The solution hinges on the most important rule of the puzzle: **every single box is labeled incorrectly.** Let's break down what that means.
+
+1.  **Analyze the Labels:**
+    *   The box labeled **"Apples"** cannot contain only apples. It must contain either only oranges or a mix of apples and oranges.
+    *   The box labeled **"Oranges"** cannot contain only oranges. It must contain either only apples or a mix of apples and oranges.
+    *   The box labeled **"Apples & Oranges"** cannot contain a mix. Therefore, it **must** contain either *only apples* or *only oranges*.
+
+2.  **The Key Insight:**
+    The box labeled "Apples & Oranges" is the only one you have absolute certainty about. While the other two boxes have two possible contents, this one is guaranteed to contain only one type of fruit. This is the key that unlocks the puzzle.
+
+3.  **Execute the Plan:**
+    *   **Choose the box labeled "Apples & Oranges"** and draw one fruit.
+    *   Let's say you draw an **APPLE**.
+
+4.  **The Domino Effect of Deduction:**
+    *   **First Deduction:** You drew an apple from the box labeled "Apples & Oranges". Since you know this box can only contain one type of fruit, you now know its true contents are **100% Apples**. You can now correctly label this box as "Apples".
+
+    *   **Second Deduction:** Now look at the remaining two boxes: the one labeled "Apples" and the one labeled "Oranges". You also have two remaining contents: "Oranges" and "Apples & Oranges".
+        *   Consider the box labeled "Oranges". You know its label is wrong, so it cannot contain only oranges.
+        *   Since you've already identified the "Apples" box, the only remaining content for this box is **"Apples & Oranges"**. You can now correctly label this box.
+
+    *   **Third Deduction:** By process of elimination, there is only one box left (the one originally labeled "Apples") and one content left ("Oranges"). Therefore, the box labeled "Apples" must contain **only Oranges**.
+
+### Summary of the Example
+
+| Original (Incorrect) Label | Your Action | Deduction | Correct Label |
+| :--- | :--- | :--- | :--- |
+| **Apples & Oranges** | You draw an **Apple**. | This box must be all apples. | **Apples** |
+| **Oranges** | | This label is wrong, and it can't be the Apple box (we found that). So it must be the mixed box. | **Apples & Oranges** |
+| **Apples** | | This is the last box left. It must contain the last remaining fruit. | **Oranges** |
+
+By choosing the "Apples & Oranges" box, the single fruit you draw gives you a definitive answer that starts a chain reaction, allowing you to logically deduce the contents of all three boxes.
+```json
+[
+  {
+    "name": "Isaac Newton",
+    "contribution": "Developed the laws of motion and the law of universal gravitation, which are the cornerstones of classical mechanics.",
+    "era": "17th-18th Century"
+  },
+  {
+    "name": "Albert Einstein",
+    "contribution": "Developed the theory of relativity (both special and general) and made foundational contributions to quantum mechanics, particularly the explanation of the photoelectric effect.",
+    "era": "20th Century"
+  },
+  {
+    "name": "Marie Curie",
+    "contribution": "Pioneered research on radioactivity, a term she coined. She was the first woman to win a Nobel Prize and the only person to win the Nobel Prize in two different scientific fields.",
+    "era": "Late 19th - Early 20th Century"
+  }
+]
+```
+Of course. Here is an explanation of Occam's Razor, including a simple, everyday example.
+
+### What is Occam's Razor?
+
+Occam's Razor is a problem-solving principle or a "rule of thumb" that states: **"Among competing hypotheses, the one with the fewest assumptions should be selected."**
+
+In simpler terms, it means that **the simplest explanation is usually the most likely one.**
+
+It's not a law of science, but rather a guide for thinking that helps us avoid unnecessarily complicated theories when a simpler one works just as well. The "razor" part of the name refers to "shaving away" the extra, unnecessary assumptions to get to the core of the matter.
+
+A few key points to remember:
+
+*   **It's about assumptions, not just simplicity.** A simple-sounding explanation might secretly rely on many wild assumptions. The goal is to choose the explanation that requires you to invent the fewest new concepts or entities.
+*   **It's a starting point, not a final answer.** The simplest explanation isn't *always* correct, but it's the most logical place to begin your investigation. If evidence comes along that supports a more complex theory, you should follow the evidence.
+
+---
+
+### A Simple, Everyday Example
+
+**The Scenario:** You come home and see a puddle of water on your kitchen floor.
+
+You need to figure out where the water came from. You come up with two possible explanations:
+
+**Explanation A (The Simple One):**
+The ice dispenser on the refrigerator door, which sometimes drips, probably leaked onto the floor.
+
+*   **Assumptions:**
+    1.  The ice dispenser sometimes drips (something you already know).
+
+**Explanation B (The Complex One):**
+A team of acrobatic cat burglars scaled your building, silently picked the lock on your kitchen window, rappelled inside, and during their stealthy reconnaissance, one of them spilled a bottle of water they were carrying before vanishing without a trace.
+
+*   **Assumptions:**
+    1.  Acrobatic cat burglars exist in your area.
+    2.  They decided to target your apartment.
+    3.  They have the skills to get in without making a sound.
+    4.  They were carrying a water bottle.
+    5.  They spilled it and didn't clean it up.
+    6.  They took nothing and left no other evidence of their presence.
+
+**Applying Occam's Razor:**
+
+Explanation A is far more plausible because it relies on only one simple, known fact: your fridge sometimes leaks. Explanation B requires a whole chain of new, unlikely, and unproven assumptions.
+
+Occam's Razor tells you to start with the most likely cause. You should check the ice dispenser first before you start looking for tiny footprints or installing a laser-grid security system. While the cat burglar story is more exciting, the leaky fridge is the most probable answer.
+Of course! Here is an explanation of Occam's Razor, broken down into a clear concept and a simple
+________________________________________________________________________________
+, everyday example.
+
+### The Concept of Occam's Razor
+
+Occam's Razor is a problem-solving principle that
+________________________________________________________________________________
+ can be summed up as:
+
+**"The simplest explanation is usually the right one."**
+
+More accurately, it states
+________________________________________________________________________________
+ that when you have two or more competing theories or explanations for a phenomenon, the one that makes the **fewest new
+________________________________________________________________________________
+ assumptions** is the one you should prefer.
+
+The "razor" is a metaphor: it suggests "shaving away"
+________________________________________________________________________________
+ all the unnecessary and overly complicated parts of an explanation until you're left with the most direct and logical one.
+
+**
+________________________________________________________________________________
+Key things to remember:**
+
+*   **It's a Guideline, Not a Law:** Occam's Razor
+________________________________________________________________________________.
+ is a "heuristic" or a rule of thumb, not an unbreakable law of the universe. The more complex explanation can
+________________________________________________________________________________
+ sometimes be the correct one, but the simpler one is a better starting point for investigation.
+*   **It's
+________________________________________________________________________________
+ About Assumptions:** The core idea isn't just about what *sounds* simple, but about which explanation requires you to invent the fewest
+________________________________________________________________________________
+ new, unproven concepts.
+
+---
+
+### A Simple, Everyday Example
+
+**The Situation:**
+You come home from
+________________________________________________________________________________
+ work and walk into your living room to find a pillow torn to shreds, with white fluff scattered all over the floor.
+________________________________________________________________________________
+ You live with your dog and your roommate.
+
+**Two Possible Explanations:**
+
+1.  **The Simple
+________________________________________________________________________________
+ Explanation:** While you were gone, your dog got bored or anxious, grabbed the pillow, and ripped it apart.
+2.
+________________________________________________________________________________
+  **The Complex Explanation:** A burglar broke into your house with the sole intention of destroying a single pillow, did so,
+________________________________________________________________________________
+ and then left without stealing anything else.
+
+**Applying Occam's Razor:**
+
+Let's look at the assumptions each explanation
+________________________________________________________________________________
+ requires:
+
+*   **Explanation 1 (The Dog):**
+    *   **Assumption:** Dogs sometimes chew on
+________________________________________________________________________________
+ things they aren't supposed to. (This is a very reasonable and common assumption based on known dog behavior).
+
+
+________________________________________________________________________________
+*   **Explanation 2 (The Burglar):**
+    *   **Assumption 1:** Someone was able to break into
+________________________________________________________________________________
+ your house without leaving any other signs of forced entry.
+    *   **Assumption 2:** This person had a specific, strange
+________________________________________________________________________________
+ motive to only destroy one pillow.
+    *   **Assumption 3:** This person decided not to steal any of
+________________________________________________________________________________
+ your valuable items (like a laptop or TV) that were likely nearby.
+    *   **Assumption 4:** This
+________________________________________________________________________________
+ person managed to leave without being seen.
+
+**Conclusion:**
+
+The first explanation (the dog did it) requires only
+________________________________________________________________________________
+ one simple, highly plausible assumption. The second explanation requires a whole chain of unlikely and extraordinary assumptions.
+
+Therefore, using
+________________________________________________________________________________
+ Occam's Razor, you would conclude that the most likely culprit is your dog. You don't need to
+________________________________________________________________________________
+ install a high-tech security system; you just need to buy a new pillow and maybe some chew toys.
+________________________________________________________________________________
+sdk_http_response=HttpResponse(
+  headers=<dict len=12>
+) candidates=[Candidate(
+  content=Content(
+    parts=[
+      Part(
+        text="""In a significant week for science, researchers have announced breakthroughs in materials science, biology, and genetics, potentially reshaping our understanding of catalytic reactions, cellular evolution, and human development. Major prizes were also awarded for transformative work in gene therapy.
+
+### Catalysis Discovery Could Revolutionize Chemical Reactions
+
+In a finding that could reshape the design of catalysts, scientists have for the first time observed oxygen atoms moving through the interior of a catalyst, not just along its surface. Published in *Nature* on April 15, 2026, the research reveals that the bulk material of a catalyst can actively participate in reactions. Using advanced microscopy, a team led by researchers at the Dalian Institute of Chemical Physics directly tracked oxygen movement within a ruthenium on titanium dioxide catalyst. For decades, it was believed that the crucial movement of atoms, known as spillover, primarily occurred on the catalyst's surface. This discovery of an internal pathway opens up new possibilities for creating more efficient and robust catalytic systems for a wide range of industrial processes.
+
+### Ancient Bacteria Repurpose DNA Machinery to Shape Cells
+
+A study published on April 20, 2026, has revealed a surprising evolutionary twist in cyanobacteria, the microbes responsible for oxygenating Earth's atmosphere billions of years ago. Scientists at the Institute of Science and Technology Austria discovered that a molecular system once used to separate DNA during cell division has been repurposed into a cytoskeleton-like structure that controls the cell's shape. This finding offers new insights into how biological systems evolve and how multicellular life may have developed in these vital bacteria.
+
+### Early Embryonic Discovery Overturns Longheld Beliefs
+
+Challenging longstanding assumptions in developmental biology, researchers have found that some embryonic cells are designated for specific roles in the peripheral nervous system much earlier than previously understood. The study, reported in the journal *Nature*, shows that many neural crest cells commit to their future identity before they even leave the neural tube, the structure that develops into the brain and spinal cord. This discovery, made by scientists at University of Utah Health and UC San Diego, could alter the way researchers approach treatments for a variety of childhood diseases that originate in peripheral nervous system cells.
+
+### Lost Millennium of Deep-Sea Corals Linked to Climate Shifts
+
+Research published on April 21, 2026, has shown that deep-water coral ecosystems in the Galápagos region may be more vulnerable to climate change than previously thought. A study led by the University of Bristol analyzed over 900 coral fossils and found that the corals vanished for more than a thousand years before recovering. This disappearance is linked to a major climate shift in the Pacific, suggesting that even subtle, long-term changes in climate patterns can lead to large-scale ecosystem collapse in the deep ocean.
+
+### Breakthrough Prizes Awarded for Landmark Discoveries
+
+On April 19, 2026, the Breakthrough Prize Foundation announced the recipients of its 2026 prizes, recognizing groundbreaking achievements in the Life Sciences, Physics, and Mathematics. The life sciences prizes honored the development of the first FDA-approved gene therapy for an inherited disease, the discovery of the most common genetic cause of ALS and frontotemporal dementia, and research that has transformed sickle-cell disease and beta-thalassemia from incurable to treatable conditions.
+
+### Other Notable Developments
+
+*   **New Marine Species:** On April 13, 2026, it was reported that Australia's national science agency's research vessel, RV Investigator, has helped scientists describe 179 species new to science in its first 12 years of operation, highlighting the vast undiscovered biodiversity in our oceans.
+*   **Physics Research:** A strange 'neutrino force' may have helped to resolve a discrepancy in particle physics, according to a report from April 16, 2026. On the same day, other research highlighted the ongoing challenges in precisely measuring gravity."""
+      ),
+    ],
+    role='model'
+  ),
+  finish_reason=<FinishReason.STOP: 'STOP'>,
+  grounding_metadata=GroundingMetadata(
+    grounding_chunks=[
+      GroundingChunk(
+        web=GroundingChunkWeb(
+          title='sciencedaily.com',
+          uri='https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEE08RSrGeavUgSYqNHnLTrGOQBMlo1ZsHv1PRc3U12qVGCKdQdW60tU6eDaD31Q61KeGlQgQX9sn4-B4EUbfKVAe6a-1zVJaNIYDgevO5e5yQxrYOFio8D-GN-v_5THTd7RGQt7nSC-mwd0kZ1TxxjF6rj41lNRmQp'
+        )
+      ),
+      GroundingChunk(
+        web=GroundingChunkWeb(
+          title='sciencedaily.com',
+          uri='https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHJct7BsKifWbQnm8IrgKiBtSzfow2iNPZpJYi7_KZpC_CaGreDK_TEFVxPGBM5AkgA3kXn3hFIdB1kr2hCB2ihl_wIJ1ZNptDBU2p7ktJVKDRMp_REqAPR8vxSWVDz4LuX31r3H25zjabojsFXNZRiX0kXrWqpt5EO'
+        )
+      ),
+      GroundingChunk(
+        web=GroundingChunkWeb(
+          title='utah.edu',
+          uri='https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGaVdwvk-UgHSewDSfQdlk8Z2vLo84e0vyFIZo5OJB3GpCRJiyY9nzQOhGE2gJn-tEbauLsvUOy056B-J6LGIR4Pkmos7kjiCMtsSlTvWxjLBhfzJCwSRe4gfLYBDVkhqnTKm8TS4ckjkRCZsq-gBU51H9fpn32WLgF9prOuys_jLG_1-rT_hzku24='
+        )
+      ),
+      GroundingChunk(
+        web=GroundingChunkWeb(
+          title='bristol.ac.uk',
+          uri='https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEg-u0LZFhsgujDKvddIJoRw9CQ4TqWOzxXcwamHVl-jdHfjzmd7efxpeeABoU2J3Lz5FVaL9i4Kezvo30kkNpmdQUPkOiIc8AUfta6pjy_EaG3zuf_F-7quHoITsIYLS7vSaOGwBixCWuchZyWEPLm98cpcuAOt8dL4x5-tHVklEK-8A=='
+        )
+      ),
+      GroundingChunk(
+        web=GroundingChunkWeb(
+          title='aap.com.au',
+          uri='https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG_OEM49QXJz_3ziKlaYkIrt_KTf1AvCXlb0h6VeCbWI5Sy-eBywi9SnkIb5Cd7C_yaPbGmcnvrAVbD--vZ7_nIse_bNC2dyzlyayCrLBqinq5XGsz8UV4lBPV08TSIdB1MF3QKCPQ6YbA3YOkpPJ1G'
+        )
+      ),
+      <... 2 more items ...>,
+    ],
+    grounding_supports=[
+      GroundingSupport(
+        grounding_chunk_indices=[
+          0,
+        ],
+        segment=Segment(
+          end_index=549,
+          start_index=365,
+          text='In a finding that could reshape the design of catalysts, scientists have for the first time observed oxygen atoms moving through the interior of a catalyst, not just along its surface.'
+        )
+      ),
+      GroundingSupport(
+        grounding_chunk_indices=[
+          0,
+        ],
+        segment=Segment(
+          end_index=687,
+          start_index=550,
+          text='Published in *Nature* on April 15, 2026, the research reveals that the bulk material of a catalyst can actively participate in reactions.'
+        )
+      ),
+      GroundingSupport(
+        grounding_chunk_indices=[
+          0,
+        ],
+        segment=Segment(
+          end_index=866,
+          start_index=688,
+          text='Using advanced microscopy, a team led by researchers at the Dalian Institute of Chemical Physics directly tracked oxygen movement within a ruthenium on titanium dioxide catalyst.'
+        )
+      ),
+      GroundingSupport(
+        grounding_chunk_indices=[
+          0,
+        ],
+        segment=Segment(
+          end_index=997,
+          start_index=867,
+          text="For decades, it was believed that the crucial movement of atoms, known as spillover, primarily occurred on the catalyst's surface."
+        )
+      ),
+      GroundingSupport(
+        grounding_chunk_indices=[
+          0,
+        ],
+        segment=Segment(
+          end_index=1161,
+          start_index=998,
+          text='This discovery of an internal pathway opens up new possibilities for creating more efficient and robust catalytic systems for a wide range of industrial processes.'
+        )
+      ),
+      <... 14 more items ...>,
+    ],
+    search_entry_point=SearchEntryPoint(
+      rendered_content="""<style>
+.container {
+  align-items: center;
+  border-radius: 8px;
+  display: flex;
+  font-family: Google Sans, Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 8px 12px;
+}
+.chip {
+  display: inline-block;
+  border: solid 1px;
+  border-radius: 16px;
+  min-width: 14px;
+  padding: 5px 16px;
+  text-align: center;
+  user-select: none;
+  margin: 0 8px;
+  -webkit-tap-highlight-color: transparent;
+}
+.carousel {
+  overflow: auto;
+  scrollbar-width: none;
+  white-space: nowrap;
+  margin-right: -12px;
+}
+.headline {
+  display: flex;
+  margin-right: 4px;
+}
+.gradient-container {
+  position: relative;
+}
+.gradient {
+  position: absolute;
+  transform: translate(3px, -9px);
+  height: 36px;
+  width: 9px;
+}
+@media (prefers-color-scheme: light) {
+  .container {
+    background-color: #fafafa;
+    box-shadow: 0 0 0 1px #0000000f;
+  }
+  .headline-label {
+    color: #1f1f1f;
+  }
+  .chip {
+    background-color: #ffffff;
+    border-color: #d2d2d2;
+    color: #5e5e5e;
+    text-decoration: none;
+  }
+  .chip:hover {
+    background-color: #f2f2f2;
+  }
+  .chip:focus {
+    background-color: #f2f2f2;
+  }
+  .chip:active {
+    background-color: #d8d8d8;
+    border-color: #b6b6b6;
+  }
+  .logo-dark {
+    display: none;
+  }
+  .gradient {
+    background: linear-gradient(90deg, #fafafa 15%, #fafafa00 100%);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .container {
+    background-color: #1f1f1f;
+    box-shadow: 0 0 0 1px #ffffff26;
+  }
+  .headline-label {
+    color: #fff;
+  }
+  .chip {
+    background-color: #2c2c2c;
+    border-color: #3c4043;
+    color: #fff;
+    text-decoration: none;
+  }
+  .chip:hover {
+    background-color: #353536;
+  }
+  .chip:focus {
+    background-color: #353536;
+  }
+  .chip:active {
+    background-color: #464849;
+    border-color: #53575b;
+  }
+  .logo-light {
+    display: none;
+  }
+  .gradient {
+    background: linear-gradient(90deg, #1f1f1f 15%, #1f1f1f00 100%);
+  }
+}
+</style>
+<div class="container">
+  <div class="headline">
+    <svg class="logo-light" width="18" height="18" viewBox="9 9 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M42.8622 27.0064C42.8622 25.7839 42.7525 24.6084 42.5487 23.4799H26.3109V30.1568H35.5897C35.1821 32.3041 33.9596 34.1222 32.1258 35.3448V39.6864H37.7213C40.9814 36.677 42.8622 32.2571 42.8622 27.0064V27.0064Z" fill="#4285F4"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M26.3109 43.8555C30.9659 43.8555 34.8687 42.3195 37.7213 39.6863L32.1258 35.3447C30.5898 36.3792 28.6306 37.0061 26.3109 37.0061C21.8282 37.0061 18.0195 33.9811 16.6559 29.906H10.9194V34.3573C13.7563 39.9841 19.5712 43.8555 26.3109 43.8555V43.8555Z" fill="#34A853"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M16.6559 29.8904C16.3111 28.8559 16.1074 27.7588 16.1074 26.6146C16.1074 25.4704 16.3111 24.3733 16.6559 23.3388V18.8875H10.9194C9.74388 21.2072 9.06992 23.8247 9.06992 26.6146C9.06992 29.4045 9.74388 32.022 10.9194 34.3417L15.3864 30.8621L16.6559 29.8904V29.8904Z" fill="#FBBC05"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M26.3109 16.2386C28.85 16.2386 31.107 17.1164 32.9095 18.8091L37.8466 13.8719C34.853 11.082 30.9659 9.3736 26.3109 9.3736C19.5712 9.3736 13.7563 13.245 10.9194 18.8875L16.6559 23.3388C18.0195 19.2636 21.8282 16.2386 26.3109 16.2386V16.2386Z" fill="#EA4335"/>
+    </svg>
+    <svg class="logo-dark" width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="23" fill="#FFF" r="22"/>
+      <path d="M33.76 34.26c2.75-2.56 4.49-6.37 4.49-11.26 0-.89-.08-1.84-.29-3H24.01v5.99h8.03c-.4 2.02-1.5 3.56-3.07 4.56v.75l3.91 2.97h.88z" fill="#4285F4"/>
+      <path d="M15.58 25.77A8.845 8.845 0 0 0 24 31.86c1.92 0 3.62-.46 4.97-1.31l4.79 3.71C31.14 36.7 27.65 38 24 38c-5.93 0-11.01-3.4-13.45-8.36l.17-1.01 4.06-2.85h.8z" fill="#34A853"/>
+      <path d="M15.59 20.21a8.864 8.864 0 0 0 0 5.58l-5.03 3.86c-.98-2-1.53-4.25-1.53-6.64 0-2.39.55-4.64 1.53-6.64l1-.22 3.81 2.98.22 1.08z" fill="#FBBC05"/>
+      <path d="M24 14.14c2.11 0 4.02.75 5.52 1.98l4.36-4.36C31.22 9.43 27.81 8 24 8c-5.93 0-11.01 3.4-13.45 8.36l5.03 3.85A8.86 8.86 0 0 1 24 14.14z" fill="#EA4335"/>
+    </svg>
+    <div class="gradient-container"><div class="gradient"></div></div>
+  </div>
+  <div class="carousel">
+    <a class="chip" href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGJCEF-GEgM61X_Dyiv22-Z96YFUfQehEiRoPI8pWxeE-eXMvjpDC2M39z-pEjJqPoZtqQJM37TbGqGTPCwstcsp5T6-ZLvaAyfSERpKcGcLNp7i0DDbdYP-HzUqv3jzXEP-1tWCVXMkfVfEws91DB_6KBluCh7e_QWKap-pCTHdB8sl3cDeYN6NBTiGsqe39ha9UQ5G0W8ylhstv0ok576YPJ-yLckxeZSF7I=">recent scientific discoveries April 2026</a>
+    <a class="chip" href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGOIbhNPNKQOlYcm8Oce4eMZNHsovlGs2nR6EBD8gjyiRTVkqHkqdlCamgYR3NnW8zgosWDJlxrPOg7mAVMcAX0VbTTOr96HD3tzlmX2xoM8mqUIdGdUBD0VSAKq4uDqLvs58L7XUx4RVVkdPabmjq_BCWcF8lwvjQNddfrw532r9TwdjWWhcPAyoZtSFMSkiCrKoRP141HB69Ve-xjhUWVvaG7eFYxx8kqFjNcnLfLMbrn">major scientific breakthroughs April 13-19 2026</a>
+    <a class="chip" href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEjqtLy6wa6QBMYfLA2pDqKMZhlBltXqITeQmsSIOlW2kX5WuyC3I9TMbdhr2VXGB8PkKU-TSsBkv1ZyGDwbWhewhXj1Qtvgu-Si2EDa1KBJS4FXDaEeOwdH9DVUAjDcPxsXh_vkbfMe5_8WT--VwuI4FNyEC7ZvYonrwdd3feXtEc4u7beeCKtGgIpku8_4iwPe5joRwfXBDkkHs6PNbKDToKOB1rZ">significant science news April 2026</a>
+  </div>
+</div>
+"""
+    ),
+    web_search_queries=[
+      'major scientific breakthroughs April 13-19 2026',
+      'significant science news April 2026',
+      'recent scientific discoveries April 2026',
+    ]
+  ),
+  index=0
+)] create_time=None model_version='gemini-3.1-pro-preview' prompt_feedback=None response_id='WFnnabHfBa-LqfkPgePEoAE' usage_metadata=GenerateContentResponseUsageMetadata(
+  candidates_token_count=854,
+  prompt_token_count=11,
+  prompt_tokens_details=[
+    ModalityTokenCount(
+      modality=<MediaModality.TEXT: 'TEXT'>,
+      token_count=11
+    ),
+  ],
+  thoughts_token_count=864,
+  tool_use_prompt_token_count=336,
+  tool_use_prompt_tokens_details=[
+    ModalityTokenCount(
+      modality=<MediaModality.TEXT: 'TEXT'>,
+      token_count=336
+    ),
+  ],
+  total_token_count=2065
+) model_status=None automatic_function_calling_history=[] parsed=None..
+======================================================================
+ERROR: test_text_gen_multimodal_video_prompt (text_generation.UnitTests.test_text_gen_multimodal_video_prompt)
+text_generation.UnitTests.test_text_gen_multimodal_video_prompt
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/macd/code/api-examples/python/text_generation.py", line 161, in test_text_gen_multimodal_video_prompt
+    response = client.models.generate_content(
+        model="gemini-3-flash-preview", contents=[myfile, "Describe this video clip"]
+    )
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/models.py", line 6021, in generate_content
+    response = self._generate_content(
+        model=model, contents=contents, config=parsed_config
+    )
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/models.py", line 4683, in _generate_content
+    response = self._api_client.request(
+        'post', path, request_dict, http_options
+    )
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/_api_client.py", line 1532, in request
+    response = self._request(http_request, http_options, stream=False)
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/_api_client.py", line 1327, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/tenacity/__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/tenacity/__init__.py", line 378, in iter
+    result = action(retry_state)
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/tenacity/__init__.py", line 420, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/tenacity/__init__.py", line 187, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/tenacity/__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/_api_client.py", line 1304, in _request_once
+    errors.APIError.raise_for_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/errors.py", line 155, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/errors.py", line 186, in raise_error
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+======================================================================
+ERROR: test_text_gen_multimodal_video_prompt_streaming (text_generation.UnitTests.test_text_gen_multimodal_video_prompt_streaming)
+text_generation.UnitTests.test_text_gen_multimodal_video_prompt_streaming
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/macd/code/api-examples/python/text_generation.py", line 187, in test_text_gen_multimodal_video_prompt_streaming
+    for chunk in response:
+                 ^^^^^^^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/models.py", line 6198, in generate_content_stream
+    for chunk in response:
+                 ^^^^^^^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/models.py", line 4776, in _generate_content_stream
+    for response in self._api_client.request_streamed(
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        'post', path, request_dict, http_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/_api_client.py", line 1549, in request_streamed
+    session_response = self._request(http_request, http_options, stream=True)
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/_api_client.py", line 1327, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/tenacity/__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/tenacity/__init__.py", line 378, in iter
+    result = action(retry_state)
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/tenacity/__init__.py", line 420, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/tenacity/__init__.py", line 187, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/tenacity/__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/_api_client.py", line 1304, in _request_once
+    errors.APIError.raise_for_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/errors.py", line 155, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/errors.py", line 186, in raise_error
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+======================================================================
+ERROR: test_text_gen_text_only_prompt (text_generation.UnitTests.test_text_gen_text_only_prompt)
+text_generation.UnitTests.test_text_gen_text_only_prompt
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/macd/code/api-examples/python/text_generation.py", line 29, in test_text_gen_text_only_prompt
+    response = client.models.generate_content(
+        model="gemini-3-flash-preview", contents="Write a story about a magic backpack."
+    )
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/models.py", line 6021, in generate_content
+    response = self._generate_content(
+        model=model, contents=contents, config=parsed_config
+    )
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/models.py", line 4683, in _generate_content
+    response = self._api_client.request(
+        'post', path, request_dict, http_options
+    )
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/_api_client.py", line 1532, in request
+    response = self._request(http_request, http_options, stream=False)
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/_api_client.py", line 1327, in _request
+    return self._retry(self._request_once, http_request, stream)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/tenacity/__init__.py", line 477, in __call__
+    do = self.iter(retry_state=retry_state)
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/tenacity/__init__.py", line 378, in iter
+    result = action(retry_state)
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/tenacity/__init__.py", line 420, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/tenacity/__init__.py", line 187, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/tenacity/__init__.py", line 480, in __call__
+    result = fn(*args, **kwargs)
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/_api_client.py", line 1304, in _request_once
+    errors.APIError.raise_for_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/errors.py", line 155, in raise_for_response
+    cls.raise_error(response.status_code, response_json, response)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/errors.py", line 186, in raise_error
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+======================================================================
+ERROR: test_text_gen_text_only_prompt_streaming (text_generation.UnitTests.test_text_gen_text_only_prompt_streaming)
+text_generation.UnitTests.test_text_gen_text_only_prompt_streaming
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/macd/code/api-examples/python/text_generation.py", line 43, in test_text_gen_text_only_prompt_streaming
+    for chunk in response:
+                 ^^^^^^^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/models.py", line 6198, in generate_content_stream
+    for chunk in response:
+                 ^^^^^^^^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/models.py", line 4776, in _generate_content_stream
+    for response in self._api_client.request_streamed(
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        'post', path, request_dict, http_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/_api_client.py", line 1555, in request_streamed
+    errors.APIError.raise_error(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        chunk_json.get('error', {}).get('code'),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        chunk_json,
+        ^^^^^^^^^^^
+        session_response,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/macd/.pyenv/versions/3.13.0/lib/python3.13/site-packages/google/genai/errors.py", line 186, in raise_error
+    raise ServerError(status_code, response_json, response)
+google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+
+----------------------------------------------------------------------
+Ran 67 tests in 1058.443s
+
+FAILED (errors=4)
+
+**The next total solar eclipse visible from mainland Europe will
+________________________________________________________________________________
+ occur on August 12, 2026.**
+
+This celestial event will be the first total solar eclipse
+________________________________________________________________________________
+ visible from mainland Europe since 1999. The path of totality
+________________________________________________________________________________
+ will cross over Greenland, Iceland, and northern Spain.
+
+For those in other
+________________________________________________________________________________
+ parts of Europe, as well as parts of Africa, North America, and the Atlantic, Arctic, and Pacific Oceans, a partial
+________________________________________________________________________________
+ solar eclipse will be visible.
+
+In Spain, the total eclipse will occur in the late afternoon,
+________________________________________________________________________________
+ close to sunset, offering a unique viewing experience. The maximum duration of totality for this eclipse will
+________________________________________________________________________________
+ be approximately 2 minutes and 18 seconds, with the longest duration occurring near Iceland.
+
+Following
+________________________________________________________________________________
+ the 2026 event, another total solar eclipse will be visible from southern Spain in 2027
+________________________________________________________________________________
+.
+________________________________________________________________________________
+<generator object Models.generate_content_stream at 0x7f4e3d9f94e0>
