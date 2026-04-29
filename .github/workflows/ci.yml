@@ -1,0 +1,103 @@
+name: CI Tests
+
+on:
+  push:
+    branches:
+      - main
+  # Trigger on PRs (including forks)
+  pull_request_target:
+    branches:
+      - main
+  # Manual trigger
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Branch or Ref to test'
+        required: false
+        default: ''
+
+jobs:
+  test-go:
+    runs-on: ubuntu-latest
+    # This gates the job until a maintainer approves
+    environment: CI
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Use the PR head for pull_request_target, otherwise the default ref
+          ref: ${{ github.event.pull_request.head.sha || github.event.inputs.ref || github.ref }}
+          # Persist credentials is false to prevent the PR code from using the GITHUB_TOKEN
+          persist-credentials: false
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+      - name: Run Go tests
+        working-directory: ./go
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        run: go test ./...
+
+  test-java:
+    runs-on: ubuntu-latest
+    environment: CI
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.event.inputs.ref || github.ref }}
+          persist-credentials: false
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+      - name: Run Java tests
+        working-directory: ./java
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        run: mvn -B test
+
+  test-javascript:
+    runs-on: ubuntu-latest
+    environment: CI
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.event.inputs.ref || github.ref }}
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: javascript/package-lock.json
+      - name: Install dependencies
+        working-directory: ./javascript
+        run: npm ci
+      - name: Run JavaScript tests
+        working-directory: ./javascript
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        run: node --test *.test.js
+
+  test-python:
+    runs-on: ubuntu-latest
+    environment: CI
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.event.inputs.ref || github.ref }}
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        working-directory: ./python
+        run: pip install absl-py google-genai Pillow pyink pytest
+      - name: Run Python tests
+        working-directory: ./python
+        env:
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+        run: pytest .
