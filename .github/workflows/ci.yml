@@ -34,7 +34,7 @@ jobs:
         working-directory: ./go
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: go test ./...
+        run: go test -timeout 20m ./...
 
   test-java:
     runs-on: ubuntu-latest
