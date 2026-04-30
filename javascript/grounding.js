@@ -17,12 +17,6 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-// Ensure the API key is set in your environment variables
-if (!process.env.GEMINI_API_KEY) {
-  throw new Error("GEMINI_API_KEY environment variable not set.");
-}
-
-// Define the thinking model centrally
 const MODEL_ID = "gemini-2.5-flash";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
