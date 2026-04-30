@@ -52,7 +52,7 @@ jobs:
       - name: Run Java tests
         working-directory: ./java
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: mvn -B test
 
   test-javascript:
