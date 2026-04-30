@@ -21,9 +21,8 @@ func ConfigureModelParameters() (*genai.GenerateContentResponse, error) {
 
 	// Create local variables for parameters.
 	candidateCount := int32(1)
-	maxOutputTokens := int32(20)
+	maxOutputTokens := int32(200)
 	temperature := float32(1.0)
-
 	response, err := client.Models.GenerateContent(
 		ctx,
 		"gemini-2.5-flash",
