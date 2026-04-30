@@ -33,7 +33,7 @@ jobs:
       - name: Run Go tests
         working-directory: ./go
         env:
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: go test ./...
 
   test-java:
@@ -52,7 +52,7 @@ jobs:
       - name: Run Java tests
         working-directory: ./java
         env:
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: mvn -B test
 
   test-javascript:
@@ -74,7 +74,7 @@ jobs:
       - name: Run JavaScript tests
         working-directory: ./javascript
         env:
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: node --test *.test.js
 
   test-python:
@@ -94,5 +94,5 @@ jobs:
       - name: Run Python tests
         working-directory: ./python
         env:
-          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: pytest .
