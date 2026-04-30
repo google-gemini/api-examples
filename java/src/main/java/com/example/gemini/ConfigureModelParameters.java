@@ -32,7 +32,7 @@ public class ConfigureModelParameters {
                 GenerateContentConfig.builder()
                         .candidateCount(1)
                         .stopSequences(List.of("x"))
-                        .maxOutputTokens(200)
+                        .maxOutputTokens(20)
                         .temperature(1.0F)
                         .build();
 

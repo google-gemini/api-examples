@@ -29,7 +29,7 @@ class UnitTests(absltest.TestCase):
             config=types.GenerateContentConfig(
                 candidate_count=1,
                 stop_sequences=["x"],
-                max_output_tokens=200,
+                max_output_tokens=20,
                 temperature=1.0,
             ),
         )

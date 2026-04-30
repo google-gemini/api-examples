@@ -29,7 +29,7 @@ export async function configureModelParameters() {
     config: {
       candidateCount: 1,
       stopSequences: ["x"],
-      maxOutputTokens: 200,
+      maxOutputTokens: 20,
       temperature: 1.0,
     },
   });
