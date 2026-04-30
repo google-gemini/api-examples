@@ -95,4 +95,5 @@ jobs:
         working-directory: ./python
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: pytest .
+        # Discover and run all .py files as tests
+        run: python -m unittest discover -p "*.py"
