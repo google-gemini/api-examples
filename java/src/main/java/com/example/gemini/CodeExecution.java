@@ -38,7 +38,7 @@ public class CodeExecution {
 
         GenerateContentResponse response =
                 client.models.generateContent(
-                        "gemini-2.5-flash",
+                        "gemini-3.5-flash",
                         prompt,
                         null);
 
@@ -114,7 +114,7 @@ public class CodeExecution {
 
         GenerateContentResponse response =
                 client.models.generateContent(
-                        "gemini-2.5-flash",
+                        "gemini-3.5-flash",
                         prompt,
                         config);
 
