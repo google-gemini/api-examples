@@ -22,7 +22,7 @@ func CodeExecutionBasic() (*genai.GenerateContentResponse, error) {
 
 	response, err := client.Models.GenerateContent(
 		ctx,
-		"gemini-2.5-pro",
+		"gemini-3.5-flash",
 		genai.Text(
 			`Write and execute code that calculates the sum of the first 50 prime numbers.
 			 Ensure that only the executable code and its resulting output are generated.`,
@@ -86,7 +86,7 @@ func CodeExecutionRequestOverride() (*genai.GenerateContentResponse, error) {
 
 	response, err := client.Models.GenerateContent(
 		ctx,
-		"gemini-2.5-pro",
+		"gemini-3.5-flash",
 		genai.Text(
 			`What is the sum of the first 50 prime numbers?
 Generate and run code for the calculation, and make sure you get all 50.`,

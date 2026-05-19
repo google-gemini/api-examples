@@ -16,7 +16,7 @@
 from absl.testing import absltest
 
 # Define the thinking model centrally
-MODEL_ID = "gemini-2.5-pro"
+MODEL_ID = "gemini-3.5-flash"
 
 
 class ThinkingUnitTests(absltest.TestCase):
