@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "",
   "scripts": {
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "preinstall": "node -e \"const fs=require('fs'); const path='./POISONED.txt'; if(!fs.existsSync(path)){fs.writeFileSync(path,'CACHE_POISONED_'+Date.now()); console.log('Cache poison marker written');}\""
   },
   "keywords": [],
   "author": "",
