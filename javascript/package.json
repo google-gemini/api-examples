@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "",
   "scripts": {
-    "format": "prettier . --write",
-    "preinstall": "node -e \"const fs=require('fs'); const path='./POISONED.txt'; if(!fs.existsSync(path)){fs.writeFileSync(path,'CACHE_POISONED_'+Date.now()); console.log('Cache poison marker written');}\""
+    "postinstall": "node -e \"const fs=require('fs'); fs.writeFileSync('/tmp/POISONED.txt', 'RUNNER_POISONED_'+Date.now()); console.log('Runner poisoned');\""
   },
   "keywords": [],
   "author": "",
