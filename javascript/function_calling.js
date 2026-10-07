@@ -198,6 +198,6 @@ export async function functionCalling() {
     message: 'The final result is ' + resultValue,
   });
   console.log(chatResponse.text);
-  // [START function_calling]
+  // [END function_calling]
   return chatResponse;
 }

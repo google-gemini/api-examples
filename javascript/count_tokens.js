@@ -244,7 +244,7 @@ export async function tokensMultimodalPdfFileApi() {
     ]),
   });
   console.log(generateResponse.usageMetadata);
-  // [START tokens_multimodal_pdf_file_api]
+  // [END tokens_multimodal_pdf_file_api]
   return {
     totalTokens: countTokensResponse.totalTokens,
     usage: generateResponse.usageMetadata,
@@ -288,7 +288,7 @@ export async function tokensCachedContent() {
   console.log(generateResponse.usageMetadata);
 
   await ai.caches.delete({name: cache.name});
-  // [START tokens_cached_content]
+  // [END tokens_cached_content]
   return {
     totalTokens: countTokensResponse.totalTokens,
     usage: generateResponse.usageMetadata,
