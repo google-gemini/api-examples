@@ -17,22 +17,22 @@ from absl.testing import absltest
 
 class UnitTests(absltest.TestCase):
 
-    def test_system_instruction(self):
-        # [START system_instruction]
-        from google import genai
-        from google.genai import types
+  def test_system_instruction(self):
+    # [START system_instruction]
+    from google import genai
+    from google.genai import types
 
-        client = genai.Client()
-        response = client.models.generate_content(
-            model="gemini-3.8-flash",
-            contents="Good morning! How are you?",
-            config=types.GenerateContentConfig(
-                system_instruction="You are a cat. Your name is Neko."
-            ),
-        )
-        print(response.text)
-        # [END system_instruction]
+    client = genai.Client()
+    response = client.models.generate_content(
+        model="gemini-3.8-flash",
+        contents="Good morning! How are you?",
+        config=types.GenerateContentConfig(
+            system_instruction="You are a cat. Your name is Neko."
+        ),
+    )
+    print(response.text)
+    # [END system_instruction]
 
 
 if __name__ == "__main__":
-    absltest.main()
+  absltest.main()

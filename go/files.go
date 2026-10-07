@@ -21,12 +21,12 @@ func FilesCreateText() (*genai.GenerateContentResponse, error) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 	myfile, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "poem.txt"), 
+		ctx,
+		filepath.Join(getMedia(), "poem.txt"),
 		&genai.UploadFileConfig{
-			MIMEType : "text/plain",
+			MIMEType: "text/plain",
 		},
 	)
 	if err != nil {
@@ -65,10 +65,10 @@ func FilesCreateImage() (*genai.GenerateContentResponse, error) {
 		log.Fatal(err)
 	}
 	myfile, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "Cajun_instruments.jpg"), 
+		ctx,
+		filepath.Join(getMedia(), "Cajun_instruments.jpg"),
 		&genai.UploadFileConfig{
-			MIMEType : "image/jpeg",
+			MIMEType: "image/jpeg",
 		},
 	)
 	if err != nil {
@@ -107,10 +107,10 @@ func FilesCreateAudio() (*genai.GenerateContentResponse, error) {
 		log.Fatal(err)
 	}
 	myfile, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "sample.mp3"), 
+		ctx,
+		filepath.Join(getMedia(), "sample.mp3"),
 		&genai.UploadFileConfig{
-			MIMEType : "audio/mpeg",
+			MIMEType: "audio/mpeg",
 		},
 	)
 	if err != nil {
@@ -148,10 +148,10 @@ func FilesCreateVideo() (*genai.GenerateContentResponse, error) {
 		log.Fatal(err)
 	}
 	myfile, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "Big_Buck_Bunny.mp4"), 
+		ctx,
+		filepath.Join(getMedia(), "Big_Buck_Bunny.mp4"),
 		&genai.UploadFileConfig{
-			MIMEType : "video/mp4",
+			MIMEType: "video/mp4",
 		},
 	)
 	if err != nil {
@@ -246,7 +246,7 @@ func FilesCreateFromIO() (*genai.GenerateContentResponse, error) {
 	}
 	defer f.Close()
 	samplePdf, err := client.Files.Upload(ctx, f, &genai.UploadFileConfig{
-		MIMEType : "application/pdf",
+		MIMEType: "application/pdf",
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -305,7 +305,7 @@ func FilesGet() (*genai.File, error) {
 	}
 	myfile, err := client.Files.UploadFromPath(
 		ctx,
-		filepath.Join(getMedia(), "poem.txt"), 
+		filepath.Join(getMedia(), "poem.txt"),
 		&genai.UploadFileConfig{
 			MIMEType: "text/plain",
 		},
@@ -335,8 +335,8 @@ func FilesDelete() error {
 		log.Fatal(err)
 	}
 	myfile, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "poem.txt"), 
+		ctx,
+		filepath.Join(getMedia(), "poem.txt"),
 		&genai.UploadFileConfig{
 			MIMEType: "text/plain",
 		},
@@ -351,14 +351,14 @@ func FilesDelete() error {
 	}
 	// Attempt to use the deleted file.
 	parts := []*genai.Part{
-		genai.NewPartFromURI(myfile.URI, myfile.MIMEType,),
+		genai.NewPartFromURI(myfile.URI, myfile.MIMEType),
 		genai.NewPartFromText("Describe this file."),
 	}
 
 	contents := []*genai.Content{
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
-	
+
 	_, err = client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, nil)
 	// Expect an error when using a deleted file.
 	if err != nil {

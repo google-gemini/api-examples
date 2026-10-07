@@ -15,17 +15,17 @@
  * limitations under the License.
  */
 
-import { GoogleGenAI } from "@google/genai";
+import {GoogleGenAI} from '@google/genai';
 
 // Ensure the API key is set in your environment variables
 if (!process.env.GEMINI_API_KEY) {
-  throw new Error("GEMINI_API_KEY environment variable not set.");
+  throw new Error('GEMINI_API_KEY environment variable not set.');
 }
 
 // Define the thinking model centrally
-const MODEL_ID = "gemini-3.8-flash";
+const MODEL_ID = 'gemini-3.8-flash';
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 
 export async function thinkingTextOnlyPrompt() {
   // [START thinking_text_only_prompt]
@@ -33,14 +33,14 @@ export async function thinkingTextOnlyPrompt() {
    * Generates text based on a simple reasoning prompt.
    */
   const prompt =
-    "Explain the concept of Occam's Razor and provide a simple, everyday example.";
+      'Explain the concept of Occam\'s Razor and provide a simple, everyday example.';
 
   const response = await ai.models.generateContent({
     model: MODEL_ID,
     contents: prompt,
   });
 
-  console.log(response.text); // Direct text access for simple responses
+  console.log(response.text);  // Direct text access for simple responses
 
   return response.text;
   // [END thinking_text_only_prompt]
@@ -52,14 +52,14 @@ export async function thinkingTextOnlyPromptStreaming() {
    * Generates text based on a simple reasoning prompt using streaming.
    */
   const prompt =
-    "Explain the concept of Occam's Razor and provide a simple, everyday example.";
+      'Explain the concept of Occam\'s Razor and provide a simple, everyday example.';
 
   const response = await ai.models.generateContentStream({
     model: MODEL_ID,
     contents: prompt,
   });
 
-  let text = "";
+  let text = '';
   for await (const chunk of response) {
     console.log(chunk.text);
     text += chunk.text;
@@ -156,13 +156,14 @@ export async function thinkingWithSearchTool() {
     googleSearch: {},
   };
 
-  const prompt = "What were the major scientific breakthroughs announced last week?";
+  const prompt =
+      'What were the major scientific breakthroughs announced last week?';
 
   const response = await ai.models.generateContent({
     model: MODEL_ID,
     contents: prompt,
     config: {
-      tools: [googleSearchTool], // Pass the tool in the config
+      tools: [googleSearchTool],  // Pass the tool in the config
     },
   });
 
@@ -182,7 +183,8 @@ export async function thinkingWithSearchToolStreaming() {
     googleSearch: {},
   };
 
-  const prompt = "When is the next total solar eclipse visible from mainland Europe?";
+  const prompt =
+      'When is the next total solar eclipse visible from mainland Europe?';
 
   const response = await ai.models.generateContentStream({
     model: MODEL_ID,
@@ -192,7 +194,7 @@ export async function thinkingWithSearchToolStreaming() {
     },
   });
 
-  let text = "";
+  let text = '';
   for await (const chunk of response) {
     console.log(chunk.text);
     text += chunk.text;
@@ -208,10 +210,9 @@ export async function thinkingCodeExecution() {
   /**
    * Tests the model's ability to generate and execute code.
    */
-  const prompt =
-    "What is the sum of the first 50 prime numbers? " +
-    "Generate and run Python code for the calculation, and make sure you get all 50. " +
-    "Provide the final sum clearly.";
+  const prompt = 'What is the sum of the first 50 prime numbers? ' +
+      'Generate and run Python code for the calculation, and make sure you get all 50. ' +
+      'Provide the final sum clearly.';
 
   // Define the code execution tool
   const codeExecutionTool = {
@@ -254,7 +255,8 @@ export async function thinkingStructuredOutputJson() {
     // For stricter JSON mode (if structured output is supported):
     // config: {
     //   responseMimeType: "application/json",
-    //   // jsonSchema: { type: "array", items: { type: "object", properties: { ... } } } // Define schema if needed
+    //   // jsonSchema: { type: "array", items: { type: "object", properties: {
+    //   ... } } } // Define schema if needed
     // }
   });
 

@@ -37,7 +37,7 @@ type ArithmeticArgs struct {
 // The parameters schema includes "firstParam" and "secondParam" as required numbers.
 func createArithmeticToolDeclaration(name, description string) *genai.FunctionDeclaration {
 	paramSchema := &genai.Schema{
-		Type: genai.TypeObject,
+		Type:        genai.TypeObject,
 		Description: "The result of the arithmetic operation.",
 		Properties: map[string]*genai.Schema{
 			"firstParam": {
@@ -134,22 +134,22 @@ func FunctionCalling() error {
 	// Map the function name to the actual arithmetic function.
 	var result float64
 	switch functionCall.Name {
-		case "addNumbers":
-			result = add(args.FirstParam, args.SecondParam)
-		case "subtractNumbers":
-			result = subtract(args.FirstParam, args.SecondParam)
-		case "multiplyNumbers":
-			result = multiply(args.FirstParam, args.SecondParam)
-		case "divideNumbers":
-			result = divide(args.FirstParam, args.SecondParam)
-		default:
-			return fmt.Errorf("unimplemented function: %s", functionCall.Name)
+	case "addNumbers":
+		result = add(args.FirstParam, args.SecondParam)
+	case "subtractNumbers":
+		result = subtract(args.FirstParam, args.SecondParam)
+	case "multiplyNumbers":
+		result = multiply(args.FirstParam, args.SecondParam)
+	case "divideNumbers":
+		result = divide(args.FirstParam, args.SecondParam)
+	default:
+		return fmt.Errorf("unimplemented function: %s", functionCall.Name)
 	}
 	log.Printf("Function result: %v\n", result)
 
 	// Prepare the final result message as content.
 	resultContents := []*genai.Content{
-		genai.NewContentFromText("The final result is " + fmt.Sprintf("%v", result), genai.RoleUser),
+		genai.NewContentFromText("The final result is "+fmt.Sprintf("%v", result), genai.RoleUser),
 	}
 
 	// Use GenerateContent to send the final result.

@@ -15,13 +15,13 @@
  * limitations under the License.
  */
 
-import { GoogleGenAI, FunctionCallingConfigMode } from "@google/genai";
+import {FunctionCallingConfigMode, GoogleGenAI} from '@google/genai';
 
 export async function functionCalling() {
   // [START function_calling]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 
   /**
    * The add function returns the sum of two numbers.
@@ -64,90 +64,90 @@ export async function functionCalling() {
   }
 
   const addDeclaration = {
-    name: "addNumbers",
+    name: 'addNumbers',
     parameters: {
-      type: "object",
-      description: "Return the result of adding two numbers.",
+      type: 'object',
+      description: 'Return the result of adding two numbers.',
       properties: {
         firstParam: {
-          type: "number",
+          type: 'number',
           description:
-            "The first parameter which can be an integer or a floating point number.",
+              'The first parameter which can be an integer or a floating point number.',
         },
         secondParam: {
-          type: "number",
+          type: 'number',
           description:
-            "The second parameter which can be an integer or a floating point number.",
+              'The second parameter which can be an integer or a floating point number.',
         },
       },
-      required: ["firstParam", "secondParam"],
+      required: ['firstParam', 'secondParam'],
     },
   };
 
   const subtractDeclaration = {
-    name: "subtractNumbers",
+    name: 'subtractNumbers',
     parameters: {
-      type: "object",
+      type: 'object',
       description:
-        "Return the result of subtracting the second number from the first.",
+          'Return the result of subtracting the second number from the first.',
       properties: {
         firstParam: {
-          type: "number",
-          description: "The first parameter.",
+          type: 'number',
+          description: 'The first parameter.',
         },
         secondParam: {
-          type: "number",
-          description: "The second parameter.",
+          type: 'number',
+          description: 'The second parameter.',
         },
       },
-      required: ["firstParam", "secondParam"],
+      required: ['firstParam', 'secondParam'],
     },
   };
 
   const multiplyDeclaration = {
-    name: "multiplyNumbers",
+    name: 'multiplyNumbers',
     parameters: {
-      type: "object",
-      description: "Return the product of two numbers.",
+      type: 'object',
+      description: 'Return the product of two numbers.',
       properties: {
         firstParam: {
-          type: "number",
-          description: "The first parameter.",
+          type: 'number',
+          description: 'The first parameter.',
         },
         secondParam: {
-          type: "number",
-          description: "The second parameter.",
+          type: 'number',
+          description: 'The second parameter.',
         },
       },
-      required: ["firstParam", "secondParam"],
+      required: ['firstParam', 'secondParam'],
     },
   };
 
   const divideDeclaration = {
-    name: "divideNumbers",
+    name: 'divideNumbers',
     parameters: {
-      type: "object",
+      type: 'object',
       description:
-        "Return the quotient of dividing the first number by the second.",
+          'Return the quotient of dividing the first number by the second.',
       properties: {
         firstParam: {
-          type: "number",
-          description: "The first parameter.",
+          type: 'number',
+          description: 'The first parameter.',
         },
         secondParam: {
-          type: "number",
-          description: "The second parameter.",
+          type: 'number',
+          description: 'The second parameter.',
         },
       },
-      required: ["firstParam", "secondParam"],
+      required: ['firstParam', 'secondParam'],
     },
   };
 
   // Step 1: Call generateContent with function calling enabled.
   const generateContentResponse = await ai.models.generateContent({
-    model: "gemini-3.8-flash",
+    model: 'gemini-3.8-flash',
     contents:
-      "I have 57 cats, each owns 44 mittens, how many mittens is that in total?",
+        'I have 57 cats, each owns 44 mittens, how many mittens is that in total?',
     config: {
       toolConfig: {
         functionCallingConfig: {
@@ -169,9 +169,8 @@ export async function functionCalling() {
 
   // Step 2: Extract the function call.(
   // Assuming the response contains a 'functionCalls' array.
-  const functionCall =
-    generateContentResponse.functionCalls &&
-    generateContentResponse.functionCalls[0];
+  const functionCall = generateContentResponse.functionCalls &&
+      generateContentResponse.functionCalls[0];
   console.log(functionCall);
 
   // Parse the arguments.
@@ -187,16 +186,16 @@ export async function functionCalling() {
   };
   const func = functionMapping[functionCall.name];
   if (!func) {
-    console.error("Unimplemented error:", functionCall.name);
+    console.error('Unimplemented error:', functionCall.name);
     return generateContentResponse;
   }
   const resultValue = func(args.firstParam, args.secondParam);
-  console.log("Function result:", resultValue);
+  console.log('Function result:', resultValue);
 
   // Step 4: Use the chat API to send the result as the final answer.
-  const chat = ai.chats.create({ model: "gemini-3.8-flash" });
+  const chat = ai.chats.create({model: 'gemini-3.8-flash'});
   const chatResponse = await chat.sendMessage({
-    message: "The final result is " + resultValue,
+    message: 'The final result is ' + resultValue,
   });
   console.log(chatResponse.text);
   // [START function_calling]

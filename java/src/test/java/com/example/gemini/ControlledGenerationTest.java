@@ -16,57 +16,58 @@
 
 package com.example.gemini;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.Test;
+
 public class ControlledGenerationTest {
-    @Test
-    public void test_jsonControlledGeneration() {
-        String result = assertDoesNotThrow(ControlledGeneration::jsonControlledGeneration,
-                "jsonControlledGeneration returned an error");
+  @Test
+  public void test_jsonControlledGeneration() {
+    String result =
+        assertDoesNotThrow(
+            ControlledGeneration::jsonControlledGeneration,
+            "jsonControlledGeneration returned an error");
 
-        assertNotNull(result, "Response should not be null");
-        assertFalse(result.trim().isEmpty(), "Response should not be empty");
-    }
+    assertNotNull(result, "Response should not be null");
+    assertFalse(result.trim().isEmpty(), "Response should not be empty");
+  }
 
-    @Test
-    public void test_jsonNoSchema() {
-        String result = assertDoesNotThrow(ControlledGeneration::jsonNoSchema,
-                "jsonNoSchema returned an error");
+  @Test
+  public void test_jsonNoSchema() {
+    String result =
+        assertDoesNotThrow(ControlledGeneration::jsonNoSchema, "jsonNoSchema returned an error");
 
-        assertNotNull(result, "Response should not be null");
-        assertFalse(result.trim().isEmpty(), "Response should not be empty");
-    }
+    assertNotNull(result, "Response should not be null");
+    assertFalse(result.trim().isEmpty(), "Response should not be empty");
+  }
 
-    @Test
-    public void test_jsonEnum() {
-        String result = assertDoesNotThrow(ControlledGeneration::jsonEnum,
-                "jsonEnum returned an error");
+  @Test
+  public void test_jsonEnum() {
+    String result =
+        assertDoesNotThrow(ControlledGeneration::jsonEnum, "jsonEnum returned an error");
 
-        assertNotNull(result, "Response should not be null");
-        assertFalse(result.trim().isEmpty(), "Response should not be empty");
-        assertTrue(result.trim().contains("Keyboard"), "Response should contain word `Keyboard`");
-    }
+    assertNotNull(result, "Response should not be null");
+    assertFalse(result.trim().isEmpty(), "Response should not be empty");
+    assertTrue(result.trim().contains("Keyboard"), "Response should contain word `Keyboard`");
+  }
 
-    @Test
-    public void test_enumInJson() {
-        String result = assertDoesNotThrow(ControlledGeneration::enumInJson,
-                "enumInJson returned an error");
+  @Test
+  public void test_enumInJson() {
+    String result =
+        assertDoesNotThrow(ControlledGeneration::enumInJson, "enumInJson returned an error");
 
-        assertNotNull(result, "Response should not be null");
-        assertFalse(result.trim().isEmpty(), "Response should not be empty");
-    }
+    assertNotNull(result, "Response should not be null");
+    assertFalse(result.trim().isEmpty(), "Response should not be empty");
+  }
 
-    @Test
-    public void test_xEnum() {
-        String result = assertDoesNotThrow(ControlledGeneration::xEnum,
-                "xEnum returned an error");
+  @Test
+  public void test_xEnum() {
+    String result = assertDoesNotThrow(ControlledGeneration::xEnum, "xEnum returned an error");
 
-        assertNotNull(result, "Response should not be null");
-        assertFalse(result.trim().isEmpty(), "Response should not be empty");
-    }
+    assertNotNull(result, "Response should not be null");
+    assertFalse(result.trim().isEmpty(), "Response should not be empty");
+  }
 }

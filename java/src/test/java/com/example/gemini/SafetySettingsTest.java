@@ -16,41 +16,39 @@
 
 package com.example.gemini;
 
-import com.google.genai.types.GenerateContentResponse;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.google.genai.types.GenerateContentResponse;
+import org.junit.jupiter.api.Test;
+
 public class SafetySettingsTest {
-    @Test
-    public void test_safetySettings() {
-        GenerateContentResponse response = assertDoesNotThrow(SafetySettings::safetySettings,
-                "safetySettings returned an error");
+  @Test
+  public void test_safetySettings() {
+    GenerateContentResponse response =
+        assertDoesNotThrow(SafetySettings::safetySettings, "safetySettings returned an error");
 
-        assertNotNull(response, "Response should not be null");
+    assertNotNull(response, "Response should not be null");
 
-        assertTrue(
-                response.candidates().get().getFirst().finishReason().isPresent(),
-                "Safety finish reason should be present"
-        );
-        assertTrue(
-                response.candidates().get().getFirst().safetyRatings().isPresent(),
-                "Safety ratings should be present"
-        );
-    }
+    assertTrue(
+        response.candidates().get().getFirst().finishReason().isPresent(),
+        "Safety finish reason should be present");
+    assertTrue(
+        response.candidates().get().getFirst().safetyRatings().isPresent(),
+        "Safety ratings should be present");
+  }
 
-    @Test
-    public void test_safetySettingsMulti() {
-        GenerateContentResponse response = assertDoesNotThrow(SafetySettings::safetySettingsMulti,
-                "safetySettingsMulti returned an error");
+  @Test
+  public void test_safetySettingsMulti() {
+    GenerateContentResponse response =
+        assertDoesNotThrow(
+            SafetySettings::safetySettingsMulti, "safetySettingsMulti returned an error");
 
-        assertNotNull(response, "Response should not be null");
+    assertNotNull(response, "Response should not be null");
 
-        assertTrue(
-                response.candidates().get().getFirst().safetyRatings().isPresent(),
-                "Safety ratings should be present"
-        );
-    }
+    assertTrue(
+        response.candidates().get().getFirst().safetyRatings().isPresent(),
+        "Safety ratings should be present");
+  }
 }

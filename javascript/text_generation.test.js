@@ -15,80 +15,68 @@
  * limitations under the License.
  */
 
-import assert from "node:assert";
-import { test, describe } from "node:test";
-import {
-  textGenTextOnlyPrompt,
-  textGenTextOnlyPromptStreaming,
-  textGenMultimodalOneImagePrompt,
-  textGenMultimodalOneImagePromptStreaming,
-  textGenMultimodalMultiImagePrompt,
-  textGenMultimodalMultiImagePromptStreaming,
-  textGenMultimodalAudio,
-  textGenMultimodalAudioStreaming,
-  textGenMultimodalVideoPrompt,
-  textGenMultimodalVideoPromptStreaming,
-  textGenMultimodalPdf,
-  textGenMultimodalPdfStreaming,
-} from "./text_generation.js";
+import assert from 'node:assert';
+import {describe, test} from 'node:test';
 
-describe("text_generation", () => {
-  test("textGenTextOnlyPrompt", async () => {
+import {textGenMultimodalAudio, textGenMultimodalAudioStreaming, textGenMultimodalMultiImagePrompt, textGenMultimodalMultiImagePromptStreaming, textGenMultimodalOneImagePrompt, textGenMultimodalOneImagePromptStreaming, textGenMultimodalPdf, textGenMultimodalPdfStreaming, textGenMultimodalVideoPrompt, textGenMultimodalVideoPromptStreaming, textGenTextOnlyPrompt, textGenTextOnlyPromptStreaming,} from './text_generation.js';
+
+describe('text_generation', () => {
+  test('textGenTextOnlyPrompt', async () => {
     const text = await textGenTextOnlyPrompt();
     assert.ok(text.length > 0);
   });
 
-  test("textGenTextOnlyPromptStreaming", async () => {
+  test('textGenTextOnlyPromptStreaming', async () => {
     const text = await textGenTextOnlyPromptStreaming();
     assert.ok(text.length > 0);
   });
 
-  test("textGenMultimodalOneImagePrompt", async () => {
+  test('textGenMultimodalOneImagePrompt', async () => {
     const text = await textGenMultimodalOneImagePrompt();
     assert.ok(text.length > 0);
   });
 
-  test("textGenMultimodalOneImagePromptStreaming", async () => {
+  test('textGenMultimodalOneImagePromptStreaming', async () => {
     const text = await textGenMultimodalOneImagePromptStreaming();
     assert.ok(text.length > 0);
   });
 
-  test("textGenMultimodalMultiImagePrompt", async () => {
+  test('textGenMultimodalMultiImagePrompt', async () => {
     const text = await textGenMultimodalMultiImagePrompt();
     assert.ok(text.length > 0);
   });
 
-  test("textGenMultimodalMultiImagePromptStreaming", async () => {
+  test('textGenMultimodalMultiImagePromptStreaming', async () => {
     const text = await textGenMultimodalMultiImagePromptStreaming();
     assert.ok(text.length > 0);
   });
 
-  test("textGenMultimodalAudio", async () => {
+  test('textGenMultimodalAudio', async () => {
     const text = await textGenMultimodalAudio();
     assert.ok(text.length > 0);
   });
 
-  test("textGenMultimodalAudioStreaming", async () => {
+  test('textGenMultimodalAudioStreaming', async () => {
     const text = await textGenMultimodalAudioStreaming();
     assert.ok(text.length > 0);
   });
 
-  test("textGenMultimodalVideoPrompt", async () => {
+  test('textGenMultimodalVideoPrompt', async () => {
     const text = await textGenMultimodalVideoPrompt();
     assert.ok(text.length > 0);
   });
 
-  test("textGenMultimodalVideoPromptStreaming", async () => {
+  test('textGenMultimodalVideoPromptStreaming', async () => {
     const text = await textGenMultimodalVideoPromptStreaming();
     assert.ok(text.length > 0);
   });
 
-  test("textGenMultimodalPdf", async () => {
+  test('textGenMultimodalPdf', async () => {
     const text = await textGenMultimodalPdf();
     assert.ok(text.length > 0);
   });
 
-  test("textGenMultimodalPdfStreaming", async () => {
+  test('textGenMultimodalPdfStreaming', async () => {
     const text = await textGenMultimodalPdfStreaming();
     assert.ok(text.length > 0);
   });

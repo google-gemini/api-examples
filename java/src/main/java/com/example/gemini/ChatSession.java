@@ -22,40 +22,38 @@ import com.google.genai.types.Content;
 import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
 import com.google.genai.types.Part;
-
 import java.util.Collections;
 import java.util.List;
 
 public class ChatSession {
-    public static List<GenerateContentResponse> chat() {
-        // [START chat]
-        Client client = new Client();
+  public static List<GenerateContentResponse> chat() {
+    // [START chat]
+    Client client = new Client();
 
-        Content userContent = Content.fromParts(Part.fromText("Hello"));
-        Content modelContent =
-                Content.builder()
-                        .role("model")
-                        .parts(
-                                Collections.singletonList(
-                                        Part.fromText("Great to meet you. What would you like to know?")
-                                )
-                        ).build();
+    Content userContent = Content.fromParts(Part.fromText("Hello"));
+    Content modelContent =
+        Content.builder()
+            .role("model")
+            .parts(
+                Collections.singletonList(
+                    Part.fromText("Great to meet you. What would you like to know?")))
+            .build();
 
-        Chat chat = client.chats.create(
-                "gemini-3.8-flash",
-                GenerateContentConfig.builder()
-                        .systemInstruction(userContent)
-                        .systemInstruction(modelContent)
-                        .build()
-        );
+    Chat chat =
+        client.chats.create(
+            "gemini-3.8-flash",
+            GenerateContentConfig.builder()
+                .systemInstruction(userContent)
+                .systemInstruction(modelContent)
+                .build());
 
-        GenerateContentResponse response1 = chat.sendMessage("I have 2 dogs in my house.");
-        System.out.println(response1.text());
+    GenerateContentResponse response1 = chat.sendMessage("I have 2 dogs in my house.");
+    System.out.println(response1.text());
 
-        GenerateContentResponse response2 = chat.sendMessage("How many paws are in my house?");
-        System.out.println(response2.text());
+    GenerateContentResponse response2 = chat.sendMessage("How many paws are in my house?");
+    System.out.println(response2.text());
 
-        // [END chat]
-        return List.of(response1, response2);
-    }
+    // [END chat]
+    return List.of(response1, response2);
+  }
 }

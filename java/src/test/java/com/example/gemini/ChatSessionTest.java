@@ -16,25 +16,24 @@
 
 package com.example.gemini;
 
-import com.google.genai.types.GenerateContentResponse;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class ChatSessionTest {
-    @Test
-    public void test_chat() {
-        List<GenerateContentResponse> chatResponses = assertDoesNotThrow(ChatSession::chat,
-                "chat returned an error");
+import com.google.genai.types.GenerateContentResponse;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
-        for (GenerateContentResponse response : chatResponses) {
-            assertNotNull(response, "Response should not be null");
-            assertNotNull(response.text(), "Response text should not be null");
-            assertFalse(response.text().trim().isEmpty(), "Response text should not be empty");
-        }
+public class ChatSessionTest {
+  @Test
+  public void test_chat() {
+    List<GenerateContentResponse> chatResponses =
+        assertDoesNotThrow(ChatSession::chat, "chat returned an error");
+
+    for (GenerateContentResponse response : chatResponses) {
+      assertNotNull(response, "Response should not be null");
+      assertNotNull(response.text(), "Response text should not be null");
+      assertFalse(response.text().trim().isEmpty(), "Response text should not be empty");
     }
+  }
 }

@@ -19,31 +19,28 @@ package com.example.gemini;
 import com.google.genai.Client;
 import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
+import java.util.List;
 import org.jspecify.annotations.Nullable;
 
-import java.util.List;
-
 public class ConfigureModelParameters {
-    public static @Nullable String configureModelParameters() {
-        // [START configure_model_parameters]
-        Client client = new Client();
+  public static @Nullable String configureModelParameters() {
+    // [START configure_model_parameters]
+    Client client = new Client();
 
-        GenerateContentConfig config =
-                GenerateContentConfig.builder()
-                        .candidateCount(1)
-                        .stopSequences(List.of("x"))
-                        .maxOutputTokens(20)
-                        .temperature(1.0F)
-                        .build();
+    GenerateContentConfig config =
+        GenerateContentConfig.builder()
+            .candidateCount(1)
+            .stopSequences(List.of("x"))
+            .maxOutputTokens(20)
+            .temperature(1.0F)
+            .build();
 
-        GenerateContentResponse response =
-                client.models.generateContent(
-                        "gemini-3.8-flash",
-                        "Tell me a story about a magic backpack.",
-                        config);
+    GenerateContentResponse response =
+        client.models.generateContent(
+            "gemini-3.8-flash", "Tell me a story about a magic backpack.", config);
 
-        System.out.println(response.text());
-        // [END configure_model_parameters]
-        return response.text();
-    }
+    System.out.println(response.text());
+    // [END configure_model_parameters]
+    return response.text();
+  }
 }

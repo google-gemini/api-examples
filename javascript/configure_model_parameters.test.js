@@ -15,12 +15,13 @@
  * limitations under the License.
  */
 
-import assert from "node:assert";
-import { test, describe } from "node:test";
-import { configureModelParameters } from "./configure_model_parameters.js";
+import assert from 'node:assert';
+import {describe, test} from 'node:test';
 
-describe("configure_model_parameters", () => {
-  test("configureModelParameters", async () => {
+import {configureModelParameters} from './configure_model_parameters.js';
+
+describe('configure_model_parameters', () => {
+  test('configureModelParameters', async () => {
     const text = await configureModelParameters();
     // Ensure the response text is non-empty.
     assert.ok(text.length > 0);

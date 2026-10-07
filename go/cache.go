@@ -15,7 +15,7 @@ func CacheCreate() (*genai.GenerateContentResponse, error) {
 	// [START cache_create]
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, &genai.ClientConfig{
-		APIKey:  os.Getenv("GEMINI_API_KEY"), 
+		APIKey:  os.Getenv("GEMINI_API_KEY"),
 		Backend: genai.BackendGeminiAPI,
 	})
 	if err != nil {
@@ -24,10 +24,10 @@ func CacheCreate() (*genai.GenerateContentResponse, error) {
 
 	modelName := "gemini-3.8-flash"
 	document, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "a11.txt"), 
+		ctx,
+		filepath.Join(getMedia(), "a11.txt"),
 		&genai.UploadFileConfig{
-			MIMEType : "text/plain",
+			MIMEType: "text/plain",
 		},
 	)
 	if err != nil {
@@ -84,10 +84,10 @@ func CacheCreateFromName() (*genai.GenerateContentResponse, error) {
 
 	modelName := "gemini-3.8-flash"
 	document, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "a11.txt"), 
+		ctx,
+		filepath.Join(getMedia(), "a11.txt"),
 		&genai.UploadFileConfig{
-			MIMEType : "text/plain",
+			MIMEType: "text/plain",
 		},
 	)
 	if err != nil {
@@ -100,7 +100,7 @@ func CacheCreateFromName() (*genai.GenerateContentResponse, error) {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
-		Contents:          contents,
+		Contents: contents,
 		SystemInstruction: genai.NewContentFromText(
 			"You are an expert analyzing transcripts.", genai.RoleUser,
 		),
@@ -158,10 +158,10 @@ func CacheCreateFromChat() (*genai.GenerateContentResponse, error) {
 	}
 
 	document, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "a11.txt"), 
+		ctx,
+		filepath.Join(getMedia(), "a11.txt"),
 		&genai.UploadFileConfig{
-			MIMEType : "text/plain",
+			MIMEType: "text/plain",
 		},
 	)
 	if err != nil {
@@ -173,7 +173,7 @@ func CacheCreateFromChat() (*genai.GenerateContentResponse, error) {
 	parts[0] = genai.Part{Text: "Hi, could you summarize this transcript?"}
 	parts[1] = genai.Part{
 		FileData: &genai.FileData{
-			FileURI :      document.URI,
+			FileURI:  document.URI,
 			MIMEType: document.MIMEType,
 		},
 	}
@@ -186,7 +186,7 @@ func CacheCreateFromChat() (*genai.GenerateContentResponse, error) {
 	fmt.Println("\n\nmodel: ", resp.Text())
 
 	resp, err = chat.SendMessage(
-		ctx, 
+		ctx,
 		genai.Part{
 			Text: "Okay, could you tell me more about the trans-lunar injection",
 		},
@@ -214,7 +214,7 @@ func CacheCreateFromChat() (*genai.GenerateContentResponse, error) {
 	}
 
 	resp, err = chat.SendMessage(
-		ctx, 
+		ctx,
 		genai.Part{
 			Text: "I didn't understand that last part, could you explain it in simpler language?",
 		},
@@ -245,10 +245,10 @@ func CacheDelete() error {
 
 	modelName := "gemini-3.8-flash"
 	document, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "a11.txt"), 
+		ctx,
+		filepath.Join(getMedia(), "a11.txt"),
 		&genai.UploadFileConfig{
-			MIMEType : "text/plain",
+			MIMEType: "text/plain",
 		},
 	)
 	if err != nil {
@@ -262,7 +262,7 @@ func CacheDelete() error {
 	}
 
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
-		Contents:          contents,
+		Contents: contents,
 		SystemInstruction: genai.NewContentFromText(
 			"You are an expert analyzing transcripts.", genai.RoleUser,
 		),
@@ -293,10 +293,10 @@ func CacheGet() error {
 
 	modelName := "gemini-3.8-flash"
 	document, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "a11.txt"), 
+		ctx,
+		filepath.Join(getMedia(), "a11.txt"),
 		&genai.UploadFileConfig{
-			MIMEType : "text/plain",
+			MIMEType: "text/plain",
 		},
 	)
 	if err != nil {
@@ -310,7 +310,7 @@ func CacheGet() error {
 	}
 
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
-		Contents:          contents,
+		Contents: contents,
 		SystemInstruction: genai.NewContentFromText(
 			"You are an expert analyzing transcripts.", genai.RoleUser,
 		),
@@ -345,10 +345,10 @@ func CacheList() error {
 	// For demonstration, create a cache first.
 	modelName := "gemini-3.8-flash"
 	document, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "a11.txt"), 
+		ctx,
+		filepath.Join(getMedia(), "a11.txt"),
 		&genai.UploadFileConfig{
-			MIMEType : "text/plain",
+			MIMEType: "text/plain",
 		},
 	)
 	if err != nil {
@@ -361,7 +361,7 @@ func CacheList() error {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
-		Contents:          contents,
+		Contents: contents,
 		SystemInstruction: genai.NewContentFromText(
 			"You are an expert analyzing transcripts.", genai.RoleUser,
 		),
@@ -412,10 +412,10 @@ func CacheUpdate() error {
 
 	modelName := "gemini-3.8-flash"
 	document, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "a11.txt"), 
+		ctx,
+		filepath.Join(getMedia(), "a11.txt"),
 		&genai.UploadFileConfig{
-			MIMEType : "text/plain",
+			MIMEType: "text/plain",
 		},
 	)
 	if err != nil {
@@ -428,7 +428,7 @@ func CacheUpdate() error {
 		genai.NewContentFromParts(parts, genai.RoleUser),
 	}
 	cache, err := client.Caches.Create(ctx, modelName, &genai.CreateCachedContentConfig{
-		Contents:          contents,
+		Contents: contents,
 		SystemInstruction: genai.NewContentFromText(
 			"You are an expert analyzing transcripts.", genai.RoleUser,
 		),

@@ -4,10 +4,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"time"
 	"log"
 	"os"
 	"path/filepath"
+	"time"
 
 	"google.golang.org/genai"
 )
@@ -130,10 +130,10 @@ func TokensMultimodalImageFileApi() error {
 	}
 
 	file, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "organ.jpg"), 
+		ctx,
+		filepath.Join(getMedia(), "organ.jpg"),
 		&genai.UploadFileConfig{
-			MIMEType : "image/jpeg",
+			MIMEType: "image/jpeg",
 		},
 	)
 	if err != nil {
@@ -178,10 +178,10 @@ func TokensMultimodalVideoAudioFileApi() error {
 	}
 
 	file, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "Big_Buck_Bunny.mp4"), 
+		ctx,
+		filepath.Join(getMedia(), "Big_Buck_Bunny.mp4"),
 		&genai.UploadFileConfig{
-			MIMEType : "video/mp4",
+			MIMEType: "video/mp4",
 		},
 	)
 	if err != nil {
@@ -238,10 +238,10 @@ func TokensMultimodalPdfFileApi() error {
 	}
 
 	file, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "test.pdf"), 
+		ctx,
+		filepath.Join(getMedia(), "test.pdf"),
 		&genai.UploadFileConfig{
-			MIMEType : "application/pdf",
+			MIMEType: "application/pdf",
 		},
 	)
 	if err != nil {
@@ -285,10 +285,10 @@ func TokensCachedContent() error {
 	}
 
 	file, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "a11.txt"), 
+		ctx,
+		filepath.Join(getMedia(), "a11.txt"),
 		&genai.UploadFileConfig{
-			MIMEType : "text/plain",
+			MIMEType: "text/plain",
 		},
 	)
 	if err != nil {

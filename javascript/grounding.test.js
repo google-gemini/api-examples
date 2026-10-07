@@ -15,21 +15,16 @@
  * limitations under the License.
  */
 
-import assert from "node:assert";
-import { test, describe } from "node:test";
+import assert from 'node:assert';
+import {describe, test} from 'node:test';
 
-import {
-  groundingWithMaps
-} from "./grounding.js"; 
+import {groundingWithMaps} from './grounding.js';
 
-describe("grounding", { timeout: 300000 }, () => {
-  test("groundingWithMaps", async () => {
+describe('grounding', {timeout: 300000}, () => {
+  test('groundingWithMaps', async () => {
     const result = await groundingWithMaps();
     assert.ok(
-        result?.text?.length > 0,
-        "Test failed: No result or empty result"
-    );
+        result?.text?.length > 0, 'Test failed: No result or empty result');
     // TODO: test for grounding data in response
   });
 });
-

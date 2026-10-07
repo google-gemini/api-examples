@@ -15,38 +15,34 @@
  * limitations under the License.
  */
 
-import {
-  GoogleGenAI,
-  createUserContent,
-  createPartFromUri,
-} from "@google/genai";
-import path from "path";
-import { fileURLToPath } from "url";
+import {createPartFromUri, createUserContent, GoogleGenAI,} from '@google/genai';
+import path from 'path';
+import {fileURLToPath} from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const media = path.join(__dirname, "..", "third_party");
+const media = path.join(__dirname, '..', 'third_party');
 
 export async function jsonControlledGeneration() {
   // [START json_controlled_generation]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
   const response = await ai.models.generateContent({
-    model: "gemini-3.8-flash",
-    contents: "List a few popular cookie recipes.",
+    model: 'gemini-3.8-flash',
+    contents: 'List a few popular cookie recipes.',
     config: {
-      responseMimeType: "application/json",
+      responseMimeType: 'application/json',
       responseSchema: {
-        type: "array",
+        type: 'array',
         items: {
-          type: "object",
+          type: 'object',
           properties: {
-            recipeName: { type: "string" },
-            ingredients: { type: "array", items: { type: "string" } },
+            recipeName: {type: 'string'},
+            ingredients: {type: 'array', items: {type: 'string'}},
           },
-          required: ["recipeName", "ingredients"],
+          required: ['recipeName', 'ingredients'],
         },
       },
     },
@@ -60,14 +56,13 @@ export async function jsonNoSchema() {
   // [START json_no_schema]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-  const prompt =
-    "List a few popular cookie recipes in JSON format.\n\n" +
-    "Use this JSON schema:\n\n" +
-    "Recipe = {'recipeName': str, 'ingredients': list[str]}\n" +
-    "Return: list[Recipe]";
+  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const prompt = 'List a few popular cookie recipes in JSON format.\n\n' +
+      'Use this JSON schema:\n\n' +
+      'Recipe = {\'recipeName\': str, \'ingredients\': list[str]}\n' +
+      'Return: list[Recipe]';
   const response = await ai.models.generateContent({
-    model: "gemini-3.8-flash",
+    model: 'gemini-3.8-flash',
     contents: prompt,
   });
   console.log(response.text);
@@ -79,23 +74,23 @@ export async function jsonEnum() {
   // [START json_enum]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-  const imagePath = path.join(media, "organ.jpg");
+  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const imagePath = path.join(media, 'organ.jpg');
   const organ = await ai.files.upload({
     file: imagePath,
-    config: { mimeType: "image/jpeg" },
+    config: {mimeType: 'image/jpeg'},
   });
   const response = await ai.models.generateContent({
-    model: "gemini-3.8-flash",
+    model: 'gemini-3.8-flash',
     contents: createUserContent([
-      "What kind of instrument is this?",
+      'What kind of instrument is this?',
       createPartFromUri(organ.uri, organ.mimeType),
     ]),
     config: {
-      responseMimeType: "application/json",
+      responseMimeType: 'application/json',
       responseSchema: {
-        type: "string",
-        enum: ["Percussion", "String", "Woodwind", "Brass", "Keyboard"],
+        type: 'string',
+        enum: ['Percussion', 'String', 'Woodwind', 'Brass', 'Keyboard'],
       },
     },
   });
@@ -108,21 +103,21 @@ export async function enumInJson() {
   // [START enum_in_json]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
   const response = await ai.models.generateContent({
-    model: "gemini-3.8-flash",
-    contents: "List about 10 cookie recipes, grade them based on popularity",
+    model: 'gemini-3.8-flash',
+    contents: 'List about 10 cookie recipes, grade them based on popularity',
     config: {
-      responseMimeType: "application/json",
+      responseMimeType: 'application/json',
       responseSchema: {
-        type: "array",
+        type: 'array',
         items: {
-          type: "object",
+          type: 'object',
           properties: {
-            recipeName: { type: "string" },
-            grade: { type: "string", enum: ["a+", "a", "b", "c", "d", "f"] },
+            recipeName: {type: 'string'},
+            grade: {type: 'string', enum: ['a+', 'a', 'b', 'c', 'd', 'f']},
           },
-          required: ["recipeName", "grade"],
+          required: ['recipeName', 'grade'],
         },
       },
     },
@@ -136,23 +131,23 @@ export async function jsonEnumRaw() {
   // [START json_enum_raw]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-  const imagePath = path.join(media, "organ.jpg");
+  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const imagePath = path.join(media, 'organ.jpg');
   const organ = await ai.files.upload({
     file: imagePath,
-    config: { mimeType: "image/jpeg" },
+    config: {mimeType: 'image/jpeg'},
   });
   const response = await ai.models.generateContent({
-    model: "gemini-3.8-flash",
+    model: 'gemini-3.8-flash',
     contents: createUserContent([
-      "What kind of instrument is this?",
+      'What kind of instrument is this?',
       createPartFromUri(organ.uri, organ.mimeType),
     ]),
     config: {
-      responseMimeType: "application/json",
+      responseMimeType: 'application/json',
       responseSchema: {
-        type: "string",
-        enum: ["Percussion", "String", "Woodwind", "Brass", "Keyboard"],
+        type: 'string',
+        enum: ['Percussion', 'String', 'Woodwind', 'Brass', 'Keyboard'],
       },
     },
   });
@@ -165,23 +160,23 @@ export async function xEnum() {
   // [START x_enum]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-  const imagePath = path.join(media, "organ.jpg");
+  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const imagePath = path.join(media, 'organ.jpg');
   const organ = await ai.files.upload({
     file: imagePath,
-    config: { mimeType: "image/jpeg" },
+    config: {mimeType: 'image/jpeg'},
   });
   const response = await ai.models.generateContent({
-    model: "gemini-3.8-flash",
+    model: 'gemini-3.8-flash',
     contents: createUserContent([
-      "What kind of instrument is this?",
+      'What kind of instrument is this?',
       createPartFromUri(organ.uri, organ.mimeType),
     ]),
     config: {
-      responseMimeType: "text/x.enum",
+      responseMimeType: 'text/x.enum',
       responseSchema: {
-        type: "string",
-        enum: ["Percussion", "String", "Woodwind", "Brass", "Keyboard"],
+        type: 'string',
+        enum: ['Percussion', 'String', 'Woodwind', 'Brass', 'Keyboard'],
       },
     },
   });
@@ -194,23 +189,23 @@ export async function xEnumRaw() {
   // [START x_enum_raw]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-  const imagePath = path.join(media, "organ.jpg");
+  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const imagePath = path.join(media, 'organ.jpg');
   const organ = await ai.files.upload({
     file: imagePath,
-    config: { mimeType: "image/jpeg" },
+    config: {mimeType: 'image/jpeg'},
   });
   const response = await ai.models.generateContent({
-    model: "gemini-3.8-flash",
+    model: 'gemini-3.8-flash',
     contents: createUserContent([
-      "What kind of instrument is this?",
+      'What kind of instrument is this?',
       createPartFromUri(organ.uri, organ.mimeType),
     ]),
     config: {
-      responseMimeType: "text/x.enum",
+      responseMimeType: 'text/x.enum',
       responseSchema: {
-        type: "string",
-        enum: ["Percussion", "String", "Woodwind", "Brass", "Keyboard"],
+        type: 'string',
+        enum: ['Percussion', 'String', 'Woodwind', 'Brass', 'Keyboard'],
       },
     },
   });

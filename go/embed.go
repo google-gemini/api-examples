@@ -2,10 +2,10 @@ package examples
 
 import (
 	"context"
-	"fmt"
-	"os"
-	"log"
 	"encoding/json"
+	"fmt"
+	"log"
+	"os"
 
 	"google.golang.org/genai"
 )
@@ -26,10 +26,10 @@ func EmbedContent() error {
 	contents := []*genai.Content{
 		genai.NewContentFromText(text, genai.RoleUser),
 	}
-	result, err := client.Models.EmbedContent(ctx, "gemini-embedding-001", 
+	result, err := client.Models.EmbedContent(ctx, "gemini-embedding-001",
 		contents, &genai.EmbedContentConfig{
 			OutputDimensionality: &outputDim,
-	})
+		})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -67,7 +67,7 @@ func BatchEmbedContents() error {
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 	embeddings, err := json.MarshalIndent(result.Embeddings, "", "  ")
 	if err != nil {
 		log.Fatal(err)

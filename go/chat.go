@@ -3,10 +3,10 @@ package examples
 import (
 	"context"
 	"fmt"
-	"strings"
 	"log"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"google.golang.org/genai"
 )
@@ -117,10 +117,10 @@ func ChatStreamingWithImages() error {
 	}
 
 	image, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "organ.jpg"), 
+		ctx,
+		filepath.Join(getMedia(), "organ.jpg"),
 		&genai.UploadFileConfig{
-			MIMEType : "image/jpeg",
+			MIMEType: "image/jpeg",
 		},
 	)
 	if err != nil {
@@ -132,7 +132,7 @@ func ChatStreamingWithImages() error {
 	parts[0] = genai.Part{Text: "What family of instruments does this instrument belong to?"}
 	parts[1] = genai.Part{
 		FileData: &genai.FileData{
-			FileURI :      image.URI,
+			FileURI:  image.URI,
 			MIMEType: image.MIMEType,
 		},
 	}

@@ -17,40 +17,45 @@ from absl.testing import absltest
 
 class UnitTests(absltest.TestCase):
 
-    def test_function_calling(self):
-        # [START function_calling]
-        from google import genai
-        from google.genai import types
+  def test_function_calling(self):
+    # [START function_calling]
+    from google import genai
+    from google.genai import types
 
-        client = genai.Client()
+    client = genai.Client()
 
-        def add(a: float, b: float) -> float:
-            """returns a + b."""
-            return a + b
+    def add(a: float, b: float) -> float:
+      """returns a + b."""
+      return a + b
 
-        def subtract(a: float, b: float) -> float:
-            """returns a - b."""
-            return a - b
+    def subtract(a: float, b: float) -> float:
+      """returns a - b."""
+      return a - b
 
-        def multiply(a: float, b: float) -> float:
-            """returns a * b."""
-            return a * b
+    def multiply(a: float, b: float) -> float:
+      """returns a * b."""
+      return a * b
 
-        def divide(a: float, b: float) -> float:
-            """returns a / b."""
-            return a / b
+    def divide(a: float, b: float) -> float:
+      """returns a / b."""
+      return a / b
 
-        # Create a chat session; function calling (via tools) is enabled in the config.
-        chat = client.chats.create(
-            model="gemini-3.8-flash",
-            config=types.GenerateContentConfig(tools=[add, subtract, multiply, divide]),
+    # Create a chat session; function calling (via tools) is enabled in the config.
+    chat = client.chats.create(
+        model="gemini-3.8-flash",
+        config=types.GenerateContentConfig(
+            tools=[add, subtract, multiply, divide]
+        ),
+    )
+    response = chat.send_message(
+        message=(
+            "I have 57 cats, each owns 44 mittens, how many mittens is that in"
+            " total?"
         )
-        response = chat.send_message(
-            message="I have 57 cats, each owns 44 mittens, how many mittens is that in total?"
-        )
-        print(response.text)
-        # [END function_calling]
+    )
+    print(response.text)
+    # [END function_calling]
 
 
 if __name__ == "__main__":
-    absltest.main()
+  absltest.main()

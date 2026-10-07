@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"time"
 	"os"
 	"path/filepath"
+	"time"
 
 	"google.golang.org/genai"
 )
@@ -73,10 +73,10 @@ func TextGenMultimodalOneImagePrompt() (*genai.GenerateContentResponse, error) {
 	}
 
 	file, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "organ.jpg"), 
+		ctx,
+		filepath.Join(getMedia(), "organ.jpg"),
 		&genai.UploadFileConfig{
-			MIMEType : "image/jpeg",
+			MIMEType: "image/jpeg",
 		},
 	)
 	if err != nil {
@@ -110,10 +110,10 @@ func TextGenMultimodalOneImagePromptStreaming() error {
 		log.Fatal(err)
 	}
 	file, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "organ.jpg"), 
+		ctx,
+		filepath.Join(getMedia(), "organ.jpg"),
 		&genai.UploadFileConfig{
-			MIMEType : "image/jpeg",
+			MIMEType: "image/jpeg",
 		},
 	)
 	if err != nil {
@@ -153,10 +153,10 @@ func TextGenMultimodalMultiImagePrompt() (*genai.GenerateContentResponse, error)
 	}
 
 	organ, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "organ.jpg"), 
+		ctx,
+		filepath.Join(getMedia(), "organ.jpg"),
 		&genai.UploadFileConfig{
-			MIMEType : "image/jpeg",
+			MIMEType: "image/jpeg",
 		},
 	)
 	if err != nil {
@@ -164,10 +164,10 @@ func TextGenMultimodalMultiImagePrompt() (*genai.GenerateContentResponse, error)
 	}
 
 	cajun, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "Cajun_instruments.jpg"), 
+		ctx,
+		filepath.Join(getMedia(), "Cajun_instruments.jpg"),
 		&genai.UploadFileConfig{
-			MIMEType : "image/jpeg",
+			MIMEType: "image/jpeg",
 		},
 	)
 	if err != nil {
@@ -205,10 +205,10 @@ func TextGenMultimodalMultiImagePromptStreaming() error {
 	}
 
 	organ, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "organ.jpg"), 
+		ctx,
+		filepath.Join(getMedia(), "organ.jpg"),
 		&genai.UploadFileConfig{
-			MIMEType : "image/jpeg",
+			MIMEType: "image/jpeg",
 		},
 	)
 	if err != nil {
@@ -216,10 +216,10 @@ func TextGenMultimodalMultiImagePromptStreaming() error {
 	}
 
 	cajun, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "Cajun_instruments.jpg"), 
+		ctx,
+		filepath.Join(getMedia(), "Cajun_instruments.jpg"),
 		&genai.UploadFileConfig{
-			MIMEType : "image/jpeg",
+			MIMEType: "image/jpeg",
 		},
 	)
 	if err != nil {
@@ -263,10 +263,10 @@ func TextGenMultimodalAudio() (*genai.GenerateContentResponse, error) {
 	}
 
 	file, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "sample.mp3"), 
+		ctx,
+		filepath.Join(getMedia(), "sample.mp3"),
 		&genai.UploadFileConfig{
-			MIMEType : "audio/mpeg",
+			MIMEType: "audio/mpeg",
 		},
 	)
 	if err != nil {
@@ -303,10 +303,10 @@ func TextGenMultimodalAudioStreaming() error {
 	}
 
 	file, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "sample.mp3"), 
+		ctx,
+		filepath.Join(getMedia(), "sample.mp3"),
 		&genai.UploadFileConfig{
-			MIMEType : "audio/mpeg",
+			MIMEType: "audio/mpeg",
 		},
 	)
 	if err != nil {
@@ -349,10 +349,10 @@ func TextGenMultimodalVideoPrompt() (*genai.GenerateContentResponse, error) {
 	}
 
 	file, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "Big_Buck_Bunny.mp4"), 
+		ctx,
+		filepath.Join(getMedia(), "Big_Buck_Bunny.mp4"),
 		&genai.UploadFileConfig{
-			MIMEType : "video/mp4",
+			MIMEType: "video/mp4",
 		},
 	)
 	if err != nil {
@@ -401,10 +401,10 @@ func TextGenMultimodalVideoPromptStreaming() error {
 	}
 
 	file, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "Big_Buck_Bunny.mp4"), 
+		ctx,
+		filepath.Join(getMedia(), "Big_Buck_Bunny.mp4"),
 		&genai.UploadFileConfig{
-			MIMEType : "video/mp4",
+			MIMEType: "video/mp4",
 		},
 	)
 	if err != nil {
@@ -459,10 +459,10 @@ func TextGenMultimodalPdf() (*genai.GenerateContentResponse, error) {
 	}
 
 	file, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "test.pdf"), 
+		ctx,
+		filepath.Join(getMedia(), "test.pdf"),
 		&genai.UploadFileConfig{
-			MIMEType : "application/pdf",
+			MIMEType: "application/pdf",
 		},
 	)
 	if err != nil {
@@ -499,10 +499,10 @@ func TextGenMultimodalPdfStreaming() error {
 	}
 
 	file, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "test.pdf"), 
+		ctx,
+		filepath.Join(getMedia(), "test.pdf"),
 		&genai.UploadFileConfig{
-			MIMEType : "application/pdf",
+			MIMEType: "application/pdf",
 		},
 	)
 	if err != nil {

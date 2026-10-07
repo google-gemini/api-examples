@@ -2,9 +2,9 @@ package examples
 
 import (
 	"context"
-	"path/filepath"
-	"os"
 	"log"
+	"os"
+	"path/filepath"
 
 	"google.golang.org/genai"
 )
@@ -13,7 +13,7 @@ func JsonControlledGeneration() (*genai.GenerateContentResponse, error) {
 	// [START json_controlled_generation]
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, &genai.ClientConfig{
-		APIKey:  os.Getenv("GEMINI_API_KEY"), 
+		APIKey:  os.Getenv("GEMINI_API_KEY"),
 		Backend: genai.BackendGeminiAPI,
 	})
 	if err != nil {
@@ -58,16 +58,16 @@ func JsonNoSchema() (*genai.GenerateContentResponse, error) {
 	// [START json_no_schema]
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, &genai.ClientConfig{
-		APIKey:  os.Getenv("GEMINI_API_KEY"), 
+		APIKey:  os.Getenv("GEMINI_API_KEY"),
 		Backend: genai.BackendGeminiAPI,
 	})
 	if err != nil {
 		log.Fatal(err)
 	}
 	prompt := "List a few popular cookie recipes in JSON format.\n\n" +
-			  "Use this JSON schema:\n\n" +
-			  "Recipe = {'recipe_name': str, 'ingredients': list[str]}\n" +
-		      "Return: list[Recipe]"
+		"Use this JSON schema:\n\n" +
+		"Recipe = {'recipe_name': str, 'ingredients': list[str]}\n" +
+		"Return: list[Recipe]"
 	response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", genai.Text(prompt), nil)
 	if err != nil {
 		log.Fatal(err)
@@ -81,7 +81,7 @@ func JsonEnum() (*genai.GenerateContentResponse, error) {
 	// [START json_enum]
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, &genai.ClientConfig{
-		APIKey:  os.Getenv("GEMINI_API_KEY"), 
+		APIKey:  os.Getenv("GEMINI_API_KEY"),
 		Backend: genai.BackendGeminiAPI,
 	})
 	if err != nil {
@@ -117,10 +117,10 @@ func JsonEnum() (*genai.GenerateContentResponse, error) {
 	}
 
 	file, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "organ.jpg"), 
+		ctx,
+		filepath.Join(getMedia(), "organ.jpg"),
 		&genai.UploadFileConfig{
-			MIMEType : "image/jpeg",
+			MIMEType: "image/jpeg",
 		},
 	)
 	if err != nil {
@@ -150,7 +150,7 @@ func EnumInJson() (*genai.GenerateContentResponse, error) {
 	// [START enum_in_json]
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, &genai.ClientConfig{
-		APIKey:  os.Getenv("GEMINI_API_KEY"), 
+		APIKey:  os.Getenv("GEMINI_API_KEY"),
 		Backend: genai.BackendGeminiAPI,
 	})
 	if err != nil {
@@ -190,7 +190,7 @@ func JsonEnumRaw() (*genai.GenerateContentResponse, error) {
 	// [START json_enum_raw]
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, &genai.ClientConfig{
-		APIKey:  os.Getenv("GEMINI_API_KEY"), 
+		APIKey:  os.Getenv("GEMINI_API_KEY"),
 		Backend: genai.BackendGeminiAPI,
 	})
 	if err != nil {
@@ -206,10 +206,10 @@ func JsonEnumRaw() (*genai.GenerateContentResponse, error) {
 	}
 
 	file, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "organ.jpg"), 
+		ctx,
+		filepath.Join(getMedia(), "organ.jpg"),
 		&genai.UploadFileConfig{
-			MIMEType : "image/jpeg",
+			MIMEType: "image/jpeg",
 		},
 	)
 	if err != nil {
@@ -276,10 +276,10 @@ func XEnum() (*genai.GenerateContentResponse, error) {
 	}
 
 	file, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "organ.jpg"), 
+		ctx,
+		filepath.Join(getMedia(), "organ.jpg"),
 		&genai.UploadFileConfig{
-			MIMEType : "image/jpeg",
+			MIMEType: "image/jpeg",
 		},
 	)
 	if err != nil {
@@ -325,10 +325,10 @@ func XEnumRaw() (*genai.GenerateContentResponse, error) {
 	}
 
 	file, err := client.Files.UploadFromPath(
-		ctx, 
-		filepath.Join(getMedia(), "organ.jpg"), 
+		ctx,
+		filepath.Join(getMedia(), "organ.jpg"),
 		&genai.UploadFileConfig{
-			MIMEType : "image/jpeg",
+			MIMEType: "image/jpeg",
 		},
 	)
 	if err != nil {

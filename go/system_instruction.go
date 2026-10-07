@@ -2,8 +2,8 @@ package examples
 
 import (
 	"context"
-	"os"
 	"log"
+	"os"
 
 	"google.golang.org/genai"
 )

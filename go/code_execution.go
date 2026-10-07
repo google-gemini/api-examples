@@ -3,8 +3,8 @@ package examples
 import (
 	"context"
 	"fmt"
-	"os"
 	"log"
+	"os"
 
 	"google.golang.org/genai"
 )
@@ -105,7 +105,7 @@ Generate and run code for the calculation, and make sure you get all 50.`,
 	printResponse(response)
 
 	fmt.Println("--------------------------------------------------------------------------------")
-	
+
 	fmt.Println(response.ExecutableCode())
 	fmt.Println(response.CodeExecutionResult())
 	// [END code_execution_request_override]
@@ -136,7 +136,6 @@ Generate and run code for the calculation, and make sure you get all 50.`,
 	// 		num += 1
 	// 	return sum(primes)
 	// print(sum_of_first_n_primes(50))
-
 
 	// 5117
 

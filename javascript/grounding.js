@@ -15,11 +15,11 @@
  * limitations under the License.
  */
 
-import { GoogleGenAI } from "@google/genai";
+import {GoogleGenAI} from '@google/genai';
 
-const MODEL_ID = "gemini-3.8-flash";
+const MODEL_ID = 'gemini-3.8-flash';
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 
 export async function groundingWithMaps() {
   // [START grounding_maps]
@@ -28,7 +28,7 @@ export async function groundingWithMaps() {
    */
 
   const prompt =
-    "What are the best Italian restaurants within a 15-minute walk from here?";
+      'What are the best Italian restaurants within a 15-minute walk from here?';
 
   const locationContext = {
     latLng: {
@@ -41,7 +41,7 @@ export async function groundingWithMaps() {
     model: MODEL_ID,
     contents: prompt,
     config: {
-      tools: [{ googleMaps: {} }],
+      tools: [{googleMaps: {}}],
       toolConfig: {
         retrievalConfig: locationContext,
       },
@@ -52,8 +52,8 @@ export async function groundingWithMaps() {
 
   const grounding = response.candidates[0]?.groundingMetadata;
   if (grounding?.groundingChunks) {
-    console.log("-".repeat(40));
-    console.log("Sources:");
+    console.log('-'.repeat(40));
+    console.log('Sources:');
     for (const chunk of grounding.groundingChunks) {
       if (chunk.maps) {
         console.log(`- [${chunk.maps.title}](${chunk.maps.uri})`);
@@ -64,4 +64,3 @@ export async function groundingWithMaps() {
   return response;
   // [END grounding_maps]
 }
-

@@ -15,56 +15,49 @@
  * limitations under the License.
  */
 
-import assert from "node:assert";
-import { test, describe } from "node:test";
-import {
-  jsonControlledGeneration,
-  jsonNoSchema,
-  jsonEnum,
-  enumInJson,
-  jsonEnumRaw,
-  xEnum,
-  xEnumRaw,
-} from "./controlled_generation.js";
+import assert from 'node:assert';
+import {describe, test} from 'node:test';
 
-describe("controlled_generation", () => {
-  test("jsonControlledGeneration", async () => {
+import {enumInJson, jsonControlledGeneration, jsonEnum, jsonEnumRaw, jsonNoSchema, xEnum, xEnumRaw,} from './controlled_generation.js';
+
+describe('controlled_generation', () => {
+  test('jsonControlledGeneration', async () => {
     const result = await jsonControlledGeneration();
     assert.ok(result);
   });
 
-  test("jsonNoSchema", async () => {
+  test('jsonNoSchema', async () => {
     const result = await jsonNoSchema();
     assert.ok(result);
   });
 
-  test("jsonEnum", async () => {
+  test('jsonEnum', async () => {
     const result = await jsonEnum();
-    assert.ok(typeof result.text === "string");
-    assert.ok(result.text.includes("Keyboard"));
+    assert.ok(typeof result.text === 'string');
+    assert.ok(result.text.includes('Keyboard'));
   });
 
-  test("enumInJson", async () => {
+  test('enumInJson', async () => {
     const result = await enumInJson();
     const parsed = result.parsed || [];
     assert.ok(Array.isArray(parsed));
   });
 
-  test("jsonEnumRaw", async () => {
+  test('jsonEnumRaw', async () => {
     const result = await jsonEnumRaw();
-    assert.ok(typeof result.text === "string");
-    assert.ok(result.text.includes("Keyboard"));
+    assert.ok(typeof result.text === 'string');
+    assert.ok(result.text.includes('Keyboard'));
   });
 
-  test("xEnum", async () => {
+  test('xEnum', async () => {
     const result = await xEnum();
-    assert.ok(typeof result.text === "string");
-    assert.ok(result.text.includes("Keyboard"));
+    assert.ok(typeof result.text === 'string');
+    assert.ok(result.text.includes('Keyboard'));
   });
 
-  test("xEnumRaw", async () => {
+  test('xEnumRaw', async () => {
     const result = await xEnumRaw();
-    assert.ok(typeof result.text === "string");
-    assert.ok(result.text.includes("Keyboard"));
+    assert.ok(typeof result.text === 'string');
+    assert.ok(result.text.includes('Keyboard'));
   });
 });

@@ -15,113 +15,92 @@
  * limitations under the License.
  */
 
-import assert from "node:assert";
-import { test, describe, before } from "node:test";
+import assert from 'node:assert';
+import {before, describe, test} from 'node:test';
 
 // Import the functions to test
-import {
-  thinkingTextOnlyPrompt,
-  thinkingTextOnlyPromptStreaming,
-  thinkingLogicPuzzle,
-  thinkingCodeExplanation,
-  thinkingCreativeWritingConstraints,
-  thinkingWithSearchTool,
-  thinkingWithSearchToolStreaming,
-  thinkingCodeExecution,
-  thinkingStructuredOutputJson,
-} from "./thinking_generation.js"; 
+import {thinkingCodeExecution, thinkingCodeExplanation, thinkingCreativeWritingConstraints, thinkingLogicPuzzle, thinkingStructuredOutputJson, thinkingTextOnlyPrompt, thinkingTextOnlyPromptStreaming, thinkingWithSearchTool, thinkingWithSearchToolStreaming,} from './thinking_generation.js';
 
 // Simple delay function for potential rate limiting issues between tests
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-const TEST_DELAY = 1000; // 1 second delay between tests
+const TEST_DELAY = 1000;  // 1 second delay between tests
 
-describe("thinking_generation", { timeout: 300000 }, () => {
+describe('thinking_generation', {timeout: 300000}, () => {
   // Check for API key before running tests
   before(() => {
     if (!process.env.GEMINI_API_KEY) {
       throw new Error(
-        "GEMINI_API_KEY environment variable not set. Tests cannot run."
-      );
+          'GEMINI_API_KEY environment variable not set. Tests cannot run.');
     }
   });
 
-  test("thinkingTextOnlyPrompt", async () => {
+  test('thinkingTextOnlyPrompt', async () => {
     const result = await thinkingTextOnlyPrompt();
     assert.ok(
-      result && result.length > 0,
-      "Test failed: No result or empty result"
-    );
+        result && result.length > 0, 'Test failed: No result or empty result');
     await sleep(TEST_DELAY);
   });
 
-  test("thinkingTextOnlyPromptStreaming", async () => {
+  test('thinkingTextOnlyPromptStreaming', async () => {
     const result = await thinkingTextOnlyPromptStreaming();
     assert.ok(
-      result && result.length > 0,
-      "Test failed: No result or empty result"
-    );
+        result && result.length > 0, 'Test failed: No result or empty result');
     await sleep(TEST_DELAY);
   });
 
-  test("thinkingLogicPuzzle", async () => {
+  test('thinkingLogicPuzzle', async () => {
     const result = await thinkingLogicPuzzle();
     assert.ok(
-      result && result.length > 0,
-      "Test failed: No result or empty result"
-    );
+        result && result.length > 0, 'Test failed: No result or empty result');
     await sleep(TEST_DELAY);
   });
 
-  test("thinkingCodeExplanation", async () => {
+  test('thinkingCodeExplanation', async () => {
     const result = await thinkingCodeExplanation();
     assert.ok(
-      result && result.length > 0,
-      "Test failed: No result or empty result"
-    );
+        result && result.length > 0, 'Test failed: No result or empty result');
     await sleep(TEST_DELAY);
   });
 
-  test("thinkingCreativeWritingConstraints", async () => {
+  test('thinkingCreativeWritingConstraints', async () => {
     const result = await thinkingCreativeWritingConstraints();
     assert.ok(
-      result && result.length > 0,
-      "Test failed: No result or empty result"
-    );
+        result && result.length > 0, 'Test failed: No result or empty result');
     await sleep(TEST_DELAY);
   });
 
-  test("thinkingWithSearchTool", async () => {
+  test('thinkingWithSearchTool', async () => {
     const result = await thinkingWithSearchTool();
-    // Search results can sometimes be empty if nothing relevant is found *right now*
-    // A basic check that the function ran and returned *something* (even if just explanatory text)
-    assert.ok(result !== undefined, "Test failed: Function did not return");
-    // A more robust test might check if grounding metadata was accessed or if specific keywords appeared.
+    // Search results can sometimes be empty if nothing relevant is found *right
+    // now* A basic check that the function ran and returned *something* (even
+    // if just explanatory text)
+    assert.ok(result !== undefined, 'Test failed: Function did not return');
+    // A more robust test might check if grounding metadata was accessed or if
+    // specific keywords appeared.
     await sleep(TEST_DELAY);
   });
 
-   test("thinkingWithSearchToolStreaming", async () => {
+  test('thinkingWithSearchToolStreaming', async () => {
     const result = await thinkingWithSearchToolStreaming();
-    assert.ok(result !== undefined, "Test failed: Function did not return");
+    assert.ok(result !== undefined, 'Test failed: Function did not return');
     await sleep(TEST_DELAY);
   });
 
-  test("thinkingCodeExecution", async () => {
+  test('thinkingCodeExecution', async () => {
     const result = await thinkingCodeExecution();
-    assert.ok(result !== undefined, "Test failed: Function did not return");
+    assert.ok(result !== undefined, 'Test failed: Function did not return');
     await sleep(TEST_DELAY);
   });
 
-  test("thinkingStructuredOutputJson", async () => {
+  test('thinkingStructuredOutputJson', async () => {
     const result = await thinkingStructuredOutputJson();
     assert.ok(
-      result && result.length > 0,
-      "Test failed: No result or empty result"
-    );
+        result && result.length > 0, 'Test failed: No result or empty result');
     assert.doesNotThrow(() => {
-        const jsonMatch = result.match(/```json\s*([\s\S]*?)\s*```/);
-        const jsonToParse = jsonMatch ? jsonMatch[1] : result;
-        JSON.parse(jsonToParse);
-     }, "Test failed: Result could not be parsed as JSON");
+      const jsonMatch = result.match(/```json\s*([\s\S]*?)\s*```/);
+      const jsonToParse = jsonMatch ? jsonMatch[1] : result;
+      JSON.parse(jsonToParse);
+    }, 'Test failed: Result could not be parsed as JSON');
     await sleep(TEST_DELAY);
   });
 });

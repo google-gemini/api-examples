@@ -24,8 +24,6 @@ import com.google.genai.types.GenerateContentResponse;
 import com.google.genai.types.Schema;
 import com.google.genai.types.Tool;
 import com.google.genai.types.ToolConfig;
-import org.apache.http.HttpException;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -33,111 +31,130 @@ import java.util.Map;
 import java.util.function.BiFunction;
 
 public class FunctionCalling {
-    public static Double functionCalling() {
-        // [START function_calling]
-        Client client = new Client();
+  public static Double functionCalling() {
+    // [START function_calling]
+    Client client = new Client();
 
-        FunctionDeclaration addFunction =
-                FunctionDeclaration.builder()
-                        .name("addNumbers")
-                        .parameters(
+    FunctionDeclaration addFunction =
+        FunctionDeclaration.builder()
+            .name("addNumbers")
+            .parameters(
+                Schema.builder()
+                    .type("object")
+                    .properties(
+                        Map.of(
+                            "firstParam",
+                                Schema.builder().type("number").description("First number").build(),
+                            "secondParam",
                                 Schema.builder()
-                                        .type("object")
-                                        .properties(Map.of(
-                                                "firstParam", Schema.builder().type("number").description("First number").build(),
-                                                "secondParam", Schema.builder().type("number").description("Second number").build()))
-                                        .required(Arrays.asList("firstParam", "secondParam"))
-                                        .build())
-                        .build();
+                                    .type("number")
+                                    .description("Second number")
+                                    .build()))
+                    .required(Arrays.asList("firstParam", "secondParam"))
+                    .build())
+            .build();
 
-        FunctionDeclaration subtractFunction =
-                FunctionDeclaration.builder()
-                        .name("subtractNumbers")
-                        .parameters(
+    FunctionDeclaration subtractFunction =
+        FunctionDeclaration.builder()
+            .name("subtractNumbers")
+            .parameters(
+                Schema.builder()
+                    .type("object")
+                    .properties(
+                        Map.of(
+                            "firstParam",
+                                Schema.builder().type("number").description("First number").build(),
+                            "secondParam",
                                 Schema.builder()
-                                        .type("object")
-                                        .properties(Map.of(
-                                                "firstParam", Schema.builder().type("number").description("First number").build(),
-                                                "secondParam", Schema.builder().type("number").description("Second number").build()))
-                                        .required(Arrays.asList("firstParam", "secondParam"))
-                                        .build())
-                        .build();
+                                    .type("number")
+                                    .description("Second number")
+                                    .build()))
+                    .required(Arrays.asList("firstParam", "secondParam"))
+                    .build())
+            .build();
 
-        FunctionDeclaration multiplyFunction =
-                FunctionDeclaration.builder()
-                        .name("multiplyNumbers")
-                        .parameters(
+    FunctionDeclaration multiplyFunction =
+        FunctionDeclaration.builder()
+            .name("multiplyNumbers")
+            .parameters(
+                Schema.builder()
+                    .type("object")
+                    .properties(
+                        Map.of(
+                            "firstParam",
+                                Schema.builder().type("number").description("First number").build(),
+                            "secondParam",
                                 Schema.builder()
-                                        .type("object")
-                                        .properties(Map.of(
-                                                "firstParam", Schema.builder().type("number").description("First number").build(),
-                                                "secondParam", Schema.builder().type("number").description("Second number").build()))
-                                        .required(Arrays.asList("firstParam", "secondParam"))
-                                        .build())
-                        .build();
+                                    .type("number")
+                                    .description("Second number")
+                                    .build()))
+                    .required(Arrays.asList("firstParam", "secondParam"))
+                    .build())
+            .build();
 
-        FunctionDeclaration divideFunction =
-                FunctionDeclaration.builder()
-                        .name("divideNumbers")
-                        .parameters(
+    FunctionDeclaration divideFunction =
+        FunctionDeclaration.builder()
+            .name("divideNumbers")
+            .parameters(
+                Schema.builder()
+                    .type("object")
+                    .properties(
+                        Map.of(
+                            "firstParam",
+                                Schema.builder().type("number").description("First number").build(),
+                            "secondParam",
                                 Schema.builder()
-                                        .type("object")
-                                        .properties(Map.of(
-                                                "firstParam", Schema.builder().type("number").description("First number").build(),
-                                                "secondParam", Schema.builder().type("number").description("Second number").build()))
-                                        .required(Arrays.asList("firstParam", "secondParam"))
-                                        .build())
-                        .build();
+                                    .type("number")
+                                    .description("Second number")
+                                    .build()))
+                    .required(Arrays.asList("firstParam", "secondParam"))
+                    .build())
+            .build();
 
-        GenerateContentConfig config = GenerateContentConfig.builder()
-                .toolConfig(ToolConfig.builder().functionCallingConfig(
-                        FunctionCallingConfig.builder().mode("ANY").build()
-                ).build())
-                .tools(
-                        Collections.singletonList(
-                                Tool.builder().functionDeclarations(
-                                        Arrays.asList(
-                                                addFunction,
-                                                subtractFunction,
-                                                divideFunction,
-                                                multiplyFunction
-                                        )
-                                ).build()
+    GenerateContentConfig config =
+        GenerateContentConfig.builder()
+            .toolConfig(
+                ToolConfig.builder()
+                    .functionCallingConfig(FunctionCallingConfig.builder().mode("ANY").build())
+                    .build())
+            .tools(
+                Collections.singletonList(
+                    Tool.builder()
+                        .functionDeclarations(
+                            Arrays.asList(
+                                addFunction, subtractFunction, divideFunction, multiplyFunction))
+                        .build()))
+            .build();
 
-                        )
-                )
-                .build();
+    GenerateContentResponse response =
+        client.models.generateContent(
+            "gemini-3.8-flash",
+            "I have 57 cats, each owns 44 mittens, how many mittens is that in total?",
+            config);
 
-        GenerateContentResponse response =
-                client.models.generateContent(
-                        "gemini-3.8-flash",
-                        "I have 57 cats, each owns 44 mittens, how many mittens is that in total?",
-                        config);
-
-
-        if (response.functionCalls() == null || response.functionCalls().isEmpty()) {
-            System.err.println("No function call received");
-            return null;
-        }
-
-        var functionCall = response.functionCalls().getFirst();
-        String functionName = functionCall.name().get();
-        var arguments = functionCall.args();
-
-        Map<String, BiFunction<Double, Double, Double>> functionMapping = new HashMap<>();
-        functionMapping.put("addNumbers", (a, b) -> a + b);
-        functionMapping.put("subtractNumbers", (a, b) -> a - b);
-        functionMapping.put("multiplyNumbers", (a, b) -> a * b);
-        functionMapping.put("divideNumbers", (a, b) -> b != 0 ? a / b : Double.NaN);
-
-        BiFunction<Double, Double, Double> function = functionMapping.get(functionName);
-
-        Number firstParam = (Number) arguments.get().get("firstParam");
-        Number secondParam = (Number) arguments.get().get("secondParam");
-        Double result = function.apply(firstParam.doubleValue(), secondParam.doubleValue());
-
-        System.out.println(result);
-        // [END function_calling]
-        return result;
+    if (response.functionCalls() == null || response.functionCalls().isEmpty()) {
+      System.err.println("No function call received");
+      return null;
     }
+
+    var functionCall = response.functionCalls().getFirst();
+    String functionName = functionCall.name().get();
+    var arguments = functionCall.args();
+
+    Map<String, BiFunction<Double, Double, Double>> functionMapping = new HashMap<>();
+    functionMapping.put("addNumbers", (a, b) -> a + b);
+    functionMapping.put("subtractNumbers", (a, b) -> a - b);
+    functionMapping.put("multiplyNumbers", (a, b) -> a * b);
+    functionMapping.put("divideNumbers", (a, b) -> b != 0 ? a / b : Double.NaN);
+
+    BiFunction<Double, Double, Double> function = functionMapping.get(functionName);
+
+    Number firstParam = (Number) arguments.get().get("firstParam");
+    Number secondParam = (Number) arguments.get().get("secondParam");
+    Double result = function.apply(firstParam.doubleValue(), secondParam.doubleValue());
+
+    System.out.println(result);
+    // [END function_calling]
+    return result;
+  }
 }

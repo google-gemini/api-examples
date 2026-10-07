@@ -15,12 +15,13 @@
  * limitations under the License.
  */
 
-import assert from "node:assert";
-import { test, describe } from "node:test";
-import { systemInstruction } from "./system_instruction.js";
+import assert from 'node:assert';
+import {describe, test} from 'node:test';
 
-describe("system_instruction", () => {
-  test("systemInstruction", async () => {
+import {systemInstruction} from './system_instruction.js';
+
+describe('system_instruction', () => {
+  test('systemInstruction', async () => {
     const text = await systemInstruction();
     assert.ok(text.length > 0);
   });

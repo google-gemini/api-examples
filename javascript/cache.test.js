@@ -15,50 +15,43 @@
  * limitations under the License.
  */
 
-import assert from "node:assert";
-import { test, describe } from "node:test";
-import {
-  cacheCreate,
-  cacheCreateFromName,
-  cacheCreateFromChat,
-  cacheDelete,
-  cacheGet,
-  cacheList,
-  cacheUpdate,
-} from "./cache.js";
+import assert from 'node:assert';
+import {describe, test} from 'node:test';
 
-describe("cache", () => {
-  test("cacheCreate", async () => {
+import {cacheCreate, cacheCreateFromChat, cacheCreateFromName, cacheDelete, cacheGet, cacheList, cacheUpdate,} from './cache.js';
+
+describe('cache', () => {
+  test('cacheCreate', async () => {
     const text = await cacheCreate();
     assert.ok(text && text.length > 0);
   });
 
-  test("cacheCreateFromName", async () => {
+  test('cacheCreateFromName', async () => {
     const text = await cacheCreateFromName();
     assert.ok(text && text.length > 0);
   });
 
-  test("cacheCreateFromChat", async () => {
+  test('cacheCreateFromChat', async () => {
     const text = await cacheCreateFromChat();
     assert.ok(text && text.length > 0);
   });
 
-  test("cacheDelete", async () => {
+  test('cacheDelete', async () => {
     // cacheDelete does not return anything; ensure it runs without error.
     await cacheDelete();
   });
 
-  test("cacheGet", async () => {
+  test('cacheGet', async () => {
     const cache = await cacheGet();
     assert.ok(cache && cache.name);
   });
 
-  test("cacheList", async () => {
+  test('cacheList', async () => {
     // cacheList prints the list; ensure it runs without error.
     await cacheList();
   });
 
-  test("cacheUpdate", async () => {
+  test('cacheUpdate', async () => {
     const cache = await cacheUpdate();
     assert.ok(cache && cache.name);
   });

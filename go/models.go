@@ -3,8 +3,8 @@ package examples
 import (
 	"context"
 	"fmt"
-	"os"
 	"log"
+	"os"
 
 	"google.golang.org/genai"
 )
@@ -19,7 +19,6 @@ func ModelsList() error {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 
 	// Retrieve the list of models.
 	models, err := client.Models.List(ctx, &genai.ListModelsConfig{})

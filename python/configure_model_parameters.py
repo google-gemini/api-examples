@@ -17,25 +17,25 @@ from absl.testing import absltest
 
 class UnitTests(absltest.TestCase):
 
-    def test_configure_model_parameters(self):
-        # [START configure_model_parameters]
-        from google import genai
-        from google.genai import types
+  def test_configure_model_parameters(self):
+    # [START configure_model_parameters]
+    from google import genai
+    from google.genai import types
 
-        client = genai.Client()
-        response = client.models.generate_content(
-            model="gemini-3.8-flash",
-            contents="Tell me a story about a magic backpack.",
-            config=types.GenerateContentConfig(
-                candidate_count=1,
-                stop_sequences=["x"],
-                max_output_tokens=20,
-                temperature=1.0,
-            ),
-        )
-        print(response.text)
-        # [END configure_model_parameters]
+    client = genai.Client()
+    response = client.models.generate_content(
+        model="gemini-3.8-flash",
+        contents="Tell me a story about a magic backpack.",
+        config=types.GenerateContentConfig(
+            candidate_count=1,
+            stop_sequences=["x"],
+            max_output_tokens=20,
+            temperature=1.0,
+        ),
+    )
+    print(response.text)
+    # [END configure_model_parameters]
 
 
 if __name__ == "__main__":
-    absltest.main()
+  absltest.main()

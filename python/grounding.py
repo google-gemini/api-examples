@@ -20,49 +20,50 @@ MODEL_ID = "gemini-3.8-flash"
 
 class GroundingUnitTests(absltest.TestCase):
 
-    def test_grounding_maps(self):
-        # [START grounding_maps]
-        """Generates text using Google Maps as a grounding tool."""
-        from google import genai
-        from google.genai.types import GenerateContentConfig, GoogleMaps, LatLng, RetrievalConfig, Tool, ToolConfig
+  def test_grounding_maps(self):
+    # [START grounding_maps]
+    """Generates text using Google Maps as a grounding tool."""
+    from google import genai
+    from google.genai.types import GenerateContentConfig, GoogleMaps, LatLng, RetrievalConfig, Tool, ToolConfig
 
-        client = genai.Client()
+    client = genai.Client()
 
-        maps_tool = Tool(
-            google_maps=GoogleMaps()
-        )
+    maps_tool = Tool(google_maps=GoogleMaps())
 
-        location_context = RetrievalConfig(
-            lat_lng=LatLng(latitude=34.050481, longitude=-118.248526)
-        )
+    location_context = RetrievalConfig(
+        lat_lng=LatLng(latitude=34.050481, longitude=-118.248526)
+    )
 
-        prompt = "What are the best Italian restaurants within a 15-minute walk from here?"
-        
-        response = client.models.generate_content(
-            model=MODEL_ID,
-            contents=prompt,
-            config=GenerateContentConfig(
-                tools=[maps_tool],
-                tool_config=ToolConfig(retrieval_config=location_context),
-            )
-        )
+    prompt = (
+        "What are the best Italian restaurants within a 15-minute walk from"
+        " here?"
+    )
 
-        # Display the text output.
-        print(response.text)
+    response = client.models.generate_content(
+        model=MODEL_ID,
+        contents=prompt,
+        config=GenerateContentConfig(
+            tools=[maps_tool],
+            tool_config=ToolConfig(retrieval_config=location_context),
+        ),
+    )
 
-        # Display the grounding sources.
-        if grounding := response.candidates[0].grounding_metadata:
-          if grounding.grounding_chunks:
-            print('-' * 40)
-            print("Sources:")
-            for chunk in grounding.grounding_chunks:
-              print(f'- [{chunk.maps.title}]({chunk.maps.uri})')
+    # Display the text output.
+    print(response.text)
 
-          if widget_token := grounding.google_maps_widget_context_token:
-            print('-' * 40)
-            print(f'Maps token: {widget_token[:14]}...')
-        # [END grounding_maps]
+    # Display the grounding sources.
+    if grounding := response.candidates[0].grounding_metadata:
+      if grounding.grounding_chunks:
+        print("-" * 40)
+        print("Sources:")
+        for chunk in grounding.grounding_chunks:
+          print(f"- [{chunk.maps.title}]({chunk.maps.uri})")
+
+      if widget_token := grounding.google_maps_widget_context_token:
+        print("-" * 40)
+        print(f"Maps token: {widget_token[:14]}...")
+    # [END grounding_maps]
+
 
 if __name__ == "__main__":
-    absltest.main()
-
+  absltest.main()

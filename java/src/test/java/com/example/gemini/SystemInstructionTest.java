@@ -16,19 +16,20 @@
 
 package com.example.gemini;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class SystemInstructionTest {
-    @Test
-    public void test_systemInstruction() {
-        String result = assertDoesNotThrow(SystemInstruction::systemInstruction,
-                "systemInstruction returned an error");
+import org.junit.jupiter.api.Test;
 
-        assertNotNull(result, "Response should not be null");
-        assertFalse(result.trim().isEmpty(), "Response should not be empty");
-    }
+public class SystemInstructionTest {
+  @Test
+  public void test_systemInstruction() {
+    String result =
+        assertDoesNotThrow(
+            SystemInstruction::systemInstruction, "systemInstruction returned an error");
+
+    assertNotNull(result, "Response should not be null");
+    assertFalse(result.trim().isEmpty(), "Response should not be empty");
+  }
 }

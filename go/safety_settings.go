@@ -2,10 +2,10 @@ package examples
 
 import (
 	"context"
-	"fmt"
-	"os"
-	"log"
 	"encoding/json"
+	"fmt"
+	"log"
+	"os"
 
 	"google.golang.org/genai"
 )

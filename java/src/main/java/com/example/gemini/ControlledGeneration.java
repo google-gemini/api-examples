@@ -16,198 +16,189 @@
 
 package com.example.gemini;
 
+import static com.example.gemini.BuildConfig.media_path;
+
 import com.google.genai.Client;
 import com.google.genai.types.Content;
 import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
 import com.google.genai.types.Part;
 import com.google.genai.types.Schema;
-import org.jspecify.annotations.Nullable;
-
 import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
-import static com.example.gemini.BuildConfig.media_path;
+import org.jspecify.annotations.Nullable;
 
 public class ControlledGeneration {
-    public static @Nullable String jsonControlledGeneration() {
-        // [START json_controlled_generation]
-        Client client = new Client();
+  public static @Nullable String jsonControlledGeneration() {
+    // [START json_controlled_generation]
+    Client client = new Client();
 
-        Schema recipeSchema = Schema.builder()
-                .type(Array.class.getSimpleName())
-                .items(Schema.builder()
-                        .type(Object.class.getSimpleName())
-                        .properties(
-                                Map.of("recipe_name", Schema.builder()
-                                                .type(String.class.getSimpleName())
-                                                .build(),
-                                        "ingredients", Schema.builder()
-                                                .type(Array.class.getSimpleName())
-                                                .items(Schema.builder()
-                                                        .type(String.class.getSimpleName())
-                                                        .build())
-                                                .build())
-                        )
-                        .required(List.of("recipe_name", "ingredients"))
-                        .build())
-                .build();
-
-        GenerateContentConfig config =
-                GenerateContentConfig.builder()
-                        .responseMimeType("application/json")
-                        .responseSchema(recipeSchema)
-                        .build();
-
-        GenerateContentResponse response =
-                client.models.generateContent(
-                        "gemini-3.8-flash",
-                        "List a few popular cookie recipes.",
-                        config);
-
-        System.out.println(response.text());
-        // [END json_controlled_generation]
-        return response.text();
-    }
-
-    public static @Nullable String jsonNoSchema() {
-        // [START json_no_schema]
-        Client client = new Client();
-
-        String prompt = """
-                List a few popular cookie recipes in JSON format.
-                
-                
-                Use this JSON schema:
-                
-                
-                Recipe = {'recipe_name': string, 'ingredients': list[string]}
-                
-                Return: list[Recipe].
-                """;
-
-        GenerateContentResponse response =
-                client.models.generateContent(
-                        "gemini-3.8-flash",
-                        prompt,
-                        null);
-
-        System.out.println(response.text());
-        // [END json_no_schema]
-        return response.text();
-    }
-
-    public static @Nullable String jsonEnum() throws Exception {
-        // [START json_enum]
-        Client client = new Client();
-
-        Schema schema =
+    Schema recipeSchema =
+        Schema.builder()
+            .type(Array.class.getSimpleName())
+            .items(
                 Schema.builder()
-                        .type(String.class.getSimpleName())
-                        .enum_(Arrays.asList("Percussion", "String", "Woodwind", "Brass", "Keyboard"))
-                        .build();
+                    .type(Object.class.getSimpleName())
+                    .properties(
+                        Map.of(
+                            "recipe_name",
+                            Schema.builder().type(String.class.getSimpleName()).build(),
+                            "ingredients",
+                            Schema.builder()
+                                .type(Array.class.getSimpleName())
+                                .items(Schema.builder().type(String.class.getSimpleName()).build())
+                                .build()))
+                    .required(List.of("recipe_name", "ingredients"))
+                    .build())
+            .build();
 
-        String path = media_path + "organ.jpg";
-        byte[] imageData = Files.readAllBytes(Paths.get(path));
+    GenerateContentConfig config =
+        GenerateContentConfig.builder()
+            .responseMimeType("application/json")
+            .responseSchema(recipeSchema)
+            .build();
 
-        Content content =
-                Content.fromParts(
-                        Part.fromText("What kind of instrument is this:"),
-                        Part.fromBytes(imageData, "image/jpeg"));
+    GenerateContentResponse response =
+        client.models.generateContent(
+            "gemini-3.8-flash", "List a few popular cookie recipes.", config);
 
-        GenerateContentConfig config =
-                GenerateContentConfig.builder()
-                        .responseMimeType("application/json")
-                        .candidateCount(1)
-                        .responseSchema(schema)
-                        .build();
+    System.out.println(response.text());
+    // [END json_controlled_generation]
+    return response.text();
+  }
 
-        GenerateContentResponse response =
-                client.models.generateContent(
-                        "gemini-3.8-flash",
-                        content,
-                        config);
+  public static @Nullable String jsonNoSchema() {
+    // [START json_no_schema]
+    Client client = new Client();
 
-        System.out.println(response.text());
-        // [END json_enum]
-        return response.text();
-    }
+    String prompt =
+        """
+        List a few popular cookie recipes in JSON format.
 
-    public static @Nullable String enumInJson() throws Exception {
-        // [START enum_in_json]
-        Client client = new Client();
 
-        Schema recipeSchema = Schema.builder()
-                .type(Array.class.getSimpleName())
-                .items(Schema.builder()
-                        .type(Object.class.getSimpleName())
-                        .properties(
-                                Map.of("recipe_name", Schema.builder()
-                                                .type(String.class.getSimpleName())
-                                                .build(),
-                                        "grade", Schema.builder()
-                                                .type(String.class.getSimpleName())
-                                                .enum_(Arrays.asList("a+", "a", "b", "c", "d", "f"))
-                                                .build())
-                        )
-                        .required(List.of("recipe_name", "grade"))
-                        .build())
-                .build();
+        Use this JSON schema:
 
-        GenerateContentConfig config =
-                GenerateContentConfig.builder()
-                        .responseMimeType("application/json")
-                        .responseSchema(recipeSchema)
-                        .build();
 
-        GenerateContentResponse response =
-                client.models.generateContent(
-                        "gemini-3.8-flash",
-                        "List about 10 cookie recipes, grade them based on popularity",
-                        config);
+        Recipe = {'recipe_name': string, 'ingredients': list[string]}
 
-        System.out.println(response.text());
-        // [END enum_in_json]
-        return response.text();
-    }
+        Return: list[Recipe].
+        """;
 
-    public static @Nullable String xEnum() throws Exception {
-        // [START x_enum]
-        Client client = new Client();
+    GenerateContentResponse response =
+        client.models.generateContent("gemini-3.8-flash", prompt, null);
 
-        Schema schema =
+    System.out.println(response.text());
+    // [END json_no_schema]
+    return response.text();
+  }
+
+  public static @Nullable String jsonEnum() throws Exception {
+    // [START json_enum]
+    Client client = new Client();
+
+    Schema schema =
+        Schema.builder()
+            .type(String.class.getSimpleName())
+            .enum_(Arrays.asList("Percussion", "String", "Woodwind", "Brass", "Keyboard"))
+            .build();
+
+    String path = media_path + "organ.jpg";
+    byte[] imageData = Files.readAllBytes(Paths.get(path));
+
+    Content content =
+        Content.fromParts(
+            Part.fromText("What kind of instrument is this:"),
+            Part.fromBytes(imageData, "image/jpeg"));
+
+    GenerateContentConfig config =
+        GenerateContentConfig.builder()
+            .responseMimeType("application/json")
+            .candidateCount(1)
+            .responseSchema(schema)
+            .build();
+
+    GenerateContentResponse response =
+        client.models.generateContent("gemini-3.8-flash", content, config);
+
+    System.out.println(response.text());
+    // [END json_enum]
+    return response.text();
+  }
+
+  public static @Nullable String enumInJson() throws Exception {
+    // [START enum_in_json]
+    Client client = new Client();
+
+    Schema recipeSchema =
+        Schema.builder()
+            .type(Array.class.getSimpleName())
+            .items(
                 Schema.builder()
-                        .type(String.class.getSimpleName())
-                        .enum_(Arrays.asList("Percussion", "String", "Woodwind", "Brass", "Keyboard"))
-                        .build();
+                    .type(Object.class.getSimpleName())
+                    .properties(
+                        Map.of(
+                            "recipe_name",
+                            Schema.builder().type(String.class.getSimpleName()).build(),
+                            "grade",
+                            Schema.builder()
+                                .type(String.class.getSimpleName())
+                                .enum_(Arrays.asList("a+", "a", "b", "c", "d", "f"))
+                                .build()))
+                    .required(List.of("recipe_name", "grade"))
+                    .build())
+            .build();
 
-        String path = media_path + "organ.jpg";
-        byte[] imageData = Files.readAllBytes(Paths.get(path));
+    GenerateContentConfig config =
+        GenerateContentConfig.builder()
+            .responseMimeType("application/json")
+            .responseSchema(recipeSchema)
+            .build();
 
-        Content content =
-                Content.fromParts(
-                        Part.fromText("What kind of instrument is this:"),
-                        Part.fromBytes(imageData, "image/jpeg"));
+    GenerateContentResponse response =
+        client.models.generateContent(
+            "gemini-3.8-flash",
+            "List about 10 cookie recipes, grade them based on popularity",
+            config);
 
-        GenerateContentConfig config =
-                GenerateContentConfig.builder()
-                        .responseMimeType("text/x.enum")
-                        .candidateCount(1)
-                        .responseSchema(schema)
-                        .build();
+    System.out.println(response.text());
+    // [END enum_in_json]
+    return response.text();
+  }
 
-        GenerateContentResponse response =
-                client.models.generateContent(
-                        "gemini-3.8-flash",
-                        content,
-                        config);
+  public static @Nullable String xEnum() throws Exception {
+    // [START x_enum]
+    Client client = new Client();
 
-        System.out.println(response.text());
-        // [END x_enum]
-        return response.text();
-    }
+    Schema schema =
+        Schema.builder()
+            .type(String.class.getSimpleName())
+            .enum_(Arrays.asList("Percussion", "String", "Woodwind", "Brass", "Keyboard"))
+            .build();
+
+    String path = media_path + "organ.jpg";
+    byte[] imageData = Files.readAllBytes(Paths.get(path));
+
+    Content content =
+        Content.fromParts(
+            Part.fromText("What kind of instrument is this:"),
+            Part.fromBytes(imageData, "image/jpeg"));
+
+    GenerateContentConfig config =
+        GenerateContentConfig.builder()
+            .responseMimeType("text/x.enum")
+            .candidateCount(1)
+            .responseSchema(schema)
+            .build();
+
+    GenerateContentResponse response =
+        client.models.generateContent("gemini-3.8-flash", content, config);
+
+    System.out.println(response.text());
+    // [END x_enum]
+    return response.text();
+  }
 }

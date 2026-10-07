@@ -1,8 +1,8 @@
 package examples
 
 import (
-	"log"
 	"fmt"
+	"log"
 	"path/filepath"
 	"runtime"
 

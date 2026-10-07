@@ -17,34 +17,34 @@ from absl.testing import absltest
 
 class UnitTests(absltest.TestCase):
 
-    def test_models_list(self):
-        # [START models_list]
-        from google import genai
+  def test_models_list(self):
+    # [START models_list]
+    from google import genai
 
-        client = genai.Client()
+    client = genai.Client()
 
-        print("List of models that support generateContent:\n")
-        for m in client.models.list():
-            for action in m.supported_actions:
-                if action == "generateContent":
-                    print(m.name)
+    print("List of models that support generateContent:\n")
+    for m in client.models.list():
+      for action in m.supported_actions:
+        if action == "generateContent":
+          print(m.name)
 
-        print("List of models that support embedContent:\n")
-        for m in client.models.list():
-            for action in m.supported_actions:
-                if action == "embedContent":
-                    print(m.name)
-        # [END models_list]
+    print("List of models that support embedContent:\n")
+    for m in client.models.list():
+      for action in m.supported_actions:
+        if action == "embedContent":
+          print(m.name)
+    # [END models_list]
 
-    def test_models_get(self):
-        # [START models_get]
-        from google import genai
+  def test_models_get(self):
+    # [START models_get]
+    from google import genai
 
-        client = genai.Client()
-        model_info = client.models.get(model="gemini-3.8-flash")
-        print(model_info)
-        # [END models_get]
+    client = genai.Client()
+    model_info = client.models.get(model="gemini-3.8-flash")
+    print(model_info)
+    # [END models_get]
 
 
 if __name__ == "__main__":
-    absltest.main()
+  absltest.main()
