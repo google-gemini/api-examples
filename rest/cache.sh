@@ -10,7 +10,7 @@ echo "[START cache_create]"
 # [START cache_create]
 wget https://storage.googleapis.com/generativeai-downloads/data/a11.txt
 echo '{
-  "model": "models/gemini-1.5-flash-001",
+  "model": "models/gemini-3.8-flash",
   "contents":[
     {
       "parts":[
@@ -41,9 +41,8 @@ curl -X POST "https://generativelanguage.googleapis.com/v1beta/cachedContents?ke
 
 CACHE_NAME=$(cat cache.json | grep '"name":' | cut -d '"' -f 4 | head -n 1)
 
-echo "[START cache_generate_content]"
 # [START cache_generate_content]
-curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-001:generateContent?key=$GEMINI_API_KEY" \
+curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=$GEMINI_API_KEY" \
 -H 'Content-Type: application/json' \
 -d '{
       "contents": [
