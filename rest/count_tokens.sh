@@ -19,14 +19,14 @@ fi
 
 echo "[START tokens_context_window]"
 # [START tokens_context_window]
-curl https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro?key=$GEMINI_API_KEY > model.json
+curl https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash?key=$GEMINI_API_KEY > model.json
 jq .inputTokenLimit model.json
 jq .outputTokenLimit model.json
 # [END tokens_context_window]
 
 echo "[START tokens_text_only]"
 # [START tokens_text_only]
-curl https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:countTokens?key=$GEMINI_API_KEY \
+curl https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:countTokens?key=$GEMINI_API_KEY \
     -H 'Content-Type: application/json' \
     -X POST \
     -d '{
@@ -40,7 +40,7 @@ curl https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:co
 
 echo "[START tokens_chat]"
 # [START tokens_chat]
-curl https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:countTokens?key=$GEMINI_API_KEY \
+curl https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:countTokens?key=$GEMINI_API_KEY \
     -H 'Content-Type: application/json' \
     -X POST \
     -d '{
@@ -57,7 +57,7 @@ curl https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:co
 
 echo "[START tokens_multimodal_image_inline]"
 # [START tokens_multimodal_image_inline]
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:countTokens?key=$GEMINI_API_KEY" \
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:countTokens?key=$GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \
     -d '{
@@ -85,7 +85,7 @@ tmp_header_file=upload-header.tmp
 
 # Initial resumable request defining metadata.
 # The upload url is in the response headers dump them to a file.
-curl "${BASE_URL}/upload/v1beta/files?key=${GOOGLE_API_KEY}" \
+curl "${BASE_URL}/upload/v1beta/files?key=${GEMINI_API_KEY}" \
   -D upload-header.tmp \
   -H "X-Goog-Upload-Protocol: resumable" \
   -H "X-Goog-Upload-Command: start" \
@@ -106,7 +106,7 @@ curl "${upload_url}" \
 
 file_uri=$(jq ".file.uri" file_info.json)
 
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:countTokens?key=$GOOGLE_API_KEY" \
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:countTokens?key=$GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \
     -d '{
@@ -130,7 +130,7 @@ DISPLAY_NAME=VIDEO_PATH
 
 # Initial resumable request defining metadata.
 # The upload url is in the response headers dump them to a file.
-curl "${BASE_URL}/upload/v1beta/files?key=${GOOGLE_API_KEY}" \
+curl "${BASE_URL}/upload/v1beta/files?key=${GEMINI_API_KEY}" \
   -D upload-header.tmp \
   -H "X-Goog-Upload-Protocol: resumable" \
   -H "X-Goog-Upload-Command: start" \
@@ -164,7 +164,7 @@ do
   state=$(jq ".file.state" file_info.json)
 done
 
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:countTokens?key=$GOOGLE_API_KEY" \
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:countTokens?key=$GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \
     -d '{
@@ -179,7 +179,7 @@ curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:c
 echo "[START tokens_cached_content]"
 # [START tokens_cached_content]
 echo '{
-  "model": "models/gemini-1.5-flash-001",
+  "model": "models/gemini-3.8-flash",
   "contents":[
     {
       "parts":[
@@ -203,7 +203,7 @@ echo '{
   "ttl": "300s"
 }' > request.json
 
-curl -X POST "https://generativelanguage.googleapis.com/v1beta/cachedContents?key=$GOOGLE_API_KEY" \
+curl -X POST "https://generativelanguage.googleapis.com/v1beta/cachedContents?key=$GEMINI_API_KEY" \
  -H 'Content-Type: application/json' \
  -d @request.json \
  > cache.json
@@ -213,7 +213,7 @@ jq .usageMetadata.totalTokenCount cache.json
 
 echo "[START tokens_system_instruction]"
 # [START tokens_system_instruction]
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=$GOOGLE_API_KEY" \
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=$GEMINI_API_KEY" \
 -H 'Content-Type: application/json' \
 -d '{ "system_instruction": {
     "parts":
@@ -260,7 +260,7 @@ cat > tools.json << EOF
 } 
 EOF
 
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=$GOOGLE_API_KEY" \
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=$GEMINI_API_KEY" \
   -H 'Content-Type: application/json' \
   -d '
   {

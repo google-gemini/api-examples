@@ -19,7 +19,7 @@ BASE_URL="https://generativelanguage.googleapis.com"
 
 echo "[START text_gen_text_only_prompt]"
 # [START text_gen_text_only_prompt]
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GEMINI_API_KEY" \
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=$GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \
     -d '{
@@ -31,7 +31,7 @@ curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:g
 
 echo "[START text_gen_text_only_prompt_streaming]"
 # [START text_gen_text_only_prompt_streaming]
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:streamGenerateContent?alt=sse&key=${GEMINI_API_KEY}" \
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:streamGenerateContent?alt=sse&key=${GEMINI_API_KEY}" \
         -H 'Content-Type: application/json' \
         --no-buffer \
         -d '{ "contents":[{"parts":[{"text": "Write a story about a magic backpack."}]}]}'
@@ -64,7 +64,7 @@ cat > "$TEMP_JSON" << EOF
 }
 EOF
 
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GEMINI_API_KEY" \
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=$GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \
     -d "@$TEMP_JSON" 2> /dev/null
@@ -88,7 +88,7 @@ cat > "$TEMP_JSON" << EOF
 }
 EOF
 
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:streamGenerateContent?alt=sse&key=$GEMINI_API_KEY" \
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:streamGenerateContent?alt=sse&key=$GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \
     -d "@$TEMP_JSON" 2> /dev/null
@@ -129,7 +129,7 @@ cat > "$TEMP_JSON" << EOF
 EOF
 
 # Make the API request using the JSON file
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GEMINI_API_KEY" \
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=$GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \
     -d "@$TEMP_JSON" 2> /dev/null > response.json
@@ -162,7 +162,7 @@ cat > "$TEMP_JSON" << EOF
 EOF
 
 # Make the API request using the JSON file
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GEMINI_API_KEY" \
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=$GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \
     -d "@$TEMP_JSON" 2> /dev/null > response.json
@@ -203,7 +203,7 @@ curl "${upload_url}" \
 file_uri=$(jq ".file.uri" file_info.json)
 echo file_uri=$file_uri
 
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GEMINI_API_KEY" \
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=$GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \
     -d '{
@@ -253,7 +253,7 @@ curl "${upload_url}" \
 file_uri=$(jq ".file.uri" file_info.json)
 echo file_uri=$file_uri
 
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:streamGenerateContent?alt=sse&key=$GEMINI_API_KEY" \
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:streamGenerateContent?alt=sse&key=$GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \
     -d '{
@@ -314,7 +314,7 @@ do
   state=$(jq ".file.state" file_info.json)
 done
 
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GEMINI_API_KEY" \
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=$GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \
     -d '{
@@ -374,7 +374,7 @@ do
   state=$(jq ".file.state" file_info.json)
 done
 
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:streamGenerateContent?alt=sse&key=$GEMINI_API_KEY" \
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:streamGenerateContent?alt=sse&key=$GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \
     -d '{
@@ -424,7 +424,7 @@ file_uri=$(jq ".file.uri" file_info.json)
 echo file_uri=$file_uri
 
 # Now generate content using that file
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GEMINI_API_KEY" \
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=$GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \
     -d '{
@@ -476,7 +476,7 @@ file_uri=$(jq ".file.uri" file_info.json)
 echo file_uri=$file_uri
 
 # Now generate content using that file
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:streamGenerateContent?alt=sse&key=$GEMINI_API_KEY" \
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:streamGenerateContent?alt=sse&key=$GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -X POST \
     -d '{

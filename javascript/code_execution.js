@@ -214,7 +214,7 @@ export async function codeExecutionChat() {
   // 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227,
   // 229]
   // sum(primes)=5117
-  // [END code_execution_request_chat_return]
+  // [END code_execution_chat_return]
 
   return {
     executableCode: response.executableCode,
