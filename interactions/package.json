@@ -1,0 +1,17 @@
+{
+  "name": "gemini-api-interactions-examples",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interactions API reference samples, run as Jasmine specs.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "test": "jasmine typescript_samples_test.ts"
+  },
+  "dependencies": {
+    "@google/genai": "^2.27.0"
+  },
+  "devDependencies": {
+    "jasmine": "^7.0.0"
+  }
+}
