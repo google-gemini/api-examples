@@ -99,3 +99,134 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         # Discover and run all .py files as tests
         run: python -m unittest discover -p "*.py"
+
+  # REST samples: rest/*.sh (Generate Content) and the Interactions API curl
+  # samples in interactions/bash_samples_test.sh.
+  test-rest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.event.inputs.ref || '' }}
+          persist-credentials: false
+      - name: Run REST samples
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          fail=0
+          for sample in rest/*.sh; do
+            echo "::group::${sample}"
+            if ! bash "${sample}"; then
+              echo "::error file=${sample}::${sample} failed"
+              fail=1
+            fi
+            echo "::endgroup::"
+          done
+          exit "${fail}"
+      - name: Run Interactions REST samples
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        # Each sample is a sample_*() function. BASE64_ENCODED_IMAGE is a
+        # placeholder for the docs; swap in a real 1x1 PNG.
+        run: |
+          png='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVR4nGP4//8/AAX+Av4N70a4AAAAAElFTkSuQmCC'
+          sed "s|BASE64_ENCODED_IMAGE|${png}|g" interactions/bash_samples_test.sh > "${RUNNER_TEMP}/samples.sh"
+          source "${RUNNER_TEMP}/samples.sh"
+          fail=0
+          for fn in $(declare -F | awk '{print $3}' | grep '^sample_'); do
+            echo "::group::${fn}"
+            if ! "${fn}"; then
+              echo "::error::${fn} failed"
+              fail=1
+            fi
+            echo "::endgroup::"
+          done
+          exit "${fail}"
+
+  test-interactions-go:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.event.inputs.ref || '' }}
+          persist-credentials: false
+      - name: Set up Go
+        uses: actions/setup-go@f111f3307d8850f501ac008e886eec1fd1932a34 # v5.3.0
+        with:
+          go-version: 'stable'
+          cache: false
+      # interactions/ has no go.mod (google3 builds the samples with blaze), so
+      # make a throwaway module against the latest released SDK.
+      - name: Create Go module
+        working-directory: ./interactions
+        run: |
+          go mod init gemini-api-examples/interactions
+          go get google.golang.org/genai@latest
+          go mod tidy
+      - name: Run Interactions Go samples
+        working-directory: ./interactions
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: go test -timeout 20m ./...
+
+  test-interactions-java:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.event.inputs.ref || '' }}
+          persist-credentials: false
+      - name: Set up JDK 24
+        uses: actions/setup-java@3a4f6e1af504cf6a31855fa899c6aa5355ba6c12 # v4.7.0
+        with:
+          java-version: '24'
+          distribution: 'temurin'
+          cache: maven
+          cache-dependency-path: interactions/pom.xml
+      - name: Run Interactions Java samples
+        working-directory: ./interactions
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GOOGLE_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: mvn -B test
+
+  test-interactions-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.event.inputs.ref || '' }}
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.4.0
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install absl-py google-genai
+      - name: Run Interactions Python samples
+        working-directory: ./interactions
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python python_samples_test.py
+
+  test-interactions-typescript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.event.inputs.ref || '' }}
+          persist-credentials: false
+      # Node 24 strips types natively, so Jasmine can load the .ts file as is
+      # (it's plain JavaScript anyway). No lockfile, so no npm cache.
+      - name: Set up Node.js
+        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
+        with:
+          node-version: '24'
+      - name: Install dependencies
+        working-directory: ./interactions
+        run: npm install --no-audit --no-fund
+      - name: Run Interactions TypeScript samples
+        working-directory: ./interactions
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: npm test
