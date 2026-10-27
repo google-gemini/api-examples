@@ -162,7 +162,7 @@ func FilesCreateVideo() (*genai.GenerateContentResponse, error) {
 	// Poll until the video file is completely processed (state becomes ACTIVE).
 	for myfile.State != genai.FileStateActive {
 		if myfile.State == genai.FileStateFailed {
-			log.Fatalf("video file processing failed: %v", myfile.State)
+			return nil, fmt.Errorf("video file processing failed: %v", myfile.State)
 		}
 		fmt.Println("Processing video...")
 		fmt.Println("File state:", myfile.State)
