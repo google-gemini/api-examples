@@ -445,7 +445,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     client = genai.Client()
     interaction = client.interactions.create(
-        agent="deep-research-pro-preview-12-2025",
+        agent="deep-research-preview-04-2026",
         input="find a cure to cancer",
         background=True,
     )

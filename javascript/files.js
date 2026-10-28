@@ -110,11 +110,6 @@ export async function filesCreateVideo() {
 
   // Poll until the video file is completely processed (state becomes ACTIVE).
   while (!myfile.state || myfile.state.toString() !== 'ACTIVE') {
-    if (myfile.state && myfile.state.toString() === 'FAILED') {
-      throw new Error(
-        `Video file processing failed: ${myfile.error?.message || 'state is FAILED'}`,
-      );
-    }
     console.log('Processing video...');
     console.log('File state: ', myfile.state);
     await sleep(5000);

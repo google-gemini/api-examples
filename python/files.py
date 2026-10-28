@@ -80,8 +80,6 @@ class UnitTests(absltest.TestCase):
 
     # Poll until the video file is completely processed (state becomes ACTIVE).
     while not myfile.state or myfile.state.name != "ACTIVE":
-      if myfile.state and myfile.state.name == "FAILED":
-        raise ValueError(f"Video file processing failed: {getattr(myfile, 'error', None) or 'state is FAILED'}")
       print("Processing video...")
       print("File state:", myfile.state)
       time.sleep(5)

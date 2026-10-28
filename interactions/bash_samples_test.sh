@@ -274,7 +274,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "agent": "deep-research-pro-preview-12-2025",
+    "agent": "deep-research-preview-04-2026",
     "input": "Find a cure to cancer",
     "background": true
   }'

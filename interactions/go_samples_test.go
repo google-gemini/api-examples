@@ -737,7 +737,7 @@ func TestSample_api_version_interactions_post_deep_research(t *testing.T) {
 	}
 
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateAgentInteraction{
-		Agent:      gaos_interactions.AgentOption("deep-research-pro-preview-12-2025"),
+		Agent:      gaos_interactions.AgentOption("deep-research-preview-04-2026"),
 		Input:      genai.Ptr(gaos_interactions.NewInteractionsInput("find a cure to cancer")),
 		Background: genai.Ptr(true),
 	})

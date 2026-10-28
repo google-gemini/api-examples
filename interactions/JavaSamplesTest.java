@@ -577,7 +577,7 @@ public class JavaSamplesTest {
     Client client = new Client();
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("deep-research-pro-preview-12-2025"))
+            .agent(AgentOption.of("deep-research-preview-04-2026"))
             .input(InteractionsInput.of("find a cure to cancer"))
             .background(true)
             .build();

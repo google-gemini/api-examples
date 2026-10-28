@@ -25,9 +25,6 @@ func getMedia() string {
 
 // Helping for printing the response.
 func printResponse(resp *genai.GenerateContentResponse) {
-	if resp == nil {
-		return
-	}
 	for _, cand := range resp.Candidates {
 		if cand.Content != nil {
 			for _, part := range cand.Content.Parts {
