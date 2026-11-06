@@ -63,7 +63,7 @@ func TestSample_api_version_agents_post_create(t *testing.T) {
 	req := operations.CreateAgentRequest{
 		Body: gaos_agents.Agent{
 			ID:                genai.Ptr(agentID),
-			BaseAgent:         genai.Ptr("antigravity-preview-05-2026"),
+			BaseAgent:         genai.Ptr("antigravity-preview-09-2026"),
 			Description:       genai.Ptr("A helpful research assistant."),
 			SystemInstruction: genai.Ptr("You are a helpful research assistant."),
 			BaseEnvironment:   genai.Ptr(gaos_agents.NewBaseEnvironment("remote")),
@@ -115,7 +115,7 @@ func TestSample_api_version_agents_post_with_sources(t *testing.T) {
 	req := operations.CreateAgentRequest{
 		Body: gaos_agents.Agent{
 			ID:                genai.Ptr(agentID),
-			BaseAgent:         genai.Ptr("antigravity-preview-05-2026"),
+			BaseAgent:         genai.Ptr("antigravity-preview-09-2026"),
 			SystemInstruction: genai.Ptr("You are a data analyst. Always include visualizations and export results as PDF."),
 			BaseEnvironment:   genai.Ptr(gaos_agents.NewBaseEnvironment(env)),
 		},
@@ -147,7 +147,7 @@ func TestSample_api_version_agents_post_fork_from_env(t *testing.T) {
 	// Step 1: Set up the environment interactively.
 	interactionReq := operations.CreateInteractionRequest{
 		Body: operations.NewCreateInteractionRequestBody(gaos_interactions.CreateAgentInteraction{
-			Agent:       gaos_interactions.AgentOption("antigravity-preview-05-2026"),
+			Agent:       gaos_interactions.AgentOption("antigravity-preview-09-2026"),
 			Input:       genai.Ptr(gaos_interactions.NewInteractionsInput("Write a basic Hello World template to /workspace/template.py.")),
 			Environment: genai.Ptr(gaos_interactions.NewCreateAgentInteractionEnvironment("remote")),
 		}),
@@ -166,7 +166,7 @@ func TestSample_api_version_agents_post_fork_from_env(t *testing.T) {
 	req := operations.CreateAgentRequest{
 		Body: gaos_agents.Agent{
 			ID:                genai.Ptr(agentID),
-			BaseAgent:         genai.Ptr("antigravity-preview-05-2026"),
+			BaseAgent:         genai.Ptr("antigravity-preview-09-2026"),
 			SystemInstruction: genai.Ptr("You are a data analyst. Use the template at /workspace/template.py for all reports."),
 			BaseEnvironment:   genai.Ptr(gaos_agents.NewBaseEnvironment(envID)),
 		},
@@ -198,7 +198,7 @@ func TestSample_api_version_agents_id_delete_delete(t *testing.T) {
 	_, err = client.Agents.Create(ctx, operations.CreateAgentRequest{
 		Body: gaos_agents.Agent{
 			ID:              genai.Ptr(agentID),
-			BaseAgent:       genai.Ptr("antigravity-preview-05-2026"),
+			BaseAgent:       genai.Ptr("antigravity-preview-09-2026"),
 			Description:     genai.Ptr("Temporary agent for deletion."),
 			BaseEnvironment: genai.Ptr(gaos_agents.NewBaseEnvironment("remote")),
 		},
@@ -229,7 +229,7 @@ func TestSample_api_version_agents_id_get_get(t *testing.T) {
 	_, err = client.Agents.Create(ctx, operations.CreateAgentRequest{
 		Body: gaos_agents.Agent{
 			ID:              genai.Ptr(agentID),
-			BaseAgent:       genai.Ptr("antigravity-preview-05-2026"),
+			BaseAgent:       genai.Ptr("antigravity-preview-09-2026"),
 			Description:     genai.Ptr("A test agent."),
 			BaseEnvironment: genai.Ptr(gaos_agents.NewBaseEnvironment("remote")),
 		},
@@ -766,7 +766,7 @@ func TestSample_api_version_interactions_post_antigravity(t *testing.T) {
 	}
 
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateAgentInteraction{
-		Agent:       gaos_interactions.AgentOption("antigravity-preview-05-2026"),
+		Agent:       gaos_interactions.AgentOption("antigravity-preview-09-2026"),
 		Input:       genai.Ptr(gaos_interactions.NewInteractionsInput("Read Hacker News, summarize the top 5 stories, and save results as a markdown file.")),
 		Environment: genai.Ptr(gaos_interactions.NewCreateAgentInteractionEnvironment("remote")),
 	})
@@ -792,7 +792,7 @@ func TestSample_api_version_interactions_post_reuse_env(t *testing.T) {
 
 	// Step 1: Create an interaction with a fresh remote environment.
 	body1 := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateAgentInteraction{
-		Agent:       gaos_interactions.AgentOption("antigravity-preview-05-2026"),
+		Agent:       gaos_interactions.AgentOption("antigravity-preview-09-2026"),
 		Input:       genai.Ptr(gaos_interactions.NewInteractionsInput("Write a hello world script at /workspace/hello.py.")),
 		Environment: genai.Ptr(gaos_interactions.NewCreateAgentInteractionEnvironment("remote")),
 	})
@@ -809,7 +809,7 @@ func TestSample_api_version_interactions_post_reuse_env(t *testing.T) {
 
 	// Step 2: Reuse the same environment in a follow-up interaction.
 	body2 := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateAgentInteraction{
-		Agent:                 gaos_interactions.AgentOption("antigravity-preview-05-2026"),
+		Agent:                 gaos_interactions.AgentOption("antigravity-preview-09-2026"),
 		Input:                 genai.Ptr(gaos_interactions.NewInteractionsInput("Modify the script to accept a name argument and greet the user.")),
 		Environment:           genai.Ptr(gaos_interactions.NewCreateAgentInteractionEnvironment(*res1.Interaction.EnvironmentID)),
 		PreviousInteractionID: res1.Interaction.ID,
@@ -850,7 +850,7 @@ func TestSample_api_version_interactions_post_with_sources(t *testing.T) {
 	}
 
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateAgentInteraction{
-		Agent:       gaos_interactions.AgentOption("antigravity-preview-05-2026"),
+		Agent:       gaos_interactions.AgentOption("antigravity-preview-09-2026"),
 		Input:       genai.Ptr(gaos_interactions.NewInteractionsInput("List all files under /workspace and summarize what you find.")),
 		Environment: genai.Ptr(gaos_interactions.NewCreateAgentInteractionEnvironment(env)),
 	})
@@ -889,7 +889,7 @@ func TestSample_api_version_interactions_post_custom_agent(t *testing.T) {
 	_, err = client.Agents.Create(ctx, operations.CreateAgentRequest{
 		Body: gaos_agents.Agent{
 			ID:                genai.Ptr(agentID),
-			BaseAgent:         genai.Ptr("antigravity-preview-05-2026"),
+			BaseAgent:         genai.Ptr("antigravity-preview-09-2026"),
 			SystemInstruction: genai.Ptr("You are a senior code reviewer. Check every file for bugs, style issues, and security vulnerabilities."),
 			BaseEnvironment:   genai.Ptr(gaos_agents.NewBaseEnvironment(baseEnv)),
 		},

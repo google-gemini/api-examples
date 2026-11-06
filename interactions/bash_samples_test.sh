@@ -41,7 +41,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/agents \
   -H "Content-Type: application/json" \
   -d '{
     "id": "research-assistant-abc123",
-    "base_agent": "antigravity-preview-05-2026",
+    "base_agent": "antigravity-preview-09-2026",
     "description": "A helpful research assistant.",
     "system_instruction": "You are a helpful research assistant.",
     "base_environment": "remote",
@@ -57,7 +57,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/agents \
   -H "Content-Type: application/json" \
   -d '{
     "id": "data-analyst-abc123",
-    "base_agent": "antigravity-preview-05-2026",
+    "base_agent": "antigravity-preview-09-2026",
     "system_instruction": "You are a data analyst. Always include visualizations and export results as PDF.",
     "base_environment": {
       "type": "remote",
@@ -85,7 +85,7 @@ RESPONSE=$(curl -s -X POST https://generativelanguage.googleapis.com/v1beta/inte
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "agent": "antigravity-preview-05-2026",
+    "agent": "antigravity-preview-09-2026",
     "input": "Write a basic Hello World template to /workspace/template.py.",
     "environment": "remote"
   }')
@@ -97,7 +97,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/agents \
   -H "Content-Type: application/json" \
   -d "{
     \"id\": \"my-data-analyst\",
-    \"base_agent\": \"antigravity-preview-05-2026\",
+    \"base_agent\": \"antigravity-preview-09-2026\",
     \"system_instruction\": \"You are a data analyst. Use the template at /workspace/template.py for all reports.\",
     \"base_environment\": \"$ENV_ID\"
   }"
@@ -287,7 +287,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "agent": "antigravity-preview-05-2026",
+    "agent": "antigravity-preview-09-2026",
     "input": "Read Hacker News, summarize the top 5 stories, and save results as a markdown file.",
     "environment": "remote"
   }'
@@ -302,7 +302,7 @@ RESPONSE=$(curl -s -X POST https://generativelanguage.googleapis.com/v1beta/inte
   -H "Content-Type: application/json" \
   -H "Api-Revision: 2026-05-20" \
   -d '{
-    "agent": "antigravity-preview-05-2026",
+    "agent": "antigravity-preview-09-2026",
     "input": "Write a hello world script at /workspace/hello.py.",
     "environment": "remote"
   }')
@@ -314,7 +314,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d "{
-    \"agent\": \"antigravity-preview-05-2026\",
+    \"agent\": \"antigravity-preview-09-2026\",
     \"input\": \"Modify the script to accept a name argument and greet the user.\",
     \"environment\": \"$ENV_ID\",
     \"previous_interaction_id\": \"$INTERACTION_ID\"
@@ -328,7 +328,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "agent": "antigravity-preview-05-2026",
+    "agent": "antigravity-preview-09-2026",
     "input": "List all files under /workspace and summarize what you find.",
     "environment": {
       "type": "remote",
@@ -357,7 +357,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/agents \
   -H "Content-Type: application/json" \
   -d '{
     "id": "code-reviewer",
-    "base_agent": "antigravity-preview-05-2026",
+    "base_agent": "antigravity-preview-09-2026",
     "system_instruction": "You are a senior code reviewer. Check every file for bugs, style issues, and security vulnerabilities.",
     "base_environment": {
       "type": "remote",
@@ -612,7 +612,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/triggers \
     "schedule": "0 9 * * *",
     "time_zone": "America/New_York",
     "interaction": {
-      "agent": "antigravity-preview-05-2026",
+      "agent": "antigravity-preview-09-2026",
       "input": "Summarize top news stories.",
       "environment": "remote"
     }

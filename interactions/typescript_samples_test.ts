@@ -36,7 +36,7 @@ describe('Interactions API TypeScript Samples', () => {
     const agentId = `research-assistant-${crypto.randomUUID().slice(0, 8)}`;
     const agent = await ai.agents.create({
       id: agentId,
-      base_agent: 'antigravity-preview-05-2026',
+      base_agent: 'antigravity-preview-09-2026',
       description: 'A helpful research assistant.',
       system_instruction: 'You are a helpful research assistant.',
       base_environment: 'remote',
@@ -60,7 +60,7 @@ describe('Interactions API TypeScript Samples', () => {
     const agentId = `data-analyst-${crypto.randomUUID().slice(0, 8)}`;
     const agent = await ai.agents.create({
       id: agentId,
-      base_agent: 'antigravity-preview-05-2026',
+      base_agent: 'antigravity-preview-09-2026',
       system_instruction:
         'You are a data analyst. Always include visualizations and export results as PDF.',
       base_environment: {
@@ -95,7 +95,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     // Step 1: Set up the environment interactively.
     const interaction = await ai.interactions.create({
-      agent: 'antigravity-preview-05-2026',
+      agent: 'antigravity-preview-09-2026',
       input: 'Write a basic Hello World template to /workspace/template.py.',
       environment: 'remote',
     });
@@ -104,7 +104,7 @@ describe('Interactions API TypeScript Samples', () => {
     const agentId = `my-data-analyst-${crypto.randomUUID().slice(0, 8)}`;
     const agent = await ai.agents.create({
       id: agentId,
-      base_agent: 'antigravity-preview-05-2026',
+      base_agent: 'antigravity-preview-09-2026',
       system_instruction:
         'You are a data analyst. Use the template at /workspace/template.py for all reports.',
       base_environment: interaction.environment_id,
@@ -126,7 +126,7 @@ describe('Interactions API TypeScript Samples', () => {
     const agentId = `delete-test-${crypto.randomUUID().slice(0, 8)}`;
     await ai.agents.create({
       id: agentId,
-      base_agent: 'antigravity-preview-05-2026',
+      base_agent: 'antigravity-preview-09-2026',
       description: 'Temporary agent for deletion.',
       base_environment: 'remote',
     });
@@ -146,7 +146,7 @@ describe('Interactions API TypeScript Samples', () => {
     const agentId = `test-agent-${crypto.randomUUID().slice(0, 8)}`;
     await ai.agents.create({
       id: agentId,
-      base_agent: 'antigravity-preview-05-2026',
+      base_agent: 'antigravity-preview-09-2026',
       description: 'A test agent.',
       base_environment: 'remote',
     });
@@ -416,7 +416,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     const ai = new GoogleGenAI({});
     const interaction = await ai.interactions.create({
-      agent: 'antigravity-preview-05-2026',
+      agent: 'antigravity-preview-09-2026',
       input:
         'Read Hacker News, summarize the top 5 stories, and save results as a markdown file.',
       environment: 'remote',
@@ -432,7 +432,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     // Step 1: Create an interaction with a fresh remote environment.
     const interaction = await ai.interactions.create({
-      agent: 'antigravity-preview-05-2026',
+      agent: 'antigravity-preview-09-2026',
       input: 'Write a hello world script at /workspace/hello.py.',
       environment: 'remote',
     });
@@ -440,7 +440,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     // Step 2: Reuse the same environment in a follow-up interaction.
     const interaction2 = await ai.interactions.create({
-      agent: 'antigravity-preview-05-2026',
+      agent: 'antigravity-preview-09-2026',
       input: 'Modify the script to accept a name argument and greet the user.',
       environment: interaction.environment_id,
       previous_interaction_id: interaction.id,
@@ -454,7 +454,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     const ai = new GoogleGenAI({});
     const interaction = await ai.interactions.create({
-      agent: 'antigravity-preview-05-2026',
+      agent: 'antigravity-preview-09-2026',
       input: 'List all files under /workspace and summarize what you find.',
       environment: {
         type: 'remote',
@@ -485,7 +485,7 @@ describe('Interactions API TypeScript Samples', () => {
     const agentId = `code-reviewer-${crypto.randomUUID().slice(0, 8)}`;
     await ai.agents.create({
       id: agentId,
-      base_agent: 'antigravity-preview-05-2026',
+      base_agent: 'antigravity-preview-09-2026',
       system_instruction:
         'You are a senior code reviewer. Check every file for bugs, style issues, and security vulnerabilities.',
       base_environment: {
@@ -777,7 +777,7 @@ describe('Interactions API TypeScript Samples', () => {
       schedule: '0 9 * * *',
       time_zone: 'America/New_York',
       interaction: {
-        agent: 'antigravity-preview-05-2026',
+        agent: 'antigravity-preview-09-2026',
         input: 'Summarize top news stories.',
         environment: 'remote',
       },

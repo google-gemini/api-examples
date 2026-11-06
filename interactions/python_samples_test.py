@@ -40,7 +40,7 @@ class PythonSamplesTest(parameterized.TestCase):
     client = genai.Client()
     agent = client.agents.create(
         id=f"research-assistant-{uuid.uuid4().hex[:8]}",
-        base_agent="antigravity-preview-05-2026",
+        base_agent="antigravity-preview-09-2026",
         description="A helpful research assistant.",
         system_instruction="You are a helpful research assistant.",
         base_environment="remote",
@@ -61,7 +61,7 @@ class PythonSamplesTest(parameterized.TestCase):
     client = genai.Client()
     agent = client.agents.create(
         id=f"data-analyst-{uuid.uuid4().hex[:8]}",
-        base_agent="antigravity-preview-05-2026",
+        base_agent="antigravity-preview-09-2026",
         system_instruction=(
             "You are a data analyst. Always include visualizations and export"
             " results as PDF."
@@ -101,7 +101,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     # Step 1: Set up the environment interactively.
     interaction = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="Write a basic Hello World template to /workspace/template.py.",
         environment="remote",
     )
@@ -110,7 +110,7 @@ class PythonSamplesTest(parameterized.TestCase):
     agent_id = f"my-data-analyst-{uuid.uuid4().hex[:8]}"
     agent = client.agents.create(
         id=agent_id,
-        base_agent="antigravity-preview-05-2026",
+        base_agent="antigravity-preview-09-2026",
         system_instruction=(
             "You are a data analyst. Use the template at /workspace/template.py"
             " for all reports."
@@ -135,7 +135,7 @@ class PythonSamplesTest(parameterized.TestCase):
     agent_id = f"delete-test-{uuid.uuid4().hex[:8]}"
     client.agents.create(
         id=agent_id,
-        base_agent="antigravity-preview-05-2026",
+        base_agent="antigravity-preview-09-2026",
         description="Temporary agent for deletion.",
         base_environment="remote",
     )
@@ -156,7 +156,7 @@ class PythonSamplesTest(parameterized.TestCase):
     agent_id = f"test-agent-{uuid.uuid4().hex[:8]}"
     client.agents.create(
         id=agent_id,
-        base_agent="antigravity-preview-05-2026",
+        base_agent="antigravity-preview-09-2026",
         description="A test agent.",
         base_environment="remote",
     )
@@ -458,7 +458,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     client = genai.Client()
     interaction = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input=(
             "Read Hacker News, summarize the top 5 stories, and save results as"
             " a markdown file."
@@ -476,7 +476,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     # Step 1: Create an interaction with a fresh remote environment.
     interaction = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="Write a hello world script at /workspace/hello.py.",
         environment="remote",
     )
@@ -484,7 +484,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     # Step 2: Reuse the same environment in a follow-up interaction.
     interaction_2 = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="Modify the script to accept a name argument and greet the user.",
         environment=interaction.environment_id,
         previous_interaction_id=interaction.id,
@@ -498,7 +498,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     client = genai.Client()
     interaction = client.interactions.create(
-        agent="antigravity-preview-05-2026",
+        agent="antigravity-preview-09-2026",
         input="List all files under /workspace and summarize what you find.",
         environment={
             "type": "remote",
@@ -530,7 +530,7 @@ class PythonSamplesTest(parameterized.TestCase):
     agent_id = f"code-reviewer-{uuid.uuid4().hex[:8]}"
     client.agents.create(
         id=agent_id,
-        base_agent="antigravity-preview-05-2026",
+        base_agent="antigravity-preview-09-2026",
         system_instruction=(
             "You are a senior code reviewer. Check every file for bugs, style"
             " issues, and security vulnerabilities."
@@ -809,7 +809,7 @@ class PythonSamplesTest(parameterized.TestCase):
         schedule="0 9 * * *",
         time_zone="America/New_York",
         interaction={
-            "agent": "antigravity-preview-05-2026",
+            "agent": "antigravity-preview-09-2026",
             "input": "Summarize top news stories.",
             "environment": "remote",
         },

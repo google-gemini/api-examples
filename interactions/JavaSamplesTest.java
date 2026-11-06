@@ -95,7 +95,7 @@ public class JavaSamplesTest {
     Agent agent =
         Agent.builder()
             .id(agentId)
-            .baseAgent("antigravity-preview-05-2026")
+            .baseAgent("antigravity-preview-09-2026")
             .description("A helpful research assistant.")
             .systemInstruction("You are a helpful research assistant.")
             .baseEnvironment(BaseEnvironment.of("remote"))
@@ -136,7 +136,7 @@ public class JavaSamplesTest {
     Agent agent =
         Agent.builder()
             .id(agentId)
-            .baseAgent("antigravity-preview-05-2026")
+            .baseAgent("antigravity-preview-09-2026")
             .systemInstruction(
                 "You are a data analyst. Always include visualizations and export results as PDF.")
             .baseEnvironment(BaseEnvironment.of(env))
@@ -159,7 +159,7 @@ public class JavaSamplesTest {
     // Step 1: Set up the environment interactively.
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
+            .agent(AgentOption.of("antigravity-preview-09-2026"))
             .input(
                 InteractionsInput.of(
                     "Write a basic Hello World template to /workspace/template.py."))
@@ -177,7 +177,7 @@ public class JavaSamplesTest {
     Agent agent =
         Agent.builder()
             .id(agentId)
-            .baseAgent("antigravity-preview-05-2026")
+            .baseAgent("antigravity-preview-09-2026")
             .systemInstruction(
                 "You are a data analyst. Use the template at /workspace/template.py for all"
                     + " reports.")
@@ -203,7 +203,7 @@ public class JavaSamplesTest {
     client.agents.create(
         Agent.builder()
             .id(agentId)
-            .baseAgent("antigravity-preview-05-2026")
+            .baseAgent("antigravity-preview-09-2026")
             .description("Temporary agent for deletion.")
             .baseEnvironment(BaseEnvironment.of("remote"))
             .build());
@@ -225,7 +225,7 @@ public class JavaSamplesTest {
     client.agents.create(
         Agent.builder()
             .id(agentId)
-            .baseAgent("antigravity-preview-05-2026")
+            .baseAgent("antigravity-preview-09-2026")
             .description("A test agent.")
             .baseEnvironment(BaseEnvironment.of("remote"))
             .build());
@@ -596,7 +596,7 @@ public class JavaSamplesTest {
     Client client = new Client();
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
+            .agent(AgentOption.of("antigravity-preview-09-2026"))
             .input(
                 InteractionsInput.of(
                     "Read Hacker News, summarize the top 5 stories, and save results as a markdown"
@@ -620,7 +620,7 @@ public class JavaSamplesTest {
     // Step 1: Create an interaction with a fresh remote environment.
     CreateAgentInteraction params1 =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
+            .agent(AgentOption.of("antigravity-preview-09-2026"))
             .input(InteractionsInput.of("Write a hello world script at /workspace/hello.py."))
             .environment(CreateAgentInteractionEnvironment.of("remote"))
             .build();
@@ -633,7 +633,7 @@ public class JavaSamplesTest {
     // Step 2: Reuse the same environment in a follow-up interaction.
     CreateAgentInteraction params2 =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
+            .agent(AgentOption.of("antigravity-preview-09-2026"))
             .input(
                 InteractionsInput.of(
                     "Modify the script to accept a name argument and greet the user."))
@@ -671,7 +671,7 @@ public class JavaSamplesTest {
             .build();
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
+            .agent(AgentOption.of("antigravity-preview-09-2026"))
             .input(
                 InteractionsInput.of(
                     "List all files under /workspace and summarize what you find."))
@@ -706,7 +706,7 @@ public class JavaSamplesTest {
     Agent customAgent =
         Agent.builder()
             .id(agentId)
-            .baseAgent("antigravity-preview-05-2026")
+            .baseAgent("antigravity-preview-09-2026")
             .systemInstruction(
                 "You are a senior code reviewer. Check every file for bugs, style issues, and"
                     + " security vulnerabilities.")
@@ -1009,7 +1009,7 @@ public class JavaSamplesTest {
     Client client = new Client();
     CreateAgentInteraction interaction =
         CreateAgentInteraction.builder()
-            .agent(AgentOption.of("antigravity-preview-05-2026"))
+            .agent(AgentOption.of("antigravity-preview-09-2026"))
             .input(InteractionsInput.of("Summarize top news stories."))
             .environment(CreateAgentInteractionEnvironment.of("remote"))
             .build();
