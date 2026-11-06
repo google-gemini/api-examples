@@ -323,7 +323,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     const ai = new GoogleGenAI({});
     const interaction = await ai.interactions.create({
-      model: 'gemini-flash-latest',
+      model: 'gemini-3.8-flash',
       input: 'Hello, how are you?',
     });
     console.log(interaction.output_text);
@@ -335,7 +335,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     const ai = new GoogleGenAI({});
     const interaction = await ai.interactions.create({
-      model: 'gemini-flash-latest',
+      model: 'gemini-3.8-flash',
       input: [
         {type: 'user_input', content: [{type: 'text', text: 'Hello'}]},
         {
@@ -359,7 +359,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     const ai = new GoogleGenAI({});
     const interaction = await ai.interactions.create({
-      model: 'gemini-flash-latest',
+      model: 'gemini-3.8-flash',
       input: [
         {type: 'text', text: 'What is in this picture?'},
         {type: 'image', data: 'BASE64_ENCODED_IMAGE', mime_type: 'image/png'},
@@ -374,7 +374,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     const ai = new GoogleGenAI({});
     const interaction = await ai.interactions.create({
-      model: 'gemini-flash-latest',
+      model: 'gemini-3.8-flash',
       tools: [
         {
           type: 'function',
@@ -522,7 +522,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     // [setup]
     const created = await ai.interactions.create({
-      model: 'gemini-flash-latest',
+      model: 'gemini-3.8-flash',
       input: 'Hello',
     });
     // [/setup]
@@ -539,7 +539,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     // [setup]
     const created = await ai.interactions.create({
-      model: 'gemini-flash-latest',
+      model: 'gemini-3.8-flash',
       input: 'Say hello.',
     });
     // [/setup]
@@ -556,7 +556,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     // Start a background interaction so it stays in-progress.
     const created = await ai.interactions.create({
-      model: 'gemini-flash-latest',
+      model: 'gemini-3.8-flash',
       input: 'Write a long essay about the history of computing.',
       tools: [{type: 'computer_use'}],
       background: true,
@@ -573,7 +573,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     const ai = new GoogleGenAI({});
     const interaction = await ai.interactions.create({
-      model: 'gemini-flash-latest',
+      model: 'gemini-3.8-flash',
       tools: [{type: 'code_execution'}],
       input: 'Calculate the first 10 Fibonacci numbers',
     });
@@ -606,7 +606,7 @@ describe('Interactions API TypeScript Samples', () => {
     }
 
     const interaction = await ai.interactions.create({
-      model: 'gemini-flash-latest',
+      model: 'gemini-3.8-flash',
       tools: [
         {
           type: 'file_search',
@@ -628,7 +628,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     const ai = new GoogleGenAI({});
     const interaction = await ai.interactions.create({
-      model: 'gemini-flash-latest',
+      model: 'gemini-3.8-flash',
       tools: [
         {
           type: 'function',
@@ -657,7 +657,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     const ai = new GoogleGenAI({});
     const interaction = await ai.interactions.create({
-      model: 'gemini-flash-latest',
+      model: 'gemini-3.8-flash',
       tools: [
         {
           type: 'google_maps',
@@ -676,7 +676,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     const ai = new GoogleGenAI({});
     const interaction = await ai.interactions.create({
-      model: 'gemini-flash-latest',
+      model: 'gemini-3.8-flash',
       tools: [{type: 'google_search'}],
       input: 'Who is the current president of France?',
     });
@@ -689,7 +689,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     const ai = new GoogleGenAI({});
     const interaction = await ai.interactions.create({
-      model: 'gemini-flash-latest',
+      model: 'gemini-3.8-flash',
       tools: [
         {
           type: 'mcp_server',
@@ -708,7 +708,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     const ai = new GoogleGenAI({});
     const interaction = await ai.interactions.create({
-      model: 'gemini-flash-latest',
+      model: 'gemini-3.8-flash',
       tools: [{type: 'url_context'}],
       input: 'Summarize https://www.example.com',
     });

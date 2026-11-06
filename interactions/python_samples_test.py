@@ -355,7 +355,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     client = genai.Client()
     interaction = client.interactions.create(
-        model="gemini-flash-latest",
+        model="gemini-3.8-flash",
         input="Hello, how are you?",
     )
     print(interaction.output_text)
@@ -367,7 +367,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     client = genai.Client()
     response = client.interactions.create(
-        model="gemini-flash-latest",
+        model="gemini-3.8-flash",
         input=[
             {
                 "type": "user_input",
@@ -397,7 +397,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     client = genai.Client()
     response = client.interactions.create(
-        model="gemini-flash-latest",
+        model="gemini-3.8-flash",
         input=[
             {"type": "text", "text": "What is in this picture?"},
             {
@@ -416,7 +416,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     client = genai.Client()
     response = client.interactions.create(
-        model="gemini-flash-latest",
+        model="gemini-3.8-flash",
         tools=[{
             "type": "function",
             "name": "get_weather",
@@ -569,7 +569,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     # [setup]
     created = client.interactions.create(
-        model="gemini-flash-latest",
+        model="gemini-3.8-flash",
         input="Hello",
     )
     # [/setup]
@@ -586,7 +586,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     # [setup]
     created = client.interactions.create(
-        model="gemini-flash-latest", input="Say hello."
+        model="gemini-3.8-flash", input="Say hello."
     )
     # [/setup]
 
@@ -602,7 +602,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     # Start a background interaction so it stays in-progress.
     created = client.interactions.create(
-        model="gemini-flash-latest",
+        model="gemini-3.8-flash",
         input="Write a long essay about the history of computing.",
         tools=[{"type": "computer_use"}],
         background=True,
@@ -619,7 +619,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     client = genai.Client()
     response = client.interactions.create(
-        model="gemini-flash-latest",
+        model="gemini-3.8-flash",
         tools=[{"type": "code_execution"}],
         input="Calculate the first 10 Fibonacci numbers",
     )
@@ -649,7 +649,7 @@ class PythonSamplesTest(parameterized.TestCase):
     store = client.file_search_stores.create()
 
     response = client.interactions.create(
-        model="gemini-flash-latest",
+        model="gemini-3.8-flash",
         tools=[
             {"type": "file_search", "file_search_store_names": [store.name]}
         ],
@@ -668,7 +668,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     client = genai.Client()
     response = client.interactions.create(
-        model="gemini-flash-latest",
+        model="gemini-3.8-flash",
         tools=[{
             "type": "function",
             "name": "get_weather",
@@ -697,7 +697,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     client = genai.Client()
     response = client.interactions.create(
-        model="gemini-flash-latest",
+        model="gemini-3.8-flash",
         tools=[
             {"type": "google_maps", "latitude": 37.7749, "longitude": -122.4194}
         ],
@@ -712,7 +712,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     client = genai.Client()
     response = client.interactions.create(
-        model="gemini-flash-latest",
+        model="gemini-3.8-flash",
         tools=[{"type": "google_search"}],
         input="Who is the current president of France?",
     )
@@ -725,7 +725,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     client = genai.Client()
     response = client.interactions.create(
-        model="gemini-flash-latest",
+        model="gemini-3.8-flash",
         tools=[{
             "type": "mcp_server",
             "name": "weather_service",
@@ -742,7 +742,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     client = genai.Client()
     response = client.interactions.create(
-        model="gemini-flash-latest",
+        model="gemini-3.8-flash",
         tools=[{"type": "url_context"}],
         input="Summarize https://www.example.com",
     )

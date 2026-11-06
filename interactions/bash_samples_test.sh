@@ -193,7 +193,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-flash-latest",
+    "model": "gemini-3.8-flash",
     "input": "Hello, how are you?"
   }'
 # [END paths['/{api_version}/interactions'].post:simple]
@@ -205,7 +205,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-flash-latest",
+    "model": "gemini-3.8-flash",
     "input": [
       { "type": "user_input", "content": [{ "type": "text", "text": "Hello!" }] },
       { "type": "model_output", "content": [{ "type": "text", "text": "Hi there! How can I help you today?" }] },
@@ -221,7 +221,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-flash-latest",
+    "model": "gemini-3.8-flash",
     "input": [
       {
         "type": "text",
@@ -243,7 +243,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-flash-latest",
+    "model": "gemini-3.8-flash",
     "tools": [
       {
         "type": "function",
@@ -386,7 +386,7 @@ sample_api_version_interactions_id_delete_delete() {
 # [setup]
 INTERACTION_ID=$(curl -s -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
-  -H "Content-Type: application/json" \ -d '{"model": "gemini-flash-latest", "input": "Hello"}' \
+  -H "Content-Type: application/json" \ -d '{"model": "gemini-3.8-flash", "input": "Hello"}' \
   | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
 # [/setup]
 
@@ -402,7 +402,7 @@ INTERACTION_ID=$(curl -s -X POST https://generativelanguage.googleapis.com/v1bet
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -H "Api-Revision: 2026-05-20" \
-  -d '{"model": "gemini-flash-latest", "input": "Say hello."}' \
+  -d '{"model": "gemini-3.8-flash", "input": "Say hello."}' \
   | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
 # [/setup]
 
@@ -417,7 +417,7 @@ sample_api_version_interactions_id_cancel_post_cancel() {
 # [setup]
 INTERACTION_ID=$(curl -s -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
-  -H "Content-Type: application/json" \ -d '{"model": "gemini-flash-latest", "input": "Write a long essay about the history of computing.", "background": true}' \
+  -H "Content-Type: application/json" \ -d '{"model": "gemini-3.8-flash", "input": "Write a long essay about the history of computing.", "background": true}' \
   | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
 # [/setup]
 
@@ -432,7 +432,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-flash-latest",
+    "model": "gemini-3.8-flash",
     "tools": [{
       "type": "code_execution"
     }],
@@ -462,7 +462,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-flash-latest",
+    "model": "gemini-3.8-flash",
     "tools": [{
       "type": "file_search",
       "file_search_store_names": ["fileSearchStores/m64d1sevsr4y-xfyawui3fxqg"]
@@ -478,7 +478,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-flash-latest",
+    "model": "gemini-3.8-flash",
     "tools": [{
       "type": "function",
       "name": "get_weather",
@@ -505,7 +505,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-flash-latest",
+    "model": "gemini-3.8-flash",
     "tools": [{
       "type": "google_maps",
       "latitude": 37.7749,
@@ -522,7 +522,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-flash-latest",
+    "model": "gemini-3.8-flash",
     "tools": [{
       "type": "google_search"
     }],
@@ -537,7 +537,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-flash-latest",
+    "model": "gemini-3.8-flash",
     "tools": [{
       "type": "mcp_server",
       "name": "weather_service",
@@ -554,7 +554,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-flash-latest",
+    "model": "gemini-3.8-flash",
     "tools": [{
       "type": "url_context"
     }],
