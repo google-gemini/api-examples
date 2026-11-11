@@ -791,4 +791,174 @@ describe('Interactions API TypeScript Samples', () => {
     // [/cleanup]
     // [END paths['/{api_version}/triggers'].post:create]
   });
+
+  it('api version decisions post noul', async () => {
+    // [START paths['/{api_version}/decisions'].post:noul]
+
+    const ai = new GoogleGenAI({});
+    const response = await ai.decisions.create({
+      model: 'gemini-decision-1',
+      input:
+        'Customer message: Hi, I was charged twice for my monthly subscription this morning. Can you refund the duplicate charge?',
+      questions: {
+        needs_billing_refund: {
+          type: 'noul',
+          instructions:
+            'Determine whether the customer is requesting a billing refund.',
+          criteria: {
+            true_description:
+              'The customer explicitly asks for a refund or reversal of a charge.',
+            false_description:
+              'The customer is asking a general question or reporting a non-billing issue.',
+          },
+        },
+      },
+    });
+    const answer = response.answers?.['needs_billing_refund'];
+    if (answer?.type === 'noul') {
+      console.log(`P(true)=${answer.noul}, confidence=${answer.confidence}`);
+    }
+    // [END paths['/{api_version}/decisions'].post:noul]
+    expect(answer?.type).toBe('noul');
+    if (answer?.type === 'noul') {
+      expect(answer.noul).toBeGreaterThan(0.5);
+      expect(answer.confidence).toBeGreaterThan(0.5);
+    }
+  });
+
+  it('api version decisions post choice', async () => {
+    // [START paths['/{api_version}/decisions'].post:choice]
+
+    const ai = new GoogleGenAI({});
+    const response = await ai.decisions.create({
+      model: 'gemini-decision-1',
+      input:
+        'Customer message: Every time I click Export to PDF, the app freezes and crashes with error code 504.',
+      questions: {
+        ticket_route: {
+          type: 'choice',
+          instructions:
+            'Route the support ticket to the most appropriate team.',
+          criteria: {
+            billing:
+              'Invoices, charges, refunds, or subscription plan changes.',
+            technical_support:
+              'Bugs, crashes, errors, or product functionality issues.',
+            account_access:
+              'Login, password reset, or two-factor authentication issues.',
+          },
+        },
+      },
+    });
+    const answer = response.answers?.['ticket_route'];
+    if (answer?.type === 'choice') {
+      console.log(
+        `choice=${answer.choice}, confidence=${answer.confidence}`,
+        answer.probabilities,
+      );
+    }
+    // [END paths['/{api_version}/decisions'].post:choice]
+    expect(answer?.type).toBe('choice');
+    if (answer?.type === 'choice') {
+      expect(answer.choice).toBe('technical_support');
+      expect(answer.probabilities['technical_support']).toBeGreaterThan(0.5);
+    }
+  });
+
+  it('api version decisions post score', async () => {
+    // [START paths['/{api_version}/decisions'].post:score]
+
+    const ai = new GoogleGenAI({});
+    const response = await ai.decisions.create({
+      model: 'gemini-decision-1',
+      input:
+        'Draft reply: Duplicate charge refunded ($19.99) to your Visa ending in 4242. It will appear on your statement within 3-5 business days.',
+      questions: {
+        clarity: {
+          type: 'score',
+          instructions:
+            'Score the clarity and actionability of the customer support reply.',
+          criteria: [
+            'Unclear, confusing, or missing key details.',
+            'Partially clear, but leaves important questions unanswered.',
+            'Clear, concise, and gives concrete details and timeline.',
+          ],
+        },
+      },
+    });
+    const answer = response.answers?.['clarity'];
+    if (answer?.type === 'score') {
+      console.log(
+        `score=${answer.score}, confidence=${answer.confidence}`,
+        answer.probabilities,
+      );
+    }
+    // [END paths['/{api_version}/decisions'].post:score]
+    expect(answer?.type).toBe('score');
+    if (answer?.type === 'score') {
+      expect(answer.score).toBeGreaterThan(1.0);
+      expect(Object.keys(answer.probabilities).length).toBe(3);
+    }
+  });
+
+  it('api version decisions post batch', async () => {
+    // [START paths['/{api_version}/decisions'].post:batch]
+
+    const ai = new GoogleGenAI({});
+    const response = await ai.decisions.create({
+      model: 'gemini-decision-1',
+      input:
+        'Customer message: Production API requests have been failing with 503 errors for the past 20 minutes, blocking all checkout traffic!',
+      questions: {
+        is_outage: {
+          type: 'noul',
+          instructions:
+            'Determine whether the customer is reporting an active production outage.',
+        },
+        priority: {
+          type: 'choice',
+          instructions: 'Select the incident priority level.',
+          criteria: {
+            p1_critical: 'Production outage blocking core business traffic.',
+            p2_high: 'Major feature degraded with a workaround available.',
+            p3_normal: 'Minor bug or general question.',
+          },
+        },
+        urgency: {
+          type: 'score',
+          instructions: 'Rate the urgency of immediate escalation.',
+          criteria: [
+            'Routine inquiry, standard SLA.',
+            'Time-sensitive issue needing same-day follow-up.',
+            'Immediate escalation required for active production impact.',
+          ],
+        },
+      },
+    });
+    for (const [questionId, answer] of Object.entries(response.answers ?? {})) {
+      if (answer.type === 'noul') {
+        console.log(`${questionId}: P(true)=${answer.noul}`);
+      } else if (answer.type === 'choice') {
+        console.log(`${questionId}: choice=${answer.choice}`);
+      } else if (answer.type === 'score') {
+        console.log(`${questionId}: score=${answer.score}`);
+      }
+    }
+    // [END paths['/{api_version}/decisions'].post:batch]
+    const outage = response.answers?.['is_outage'];
+    expect(outage?.type).toBe('noul');
+    if (outage?.type === 'noul') {
+      expect(outage.noul).toBeGreaterThan(0.5);
+    }
+    const priority = response.answers?.['priority'];
+    expect(priority?.type).toBe('choice');
+    if (priority?.type === 'choice') {
+      expect(priority.choice).toBe('p1_critical');
+    }
+    const urgency = response.answers?.['urgency'];
+    expect(urgency?.type).toBe('score');
+    if (urgency?.type === 'score') {
+      expect(urgency.score).toBeGreaterThan(1.0);
+    }
+  });
 });

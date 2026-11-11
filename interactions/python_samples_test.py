@@ -822,6 +822,210 @@ class PythonSamplesTest(parameterized.TestCase):
     # [/cleanup]
     # [END paths['/{api_version}/triggers'].post:create]
 
+  def test_api_version_decisions_post_noul(self):
+    # [START paths['/{api_version}/decisions'].post:noul]
+    from google import genai
+
+    client = genai.Client()
+    response = client.decisions.create(
+        model="gemini-decision-1",
+        input=(
+            "Customer message: Hi, I was charged twice for my monthly"
+            " subscription this morning. Can you refund the duplicate charge?"
+        ),
+        questions={
+            "needs_billing_refund": {
+                "type": "noul",
+                "instructions": (
+                    "Determine whether the customer is requesting a billing"
+                    " refund."
+                ),
+                "criteria": {
+                    "true_description": (
+                        "The customer explicitly asks for a refund or reversal"
+                        " of a charge."
+                    ),
+                    "false_description": (
+                        "The customer is asking a general question or reporting"
+                        " a non-billing issue."
+                    ),
+                },
+            },
+        },
+    )
+    if response.answers:
+      answer = response.answers["needs_billing_refund"]
+      if answer.type == "noul":
+        print(f"P(true)={answer.noul}, confidence={answer.confidence}")
+    # [END paths['/{api_version}/decisions'].post:noul]
+    self.assertIsNotNone(response.answers)
+    assert response.answers is not None
+    answer = response.answers["needs_billing_refund"]
+    self.assertEqual(answer.type, "noul")
+    assert answer.type == "noul"
+    self.assertGreater(answer.noul, 0.5)
+    self.assertGreater(answer.confidence, 0.5)
+
+  def test_api_version_decisions_post_choice(self):
+    # [START paths['/{api_version}/decisions'].post:choice]
+    from google import genai
+
+    client = genai.Client()
+    response = client.decisions.create(
+        model="gemini-decision-1",
+        input=(
+            "Customer message: Every time I click Export to PDF, the app"
+            " freezes and crashes with error code 504."
+        ),
+        questions={
+            "ticket_route": {
+                "type": "choice",
+                "instructions": (
+                    "Route the support ticket to the most appropriate team."
+                ),
+                "criteria": {
+                    "billing": (
+                        "Invoices, charges, refunds, or subscription plan"
+                        " changes."
+                    ),
+                    "technical_support": (
+                        "Bugs, crashes, errors, or product functionality"
+                        " issues."
+                    ),
+                    "account_access": (
+                        "Login, password reset, or two-factor authentication"
+                        " issues."
+                    ),
+                },
+            },
+        },
+    )
+    if response.answers:
+      answer = response.answers["ticket_route"]
+      if answer.type == "choice":
+        print(
+            f"choice={answer.choice}, confidence={answer.confidence},"
+            f" probabilities={answer.probabilities}"
+        )
+    # [END paths['/{api_version}/decisions'].post:choice]
+    self.assertIsNotNone(response.answers)
+    assert response.answers is not None
+    answer = response.answers["ticket_route"]
+    self.assertEqual(answer.type, "choice")
+    assert answer.type == "choice"
+    self.assertEqual(answer.choice, "technical_support")
+    self.assertIn("technical_support", answer.probabilities)
+
+  def test_api_version_decisions_post_score(self):
+    # [START paths['/{api_version}/decisions'].post:score]
+    from google import genai
+
+    client = genai.Client()
+    response = client.decisions.create(
+        model="gemini-decision-1",
+        input=(
+            "Draft reply: Duplicate charge refunded ($19.99) to your Visa"
+            " ending in 4242. It will appear on your statement within 3-5"
+            " business days."
+        ),
+        questions={
+            "clarity": {
+                "type": "score",
+                "instructions": (
+                    "Score the clarity and actionability of the customer"
+                    " support reply."
+                ),
+                "criteria": [
+                    "Unclear, confusing, or missing key details.",
+                    "Partially clear, but leaves important questions unanswered.",
+                    "Clear, concise, and gives concrete details and timeline.",
+                ],
+            },
+        },
+    )
+    if response.answers:
+      answer = response.answers["clarity"]
+      if answer.type == "score":
+        print(
+            f"score={answer.score}, confidence={answer.confidence},"
+            f" probabilities={answer.probabilities}"
+        )
+    # [END paths['/{api_version}/decisions'].post:score]
+    self.assertIsNotNone(response.answers)
+    assert response.answers is not None
+    answer = response.answers["clarity"]
+    self.assertEqual(answer.type, "score")
+    assert answer.type == "score"
+    self.assertGreater(answer.score, 1.0)
+    self.assertLen(answer.probabilities, 3)
+
+  def test_api_version_decisions_post_batch(self):
+    # [START paths['/{api_version}/decisions'].post:batch]
+    from google import genai
+
+    client = genai.Client()
+    response = client.decisions.create(
+        model="gemini-decision-1",
+        input=(
+            "Customer message: Production API requests have been failing with"
+            " 503 errors for the past 20 minutes, blocking all checkout"
+            " traffic!"
+        ),
+        questions={
+            "is_outage": {
+                "type": "noul",
+                "instructions": (
+                    "Determine whether the customer is reporting an active"
+                    " production outage."
+                ),
+            },
+            "priority": {
+                "type": "choice",
+                "instructions": "Select the incident priority level.",
+                "criteria": {
+                    "p1_critical": (
+                        "Production outage blocking core business traffic."
+                    ),
+                    "p2_high": (
+                        "Major feature degraded with a workaround available."
+                    ),
+                    "p3_normal": "Minor bug or general question.",
+                },
+            },
+            "urgency": {
+                "type": "score",
+                "instructions": "Rate the urgency of immediate escalation.",
+                "criteria": [
+                    "Routine inquiry, standard SLA.",
+                    "Time-sensitive issue needing same-day follow-up.",
+                    "Immediate escalation required for active production impact.",
+                ],
+            },
+        },
+    )
+    for question_id, answer in (response.answers or {}).items():
+      if answer.type == "noul":
+        print(f"{question_id}: P(true)={answer.noul}")
+      elif answer.type == "choice":
+        print(f"{question_id}: choice={answer.choice}")
+      elif answer.type == "score":
+        print(f"{question_id}: score={answer.score}")
+    # [END paths['/{api_version}/decisions'].post:batch]
+    self.assertIsNotNone(response.answers)
+    assert response.answers is not None
+    self.assertCountEqual(
+        response.answers.keys(), ["is_outage", "priority", "urgency"]
+    )
+    outage = response.answers["is_outage"]
+    assert outage.type == "noul"
+    self.assertGreater(outage.noul, 0.5)
+    priority = response.answers["priority"]
+    assert priority.type == "choice"
+    self.assertEqual(priority.choice, "p1_critical")
+    urgency = response.answers["urgency"]
+    assert urgency.type == "score"
+    self.assertGreater(urgency.score, 1.0)
+
 
 if __name__ == "__main__":
   absltest.main()

@@ -619,3 +619,107 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/triggers \
   }'
 # [END paths['/{api_version}/triggers'].post:create]
 }
+
+sample_api_version_decisions_post_noul() {
+# [START paths['/{api_version}/decisions'].post:noul]
+curl -X POST https://generativelanguage.googleapis.com/v1beta/decisions \
+  -H "x-goog-api-key: $GEMINI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gemini-decision-1",
+    "input": "Customer message: Hi, I was charged twice for my monthly subscription this morning. Can you refund the duplicate charge?",
+    "questions": {
+      "needs_billing_refund": {
+        "type": "noul",
+        "instructions": "Determine whether the customer is requesting a billing refund.",
+        "criteria": {
+          "true_description": "The customer explicitly asks for a refund or reversal of a charge.",
+          "false_description": "The customer is asking a general question or reporting a non-billing issue."
+        }
+      }
+    }
+  }'
+# [END paths['/{api_version}/decisions'].post:noul]
+}
+
+sample_api_version_decisions_post_choice() {
+# [START paths['/{api_version}/decisions'].post:choice]
+curl -X POST https://generativelanguage.googleapis.com/v1beta/decisions \
+  -H "x-goog-api-key: $GEMINI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gemini-decision-1",
+    "input": "Customer message: Every time I click Export to PDF, the app freezes and crashes with error code 504.",
+    "questions": {
+      "ticket_route": {
+        "type": "choice",
+        "instructions": "Route the support ticket to the most appropriate team.",
+        "criteria": {
+          "billing": "Invoices, charges, refunds, or subscription plan changes.",
+          "technical_support": "Bugs, crashes, errors, or product functionality issues.",
+          "account_access": "Login, password reset, or two-factor authentication issues."
+        }
+      }
+    }
+  }'
+# [END paths['/{api_version}/decisions'].post:choice]
+}
+
+sample_api_version_decisions_post_score() {
+# [START paths['/{api_version}/decisions'].post:score]
+curl -X POST https://generativelanguage.googleapis.com/v1beta/decisions \
+  -H "x-goog-api-key: $GEMINI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gemini-decision-1",
+    "input": "Draft reply: Duplicate charge refunded ($19.99) to your Visa ending in 4242. It will appear on your statement within 3-5 business days.",
+    "questions": {
+      "clarity": {
+        "type": "score",
+        "instructions": "Score the clarity and actionability of the customer support reply.",
+        "criteria": [
+          "Unclear, confusing, or missing key details.",
+          "Partially clear, but leaves important questions unanswered.",
+          "Clear, concise, and gives concrete details and timeline."
+        ]
+      }
+    }
+  }'
+# [END paths['/{api_version}/decisions'].post:score]
+}
+
+sample_api_version_decisions_post_batch() {
+# [START paths['/{api_version}/decisions'].post:batch]
+curl -X POST https://generativelanguage.googleapis.com/v1beta/decisions \
+  -H "x-goog-api-key: $GEMINI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gemini-decision-1",
+    "input": "Customer message: Production API requests have been failing with 503 errors for the past 20 minutes, blocking all checkout traffic!",
+    "questions": {
+      "is_outage": {
+        "type": "noul",
+        "instructions": "Determine whether the customer is reporting an active production outage."
+      },
+      "priority": {
+        "type": "choice",
+        "instructions": "Select the incident priority level.",
+        "criteria": {
+          "p1_critical": "Production outage blocking core business traffic.",
+          "p2_high": "Major feature degraded with a workaround available.",
+          "p3_normal": "Minor bug or general question."
+        }
+      },
+      "urgency": {
+        "type": "score",
+        "instructions": "Rate the urgency of immediate escalation.",
+        "criteria": [
+          "Routine inquiry, standard SLA.",
+          "Time-sensitive issue needing same-day follow-up.",
+          "Immediate escalation required for active production impact."
+        ]
+      }
+    }
+  }'
+# [END paths['/{api_version}/decisions'].post:batch]
+}

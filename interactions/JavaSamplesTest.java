@@ -16,10 +16,27 @@
 
 package com.google.genai.examples;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import com.google.genai.Client;
 import com.google.genai.gaos.models.agents.Agent;
 import com.google.genai.gaos.models.agents.AgentListResponse;
 import com.google.genai.gaos.models.agents.BaseEnvironment;
+import com.google.genai.gaos.models.decisions.Answer;
+import com.google.genai.gaos.models.decisions.ChoiceAnswer;
+import com.google.genai.gaos.models.decisions.ChoiceQuestion;
+import com.google.genai.gaos.models.decisions.ChoiceQuestionInstructions;
+import com.google.genai.gaos.models.decisions.CreateDecisionRequest;
+import com.google.genai.gaos.models.decisions.Input;
+import com.google.genai.gaos.models.decisions.NoulAnswer;
+import com.google.genai.gaos.models.decisions.NoulCriteria;
+import com.google.genai.gaos.models.decisions.NoulQuestion;
+import com.google.genai.gaos.models.decisions.NoulQuestionInstructions;
+import com.google.genai.gaos.models.decisions.ScoreAnswer;
+import com.google.genai.gaos.models.decisions.ScoreQuestion;
+import com.google.genai.gaos.models.decisions.ScoreQuestionInstructions;
 import com.google.genai.gaos.models.environments.CreateEnvironmentRequest;
 import com.google.genai.gaos.models.environments.EnvironmentFile;
 import com.google.genai.gaos.models.environments.GetEnvironmentFilesResponse;
@@ -49,6 +66,7 @@ import com.google.genai.gaos.models.interactions.URLContext;
 import com.google.genai.gaos.models.interactions.UserInputStep;
 import com.google.genai.gaos.models.operations.CancelInteractionByIdResponse;
 import com.google.genai.gaos.models.operations.CreateAgentResponse;
+import com.google.genai.gaos.models.operations.CreateDecisionResponse;
 import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
 import com.google.genai.gaos.models.operations.CreateInteractionResponse;
 import com.google.genai.gaos.models.operations.CreateTriggerResponse;
@@ -1031,5 +1049,217 @@ public class JavaSamplesTest {
     trigger.id().ifPresent(client.triggers::delete);
     // [/cleanup]
     // [END paths['/{api_version}/triggers'].post:create]
+  }
+
+  @Test
+  public void testApiVersionDecisionsPostNoul() throws Exception {
+    // [START paths['/{api_version}/decisions'].post:noul]
+
+    Client client = new Client();
+    CreateDecisionRequest request =
+        CreateDecisionRequest.builder()
+            .model("gemini-decision-1")
+            .input(
+                Input.of(
+                    "Customer message: Hi, I was charged twice for my monthly subscription this"
+                        + " morning. Can you refund the duplicate charge?"))
+            .questions(
+                Map.of(
+                    "needs_billing_refund",
+                    NoulQuestion.builder()
+                        .instructions(
+                            NoulQuestionInstructions.of(
+                                "Determine whether the customer is requesting a billing refund."))
+                        .criteria(
+                            NoulCriteria.builder()
+                                .trueDescription(
+                                    "The customer explicitly asks for a refund or reversal of a"
+                                        + " charge.")
+                                .falseDescription(
+                                    "The customer is asking a general question or reporting a"
+                                        + " non-billing issue.")
+                                .build())
+                        .build()))
+            .build();
+    CreateDecisionResponse response = client.decisions.create(request);
+    Map<String, Answer> answers =
+        response.createDecisionResponse().flatMap(r -> r.answers()).orElse(Map.of());
+    Answer answer = answers.get("needs_billing_refund");
+    if (answer instanceof NoulAnswer noulAnswer) {
+      System.out.println(
+          "P(true)="
+              + noulAnswer.noul().orElse(0.0)
+              + ", confidence="
+              + noulAnswer.confidence().orElse(0.0));
+    }
+    // [END paths['/{api_version}/decisions'].post:noul]
+    assertTrue(answer instanceof NoulAnswer);
+    NoulAnswer noulAnswer = (NoulAnswer) answer;
+    assertTrue(noulAnswer.noul().orElse(0.0) > 0.5);
+    assertTrue(noulAnswer.confidence().orElse(0.0) > 0.5);
+  }
+
+  @Test
+  public void testApiVersionDecisionsPostChoice() throws Exception {
+    // [START paths['/{api_version}/decisions'].post:choice]
+
+    Client client = new Client();
+    CreateDecisionRequest request =
+        CreateDecisionRequest.builder()
+            .model("gemini-decision-1")
+            .input(
+                Input.of(
+                    "Customer message: Every time I click Export to PDF, the app freezes and"
+                        + " crashes with error code 504."))
+            .questions(
+                Map.of(
+                    "ticket_route",
+                    ChoiceQuestion.builder()
+                        .instructions(
+                            ChoiceQuestionInstructions.of(
+                                "Route the support ticket to the most appropriate team."))
+                        .criteria(
+                            Map.of(
+                                "billing",
+                                "Invoices, charges, refunds, or subscription plan changes.",
+                                "technical_support",
+                                "Bugs, crashes, errors, or product functionality issues.",
+                                "account_access",
+                                "Login, password reset, or two-factor authentication issues."))
+                        .build()))
+            .build();
+    CreateDecisionResponse response = client.decisions.create(request);
+    Map<String, Answer> answers =
+        response.createDecisionResponse().flatMap(r -> r.answers()).orElse(Map.of());
+    Answer answer = answers.get("ticket_route");
+    if (answer instanceof ChoiceAnswer choiceAnswer) {
+      System.out.println(
+          "choice="
+              + choiceAnswer.choice().orElse("")
+              + ", confidence="
+              + choiceAnswer.confidence().orElse(0.0)
+              + ", probabilities="
+              + choiceAnswer.probabilities().orElse(Map.of()));
+    }
+    // [END paths['/{api_version}/decisions'].post:choice]
+    assertTrue(answer instanceof ChoiceAnswer);
+    ChoiceAnswer choiceAnswer = (ChoiceAnswer) answer;
+    assertEquals("technical_support", choiceAnswer.choice().orElse(""));
+    assertTrue(
+        choiceAnswer.probabilities().orElse(Map.of()).getOrDefault("technical_support", 0.0) > 0.5);
+  }
+
+  @Test
+  public void testApiVersionDecisionsPostScore() throws Exception {
+    // [START paths['/{api_version}/decisions'].post:score]
+
+    Client client = new Client();
+    CreateDecisionRequest request =
+        CreateDecisionRequest.builder()
+            .model("gemini-decision-1")
+            .input(
+                Input.of(
+                    "Draft reply: Duplicate charge refunded ($19.99) to your Visa ending in 4242."
+                        + " It will appear on your statement within 3-5 business days."))
+            .questions(
+                Map.of(
+                    "clarity",
+                    ScoreQuestion.builder()
+                        .instructions(
+                            ScoreQuestionInstructions.of(
+                                "Score the clarity and actionability of the customer support"
+                                    + " reply."))
+                        .criteria(
+                            List.of(
+                                "Unclear, confusing, or missing key details.",
+                                "Partially clear, but leaves important questions unanswered.",
+                                "Clear, concise, and gives concrete details and timeline."))
+                        .build()))
+            .build();
+    CreateDecisionResponse response = client.decisions.create(request);
+    Map<String, Answer> answers =
+        response.createDecisionResponse().flatMap(r -> r.answers()).orElse(Map.of());
+    Answer answer = answers.get("clarity");
+    if (answer instanceof ScoreAnswer scoreAnswer) {
+      System.out.println(
+          "score="
+              + scoreAnswer.score().orElse(0.0)
+              + ", confidence="
+              + scoreAnswer.confidence().orElse(0.0)
+              + ", probabilities="
+              + scoreAnswer.probabilities().orElse(Map.of()));
+    }
+    // [END paths['/{api_version}/decisions'].post:score]
+    assertTrue(answer instanceof ScoreAnswer);
+    ScoreAnswer scoreAnswer = (ScoreAnswer) answer;
+    assertTrue(scoreAnswer.score().orElse(0.0) > 1.0);
+    assertEquals(3, scoreAnswer.probabilities().orElse(Map.of()).size());
+  }
+
+  @Test
+  public void testApiVersionDecisionsPostBatch() throws Exception {
+    // [START paths['/{api_version}/decisions'].post:batch]
+
+    Client client = new Client();
+    CreateDecisionRequest request =
+        CreateDecisionRequest.builder()
+            .model("gemini-decision-1")
+            .input(
+                Input.of(
+                    "Customer message: Production API requests have been failing with 503 errors"
+                        + " for the past 20 minutes, blocking all checkout traffic!"))
+            .questions(
+                Map.of(
+                    "is_outage",
+                    NoulQuestion.builder()
+                        .instructions(
+                            NoulQuestionInstructions.of(
+                                "Determine whether the customer is reporting an active production"
+                                    + " outage."))
+                        .build(),
+                    "priority",
+                    ChoiceQuestion.builder()
+                        .instructions(
+                            ChoiceQuestionInstructions.of("Select the incident priority level."))
+                        .criteria(
+                            Map.of(
+                                "p1_critical",
+                                "Production outage blocking core business traffic.",
+                                "p2_high",
+                                "Major feature degraded with a workaround available.",
+                                "p3_normal",
+                                "Minor bug or general question."))
+                        .build(),
+                    "urgency",
+                    ScoreQuestion.builder()
+                        .instructions(
+                            ScoreQuestionInstructions.of(
+                                "Rate the urgency of immediate escalation."))
+                        .criteria(
+                            List.of(
+                                "Routine inquiry, standard SLA.",
+                                "Time-sensitive issue needing same-day follow-up.",
+                                "Immediate escalation required for active production impact."))
+                        .build()))
+            .build();
+    CreateDecisionResponse response = client.decisions.create(request);
+    Map<String, Answer> answers =
+        response.createDecisionResponse().flatMap(r -> r.answers()).orElse(Map.of());
+    for (Map.Entry<String, Answer> entry : answers.entrySet()) {
+      Answer answer = entry.getValue();
+      if (answer instanceof NoulAnswer noulAnswer) {
+        System.out.println(entry.getKey() + ": P(true)=" + noulAnswer.noul().orElse(0.0));
+      } else if (answer instanceof ChoiceAnswer choiceAnswer) {
+        System.out.println(entry.getKey() + ": choice=" + choiceAnswer.choice().orElse(""));
+      } else if (answer instanceof ScoreAnswer scoreAnswer) {
+        System.out.println(entry.getKey() + ": score=" + scoreAnswer.score().orElse(0.0));
+      }
+    }
+    // [END paths['/{api_version}/decisions'].post:batch]
+    assertNotNull(answers);
+    assertEquals(3, answers.size());
+    assertTrue(((NoulAnswer) answers.get("is_outage")).noul().orElse(0.0) > 0.5);
+    assertEquals("p1_critical", ((ChoiceAnswer) answers.get("priority")).choice().orElse(""));
+    assertTrue(((ScoreAnswer) answers.get("urgency")).score().orElse(0.0) > 1.0);
   }
 }

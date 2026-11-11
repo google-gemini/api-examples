@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"google.golang.org/genai"
 	gaos_agents "google.golang.org/genai/interactions/models/agents"
+	gaos_decisions "google.golang.org/genai/interactions/models/decisions"
 	gaos_environments "google.golang.org/genai/interactions/models/environments"
 	gaos_interactions "google.golang.org/genai/interactions/models/interactions"
 	"google.golang.org/genai/interactions/models/operations"
@@ -1430,4 +1431,172 @@ func TestSample_api_version_voices_voicesid_delete_delete(t *testing.T) {
 		log.Fatal(err)
 	}
 	// [END paths['/{api_version}/voices/{voicesId}'].delete:delete]
+}
+
+func TestSample_api_version_decisions_post_noul(t *testing.T) {
+	// [START paths['/{api_version}/decisions'].post:noul]
+	ctx := context.Background()
+	client, err := genai.NewClient(ctx, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	req := operations.CreateDecisionRequest{
+		Body: gaos_decisions.CreateDecisionRequest{
+			Model: "gemini-decision-1",
+			Input: gaos_decisions.NewInput("Customer message: Hi, I was charged twice for my monthly subscription this morning. Can you refund the duplicate charge?"),
+			Questions: map[string]gaos_decisions.Question{
+				"needs_billing_refund": gaos_decisions.NewQuestion(gaos_decisions.NoulQuestion{
+					Instructions: gaos_decisions.NewNoulQuestionInstructions("Determine whether the customer is requesting a billing refund."),
+					Criteria: &gaos_decisions.NoulCriteria{
+						TrueDescription:  genai.Ptr("The customer explicitly asks for a refund or reversal of a charge."),
+						FalseDescription: genai.Ptr("The customer is asking a general question or reporting a non-billing issue."),
+					},
+				}),
+			},
+		},
+	}
+
+	res, err := client.Decisions.Create(ctx, req)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.CreateDecisionResponse != nil {
+		if answer, ok := res.CreateDecisionResponse.Answers["needs_billing_refund"]; ok && answer.NoulAnswer != nil {
+			fmt.Printf("P(true)=%v, confidence=%v\n", answer.NoulAnswer.GetNoul(), answer.NoulAnswer.GetConfidence())
+		}
+	}
+	// [END paths['/{api_version}/decisions'].post:noul]
+}
+
+func TestSample_api_version_decisions_post_choice(t *testing.T) {
+	// [START paths['/{api_version}/decisions'].post:choice]
+	ctx := context.Background()
+	client, err := genai.NewClient(ctx, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	req := operations.CreateDecisionRequest{
+		Body: gaos_decisions.CreateDecisionRequest{
+			Model: "gemini-decision-1",
+			Input: gaos_decisions.NewInput("Customer message: Every time I click Export to PDF, the app freezes and crashes with error code 504."),
+			Questions: map[string]gaos_decisions.Question{
+				"ticket_route": gaos_decisions.NewQuestion(gaos_decisions.ChoiceQuestion{
+					Instructions: gaos_decisions.NewChoiceQuestionInstructions("Route the support ticket to the most appropriate team."),
+					Criteria: map[string]string{
+						"billing":           "Invoices, charges, refunds, or subscription plan changes.",
+						"technical_support": "Bugs, crashes, errors, or product functionality issues.",
+						"account_access":    "Login, password reset, or two-factor authentication issues.",
+					},
+				}),
+			},
+		},
+	}
+
+	res, err := client.Decisions.Create(ctx, req)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.CreateDecisionResponse != nil {
+		if answer, ok := res.CreateDecisionResponse.Answers["ticket_route"]; ok && answer.ChoiceAnswer != nil {
+			fmt.Printf("choice=%s, confidence=%v, probabilities=%v\n", answer.ChoiceAnswer.GetChoice(), answer.ChoiceAnswer.GetConfidence(), answer.ChoiceAnswer.GetProbabilities())
+		}
+	}
+	// [END paths['/{api_version}/decisions'].post:choice]
+}
+
+func TestSample_api_version_decisions_post_score(t *testing.T) {
+	// [START paths['/{api_version}/decisions'].post:score]
+	ctx := context.Background()
+	client, err := genai.NewClient(ctx, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	req := operations.CreateDecisionRequest{
+		Body: gaos_decisions.CreateDecisionRequest{
+			Model: "gemini-decision-1",
+			Input: gaos_decisions.NewInput("Draft reply: Duplicate charge refunded ($19.99) to your Visa ending in 4242. It will appear on your statement within 3-5 business days."),
+			Questions: map[string]gaos_decisions.Question{
+				"clarity": gaos_decisions.NewQuestion(gaos_decisions.ScoreQuestion{
+					Instructions: gaos_decisions.NewScoreQuestionInstructions("Score the clarity and actionability of the customer support reply."),
+					Criteria: []string{
+						"Unclear, confusing, or missing key details.",
+						"Partially clear, but leaves important questions unanswered.",
+						"Clear, concise, and gives concrete details and timeline.",
+					},
+				}),
+			},
+		},
+	}
+
+	res, err := client.Decisions.Create(ctx, req)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.CreateDecisionResponse != nil {
+		if answer, ok := res.CreateDecisionResponse.Answers["clarity"]; ok && answer.ScoreAnswer != nil {
+			fmt.Printf("score=%v, confidence=%v, probabilities=%v\n", answer.ScoreAnswer.GetScore(), answer.ScoreAnswer.GetConfidence(), answer.ScoreAnswer.GetProbabilities())
+		}
+	}
+	// [END paths['/{api_version}/decisions'].post:score]
+}
+
+func TestSample_api_version_decisions_post_batch(t *testing.T) {
+	// [START paths['/{api_version}/decisions'].post:batch]
+	ctx := context.Background()
+	client, err := genai.NewClient(ctx, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	req := operations.CreateDecisionRequest{
+		Body: gaos_decisions.CreateDecisionRequest{
+			Model: "gemini-decision-1",
+			Input: gaos_decisions.NewInput("Customer message: Production API requests have been failing with 503 errors for the past 20 minutes, blocking all checkout traffic!"),
+			Questions: map[string]gaos_decisions.Question{
+				"is_outage": gaos_decisions.NewQuestion(gaos_decisions.NoulQuestion{
+					Instructions: gaos_decisions.NewNoulQuestionInstructions("Determine whether the customer is reporting an active production outage."),
+				}),
+				"priority": gaos_decisions.NewQuestion(gaos_decisions.ChoiceQuestion{
+					Instructions: gaos_decisions.NewChoiceQuestionInstructions("Select the incident priority level."),
+					Criteria: map[string]string{
+						"p1_critical": "Production outage blocking core business traffic.",
+						"p2_high":     "Major feature degraded with a workaround available.",
+						"p3_normal":   "Minor bug or general question.",
+					},
+				}),
+				"urgency": gaos_decisions.NewQuestion(gaos_decisions.ScoreQuestion{
+					Instructions: gaos_decisions.NewScoreQuestionInstructions("Rate the urgency of immediate escalation."),
+					Criteria: []string{
+						"Routine inquiry, standard SLA.",
+						"Time-sensitive issue needing same-day follow-up.",
+						"Immediate escalation required for active production impact.",
+					},
+				}),
+			},
+		},
+	}
+
+	res, err := client.Decisions.Create(ctx, req)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.CreateDecisionResponse != nil {
+		for questionID, answer := range res.CreateDecisionResponse.Answers {
+			if answer.NoulAnswer != nil {
+				fmt.Printf("%s: P(true)=%v\n", questionID, answer.NoulAnswer.GetNoul())
+			} else if answer.ChoiceAnswer != nil {
+				fmt.Printf("%s: choice=%s\n", questionID, answer.ChoiceAnswer.GetChoice())
+			} else if answer.ScoreAnswer != nil {
+				fmt.Printf("%s: score=%v\n", questionID, answer.ScoreAnswer.GetScore())
+			}
+		}
+	}
+	// [END paths['/{api_version}/decisions'].post:batch]
 }
