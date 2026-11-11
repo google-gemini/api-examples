@@ -1436,7 +1436,9 @@ func TestSample_api_version_voices_voicesid_delete_delete(t *testing.T) {
 func TestSample_api_version_decisions_post_noul(t *testing.T) {
 	// [START paths['/{api_version}/decisions'].post:noul]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -1473,7 +1475,9 @@ func TestSample_api_version_decisions_post_noul(t *testing.T) {
 func TestSample_api_version_decisions_post_choice(t *testing.T) {
 	// [START paths['/{api_version}/decisions'].post:choice]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -1511,7 +1515,9 @@ func TestSample_api_version_decisions_post_choice(t *testing.T) {
 func TestSample_api_version_decisions_post_score(t *testing.T) {
 	// [START paths['/{api_version}/decisions'].post:score]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -1549,7 +1555,9 @@ func TestSample_api_version_decisions_post_score(t *testing.T) {
 func TestSample_api_version_decisions_post_batch(t *testing.T) {
 	// [START paths['/{api_version}/decisions'].post:batch]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}

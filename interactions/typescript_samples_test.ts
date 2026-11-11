@@ -795,7 +795,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version decisions post noul', async () => {
     // [START paths['/{api_version}/decisions'].post:noul]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
     const response = await ai.decisions.create({
       model: 'gemini-decision-1',
       input:
@@ -829,7 +829,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version decisions post choice', async () => {
     // [START paths['/{api_version}/decisions'].post:choice]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
     const response = await ai.decisions.create({
       model: 'gemini-decision-1',
       input:
@@ -868,7 +868,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version decisions post score', async () => {
     // [START paths['/{api_version}/decisions'].post:score]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
     const response = await ai.decisions.create({
       model: 'gemini-decision-1',
       input:
@@ -904,7 +904,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version decisions post batch', async () => {
     // [START paths['/{api_version}/decisions'].post:batch]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
     const response = await ai.decisions.create({
       model: 'gemini-decision-1',
       input:

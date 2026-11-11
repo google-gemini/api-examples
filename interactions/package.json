@@ -9,7 +9,7 @@
     "test": "jasmine typescript_samples_test.ts"
   },
   "dependencies": {
-    "@google/genai": "^2.27.0"
+    "@google/genai": "^3.2.0"
   },
   "devDependencies": {
     "jasmine": "^7.0.0"

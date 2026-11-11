@@ -80,6 +80,7 @@ import com.google.genai.gaos.models.triggers.Trigger;
 import com.google.genai.gaos.models.triggers.TriggerCreateParams;
 import com.google.genai.types.CreateFileSearchStoreConfig;
 import com.google.genai.types.FileSearchStore;
+import com.google.genai.types.HttpOptions;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -88,6 +89,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
+@SuppressWarnings("JdkImmutableCollections")
 public class JavaSamplesTest {
 
   @Test
@@ -1055,7 +1057,10 @@ public class JavaSamplesTest {
   public void testApiVersionDecisionsPostNoul() throws Exception {
     // [START paths['/{api_version}/decisions'].post:noul]
 
-    Client client = new Client();
+    Client client =
+        Client.builder()
+            .httpOptions(HttpOptions.builder().apiVersion("v1beta").build())
+            .build();
     CreateDecisionRequest request =
         CreateDecisionRequest.builder()
             .model("gemini-decision-1")
@@ -1103,7 +1108,10 @@ public class JavaSamplesTest {
   public void testApiVersionDecisionsPostChoice() throws Exception {
     // [START paths['/{api_version}/decisions'].post:choice]
 
-    Client client = new Client();
+    Client client =
+        Client.builder()
+            .httpOptions(HttpOptions.builder().apiVersion("v1beta").build())
+            .build();
     CreateDecisionRequest request =
         CreateDecisionRequest.builder()
             .model("gemini-decision-1")
@@ -1153,7 +1161,10 @@ public class JavaSamplesTest {
   public void testApiVersionDecisionsPostScore() throws Exception {
     // [START paths['/{api_version}/decisions'].post:score]
 
-    Client client = new Client();
+    Client client =
+        Client.builder()
+            .httpOptions(HttpOptions.builder().apiVersion("v1beta").build())
+            .build();
     CreateDecisionRequest request =
         CreateDecisionRequest.builder()
             .model("gemini-decision-1")
@@ -1200,7 +1211,10 @@ public class JavaSamplesTest {
   public void testApiVersionDecisionsPostBatch() throws Exception {
     // [START paths['/{api_version}/decisions'].post:batch]
 
-    Client client = new Client();
+    Client client =
+        Client.builder()
+            .httpOptions(HttpOptions.builder().apiVersion("v1beta").build())
+            .build();
     CreateDecisionRequest request =
         CreateDecisionRequest.builder()
             .model("gemini-decision-1")

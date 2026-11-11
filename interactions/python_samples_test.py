@@ -826,7 +826,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/decisions'].post:noul]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     response = client.decisions.create(
         model="gemini-decision-1",
         input=(
@@ -870,7 +870,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/decisions'].post:choice]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     response = client.decisions.create(
         model="gemini-decision-1",
         input=(
@@ -920,7 +920,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/decisions'].post:score]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     response = client.decisions.create(
         model="gemini-decision-1",
         input=(
@@ -963,7 +963,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/decisions'].post:batch]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     response = client.decisions.create(
         model="gemini-decision-1",
         input=(
