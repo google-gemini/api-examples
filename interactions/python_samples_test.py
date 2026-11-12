@@ -26,7 +26,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/agents'].get:list]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     response = client.agents.list()
     for agent in response.agents or []:
       print(agent.id)
@@ -37,7 +37,7 @@ class PythonSamplesTest(parameterized.TestCase):
     import uuid
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     agent = client.agents.create(
         id=f"research-assistant-{uuid.uuid4().hex[:8]}",
         base_agent="antigravity-preview-09-2026",
@@ -58,7 +58,7 @@ class PythonSamplesTest(parameterized.TestCase):
     import uuid
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     agent = client.agents.create(
         id=f"data-analyst-{uuid.uuid4().hex[:8]}",
         base_agent="antigravity-preview-09-2026",
@@ -97,7 +97,7 @@ class PythonSamplesTest(parameterized.TestCase):
     import uuid
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
 
     # Step 1: Set up the environment interactively.
     interaction = client.interactions.create(
@@ -129,7 +129,7 @@ class PythonSamplesTest(parameterized.TestCase):
     import uuid
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
 
     # [setup]
     agent_id = f"delete-test-{uuid.uuid4().hex[:8]}"
@@ -150,7 +150,7 @@ class PythonSamplesTest(parameterized.TestCase):
     import uuid
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
 
     # [setup]
     agent_id = f"test-agent-{uuid.uuid4().hex[:8]}"
@@ -174,7 +174,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/environments'].get:list]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     response = client.environments.list()
     for environment in response.environments or []:
       print(environment.id)
@@ -184,7 +184,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/environments'].post:create]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     environment = client.environments.create(
         sources=[{
             "type": "inline",
@@ -203,7 +203,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/environments'].post:copy]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
 
     # [setup]
     source_env = client.environments.create(
@@ -230,7 +230,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/environments/{environment}/files/{path}'].get:list_files]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
 
     # [setup]
     created = client.environments.create(
@@ -258,7 +258,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/environments/{environment}/files/{path}'].get:get_file]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
 
     # [setup]
     created = client.environments.create(
@@ -286,7 +286,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/environments/{environment}/files/{path}'].get:download_file]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
 
     # [setup]
     created = client.environments.create(
@@ -313,7 +313,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/environments/{id}'].delete:delete]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
 
     # [setup]
     created = client.environments.create(
@@ -331,7 +331,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/environments/{id}'].get:get]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
 
     # [setup]
     created = client.environments.create(
@@ -456,7 +456,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/interactions'].post:antigravity]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     interaction = client.interactions.create(
         agent="antigravity-preview-09-2026",
         input=(
@@ -472,7 +472,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/interactions'].post:reuse_env]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
 
     # Step 1: Create an interaction with a fresh remote environment.
     interaction = client.interactions.create(
@@ -496,7 +496,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/interactions'].post:with_sources]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     interaction = client.interactions.create(
         agent="antigravity-preview-09-2026",
         input="List all files under /workspace and summarize what you find.",
@@ -524,7 +524,7 @@ class PythonSamplesTest(parameterized.TestCase):
     import uuid
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
 
     # Step 1: Create a custom agent.
     agent_id = f"code-reviewer-{uuid.uuid4().hex[:8]}"
@@ -632,7 +632,7 @@ class PythonSamplesTest(parameterized.TestCase):
 
     client = genai.Client()
     response = client.interactions.create(
-        model="gemini-2.5-computer-use-preview-10-2025",
+        model="gemini-3.8-flash",
         tools=[{"type": "computer_use"}],
         input="Find a flight to Tokyo",
     )
@@ -753,7 +753,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/voices'].get:list]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     response = client.voices.list()
     for voice in response.voices or []:
       print(voice.id, voice.display_name)
@@ -763,7 +763,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/voices'].post:create]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     voice = client.voices.create(
         store=True,
         voice={
@@ -787,7 +787,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/voices/{voicesId}'].get:get]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     voice = client.voices.get(id="voice_abc123")
     print(voice.id, voice.display_name)
     # [END paths['/{api_version}/voices/{voicesId}'].get:get]
@@ -796,7 +796,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/voices/{voicesId}'].delete:delete]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     client.voices.delete(id="voice_abc123")
     # [END paths['/{api_version}/voices/{voicesId}'].delete:delete]
 
@@ -804,7 +804,7 @@ class PythonSamplesTest(parameterized.TestCase):
     # [START paths['/{api_version}/triggers'].post:create]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     trigger = client.triggers.create(
         schedule="0 9 * * *",
         time_zone="America/New_York",

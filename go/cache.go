@@ -15,8 +15,9 @@ func CacheCreate() (*genai.GenerateContentResponse, error) {
 	// [START cache_create]
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, &genai.ClientConfig{
-		APIKey:  os.Getenv("GEMINI_API_KEY"),
-		Backend: genai.BackendGeminiAPI,
+		APIKey:      os.Getenv("GEMINI_API_KEY"),
+		Backend:     genai.BackendGeminiAPI,
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -75,8 +76,9 @@ func CacheCreateFromName() (*genai.GenerateContentResponse, error) {
 	// [START cache_create_from_name]
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, &genai.ClientConfig{
-		APIKey:  os.Getenv("GEMINI_API_KEY"),
-		Backend: genai.BackendGeminiAPI,
+		APIKey:      os.Getenv("GEMINI_API_KEY"),
+		Backend:     genai.BackendGeminiAPI,
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -139,8 +141,9 @@ func CacheCreateFromChat() (*genai.GenerateContentResponse, error) {
 	// [START cache_create_from_chat]
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, &genai.ClientConfig{
-		APIKey:  os.Getenv("GEMINI_API_KEY"),
-		Backend: genai.BackendGeminiAPI,
+		APIKey:      os.Getenv("GEMINI_API_KEY"),
+		Backend:     genai.BackendGeminiAPI,
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -236,8 +239,9 @@ func CacheDelete() error {
 	// [START cache_delete]
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, &genai.ClientConfig{
-		APIKey:  os.Getenv("GEMINI_API_KEY"),
-		Backend: genai.BackendGeminiAPI,
+		APIKey:      os.Getenv("GEMINI_API_KEY"),
+		Backend:     genai.BackendGeminiAPI,
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -284,8 +288,9 @@ func CacheGet() error {
 	// [START cache_get]
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, &genai.ClientConfig{
-		APIKey:  os.Getenv("GEMINI_API_KEY"),
-		Backend: genai.BackendGeminiAPI,
+		APIKey:      os.Getenv("GEMINI_API_KEY"),
+		Backend:     genai.BackendGeminiAPI,
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -335,8 +340,9 @@ func CacheList() error {
 	// [START cache_list]
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, &genai.ClientConfig{
-		APIKey:  os.Getenv("GEMINI_API_KEY"),
-		Backend: genai.BackendGeminiAPI,
+		APIKey:      os.Getenv("GEMINI_API_KEY"),
+		Backend:     genai.BackendGeminiAPI,
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
 	})
 	if err != nil {
 		log.Fatal(err)
@@ -403,8 +409,9 @@ func CacheUpdate() error {
 	// [START cache_update]
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, &genai.ClientConfig{
-		APIKey:  os.Getenv("GEMINI_API_KEY"),
-		Backend: genai.BackendGeminiAPI,
+		APIKey:      os.Getenv("GEMINI_API_KEY"),
+		Backend:     genai.BackendGeminiAPI,
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
 	})
 	if err != nil {
 		log.Fatal(err)

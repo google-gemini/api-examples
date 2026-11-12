@@ -28,7 +28,10 @@ export async function cacheCreate() {
   // [START cache_create]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const ai = new GoogleGenAI({
+    apiKey: process.env.GEMINI_API_KEY,
+    apiVersion: 'v1beta',
+  });
   const filePath = path.join(media, 'a11.txt');
   const document = await ai.files.upload({
     file: filePath,
@@ -66,7 +69,10 @@ export async function cacheCreateFromName() {
   // [START cache_create_from_name]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const ai = new GoogleGenAI({
+    apiKey: process.env.GEMINI_API_KEY,
+    apiVersion: 'v1beta',
+  });
   const filePath = path.join(media, 'a11.txt');
   const document = await ai.files.upload({
     file: filePath,
@@ -106,7 +112,10 @@ export async function cacheCreateFromChat() {
   // [START cache_create_from_chat]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const ai = new GoogleGenAI({
+    apiKey: process.env.GEMINI_API_KEY,
+    apiVersion: 'v1beta',
+  });
   const modelName = 'gemini-3.8-flash';
   const systemInstruction = 'You are an expert analyzing transcripts.';
 
@@ -166,7 +175,10 @@ export async function cacheDelete() {
   // [START cache_delete]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const ai = new GoogleGenAI({
+    apiKey: process.env.GEMINI_API_KEY,
+    apiVersion: 'v1beta',
+  });
   const filePath = path.join(media, 'a11.txt');
   const document = await ai.files.upload({
     file: filePath,
@@ -195,7 +207,10 @@ export async function cacheGet() {
   // [START cache_get]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const ai = new GoogleGenAI({
+    apiKey: process.env.GEMINI_API_KEY,
+    apiVersion: 'v1beta',
+  });
   const filePath = path.join(media, 'a11.txt');
   const document = await ai.files.upload({
     file: filePath,
@@ -227,7 +242,10 @@ export async function cacheList() {
   // [START cache_list]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const ai = new GoogleGenAI({
+    apiKey: process.env.GEMINI_API_KEY,
+    apiVersion: 'v1beta',
+  });
   const filePath = path.join(media, 'a11.txt');
   const document = await ai.files.upload({
     file: filePath,
@@ -268,7 +286,10 @@ export async function cacheUpdate() {
   // [START cache_update]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const ai = new GoogleGenAI({
+    apiKey: process.env.GEMINI_API_KEY,
+    apiVersion: 'v1beta',
+  });
   const filePath = path.join(media, 'a11.txt');
   const document = await ai.files.upload({
     file: filePath,

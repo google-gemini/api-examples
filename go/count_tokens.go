@@ -277,8 +277,9 @@ func TokensCachedContent() error {
 	// [START tokens_cached_content]
 	ctx := context.Background()
 	client, err := genai.NewClient(ctx, &genai.ClientConfig{
-		APIKey:  os.Getenv("GEMINI_API_KEY"),
-		Backend: genai.BackendGeminiAPI,
+		APIKey:      os.Getenv("GEMINI_API_KEY"),
+		Backend:     genai.BackendGeminiAPI,
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
 	})
 	if err != nil {
 		log.Fatal(err)

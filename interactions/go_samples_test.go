@@ -32,7 +32,9 @@ import (
 func TestSample_api_version_agents_get_list(t *testing.T) {
 	// [START paths['/{api_version}/agents'].get:list]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -55,7 +57,9 @@ func TestSample_api_version_agents_get_list(t *testing.T) {
 func TestSample_api_version_agents_post_create(t *testing.T) {
 	// [START paths['/{api_version}/agents'].post:create]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -92,7 +96,9 @@ func TestSample_api_version_agents_post_create(t *testing.T) {
 func TestSample_api_version_agents_post_with_sources(t *testing.T) {
 	// [START paths['/{api_version}/agents'].post:with_sources]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -140,7 +146,9 @@ func TestSample_api_version_agents_post_with_sources(t *testing.T) {
 func TestSample_api_version_agents_post_fork_from_env(t *testing.T) {
 	// [START paths['/{api_version}/agents'].post:fork_from_env]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -189,7 +197,9 @@ func TestSample_api_version_agents_post_fork_from_env(t *testing.T) {
 func TestSample_api_version_agents_id_delete_delete(t *testing.T) {
 	// [START paths['/{api_version}/agents/{id}'].delete:delete]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -220,7 +230,9 @@ func TestSample_api_version_agents_id_delete_delete(t *testing.T) {
 func TestSample_api_version_agents_id_get_get(t *testing.T) {
 	// [START paths['/{api_version}/agents/{id}'].get:get]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -258,7 +270,9 @@ func TestSample_api_version_agents_id_get_get(t *testing.T) {
 func TestSample_api_version_environments_get_list(t *testing.T) {
 	// [START paths['/{api_version}/environments'].get:list]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -281,7 +295,9 @@ func TestSample_api_version_environments_get_list(t *testing.T) {
 func TestSample_api_version_environments_post_create(t *testing.T) {
 	// [START paths['/{api_version}/environments'].post:create]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -316,7 +332,9 @@ func TestSample_api_version_environments_post_create(t *testing.T) {
 func TestSample_api_version_environments_post_copy(t *testing.T) {
 	// [START paths['/{api_version}/environments'].post:copy]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -366,7 +384,9 @@ func TestSample_api_version_environments_post_copy(t *testing.T) {
 func TestSample_api_version_environments_environment_files_path_get_list_files(t *testing.T) {
 	// [START paths['/{api_version}/environments/{environment}/files/{path}'].get:list_files]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -430,7 +450,9 @@ func TestSample_api_version_environments_environment_files_path_get_list_files(t
 func TestSample_api_version_environments_environment_files_path_get_get_file(t *testing.T) {
 	// [START paths['/{api_version}/environments/{environment}/files/{path}'].get:get_file]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -490,7 +512,9 @@ func TestSample_api_version_environments_environment_files_path_get_get_file(t *
 func TestSample_api_version_environments_id_delete_delete(t *testing.T) {
 	// [START paths['/{api_version}/environments/{id}'].delete:delete]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -530,7 +554,9 @@ func TestSample_api_version_environments_id_delete_delete(t *testing.T) {
 func TestSample_api_version_environments_id_get_get(t *testing.T) {
 	// [START paths['/{api_version}/environments/{id}'].get:get]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -761,7 +787,9 @@ func TestSample_api_version_interactions_post_deep_research(t *testing.T) {
 func TestSample_api_version_interactions_post_antigravity(t *testing.T) {
 	// [START paths['/{api_version}/interactions'].post:antigravity]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -786,7 +814,9 @@ func TestSample_api_version_interactions_post_antigravity(t *testing.T) {
 func TestSample_api_version_interactions_post_reuse_env(t *testing.T) {
 	// [START paths['/{api_version}/interactions'].post:reuse_env]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -830,7 +860,9 @@ func TestSample_api_version_interactions_post_reuse_env(t *testing.T) {
 func TestSample_api_version_interactions_post_with_sources(t *testing.T) {
 	// [START paths['/{api_version}/interactions'].post:with_sources]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -870,7 +902,9 @@ func TestSample_api_version_interactions_post_with_sources(t *testing.T) {
 func TestSample_api_version_interactions_post_custom_agent(t *testing.T) {
 	// [START paths['/{api_version}/interactions'].post:custom_agent]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -1087,7 +1121,7 @@ func TestSample_schema_ComputerUse_computer_use(t *testing.T) {
 	tool := gaos_interactions.NewTool(gaos_interactions.ComputerUse{})
 
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-		Model: gaos_interactions.Model("gemini-2.5-computer-use-preview-10-2025"),
+		Model: gaos_interactions.Model("gemini-3.8-flash"),
 		Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Find a flight to Tokyo")),
 		Tools: []gaos_interactions.Tool{tool},
 	})
@@ -1336,7 +1370,9 @@ func TestSample_schema_UrlContext_url_context(t *testing.T) {
 func TestSample_api_version_voices_get_list(t *testing.T) {
 	// [START paths['/{api_version}/voices'].get:list]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -1359,7 +1395,9 @@ func TestSample_api_version_voices_get_list(t *testing.T) {
 func TestSample_api_version_voices_post_create(t *testing.T) {
 	// [START paths['/{api_version}/voices'].post:create]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -1398,7 +1436,9 @@ func TestSample_api_version_voices_post_create(t *testing.T) {
 func TestSample_api_version_voices_voicesid_get_get(t *testing.T) {
 	// [START paths['/{api_version}/voices/{voicesId}'].get:get]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -1419,7 +1459,9 @@ func TestSample_api_version_voices_voicesid_get_get(t *testing.T) {
 func TestSample_api_version_voices_voicesid_delete_delete(t *testing.T) {
 	// [START paths['/{api_version}/voices/{voicesId}'].delete:delete]
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, nil)
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
 	if err != nil {
 		log.Fatal(err)
 	}

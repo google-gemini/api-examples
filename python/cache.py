@@ -25,7 +25,7 @@ class UnitTests(absltest.TestCase):
     from google import genai
     from google.genai import types
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     document = client.files.upload(file=media / "a11.txt")
     model_name = "gemini-3.8-flash"
 
@@ -52,7 +52,7 @@ class UnitTests(absltest.TestCase):
     from google import genai
     from google.genai import types
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     document = client.files.upload(file=media / "a11.txt")
     model_name = "gemini-3.8-flash"
 
@@ -81,7 +81,7 @@ class UnitTests(absltest.TestCase):
     from google import genai
     from google.genai import types
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     model_name = "gemini-3.8-flash"
     system_instruction = "You are an expert analyzing transcripts."
 
@@ -130,7 +130,7 @@ class UnitTests(absltest.TestCase):
     # [START cache_delete]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     document = client.files.upload(file=media / "a11.txt")
     model_name = "gemini-3.8-flash"
 
@@ -148,7 +148,7 @@ class UnitTests(absltest.TestCase):
     # [START cache_get]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     document = client.files.upload(file=media / "a11.txt")
     model_name = "gemini-3.8-flash"
 
@@ -167,7 +167,7 @@ class UnitTests(absltest.TestCase):
     # [START cache_list]
     from google import genai
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     document = client.files.upload(file=media / "a11.txt")
     model_name = "gemini-3.8-flash"
 
@@ -190,7 +190,7 @@ class UnitTests(absltest.TestCase):
     from google.genai import types
     import datetime
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     document = client.files.upload(file=media / "a11.txt")
     model_name = "gemini-3.8-flash"
 

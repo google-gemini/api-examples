@@ -447,7 +447,7 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
   -H "x-goog-api-key: $GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gemini-2.5-computer-use-preview-10-2025",
+    "model": "gemini-3.8-flash",
     "tools": [{
       "type": "computer_use"
     }],

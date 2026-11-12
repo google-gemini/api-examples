@@ -255,7 +255,10 @@ export async function tokensCachedContent() {
   // [START tokens_cached_content]
   // Make sure to include the following import:
   // import {GoogleGenAI} from '@google/genai';
-  const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
+  const ai = new GoogleGenAI({
+    apiKey: process.env.GEMINI_API_KEY,
+    apiVersion: 'v1beta',
+  });
   const textFile = await ai.files.upload({
     file: path.join(media, 'a11.txt'),
     config: {mimeType: 'text/plain'},

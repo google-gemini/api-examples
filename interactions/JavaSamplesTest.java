@@ -96,7 +96,8 @@ public class JavaSamplesTest {
   public void testApiVersionAgentsGetList() throws Exception {
     // [START paths['/{api_version}/agents'].get:list]
 
-    Client client = new Client();
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
     ListAgentsResponse response = client.agents.list().call();
     List<Agent> agents =
         response.agentListResponse().flatMap(AgentListResponse::agents).orElse(List.of());
@@ -110,7 +111,8 @@ public class JavaSamplesTest {
   public void testApiVersionAgentsPostCreate() throws Exception {
     // [START paths['/{api_version}/agents'].post:create]
 
-    Client client = new Client();
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
     String agentId = "research-assistant-" + UUID.randomUUID().toString().substring(0, 8);
     Agent agent =
         Agent.builder()
@@ -134,7 +136,8 @@ public class JavaSamplesTest {
   public void testApiVersionAgentsPostWithSources() throws Exception {
     // [START paths['/{api_version}/agents'].post:with_sources]
 
-    Client client = new Client();
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
     String agentId = "data-analyst-" + UUID.randomUUID().toString().substring(0, 8);
     com.google.genai.gaos.models.interactions.Environment env =
         com.google.genai.gaos.models.interactions.Environment.builder()
@@ -174,7 +177,8 @@ public class JavaSamplesTest {
   public void testApiVersionAgentsPostForkFromEnv() throws Exception {
     // [START paths['/{api_version}/agents'].post:fork_from_env]
 
-    Client client = new Client();
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
 
     // Step 1: Set up the environment interactively.
     CreateAgentInteraction params =
@@ -216,7 +220,8 @@ public class JavaSamplesTest {
   public void testApiVersionAgentsIdDeleteDelete() throws Exception {
     // [START paths['/{api_version}/agents/{id}'].delete:delete]
 
-    Client client = new Client();
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
 
     // [setup]
     String agentId = "delete-test-" + UUID.randomUUID().toString().substring(0, 8);
@@ -238,7 +243,8 @@ public class JavaSamplesTest {
   public void testApiVersionAgentsIdGetGet() throws Exception {
     // [START paths['/{api_version}/agents/{id}'].get:get]
 
-    Client client = new Client();
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
 
     // [setup]
     String agentId = "test-agent-" + UUID.randomUUID().toString().substring(0, 8);
@@ -265,7 +271,8 @@ public class JavaSamplesTest {
   public void testApiVersionEnvironmentsGetList() throws Exception {
     // [START paths['/{api_version}/environments'].get:list]
 
-    Client client = new Client();
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
     ListEnvironmentsResponse response = client.environments.listEnvironmentsDirect();
     for (com.google.genai.gaos.models.environments.Environment env :
         response.listEnvironmentsResponse().flatMap(res -> res.environments()).orElse(List.of())) {
@@ -278,7 +285,8 @@ public class JavaSamplesTest {
   public void testApiVersionEnvironmentsPostCreate() throws Exception {
     // [START paths['/{api_version}/environments'].post:create]
 
-    Client client = new Client();
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
     CreateEnvironmentRequest request =
         CreateEnvironmentRequest.builder()
             .sources(
@@ -303,7 +311,8 @@ public class JavaSamplesTest {
   public void testApiVersionEnvironmentsPostCopy() throws Exception {
     // [START paths['/{api_version}/environments'].post:copy]
 
-    Client client = new Client();
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
 
     // [setup]
     CreateEnvironmentRequest setupReq =
@@ -338,7 +347,8 @@ public class JavaSamplesTest {
   public void testApiVersionEnvironmentsEnvironmentFilesPathGetListFiles() throws Exception {
     // [START paths['/{api_version}/environments/{environment}/files/{path}'].get:list_files]
 
-    Client client = new Client();
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
 
     // [setup]
     CreateEnvironmentRequest createReq =
@@ -382,7 +392,8 @@ public class JavaSamplesTest {
   public void testApiVersionEnvironmentsEnvironmentFilesPathGetGetFile() throws Exception {
     // [START paths['/{api_version}/environments/{environment}/files/{path}'].get:get_file]
 
-    Client client = new Client();
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
 
     // [setup]
     CreateEnvironmentRequest createReq =
@@ -421,7 +432,8 @@ public class JavaSamplesTest {
   public void testApiVersionEnvironmentsIdDeleteDelete() throws Exception {
     // [START paths['/{api_version}/environments/{id}'].delete:delete]
 
-    Client client = new Client();
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
 
     // [setup]
     CreateEnvironmentRequest request =
@@ -449,7 +461,8 @@ public class JavaSamplesTest {
   public void testApiVersionEnvironmentsIdGetGet() throws Exception {
     // [START paths['/{api_version}/environments/{id}'].get:get]
 
-    Client client = new Client();
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
 
     // [setup]
     CreateEnvironmentRequest request =
@@ -613,7 +626,8 @@ public class JavaSamplesTest {
   public void testApiVersionInteractionsPostAntigravity() throws Exception {
     // [START paths['/{api_version}/interactions'].post:antigravity]
 
-    Client client = new Client();
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
     CreateAgentInteraction params =
         CreateAgentInteraction.builder()
             .agent(AgentOption.of("antigravity-preview-09-2026"))
@@ -635,7 +649,8 @@ public class JavaSamplesTest {
   public void testApiVersionInteractionsPostReuseEnv() throws Exception {
     // [START paths['/{api_version}/interactions'].post:reuse_env]
 
-    Client client = new Client();
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
 
     // Step 1: Create an interaction with a fresh remote environment.
     CreateAgentInteraction params1 =
@@ -673,7 +688,8 @@ public class JavaSamplesTest {
   public void testApiVersionInteractionsPostWithSources() throws Exception {
     // [START paths['/{api_version}/interactions'].post:with_sources]
 
-    Client client = new Client();
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
     com.google.genai.gaos.models.interactions.Environment env =
         com.google.genai.gaos.models.interactions.Environment.builder()
             .sources(
@@ -709,7 +725,8 @@ public class JavaSamplesTest {
   public void testApiVersionInteractionsPostCustomAgent() throws Exception {
     // [START paths['/{api_version}/interactions'].post:custom_agent]
 
-    Client client = new Client();
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
 
     // Step 1: Create a custom agent.
     String agentId = "code-reviewer-" + UUID.randomUUID().toString().substring(0, 8);
@@ -858,7 +875,7 @@ public class JavaSamplesTest {
     Client client = new Client();
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model("gemini-2.5-computer-use-preview-10-2025")
+            .model("gemini-3.8-flash")
             .tools(List.of(new ComputerUse()))
             .input(InteractionsInput.of("Find a flight to Tokyo"))
             .build();
@@ -1026,7 +1043,8 @@ public class JavaSamplesTest {
   public void testApiVersionTriggersPostCreate() throws Exception {
     // [START paths['/{api_version}/triggers'].post:create]
 
-    Client client = new Client();
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
     CreateAgentInteraction interaction =
         CreateAgentInteraction.builder()
             .agent(AgentOption.of("antigravity-preview-09-2026"))

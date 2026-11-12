@@ -21,7 +21,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version agents get list', async () => {
     // [START paths['/{api_version}/agents'].get:list]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
     const agents = await ai.agents.list();
     for (const agent of agents.agents ?? []) {
       console.log(agent.id);
@@ -32,7 +32,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version agents post create', async () => {
     // [START paths['/{api_version}/agents'].post:create]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
     const agentId = `research-assistant-${crypto.randomUUID().slice(0, 8)}`;
     const agent = await ai.agents.create({
       id: agentId,
@@ -56,7 +56,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version agents post with sources', async () => {
     // [START paths['/{api_version}/agents'].post:with_sources]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
     const agentId = `data-analyst-${crypto.randomUUID().slice(0, 8)}`;
     const agent = await ai.agents.create({
       id: agentId,
@@ -91,7 +91,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version agents post fork from env', async () => {
     // [START paths['/{api_version}/agents'].post:fork_from_env]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
 
     // Step 1: Set up the environment interactively.
     const interaction = await ai.interactions.create({
@@ -120,7 +120,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version agents id delete delete', async () => {
     // [START paths['/{api_version}/agents/{id}'].delete:delete]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
 
     // [setup]
     const agentId = `delete-test-${crypto.randomUUID().slice(0, 8)}`;
@@ -140,7 +140,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version agents id get get', async () => {
     // [START paths['/{api_version}/agents/{id}'].get:get]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
 
     // [setup]
     const agentId = `test-agent-${crypto.randomUUID().slice(0, 8)}`;
@@ -167,7 +167,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version environments get list', async () => {
     // [START paths['/{api_version}/environments'].get:list]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
     const response = await ai.environments.list();
     for (const env of response.environments ?? []) {
       console.log(env.id);
@@ -178,7 +178,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version environments post create', async () => {
     // [START paths['/{api_version}/environments'].post:create]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
     const environment = await ai.environments.create({
       sources: [
         {
@@ -202,7 +202,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version environments post copy', async () => {
     // [START paths['/{api_version}/environments'].post:copy]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
 
     // [setup]
     const sourceEnv = await ai.environments.create({
@@ -229,7 +229,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version environments environment files path get list files', async () => {
     // [START paths['/{api_version}/environments/{environment}/files/{path}'].get:list_files]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
 
     // [setup]
     const created = await ai.environments.create({
@@ -257,7 +257,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version environments environment files path get get file', async () => {
     // [START paths['/{api_version}/environments/{environment}/files/{path}'].get:get_file]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
 
     // [setup]
     const created = await ai.environments.create({
@@ -283,7 +283,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version environments id delete delete', async () => {
     // [START paths['/{api_version}/environments/{id}'].delete:delete]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
 
     // [setup]
     const created = await ai.environments.create({
@@ -300,7 +300,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version environments id get get', async () => {
     // [START paths['/{api_version}/environments/{id}'].get:get]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
 
     // [setup]
     const created = await ai.environments.create({
@@ -414,7 +414,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version interactions post antigravity', async () => {
     // [START paths['/{api_version}/interactions'].post:antigravity]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
     const interaction = await ai.interactions.create({
       agent: 'antigravity-preview-09-2026',
       input:
@@ -428,7 +428,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version interactions post reuse env', async () => {
     // [START paths['/{api_version}/interactions'].post:reuse_env]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
 
     // Step 1: Create an interaction with a fresh remote environment.
     const interaction = await ai.interactions.create({
@@ -452,7 +452,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version interactions post with sources', async () => {
     // [START paths['/{api_version}/interactions'].post:with_sources]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
     const interaction = await ai.interactions.create({
       agent: 'antigravity-preview-09-2026',
       input: 'List all files under /workspace and summarize what you find.',
@@ -479,7 +479,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version interactions post custom agent', async () => {
     // [START paths['/{api_version}/interactions'].post:custom_agent]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
 
     // Step 1: Create a custom agent.
     const agentId = `code-reviewer-${crypto.randomUUID().slice(0, 8)}`;
@@ -586,7 +586,7 @@ describe('Interactions API TypeScript Samples', () => {
 
     const ai = new GoogleGenAI({});
     const interaction = await ai.interactions.create({
-      model: 'gemini-2.5-computer-use-preview-10-2025',
+      model: 'gemini-3.8-flash',
       tools: [{type: 'computer_use'}],
       input: 'Find a flight to Tokyo',
     });
@@ -719,7 +719,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version voices get list', async () => {
     // [START paths['/{api_version}/voices'].get:list]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
     const response = await ai.voices.list();
     for (const voice of response.voices ?? []) {
       console.log(voice.id, voice.display_name);
@@ -730,7 +730,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version voices post create', async () => {
     // [START paths['/{api_version}/voices'].post:create]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
     const voice = await ai.voices.create({
       store: true,
       voice: {
@@ -755,7 +755,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version voices voicesId get get', async () => {
     // [START paths['/{api_version}/voices/{voicesId}'].get:get]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
     const voice = await ai.voices.get('voice_abc123');
     console.log(voice.id, voice.display_name);
     // [END paths['/{api_version}/voices/{voicesId}'].get:get]
@@ -764,7 +764,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version voices voicesId delete delete', async () => {
     // [START paths['/{api_version}/voices/{voicesId}'].delete:delete]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
     await ai.voices.delete('voice_abc123');
     // [END paths['/{api_version}/voices/{voicesId}'].delete:delete]
   });
@@ -772,7 +772,7 @@ describe('Interactions API TypeScript Samples', () => {
   it('api version triggers post create', async () => {
     // [START paths['/{api_version}/triggers'].post:create]
 
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
     const trigger = await ai.triggers.create({
       schedule: '0 9 * * *',
       time_zone: 'America/New_York',

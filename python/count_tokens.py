@@ -203,7 +203,7 @@ class UnitTests(absltest.TestCase):
     from google.genai import types
     import time
 
-    client = genai.Client()
+    client = genai.Client(http_options={"api_version": "v1beta"})
     your_file = client.files.upload(file=media / "a11.txt")
 
     cache = client.caches.create(
