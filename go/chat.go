@@ -147,4 +147,5 @@ func ChatStreamingWithImages() error {
 	// [END chat_streaming_with_images]
 
 	return nil
+	// Persistence test
 }
