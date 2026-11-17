@@ -16,6 +16,7 @@ package samples_test
 
 import (
 	"context"
+	"encoding/base64"
 	"fmt"
 	"google.golang.org/genai"
 	gaos_agents "google.golang.org/genai/interactions/models/agents"
@@ -24,7 +25,10 @@ import (
 	gaos_interactions "google.golang.org/genai/interactions/models/interactions"
 	"google.golang.org/genai/interactions/models/operations"
 	gaos_voices "google.golang.org/genai/interactions/models/voices"
+	"io"
 	"log"
+	"net/http"
+	"os"
 	"testing"
 	"time"
 )
@@ -1649,4 +1653,382 @@ func TestSample_api_version_decisions_post_batch(t *testing.T) {
 		}
 	}
 	// [END paths['/{api_version}/decisions'].post:batch]
+}
+
+// Samples for document processing options (go/genai-api-rfc-201).
+
+// download saves url to path. It's only used in the samples' setup sections.
+func download(url, path string) {
+	resp, err := http.Get(url)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer resp.Body.Close()
+	if resp.StatusCode != http.StatusOK {
+		log.Fatalf("downloading %s: %s", url, resp.Status)
+	}
+	f, err := os.Create(path)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer f.Close()
+	if _, err := io.Copy(f, resp.Body); err != nil {
+		log.Fatal(err)
+	}
+}
+
+// checkInteraction fails the test unless the interaction completed with output text.
+func checkInteraction(t *testing.T, res *operations.CreateInteractionResponse) {
+	t.Helper()
+	if res.Interaction == nil {
+		t.Fatal("no interaction in response")
+	}
+	if got := res.Interaction.Status; got != gaos_interactions.InteractionStatusCompleted {
+		t.Errorf("status = %q, want %q", got, gaos_interactions.InteractionStatusCompleted)
+	}
+	if res.Interaction.OutputText == nil || *res.Interaction.OutputText == "" {
+		t.Error("output text is empty")
+	}
+}
+
+func TestSample_api_version_interactions_post_document(t *testing.T) {
+	// The samples read and write files relative to the working directory.
+	t.Chdir(t.TempDir())
+
+	// [START paths['/{api_version}/interactions'].post:document]
+	ctx := context.Background()
+	client, err := genai.NewClient(ctx, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// [setup]
+	download("https://www.berkshirehathaway.com/letters/2023ltr.pdf", "report.pdf")
+	// [/setup]
+
+	data, err := os.ReadFile("report.pdf")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	contents := []gaos_interactions.Content{
+		gaos_interactions.NewContent(gaos_interactions.TextContent{
+			Text: "Summarize this document.",
+		}),
+		gaos_interactions.NewContent(gaos_interactions.DocumentContent{
+			Data:     genai.Ptr(base64.StdEncoding.EncodeToString(data)),
+			MimeType: gaos_interactions.DocumentContentMimeTypeApplicationPdf.ToPointer(),
+		}),
+	}
+
+	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
+		Input: genai.Ptr(gaos_interactions.NewInteractionsInput(contents)),
+	})
+
+	res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{Body: body})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.Interaction != nil && res.Interaction.OutputText != nil {
+		fmt.Println(*res.Interaction.OutputText)
+	}
+	// [END paths['/{api_version}/interactions'].post:document]
+	checkInteraction(t, res)
+}
+
+func TestSample_api_version_interactions_post_document_page_range(t *testing.T) {
+	// The samples read and write files relative to the working directory.
+	t.Chdir(t.TempDir())
+
+	// [START paths['/{api_version}/interactions'].post:document_page_range]
+	ctx := context.Background()
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// [setup]
+	download("https://www.berkshirehathaway.com/letters/2023ltr.pdf", "report.pdf")
+	// [/setup]
+
+	data, err := os.ReadFile("report.pdf")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	contents := []gaos_interactions.Content{
+		gaos_interactions.NewContent(gaos_interactions.TextContent{
+			Text: "Summarize these pages.",
+		}),
+		gaos_interactions.NewContent(gaos_interactions.DocumentContent{
+			Data:     genai.Ptr(base64.StdEncoding.EncodeToString(data)),
+			MimeType: gaos_interactions.DocumentContentMimeTypeApplicationPdf.ToPointer(),
+			// Only send pages 2 through 3 (1-indexed, inclusive).
+			Processing: genai.Ptr(gaos_interactions.NewDocumentProcessing(
+				gaos_interactions.NewDocumentMediaProcessing(gaos_interactions.DocumentStaticMediaProcessing{
+					PageOptions: &gaos_interactions.PageProcessingOptions{
+						StartPage: genai.Ptr(2),
+						EndPage:   genai.Ptr(3),
+					},
+				}),
+			)),
+		}),
+	}
+
+	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
+		Input: genai.Ptr(gaos_interactions.NewInteractionsInput(contents)),
+	})
+
+	res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{Body: body})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.Interaction != nil && res.Interaction.OutputText != nil {
+		fmt.Println(*res.Interaction.OutputText)
+	}
+	// [END paths['/{api_version}/interactions'].post:document_page_range]
+	checkInteraction(t, res)
+}
+
+func TestSample_api_version_interactions_post_document_text_only(t *testing.T) {
+	// The samples read and write files relative to the working directory.
+	t.Chdir(t.TempDir())
+
+	// [START paths['/{api_version}/interactions'].post:document_text_only]
+	ctx := context.Background()
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// [setup]
+	download("https://www.berkshirehathaway.com/letters/2023ltr.pdf", "report.pdf")
+	// [/setup]
+
+	data, err := os.ReadFile("report.pdf")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	contents := []gaos_interactions.Content{
+		gaos_interactions.NewContent(gaos_interactions.TextContent{
+			Text: "List the section headings.",
+		}),
+		gaos_interactions.NewContent(gaos_interactions.DocumentContent{
+			Data:     genai.Ptr(base64.StdEncoding.EncodeToString(data)),
+			MimeType: gaos_interactions.DocumentContentMimeTypeApplicationPdf.ToPointer(),
+			// Send the extracted page text, without page images.
+			Processing: genai.Ptr(gaos_interactions.NewDocumentProcessing(
+				gaos_interactions.NewDocumentMediaProcessing(gaos_interactions.DocumentStaticMediaProcessing{
+					PageOptions: &gaos_interactions.PageProcessingOptions{
+						ContentLayers: []gaos_interactions.PageProcessingOptionsContentLayer{
+							gaos_interactions.PageProcessingOptionsContentLayerPageText,
+						},
+					},
+				}),
+			)),
+		}),
+	}
+
+	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
+		Input: genai.Ptr(gaos_interactions.NewInteractionsInput(contents)),
+	})
+
+	res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{Body: body})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.Interaction != nil && res.Interaction.OutputText != nil {
+		fmt.Println(*res.Interaction.OutputText)
+	}
+	// [END paths['/{api_version}/interactions'].post:document_text_only]
+	checkInteraction(t, res)
+}
+
+func TestSample_api_version_interactions_post_document_resolution(t *testing.T) {
+	// The samples read and write files relative to the working directory.
+	t.Chdir(t.TempDir())
+
+	// [START paths['/{api_version}/interactions'].post:document_resolution]
+	ctx := context.Background()
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// [setup]
+	download("https://www.berkshirehathaway.com/letters/2023ltr.pdf", "report.pdf")
+	// [/setup]
+
+	data, err := os.ReadFile("report.pdf")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	contents := []gaos_interactions.Content{
+		gaos_interactions.NewContent(gaos_interactions.TextContent{
+			Text: "Which pages contain tables?",
+		}),
+		gaos_interactions.NewContent(gaos_interactions.DocumentContent{
+			Data:     genai.Ptr(base64.StdEncoding.EncodeToString(data)),
+			MimeType: gaos_interactions.DocumentContentMimeTypeApplicationPdf.ToPointer(),
+			// Skim the page images at low resolution.
+			Resolution: gaos_interactions.MediaResolutionLow.ToPointer(),
+			Processing: genai.Ptr(gaos_interactions.NewDocumentProcessing(
+				gaos_interactions.NewDocumentMediaProcessing(gaos_interactions.DocumentStaticMediaProcessing{
+					PageOptions: &gaos_interactions.PageProcessingOptions{
+						ContentLayers: []gaos_interactions.PageProcessingOptionsContentLayer{
+							gaos_interactions.PageProcessingOptionsContentLayerPageImage,
+						},
+					},
+				}),
+			)),
+		}),
+	}
+
+	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
+		Input: genai.Ptr(gaos_interactions.NewInteractionsInput(contents)),
+	})
+
+	res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{Body: body})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.Interaction != nil && res.Interaction.OutputText != nil {
+		fmt.Println(*res.Interaction.OutputText)
+	}
+	// [END paths['/{api_version}/interactions'].post:document_resolution]
+	checkInteraction(t, res)
+}
+
+func TestSample_api_version_interactions_post_document_office(t *testing.T) {
+	// The samples read and write files relative to the working directory.
+	t.Chdir(t.TempDir())
+
+	// [START paths['/{api_version}/interactions'].post:document_office]
+	ctx := context.Background()
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// [setup]
+	download("https://calibre-ebook.com/downloads/demos/demo.docx", "demo.docx")
+	// [/setup]
+
+	data, err := os.ReadFile("demo.docx")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	contents := []gaos_interactions.Content{
+		gaos_interactions.NewContent(gaos_interactions.TextContent{
+			Text: "Summarize the first page.",
+		}),
+		gaos_interactions.NewContent(gaos_interactions.DocumentContent{
+			Data:     genai.Ptr(base64.StdEncoding.EncodeToString(data)),
+			MimeType: gaos_interactions.DocumentContentMimeTypeApplicationVndOpenxmlformatsOfficedocumentWordprocessingmlDocument.ToPointer(),
+			Processing: genai.Ptr(gaos_interactions.NewDocumentProcessing(
+				gaos_interactions.NewDocumentMediaProcessing(gaos_interactions.DocumentStaticMediaProcessing{
+					PageOptions: &gaos_interactions.PageProcessingOptions{
+						StartPage: genai.Ptr(1),
+						EndPage:   genai.Ptr(1),
+					},
+				}),
+			)),
+		}),
+	}
+
+	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
+		Input: genai.Ptr(gaos_interactions.NewInteractionsInput(contents)),
+	})
+
+	res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{Body: body})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.Interaction != nil && res.Interaction.OutputText != nil {
+		fmt.Println(*res.Interaction.OutputText)
+	}
+	// [END paths['/{api_version}/interactions'].post:document_office]
+	checkInteraction(t, res)
+}
+
+func TestSample_api_version_interactions_post_document_spreadsheet(t *testing.T) {
+	// The samples read and write files relative to the working directory.
+	t.Chdir(t.TempDir())
+
+	// [START paths['/{api_version}/interactions'].post:document_spreadsheet]
+	ctx := context.Background()
+	client, err := genai.NewClient(ctx, &genai.ClientConfig{
+		HTTPOptions: genai.HTTPOptions{APIVersion: "v1beta"},
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// [setup]
+	download("https://go.microsoft.com/fwlink/?LinkID=521962", "financials.xlsx")
+	// [/setup]
+
+	data, err := os.ReadFile("financials.xlsx")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	contents := []gaos_interactions.Content{
+		gaos_interactions.NewContent(gaos_interactions.TextContent{
+			Text: "Which country has the highest sales?",
+		}),
+		gaos_interactions.NewContent(gaos_interactions.DocumentContent{
+			Data:     genai.Ptr(base64.StdEncoding.EncodeToString(data)),
+			MimeType: gaos_interactions.DocumentContentMimeTypeApplicationVndOpenxmlformatsOfficedocumentSpreadsheetmlSheet.ToPointer(),
+			Processing: genai.Ptr(gaos_interactions.NewDocumentProcessing(
+				gaos_interactions.NewDocumentMediaProcessing(gaos_interactions.DocumentStaticMediaProcessing{
+					SpreadsheetOptions: &gaos_interactions.SpreadsheetProcessingOptions{
+						SheetIndex:   genai.Ptr(1),
+						VisibleCells: genai.Ptr("A1:P50"),
+						ContentLayers: []gaos_interactions.SpreadsheetProcessingOptionsContentLayer{
+							gaos_interactions.SpreadsheetProcessingOptionsContentLayerData,
+							gaos_interactions.SpreadsheetProcessingOptionsContentLayerFormulas,
+						},
+					},
+				}),
+			)),
+		}),
+	}
+
+	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
+		Input: genai.Ptr(gaos_interactions.NewInteractionsInput(contents)),
+	})
+
+	res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{Body: body})
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.Interaction != nil && res.Interaction.OutputText != nil {
+		fmt.Println(*res.Interaction.OutputText)
+	}
+	// [END paths['/{api_version}/interactions'].post:document_spreadsheet]
+	checkInteraction(t, res)
 }

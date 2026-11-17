@@ -17,6 +17,7 @@
 package com.google.genai.examples;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -47,6 +48,11 @@ import com.google.genai.gaos.models.interactions.Content;
 import com.google.genai.gaos.models.interactions.CreateAgentInteraction;
 import com.google.genai.gaos.models.interactions.CreateAgentInteractionEnvironment;
 import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+import com.google.genai.gaos.models.interactions.DocumentContent;
+import com.google.genai.gaos.models.interactions.DocumentContentMimeType;
+import com.google.genai.gaos.models.interactions.DocumentMediaProcessing;
+import com.google.genai.gaos.models.interactions.DocumentProcessing;
+import com.google.genai.gaos.models.interactions.DocumentStaticMediaProcessing;
 import com.google.genai.gaos.models.interactions.FileSearch;
 import com.google.genai.gaos.models.interactions.Function;
 import com.google.genai.gaos.models.interactions.GoogleMaps;
@@ -57,9 +63,14 @@ import com.google.genai.gaos.models.interactions.Interaction;
 import com.google.genai.gaos.models.interactions.InteractionStatus;
 import com.google.genai.gaos.models.interactions.InteractionsInput;
 import com.google.genai.gaos.models.interactions.MCPServer;
+import com.google.genai.gaos.models.interactions.MediaResolution;
 import com.google.genai.gaos.models.interactions.ModelOutputStep;
+import com.google.genai.gaos.models.interactions.PageProcessingOptions;
+import com.google.genai.gaos.models.interactions.PageProcessingOptionsContentLayer;
 import com.google.genai.gaos.models.interactions.Source;
 import com.google.genai.gaos.models.interactions.SourceType;
+import com.google.genai.gaos.models.interactions.SpreadsheetProcessingOptions;
+import com.google.genai.gaos.models.interactions.SpreadsheetProcessingOptionsContentLayer;
 import com.google.genai.gaos.models.interactions.Step;
 import com.google.genai.gaos.models.interactions.TextContent;
 import com.google.genai.gaos.models.interactions.URLContext;
@@ -81,6 +92,11 @@ import com.google.genai.gaos.models.triggers.TriggerCreateParams;
 import com.google.genai.types.CreateFileSearchStoreConfig;
 import com.google.genai.types.FileSearchStore;
 import com.google.genai.types.HttpOptions;
+import java.io.InputStream;
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -1293,5 +1309,300 @@ public class JavaSamplesTest {
     assertTrue(((NoulAnswer) answers.get("is_outage")).noul().orElse(0.0) > 0.5);
     assertEquals("p1_critical", ((ChoiceAnswer) answers.get("priority")).choice().orElse(""));
     assertTrue(((ScoreAnswer) answers.get("urgency")).score().orElse(0.0) > 1.0);
+  }
+
+  @Test
+  public void testApiVersionInteractionsPostDocument() throws Exception {
+    // [START paths['/{api_version}/interactions'].post:document]
+
+    Client client = new Client();
+    Path path = Path.of("report.pdf");
+
+    // [setup]
+    path = Files.createTempDirectory("samples").resolve(path);
+    try (InputStream in =
+        URI.create("https://www.berkshirehathaway.com/letters/2023ltr.pdf").toURL().openStream()) {
+      Files.copy(in, path);
+    }
+    // [/setup]
+
+    String data = Base64.getEncoder().encodeToString(Files.readAllBytes(path));
+    List<Content> content =
+        List.of(
+            TextContent.builder().text("Summarize this document.").build(),
+            DocumentContent.builder()
+                .data(data)
+                .mimeType(DocumentContentMimeType.APPLICATION_PDF)
+                .build());
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model("gemini-4-hydrogen")
+            .input(InteractionsInput.ofContent(content))
+            .build();
+    CreateInteractionResponse response =
+        client.interactions.create(CreateInteractionRequestBody.of(params));
+    Interaction interaction =
+        response.interaction().orElseThrow(() -> new RuntimeException("No interaction returned"));
+    System.out.println(interaction.outputText().orElse(""));
+    // [END paths['/{api_version}/interactions'].post:document]
+    assertEquals(InteractionStatus.COMPLETED, interaction.status().orElse(null));
+    assertFalse(interaction.outputText().orElse("").isEmpty());
+  }
+
+  @Test
+  public void testApiVersionInteractionsPostDocumentPageRange() throws Exception {
+    // [START paths['/{api_version}/interactions'].post:document_page_range]
+
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
+    Path path = Path.of("report.pdf");
+
+    // [setup]
+    path = Files.createTempDirectory("samples").resolve(path);
+    try (InputStream in =
+        URI.create("https://www.berkshirehathaway.com/letters/2023ltr.pdf").toURL().openStream()) {
+      Files.copy(in, path);
+    }
+    // [/setup]
+
+    String data = Base64.getEncoder().encodeToString(Files.readAllBytes(path));
+    List<Content> content =
+        List.of(
+            TextContent.builder().text("Summarize these pages.").build(),
+            DocumentContent.builder()
+                .data(data)
+                .mimeType(DocumentContentMimeType.APPLICATION_PDF)
+                // Only send pages 2 through 3 (1-indexed, inclusive).
+                .processing(
+                    DocumentProcessing.of(
+                        DocumentMediaProcessing.of(
+                            DocumentStaticMediaProcessing.builder()
+                                .pageOptions(
+                                    PageProcessingOptions.builder().startPage(2).endPage(3).build())
+                                .build())))
+                .build());
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model("gemini-4-hydrogen")
+            .input(InteractionsInput.ofContent(content))
+            .build();
+    CreateInteractionResponse response =
+        client.interactions.create(CreateInteractionRequestBody.of(params));
+    Interaction interaction =
+        response.interaction().orElseThrow(() -> new RuntimeException("No interaction returned"));
+    System.out.println(interaction.outputText().orElse(""));
+    // [END paths['/{api_version}/interactions'].post:document_page_range]
+    assertEquals(InteractionStatus.COMPLETED, interaction.status().orElse(null));
+    assertFalse(interaction.outputText().orElse("").isEmpty());
+  }
+
+  @Test
+  public void testApiVersionInteractionsPostDocumentTextOnly() throws Exception {
+    // [START paths['/{api_version}/interactions'].post:document_text_only]
+
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
+    Path path = Path.of("report.pdf");
+
+    // [setup]
+    path = Files.createTempDirectory("samples").resolve(path);
+    try (InputStream in =
+        URI.create("https://www.berkshirehathaway.com/letters/2023ltr.pdf").toURL().openStream()) {
+      Files.copy(in, path);
+    }
+    // [/setup]
+
+    String data = Base64.getEncoder().encodeToString(Files.readAllBytes(path));
+    List<Content> content =
+        List.of(
+            TextContent.builder().text("List the section headings.").build(),
+            DocumentContent.builder()
+                .data(data)
+                .mimeType(DocumentContentMimeType.APPLICATION_PDF)
+                // Send the extracted page text, without page images.
+                .processing(
+                    DocumentProcessing.of(
+                        DocumentMediaProcessing.of(
+                            DocumentStaticMediaProcessing.builder()
+                                .pageOptions(
+                                    PageProcessingOptions.builder()
+                                        .contentLayers(
+                                            List.of(PageProcessingOptionsContentLayer.PAGE_TEXT))
+                                        .build())
+                                .build())))
+                .build());
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model("gemini-4-hydrogen")
+            .input(InteractionsInput.ofContent(content))
+            .build();
+    CreateInteractionResponse response =
+        client.interactions.create(CreateInteractionRequestBody.of(params));
+    Interaction interaction =
+        response.interaction().orElseThrow(() -> new RuntimeException("No interaction returned"));
+    System.out.println(interaction.outputText().orElse(""));
+    // [END paths['/{api_version}/interactions'].post:document_text_only]
+    assertEquals(InteractionStatus.COMPLETED, interaction.status().orElse(null));
+    assertFalse(interaction.outputText().orElse("").isEmpty());
+  }
+
+  @Test
+  public void testApiVersionInteractionsPostDocumentResolution() throws Exception {
+    // [START paths['/{api_version}/interactions'].post:document_resolution]
+
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
+    Path path = Path.of("report.pdf");
+
+    // [setup]
+    path = Files.createTempDirectory("samples").resolve(path);
+    try (InputStream in =
+        URI.create("https://www.berkshirehathaway.com/letters/2023ltr.pdf").toURL().openStream()) {
+      Files.copy(in, path);
+    }
+    // [/setup]
+
+    String data = Base64.getEncoder().encodeToString(Files.readAllBytes(path));
+    List<Content> content =
+        List.of(
+            TextContent.builder().text("Which pages contain tables?").build(),
+            DocumentContent.builder()
+                .data(data)
+                .mimeType(DocumentContentMimeType.APPLICATION_PDF)
+                // Skim the page images at low resolution.
+                .resolution(MediaResolution.LOW)
+                .processing(
+                    DocumentProcessing.of(
+                        DocumentMediaProcessing.of(
+                            DocumentStaticMediaProcessing.builder()
+                                .pageOptions(
+                                    PageProcessingOptions.builder()
+                                        .contentLayers(
+                                            List.of(PageProcessingOptionsContentLayer.PAGE_IMAGE))
+                                        .build())
+                                .build())))
+                .build());
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model("gemini-4-hydrogen")
+            .input(InteractionsInput.ofContent(content))
+            .build();
+    CreateInteractionResponse response =
+        client.interactions.create(CreateInteractionRequestBody.of(params));
+    Interaction interaction =
+        response.interaction().orElseThrow(() -> new RuntimeException("No interaction returned"));
+    System.out.println(interaction.outputText().orElse(""));
+    // [END paths['/{api_version}/interactions'].post:document_resolution]
+    assertEquals(InteractionStatus.COMPLETED, interaction.status().orElse(null));
+    assertFalse(interaction.outputText().orElse("").isEmpty());
+  }
+
+  @Test
+  public void testApiVersionInteractionsPostDocumentOffice() throws Exception {
+    // [START paths['/{api_version}/interactions'].post:document_office]
+
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
+    Path path = Path.of("demo.docx");
+
+    // [setup]
+    path = Files.createTempDirectory("samples").resolve(path);
+    try (InputStream in =
+        URI.create("https://calibre-ebook.com/downloads/demos/demo.docx").toURL().openStream()) {
+      Files.copy(in, path);
+    }
+    // [/setup]
+
+    String data = Base64.getEncoder().encodeToString(Files.readAllBytes(path));
+    List<Content> content =
+        List.of(
+            TextContent.builder().text("Summarize the first page.").build(),
+            DocumentContent.builder()
+                .data(data)
+                .mimeType(
+                    DocumentContentMimeType
+                        .APPLICATION_VND_OPENXMLFORMATS_OFFICEDOCUMENT_WORDPROCESSINGML_DOCUMENT)
+                .processing(
+                    DocumentProcessing.of(
+                        DocumentMediaProcessing.of(
+                            DocumentStaticMediaProcessing.builder()
+                                .pageOptions(
+                                    PageProcessingOptions.builder().startPage(1).endPage(1).build())
+                                .build())))
+                .build());
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model("gemini-4-hydrogen")
+            .input(InteractionsInput.ofContent(content))
+            .build();
+    CreateInteractionResponse response =
+        client.interactions.create(CreateInteractionRequestBody.of(params));
+    Interaction interaction =
+        response.interaction().orElseThrow(() -> new RuntimeException("No interaction returned"));
+    System.out.println(interaction.outputText().orElse(""));
+    // [END paths['/{api_version}/interactions'].post:document_office]
+    assertEquals(InteractionStatus.COMPLETED, interaction.status().orElse(null));
+    assertFalse(interaction.outputText().orElse("").isEmpty());
+  }
+
+  @Test
+  public void testApiVersionInteractionsPostDocumentSpreadsheet() throws Exception {
+    // [START paths['/{api_version}/interactions'].post:document_spreadsheet]
+
+    Client client =
+        Client.builder().httpOptions(HttpOptions.builder().apiVersion("v1beta").build()).build();
+    Path path = Path.of("financials.xlsx");
+
+    // [setup]
+    path = Files.createTempDirectory("samples").resolve(path);
+    // Direct link for https://go.microsoft.com/fwlink/?LinkID=521962, whose redirect has an
+    // unescaped space that Java's URL connection can't follow.
+    try (InputStream in =
+        URI.create(
+                "https://download.microsoft.com/download/1/4/E/"
+                    + "14EDED28-6C58-4055-A65C-23B4DA81C4DE/Financial%20Sample.xlsx")
+            .toURL()
+            .openStream()) {
+      Files.copy(in, path);
+    }
+    // [/setup]
+
+    String data = Base64.getEncoder().encodeToString(Files.readAllBytes(path));
+    List<Content> content =
+        List.of(
+            TextContent.builder().text("Which country has the highest sales?").build(),
+            DocumentContent.builder()
+                .data(data)
+                .mimeType(
+                    DocumentContentMimeType
+                        .APPLICATION_VND_OPENXMLFORMATS_OFFICEDOCUMENT_SPREADSHEETML_SHEET)
+                .processing(
+                    DocumentProcessing.of(
+                        DocumentMediaProcessing.of(
+                            DocumentStaticMediaProcessing.builder()
+                                .spreadsheetOptions(
+                                    SpreadsheetProcessingOptions.builder()
+                                        .sheetIndex(1)
+                                        .visibleCells("A1:P50")
+                                        .contentLayers(
+                                            List.of(
+                                                SpreadsheetProcessingOptionsContentLayer.DATA,
+                                                SpreadsheetProcessingOptionsContentLayer.FORMULAS))
+                                        .build())
+                                .build())))
+                .build());
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model("gemini-4-hydrogen")
+            .input(InteractionsInput.ofContent(content))
+            .build();
+    CreateInteractionResponse response =
+        client.interactions.create(CreateInteractionRequestBody.of(params));
+    Interaction interaction =
+        response.interaction().orElseThrow(() -> new RuntimeException("No interaction returned"));
+    System.out.println(interaction.outputText().orElse(""));
+    // [END paths['/{api_version}/interactions'].post:document_spreadsheet]
+    assertEquals(InteractionStatus.COMPLETED, interaction.status().orElse(null));
+    assertFalse(interaction.outputText().orElse("").isEmpty());
   }
 }

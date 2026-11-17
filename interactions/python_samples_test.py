@@ -16,6 +16,8 @@
 
 # pylint: disable=g-import-not-at-top,line-too-long,invalid-name
 
+import contextlib
+
 from absl.testing import absltest
 from absl.testing import parameterized
 
@@ -1025,6 +1027,223 @@ class PythonSamplesTest(parameterized.TestCase):
     urgency = response.answers["urgency"]
     assert urgency.type == "score"
     self.assertGreater(urgency.score, 1.0)
+
+
+class DocumentProcessingSamplesTest(parameterized.TestCase):
+  """Samples for document processing options (go/genai-api-rfc-201)."""
+
+  def setUp(self):
+    super().setUp()
+    # The samples read and write files relative to the working directory.
+    self.enter_context(contextlib.chdir(self.create_tempdir().full_path))
+
+  def test_api_version_interactions_post_document(self):
+    # [START paths['/{api_version}/interactions'].post:document]
+    import pathlib
+    from google import genai
+
+    # [setup]
+    import urllib.request
+
+    urllib.request.urlretrieve(
+        "https://www.berkshirehathaway.com/letters/2023ltr.pdf", "report.pdf"
+    )
+    # [/setup]
+
+    client = genai.Client()
+    interaction = client.interactions.create(
+        model="gemini-4-hydrogen",
+        input=[
+            {"type": "text", "text": "Summarize this document."},
+            {
+                "type": "document",
+                "data": pathlib.Path("report.pdf"),
+                "mime_type": "application/pdf",
+            },
+        ],
+    )
+    print(interaction.output_text)
+    # [END paths['/{api_version}/interactions'].post:document]
+    self.assertEqual(interaction.status, "completed")
+    self.assertNotEmpty(interaction.output_text)
+
+  def test_api_version_interactions_post_document_page_range(self):
+    # [START paths['/{api_version}/interactions'].post:document_page_range]
+    import pathlib
+    from google import genai
+
+    # [setup]
+    import urllib.request
+
+    urllib.request.urlretrieve(
+        "https://www.berkshirehathaway.com/letters/2023ltr.pdf", "report.pdf"
+    )
+    # [/setup]
+
+    client = genai.Client(http_options={"api_version": "v1beta"})
+    interaction = client.interactions.create(
+        model="gemini-4-hydrogen",
+        input=[
+            {"type": "text", "text": "Summarize these pages."},
+            {
+                "type": "document",
+                "data": pathlib.Path("report.pdf"),
+                "mime_type": "application/pdf",
+                # Only send pages 2 through 3 (1-indexed, inclusive).
+                "processing": {
+                    "type": "static",
+                    "page_options": {"start_page": 2, "end_page": 3},
+                },
+            },
+        ],
+    )
+    print(interaction.output_text)
+    # [END paths['/{api_version}/interactions'].post:document_page_range]
+    self.assertEqual(interaction.status, "completed")
+    self.assertNotEmpty(interaction.output_text)
+
+  def test_api_version_interactions_post_document_text_only(self):
+    # [START paths['/{api_version}/interactions'].post:document_text_only]
+    import pathlib
+    from google import genai
+
+    # [setup]
+    import urllib.request
+
+    urllib.request.urlretrieve(
+        "https://www.berkshirehathaway.com/letters/2023ltr.pdf", "report.pdf"
+    )
+    # [/setup]
+
+    client = genai.Client(http_options={"api_version": "v1beta"})
+    interaction = client.interactions.create(
+        model="gemini-4-hydrogen",
+        input=[
+            {"type": "text", "text": "List the section headings."},
+            {
+                "type": "document",
+                "data": pathlib.Path("report.pdf"),
+                "mime_type": "application/pdf",
+                # Send the extracted page text, without page images.
+                "processing": {
+                    "type": "static",
+                    "page_options": {"content_layers": ["page_text"]},
+                },
+            },
+        ],
+    )
+    print(interaction.output_text)
+    # [END paths['/{api_version}/interactions'].post:document_text_only]
+    self.assertEqual(interaction.status, "completed")
+    self.assertNotEmpty(interaction.output_text)
+
+  def test_api_version_interactions_post_document_resolution(self):
+    # [START paths['/{api_version}/interactions'].post:document_resolution]
+    import pathlib
+    from google import genai
+
+    # [setup]
+    import urllib.request
+
+    urllib.request.urlretrieve(
+        "https://www.berkshirehathaway.com/letters/2023ltr.pdf", "report.pdf"
+    )
+    # [/setup]
+
+    client = genai.Client(http_options={"api_version": "v1beta"})
+    interaction = client.interactions.create(
+        model="gemini-4-hydrogen",
+        input=[
+            {"type": "text", "text": "Which pages contain tables?"},
+            {
+                "type": "document",
+                "data": pathlib.Path("report.pdf"),
+                "mime_type": "application/pdf",
+                # Skim the page images at low resolution.
+                "resolution": "low",
+                "processing": {
+                    "type": "static",
+                    "page_options": {"content_layers": ["page_image"]},
+                },
+            },
+        ],
+    )
+    print(interaction.output_text)
+    # [END paths['/{api_version}/interactions'].post:document_resolution]
+    self.assertEqual(interaction.status, "completed")
+    self.assertNotEmpty(interaction.output_text)
+
+  def test_api_version_interactions_post_document_office(self):
+    # [START paths['/{api_version}/interactions'].post:document_office]
+    import pathlib
+    from google import genai
+
+    # [setup]
+    import urllib.request
+
+    urllib.request.urlretrieve(
+        "https://calibre-ebook.com/downloads/demos/demo.docx", "demo.docx"
+    )
+    # [/setup]
+
+    client = genai.Client(http_options={"api_version": "v1beta"})
+    interaction = client.interactions.create(
+        model="gemini-4-hydrogen",
+        input=[
+            {"type": "text", "text": "Summarize the first page."},
+            {
+                "type": "document",
+                "data": pathlib.Path("demo.docx"),
+                "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "processing": {
+                    "type": "static",
+                    "page_options": {"start_page": 1, "end_page": 1},
+                },
+            },
+        ],
+    )
+    print(interaction.output_text)
+    # [END paths['/{api_version}/interactions'].post:document_office]
+    self.assertEqual(interaction.status, "completed")
+    self.assertNotEmpty(interaction.output_text)
+
+  def test_api_version_interactions_post_document_spreadsheet(self):
+    # [START paths['/{api_version}/interactions'].post:document_spreadsheet]
+    import pathlib
+    from google import genai
+
+    # [setup]
+    import urllib.request
+
+    urllib.request.urlretrieve(
+        "https://go.microsoft.com/fwlink/?LinkID=521962", "financials.xlsx"
+    )
+    # [/setup]
+
+    client = genai.Client(http_options={"api_version": "v1beta"})
+    interaction = client.interactions.create(
+        model="gemini-4-hydrogen",
+        input=[
+            {"type": "text", "text": "Which country has the highest sales?"},
+            {
+                "type": "document",
+                "data": pathlib.Path("financials.xlsx"),
+                "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "processing": {
+                    "type": "static",
+                    "spreadsheet_options": {
+                        "sheet_index": 1,
+                        "visible_cells": "A1:P50",
+                        "content_layers": ["data", "formulas"],
+                    },
+                },
+            },
+        ],
+    )
+    print(interaction.output_text)
+    # [END paths['/{api_version}/interactions'].post:document_spreadsheet]
+    self.assertEqual(interaction.status, "completed")
+    self.assertNotEmpty(interaction.output_text)
 
 
 if __name__ == "__main__":

@@ -15,6 +15,10 @@
  * limitations under the License.
  */
 
+import * as fs from 'fs';
+import * as os from 'os';
+import * as path from 'path';
+
 import {GoogleGenAI} from '@google/genai';
 
 describe('Interactions API TypeScript Samples', () => {
@@ -960,5 +964,261 @@ describe('Interactions API TypeScript Samples', () => {
     if (urgency?.type === 'score') {
       expect(urgency.score).toBeGreaterThan(1.0);
     }
+  });
+});
+
+describe('Document processing samples (go/genai-api-rfc-201)', () => {
+  let originalCwd = '';
+  let originalTimeout = 0;
+
+  // Uploading and processing documents can take longer than the default.
+  beforeAll(() => {
+    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 300000;
+  });
+
+  afterAll(() => {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
+  });
+
+  // The samples read and write files relative to the working directory.
+  beforeEach(() => {
+    originalCwd = process.cwd();
+    process.chdir(fs.mkdtempSync(path.join(os.tmpdir(), 'document-samples-')));
+  });
+
+  afterEach(() => {
+    process.chdir(originalCwd);
+  });
+
+  it('api version interactions post document', async () => {
+    // [START paths['/{api_version}/interactions'].post:document]
+
+    // [setup]
+    const response = await fetch(
+      'https://www.berkshirehathaway.com/letters/2023ltr.pdf',
+    );
+    if (!response.ok) {
+      throw new Error(`Download failed: ${response.status}`);
+    }
+    fs.writeFileSync(
+      'report.pdf',
+      new Uint8Array(await response.arrayBuffer()),
+    );
+    // [/setup]
+
+    const ai = new GoogleGenAI({});
+    const interaction = await ai.interactions.create({
+      model: 'gemini-4-hydrogen',
+      input: [
+        {type: 'text', text: 'Summarize this document.'},
+        {
+          type: 'document',
+          data: fs.readFileSync('report.pdf', 'base64'),
+          mime_type: 'application/pdf',
+        },
+      ],
+    });
+    console.log(interaction.output_text);
+    // [END paths['/{api_version}/interactions'].post:document]
+    expect(interaction.status).toBe('completed');
+    expect(interaction.output_text).toBeTruthy();
+  });
+
+  it('api version interactions post document page range', async () => {
+    // [START paths['/{api_version}/interactions'].post:document_page_range]
+
+    // [setup]
+    const response = await fetch(
+      'https://www.berkshirehathaway.com/letters/2023ltr.pdf',
+    );
+    if (!response.ok) {
+      throw new Error(`Download failed: ${response.status}`);
+    }
+    fs.writeFileSync(
+      'report.pdf',
+      new Uint8Array(await response.arrayBuffer()),
+    );
+    // [/setup]
+
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
+    const interaction = await ai.interactions.create({
+      model: 'gemini-4-hydrogen',
+      input: [
+        {type: 'text', text: 'Summarize these pages.'},
+        {
+          type: 'document',
+          data: fs.readFileSync('report.pdf', 'base64'),
+          mime_type: 'application/pdf',
+          // Only send pages 2 through 3 (1-indexed, inclusive).
+          processing: {
+            type: 'static',
+            page_options: {start_page: 2, end_page: 3},
+          },
+        },
+      ],
+    });
+    console.log(interaction.output_text);
+    // [END paths['/{api_version}/interactions'].post:document_page_range]
+    expect(interaction.status).toBe('completed');
+    expect(interaction.output_text).toBeTruthy();
+  });
+
+  it('api version interactions post document text only', async () => {
+    // [START paths['/{api_version}/interactions'].post:document_text_only]
+
+    // [setup]
+    const response = await fetch(
+      'https://www.berkshirehathaway.com/letters/2023ltr.pdf',
+    );
+    if (!response.ok) {
+      throw new Error(`Download failed: ${response.status}`);
+    }
+    fs.writeFileSync(
+      'report.pdf',
+      new Uint8Array(await response.arrayBuffer()),
+    );
+    // [/setup]
+
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
+    const interaction = await ai.interactions.create({
+      model: 'gemini-4-hydrogen',
+      input: [
+        {type: 'text', text: 'List the section headings.'},
+        {
+          type: 'document',
+          data: fs.readFileSync('report.pdf', 'base64'),
+          mime_type: 'application/pdf',
+          // Send the extracted page text, without page images.
+          processing: {
+            type: 'static',
+            page_options: {content_layers: ['page_text']},
+          },
+        },
+      ],
+    });
+    console.log(interaction.output_text);
+    // [END paths['/{api_version}/interactions'].post:document_text_only]
+    expect(interaction.status).toBe('completed');
+    expect(interaction.output_text).toBeTruthy();
+  });
+
+  it('api version interactions post document resolution', async () => {
+    // [START paths['/{api_version}/interactions'].post:document_resolution]
+
+    // [setup]
+    const response = await fetch(
+      'https://www.berkshirehathaway.com/letters/2023ltr.pdf',
+    );
+    if (!response.ok) {
+      throw new Error(`Download failed: ${response.status}`);
+    }
+    fs.writeFileSync(
+      'report.pdf',
+      new Uint8Array(await response.arrayBuffer()),
+    );
+    // [/setup]
+
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
+    const interaction = await ai.interactions.create({
+      model: 'gemini-4-hydrogen',
+      input: [
+        {type: 'text', text: 'Which pages contain tables?'},
+        {
+          type: 'document',
+          data: fs.readFileSync('report.pdf', 'base64'),
+          mime_type: 'application/pdf',
+          // Skim the page images at low resolution.
+          resolution: 'low',
+          processing: {
+            type: 'static',
+            page_options: {content_layers: ['page_image']},
+          },
+        },
+      ],
+    });
+    console.log(interaction.output_text);
+    // [END paths['/{api_version}/interactions'].post:document_resolution]
+    expect(interaction.status).toBe('completed');
+    expect(interaction.output_text).toBeTruthy();
+  });
+
+  it('api version interactions post document office', async () => {
+    // [START paths['/{api_version}/interactions'].post:document_office]
+
+    // [setup]
+    const response = await fetch(
+      'https://calibre-ebook.com/downloads/demos/demo.docx',
+    );
+    if (!response.ok) {
+      throw new Error(`Download failed: ${response.status}`);
+    }
+    fs.writeFileSync('demo.docx', new Uint8Array(await response.arrayBuffer()));
+    // [/setup]
+
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
+    const interaction = await ai.interactions.create({
+      model: 'gemini-4-hydrogen',
+      input: [
+        {type: 'text', text: 'Summarize the first page.'},
+        {
+          type: 'document',
+          data: fs.readFileSync('demo.docx', 'base64'),
+          mime_type:
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+          processing: {
+            type: 'static',
+            page_options: {start_page: 1, end_page: 1},
+          },
+        },
+      ],
+    });
+    console.log(interaction.output_text);
+    // [END paths['/{api_version}/interactions'].post:document_office]
+    expect(interaction.status).toBe('completed');
+    expect(interaction.output_text).toBeTruthy();
+  });
+
+  it('api version interactions post document spreadsheet', async () => {
+    // [START paths['/{api_version}/interactions'].post:document_spreadsheet]
+
+    // [setup]
+    const response = await fetch(
+      'https://go.microsoft.com/fwlink/?LinkID=521962',
+    );
+    if (!response.ok) {
+      throw new Error(`Download failed: ${response.status}`);
+    }
+    fs.writeFileSync(
+      'financials.xlsx',
+      new Uint8Array(await response.arrayBuffer()),
+    );
+    // [/setup]
+
+    const ai = new GoogleGenAI({apiVersion: 'v1beta'});
+    const interaction = await ai.interactions.create({
+      model: 'gemini-4-hydrogen',
+      input: [
+        {type: 'text', text: 'Which country has the highest sales?'},
+        {
+          type: 'document',
+          data: fs.readFileSync('financials.xlsx', 'base64'),
+          mime_type:
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+          processing: {
+            type: 'static',
+            spreadsheet_options: {
+              sheet_index: 1,
+              visible_cells: 'A1:P50',
+              content_layers: ['data', 'formulas'],
+            },
+          },
+        },
+      ],
+    });
+    console.log(interaction.output_text);
+    // [END paths['/{api_version}/interactions'].post:document_spreadsheet]
+    expect(interaction.status).toBe('completed');
+    expect(interaction.output_text).toBeTruthy();
   });
 });

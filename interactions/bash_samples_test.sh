@@ -723,3 +723,189 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/decisions \
   }'
 # [END paths['/{api_version}/decisions'].post:batch]
 }
+
+sample_api_version_interactions_post_document() {
+# [START paths['/{api_version}/interactions'].post:document]
+# [setup]
+curl -fsSL -o report.pdf https://www.berkshirehathaway.com/letters/2023ltr.pdf
+# [/setup]
+# Write the request to a file: inline base64 data can exceed the shell's
+# argument size limit.
+cat > request.json <<EOF
+{
+  "model": "gemini-4-hydrogen",
+  "input": [
+    {"type": "text", "text": "Summarize this document."},
+    {
+      "type": "document",
+      "mime_type": "application/pdf",
+      "data": "$(base64 -w0 report.pdf)"
+    }
+  ]
+}
+EOF
+
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
+  -H "x-goog-api-key: $GEMINI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d @request.json
+# [END paths['/{api_version}/interactions'].post:document]
+}
+
+sample_api_version_interactions_post_document_page_range() {
+# [START paths['/{api_version}/interactions'].post:document_page_range]
+# [setup]
+curl -fsSL -o report.pdf https://www.berkshirehathaway.com/letters/2023ltr.pdf
+# [/setup]
+# Only send pages 2 through 3 (1-indexed, inclusive).
+cat > request.json <<EOF
+{
+  "model": "gemini-4-hydrogen",
+  "input": [
+    {"type": "text", "text": "Summarize these pages."},
+    {
+      "type": "document",
+      "mime_type": "application/pdf",
+      "data": "$(base64 -w0 report.pdf)",
+      "processing": {
+        "type": "static",
+        "page_options": {"start_page": 2, "end_page": 3}
+      }
+    }
+  ]
+}
+EOF
+
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
+  -H "x-goog-api-key: $GEMINI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d @request.json
+# [END paths['/{api_version}/interactions'].post:document_page_range]
+}
+
+sample_api_version_interactions_post_document_text_only() {
+# [START paths['/{api_version}/interactions'].post:document_text_only]
+# [setup]
+curl -fsSL -o report.pdf https://www.berkshirehathaway.com/letters/2023ltr.pdf
+# [/setup]
+# Send the extracted page text, without page images.
+cat > request.json <<EOF
+{
+  "model": "gemini-4-hydrogen",
+  "input": [
+    {"type": "text", "text": "List the section headings."},
+    {
+      "type": "document",
+      "mime_type": "application/pdf",
+      "data": "$(base64 -w0 report.pdf)",
+      "processing": {
+        "type": "static",
+        "page_options": {"content_layers": ["page_text"]}
+      }
+    }
+  ]
+}
+EOF
+
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
+  -H "x-goog-api-key: $GEMINI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d @request.json
+# [END paths['/{api_version}/interactions'].post:document_text_only]
+}
+
+sample_api_version_interactions_post_document_resolution() {
+# [START paths['/{api_version}/interactions'].post:document_resolution]
+# [setup]
+curl -fsSL -o report.pdf https://www.berkshirehathaway.com/letters/2023ltr.pdf
+# [/setup]
+# Skim the page images at low resolution.
+cat > request.json <<EOF
+{
+  "model": "gemini-4-hydrogen",
+  "input": [
+    {"type": "text", "text": "Which pages contain tables?"},
+    {
+      "type": "document",
+      "mime_type": "application/pdf",
+      "data": "$(base64 -w0 report.pdf)",
+      "resolution": "low",
+      "processing": {
+        "type": "static",
+        "page_options": {"content_layers": ["page_image"]}
+      }
+    }
+  ]
+}
+EOF
+
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
+  -H "x-goog-api-key: $GEMINI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d @request.json
+# [END paths['/{api_version}/interactions'].post:document_resolution]
+}
+
+sample_api_version_interactions_post_document_office() {
+# [START paths['/{api_version}/interactions'].post:document_office]
+# [setup]
+curl -fsSL -o demo.docx https://calibre-ebook.com/downloads/demos/demo.docx
+# [/setup]
+cat > request.json <<EOF
+{
+  "model": "gemini-4-hydrogen",
+  "input": [
+    {"type": "text", "text": "Summarize the first page."},
+    {
+      "type": "document",
+      "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "data": "$(base64 -w0 demo.docx)",
+      "processing": {
+        "type": "static",
+        "page_options": {"start_page": 1, "end_page": 1}
+      }
+    }
+  ]
+}
+EOF
+
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
+  -H "x-goog-api-key: $GEMINI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d @request.json
+# [END paths['/{api_version}/interactions'].post:document_office]
+}
+
+sample_api_version_interactions_post_document_spreadsheet() {
+# [START paths['/{api_version}/interactions'].post:document_spreadsheet]
+# [setup]
+curl -fsSL -o financials.xlsx 'https://go.microsoft.com/fwlink/?LinkID=521962'
+# [/setup]
+cat > request.json <<EOF
+{
+  "model": "gemini-4-hydrogen",
+  "input": [
+    {"type": "text", "text": "Which country has the highest sales?"},
+    {
+      "type": "document",
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "data": "$(base64 -w0 financials.xlsx)",
+      "processing": {
+        "type": "static",
+        "spreadsheet_options": {
+          "sheet_index": 1,
+          "visible_cells": "A1:P50",
+          "content_layers": ["data", "formulas"]
+        }
+      }
+    }
+  ]
+}
+EOF
+
+curl -X POST https://generativelanguage.googleapis.com/v1beta/interactions \
+  -H "x-goog-api-key: $GEMINI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d @request.json
+# [END paths['/{api_version}/interactions'].post:document_spreadsheet]
+}
