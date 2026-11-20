@@ -17,12 +17,9 @@
 package com.example.gemini;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import com.google.genai.types.GenerateContentResponse;
-import com.google.genai.types.Part;
-import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class CodeExecutionTest {
@@ -31,23 +28,6 @@ public class CodeExecutionTest {
     GenerateContentResponse response =
         assertDoesNotThrow(
             CodeExecution::codeExecutionBasic, "codeExecutionBasic returned an error");
-
-    assertNotNull(response, "Response should not be null");
-
-    List<Part> parts = response.candidates().get().getFirst().content().get().parts().get();
-    assertNotNull(parts, "Response parts should not be null");
-    assert !parts.isEmpty();
-
-    assertNotNull(response.text(), "Response text should not be null");
-    assertFalse(response.text().trim().isEmpty(), "Response text should not be empty");
-  }
-
-  @Test
-  public void test_codeExecutionRequestOverride() {
-    GenerateContentResponse response =
-        assertDoesNotThrow(
-            CodeExecution::codeExecutionRequestOverride,
-            "codeExecutionRequestOverride returned an error");
 
     assertNotNull(response, "Response should not be null");
 

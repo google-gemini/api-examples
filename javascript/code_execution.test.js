@@ -18,18 +18,11 @@
 import assert from 'node:assert';
 import {describe, test} from 'node:test';
 
-import {codeExecutionBasic, codeExecutionChat, codeExecutionRequestOverride,} from './code_execution.js';
+import {codeExecutionBasic, codeExecutionChat} from './code_execution.js';
 
 describe('code_execution', () => {
   test('codeExecutionBasic', async () => {
     const result = await codeExecutionBasic();
-    // Check that the response contains parts and non-empty results.
-    assert.ok(Array.isArray(result.parts) && result.parts.length > 0);
-    assert.ok(result.text.length > 0);
-  });
-
-  test('codeExecutionRequestOverride', async () => {
-    const result = await codeExecutionRequestOverride();
     // Check that the response contains non-empty results.
     assert.ok(result.executableCode.length > 0);
     assert.ok(result.codeExecutionResult.length > 0);

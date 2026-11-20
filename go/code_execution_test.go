@@ -10,10 +10,3 @@ func TestCodeExecutionBasic(t *testing.T) {
 		t.Errorf("CodeExecutionBasic returned an error.")
 	}
 }
-
-func TestCodeExecutionRequestOverride(t *testing.T) {
-	_, err := CodeExecutionRequestOverride()
-	if err != nil {
-		t.Errorf("CodeExecutionRequestOverride returned an error.")
-	}
-}
