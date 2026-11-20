@@ -19,10 +19,8 @@ package com.example.gemini;
 import com.google.genai.Chat;
 import com.google.genai.Client;
 import com.google.genai.types.Content;
-import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
 import com.google.genai.types.Part;
-import java.util.Collections;
 import java.util.List;
 
 public class ChatSession {
@@ -30,22 +28,16 @@ public class ChatSession {
     // [START chat]
     Client client = new Client();
 
-    Content userContent = Content.fromParts(Part.fromText("Hello"));
-    Content modelContent =
-        Content.builder()
-            .role("model")
-            .parts(
-                Collections.singletonList(
-                    Part.fromText("Great to meet you. What would you like to know?")))
-            .build();
-
-    Chat chat =
-        client.chats.create(
-            "gemini-3.8-flash",
-            GenerateContentConfig.builder()
-                .systemInstruction(userContent)
-                .systemInstruction(modelContent)
+    // Pass initial history as the third argument of chats.create.
+    List<Content> history =
+        List.of(
+            Content.fromParts(Part.fromText("Hello")),
+            Content.builder()
+                .role("model")
+                .parts(Part.fromText("Great to meet you. What would you like to know?"))
                 .build());
+
+    Chat chat = client.chats.create("gemini-3.8-flash", null, history);
 
     GenerateContentResponse response1 = chat.sendMessage("I have 2 dogs in my house.");
     System.out.println(response1.text());
