@@ -42,7 +42,7 @@ class UnitTests(absltest.TestCase):
 
     # Create a chat session; function calling (via tools) is enabled in the config.
     chat = client.chats.create(
-        model="gemini-3.8-flash",
+        model="gemini-4-hydrogen",
         config=types.GenerateContentConfig(
             tools=[add, subtract, multiply, divide]
         ),

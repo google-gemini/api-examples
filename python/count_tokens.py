@@ -25,7 +25,7 @@ class UnitTests(absltest.TestCase):
     from google import genai
 
     client = genai.Client()
-    model_info = client.models.get(model="gemini-3.8-flash")
+    model_info = client.models.get(model="gemini-4-hydrogen")
     print(f"{model_info.input_token_limit=}")
     print(f"{model_info.output_token_limit=}")
     # ( e.g., input_token_limit=30720, output_token_limit=2048 )
@@ -40,13 +40,13 @@ class UnitTests(absltest.TestCase):
 
     # Count tokens using the new client method.
     total_tokens = client.models.count_tokens(
-        model="gemini-3.8-flash", contents=prompt
+        model="gemini-4-hydrogen", contents=prompt
     )
     print("total_tokens: ", total_tokens)
     # ( e.g., total_tokens: 10 )
 
     response = client.models.generate_content(
-        model="gemini-3.8-flash", contents=prompt
+        model="gemini-4-hydrogen", contents=prompt
     )
 
     # The usage_metadata provides detailed token counts.
@@ -62,7 +62,7 @@ class UnitTests(absltest.TestCase):
     client = genai.Client()
 
     chat = client.chats.create(
-        model="gemini-3.8-flash",
+        model="gemini-4-hydrogen",
         history=[
             types.Content(
                 role="user", parts=[types.Part(text="Hi my name is Bob")]
@@ -73,7 +73,7 @@ class UnitTests(absltest.TestCase):
     # Count tokens for the chat history.
     print(
         client.models.count_tokens(
-            model="gemini-3.8-flash", contents=chat.get_history()
+            model="gemini-4-hydrogen", contents=chat.get_history()
         )
     )
     # ( e.g., total_tokens: 10 )
@@ -97,7 +97,7 @@ class UnitTests(absltest.TestCase):
     history = chat.get_history()
     history.append(extra)
     print(
-        client.models.count_tokens(model="gemini-3.8-flash", contents=history)
+        client.models.count_tokens(model="gemini-4-hydrogen", contents=history)
     )
     # ( e.g., total_tokens: 56 )
     # [END tokens_chat]
@@ -114,13 +114,13 @@ class UnitTests(absltest.TestCase):
     # Count tokens for combined text and inline image.
     print(
         client.models.count_tokens(
-            model="gemini-3.8-flash", contents=[prompt, your_image_file]
+            model="gemini-4-hydrogen", contents=[prompt, your_image_file]
         )
     )
     # ( e.g., total_tokens: 263 )
 
     response = client.models.generate_content(
-        model="gemini-3.8-flash", contents=[prompt, your_image_file]
+        model="gemini-4-hydrogen", contents=[prompt, your_image_file]
     )
     print(response.usage_metadata)
     # ( e.g., prompt_token_count: 264, candidates_token_count: 80, total_token_count: 345 )
@@ -136,13 +136,13 @@ class UnitTests(absltest.TestCase):
 
     print(
         client.models.count_tokens(
-            model="gemini-3.8-flash", contents=[prompt, your_image_file]
+            model="gemini-4-hydrogen", contents=[prompt, your_image_file]
         )
     )
     # ( e.g., total_tokens: 263 )
 
     response = client.models.generate_content(
-        model="gemini-3.8-flash", contents=[prompt, your_image_file]
+        model="gemini-4-hydrogen", contents=[prompt, your_image_file]
     )
     print(response.usage_metadata)
     # ( e.g., prompt_token_count: 264, candidates_token_count: 80, total_token_count: 345 )
@@ -166,13 +166,13 @@ class UnitTests(absltest.TestCase):
 
     print(
         client.models.count_tokens(
-            model="gemini-3.8-flash", contents=[prompt, your_file]
+            model="gemini-4-hydrogen", contents=[prompt, your_file]
         )
     )
     # ( e.g., total_tokens: 300 )
 
     response = client.models.generate_content(
-        model="gemini-3.8-flash", contents=[prompt, your_file]
+        model="gemini-4-hydrogen", contents=[prompt, your_file]
     )
     print(response.usage_metadata)
     # ( e.g., prompt_token_count: 301, candidates_token_count: 60, total_token_count: 361 )
@@ -185,13 +185,13 @@ class UnitTests(absltest.TestCase):
     client = genai.Client()
     sample_pdf = client.files.upload(file=media / "test.pdf")
     token_count = client.models.count_tokens(
-        model="gemini-3.8-flash",
+        model="gemini-4-hydrogen",
         contents=["Give me a summary of this document.", sample_pdf],
     )
     print(f"{token_count=}")
 
     response = client.models.generate_content(
-        model="gemini-3.8-flash",
+        model="gemini-4-hydrogen",
         contents=["Give me a summary of this document.", sample_pdf],
     )
     print(response.usage_metadata)

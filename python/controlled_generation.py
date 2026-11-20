@@ -32,7 +32,7 @@ class UnitTests(absltest.TestCase):
 
     client = genai.Client()
     result = client.models.generate_content(
-        model="gemini-3.8-flash",
+        model="gemini-4-hydrogen",
         contents="List a few popular cookie recipes.",
         config=types.GenerateContentConfig(
             response_mime_type="application/json", response_schema=list[Recipe]
@@ -53,7 +53,7 @@ class UnitTests(absltest.TestCase):
         "Return: list[Recipe]"
     )
     result = client.models.generate_content(
-        model="gemini-3.8-flash", contents=prompt
+        model="gemini-4-hydrogen", contents=prompt
     )
     print(result)
     # [END json_no_schema]
@@ -74,7 +74,7 @@ class UnitTests(absltest.TestCase):
     client = genai.Client()
     organ = client.files.upload(file=media / "organ.jpg")
     result = client.models.generate_content(
-        model="gemini-3.8-flash",
+        model="gemini-4-hydrogen",
         contents=["What kind of instrument is this:", organ],
         config=types.GenerateContentConfig(
             response_mime_type="application/json", response_schema=Choice
@@ -106,7 +106,7 @@ class UnitTests(absltest.TestCase):
 
     client = genai.Client()
     result = client.models.generate_content(
-        model="gemini-3.8-flash",
+        model="gemini-4-hydrogen",
         contents="List about 10 cookie recipes, grade them based on popularity",
         config=types.GenerateContentConfig(
             response_mime_type="application/json", response_schema=list[Recipe]
@@ -124,7 +124,7 @@ class UnitTests(absltest.TestCase):
     client = genai.Client()
     organ = client.files.upload(file=media / "organ.jpg")
     result = client.models.generate_content(
-        model="gemini-3.8-flash",
+        model="gemini-4-hydrogen",
         contents=["What kind of instrument is this:", organ],
         config=types.GenerateContentConfig(
             response_mime_type="application/json",
@@ -159,7 +159,7 @@ class UnitTests(absltest.TestCase):
     client = genai.Client()
     organ = client.files.upload(file=media / "organ.jpg")
     result = client.models.generate_content(
-        model="gemini-3.8-flash",
+        model="gemini-4-hydrogen",
         contents=["What kind of instrument is this:", organ],
         config=types.GenerateContentConfig(
             response_mime_type="text/x.enum", response_schema=Choice
@@ -176,7 +176,7 @@ class UnitTests(absltest.TestCase):
     client = genai.Client()
     organ = client.files.upload(file=media / "organ.jpg")
     result = client.models.generate_content(
-        model="gemini-3.8-flash",
+        model="gemini-4-hydrogen",
         contents=["What kind of instrument is this:", organ],
         config=types.GenerateContentConfig(
             response_mime_type="text/x.enum",

@@ -37,7 +37,7 @@ public class CodeExecution {
         """;
 
     GenerateContentResponse response =
-        client.models.generateContent("gemini-3.8-flash", prompt, null);
+        client.models.generateContent("gemini-4-hydrogen", prompt, null);
 
     for (Part part : response.candidates().get().getFirst().content().get().parts().get()) {
       System.out.println(part + "\n");
@@ -109,7 +109,7 @@ public class CodeExecution {
             .build();
 
     GenerateContentResponse response =
-        client.models.generateContent("gemini-3.8-flash", prompt, config);
+        client.models.generateContent("gemini-4-hydrogen", prompt, config);
 
     System.out.println("-".repeat(80));
     System.out.println(response.executableCode());

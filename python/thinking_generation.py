@@ -16,7 +16,7 @@
 from absl.testing import absltest
 
 # Define the thinking model centrally
-MODEL_ID = "gemini-3.8-flash"
+MODEL_ID = "gemini-4-hydrogen"
 
 
 class ThinkingUnitTests(absltest.TestCase):

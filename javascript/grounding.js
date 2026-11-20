@@ -17,7 +17,7 @@
 
 import {GoogleGenAI} from '@google/genai';
 
-const MODEL_ID = 'gemini-3.8-flash';
+const MODEL_ID = 'gemini-4-hydrogen';
 
 const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 

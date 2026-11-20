@@ -34,7 +34,7 @@ public class TextGeneration {
 
     GenerateContentResponse response =
         client.models.generateContent(
-            "gemini-3.8-flash", "Write a story about a magic backpack.", null);
+            "gemini-4-hydrogen", "Write a story about a magic backpack.", null);
 
     System.out.println(response.text());
     // [END text_gen_text_only_prompt]
@@ -47,7 +47,7 @@ public class TextGeneration {
 
     ResponseStream<GenerateContentResponse> responseStream =
         client.models.generateContentStream(
-            "gemini-3.8-flash", "Write a story about a magic backpack.", null);
+            "gemini-4-hydrogen", "Write a story about a magic backpack.", null);
 
     StringBuilder response = new StringBuilder();
     for (GenerateContentResponse res : responseStream) {
@@ -73,7 +73,7 @@ public class TextGeneration {
             Part.fromBytes(imageData, "image/jpeg"));
 
     GenerateContentResponse response =
-        client.models.generateContent("gemini-3.8-flash", content, null);
+        client.models.generateContent("gemini-4-hydrogen", content, null);
 
     System.out.println(response.text());
     // [END text_gen_multimodal_one_image_prompt]
@@ -93,7 +93,7 @@ public class TextGeneration {
             Part.fromBytes(imageData, "image/jpeg"));
 
     ResponseStream<GenerateContentResponse> responseStream =
-        client.models.generateContentStream("gemini-3.8-flash", content, null);
+        client.models.generateContentStream("gemini-4-hydrogen", content, null);
 
     StringBuilder response = new StringBuilder();
     for (GenerateContentResponse res : responseStream) {
@@ -123,7 +123,7 @@ public class TextGeneration {
             Part.fromBytes(cajunImageData, "image/jpeg"));
 
     GenerateContentResponse response =
-        client.models.generateContent("gemini-3.8-flash", content, null);
+        client.models.generateContent("gemini-4-hydrogen", content, null);
 
     System.out.println(response.text());
     // [END text_gen_multimodal_multi_image_prompt]
@@ -147,7 +147,7 @@ public class TextGeneration {
             Part.fromBytes(cajunImageData, "image/jpeg"));
 
     ResponseStream<GenerateContentResponse> responseStream =
-        client.models.generateContentStream("gemini-3.8-flash", content, null);
+        client.models.generateContentStream("gemini-4-hydrogen", content, null);
 
     StringBuilder response = new StringBuilder();
     for (GenerateContentResponse res : responseStream) {
@@ -173,7 +173,7 @@ public class TextGeneration {
             Part.fromBytes(audioData, "audio/mpeg"));
 
     GenerateContentResponse response =
-        client.models.generateContent("gemini-3.8-flash", content, null);
+        client.models.generateContent("gemini-4-hydrogen", content, null);
 
     System.out.println(response.text());
     // [END text_gen_multimodal_audio]
@@ -193,7 +193,7 @@ public class TextGeneration {
             Part.fromBytes(audioData, "audio/mpeg"));
 
     ResponseStream<GenerateContentResponse> responseStream =
-        client.models.generateContentStream("gemini-3.8-flash", content, null);
+        client.models.generateContentStream("gemini-4-hydrogen", content, null);
 
     StringBuilder response = new StringBuilder();
     for (GenerateContentResponse res : responseStream) {
@@ -218,7 +218,7 @@ public class TextGeneration {
             Part.fromText("Describe this video clip."), Part.fromBytes(videoData, "video/mp4"));
 
     GenerateContentResponse response =
-        client.models.generateContent("gemini-3.8-flash", content, null);
+        client.models.generateContent("gemini-4-hydrogen", content, null);
 
     System.out.println(response.text());
     // [END text_gen_multimodal_video_prompt]
@@ -237,7 +237,7 @@ public class TextGeneration {
             Part.fromText("Describe this video clip."), Part.fromBytes(videoData, "video/mp4"));
 
     ResponseStream<GenerateContentResponse> responseStream =
-        client.models.generateContentStream("gemini-3.8-flash", content, null);
+        client.models.generateContentStream("gemini-4-hydrogen", content, null);
 
     StringBuilder response = new StringBuilder();
     for (GenerateContentResponse res : responseStream) {
@@ -263,7 +263,7 @@ public class TextGeneration {
             Part.fromBytes(pdfData, "application/pdf"));
 
     GenerateContentResponse response =
-        client.models.generateContent("gemini-3.8-flash", content, null);
+        client.models.generateContent("gemini-4-hydrogen", content, null);
 
     System.out.println(response.text());
     // [END text_gen_multimodal_pdf]
@@ -283,7 +283,7 @@ public class TextGeneration {
             Part.fromBytes(pdfData, "application/pdf"));
 
     ResponseStream<GenerateContentResponse> responseStream =
-        client.models.generateContentStream("gemini-3.8-flash", content, null);
+        client.models.generateContentStream("gemini-4-hydrogen", content, null);
 
     StringBuilder response = new StringBuilder();
     for (GenerateContentResponse res : responseStream) {

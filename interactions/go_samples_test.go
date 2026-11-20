@@ -615,7 +615,7 @@ func TestSample_api_version_interactions_post_simple(t *testing.T) {
 	}
 
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-		Model: gaos_interactions.Model("gemini-3.8-flash"),
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
 		Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Hello, how are you?")),
 	})
 
@@ -663,7 +663,7 @@ func TestSample_api_version_interactions_post_multi_turn(t *testing.T) {
 	}
 
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-		Model: gaos_interactions.Model("gemini-3.8-flash"),
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
 		Input: genai.Ptr(gaos_interactions.NewInteractionsInput(history)),
 	})
 
@@ -697,7 +697,7 @@ func TestSample_api_version_interactions_post_multimodal_image(t *testing.T) {
 	}
 
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-		Model: gaos_interactions.Model("gemini-3.8-flash"),
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
 		Input: genai.Ptr(gaos_interactions.NewInteractionsInput(contents)),
 	})
 
@@ -738,7 +738,7 @@ func TestSample_api_version_interactions_post_function_calling(t *testing.T) {
 	tool := gaos_interactions.NewTool(function)
 
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-		Model: gaos_interactions.Model("gemini-3.8-flash"),
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
 		Input: genai.Ptr(gaos_interactions.NewInteractionsInput("What is the weather like in Boston, MA?")),
 		Tools: []gaos_interactions.Tool{tool},
 	})
@@ -969,7 +969,7 @@ func TestSample_api_version_interactions_id_delete_delete(t *testing.T) {
 
 	// [setup]
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-		Model: gaos_interactions.Model("gemini-3.8-flash"),
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
 		Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Hello")),
 	})
 	createReq := operations.CreateInteractionRequest{
@@ -1012,7 +1012,7 @@ func TestSample_api_version_interactions_id_get_get(t *testing.T) {
 
 	// [setup]
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-		Model: gaos_interactions.Model("gemini-3.8-flash"),
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
 		Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Say hello.")),
 	})
 	created, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{Body: body})
@@ -1047,7 +1047,7 @@ func TestSample_api_version_interactions_id_cancel_post_cancel(t *testing.T) {
 
 	// [setup]
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-		Model:      gaos_interactions.Model("gemini-3.8-flash"),
+		Model:      gaos_interactions.Model("gemini-4-hydrogen"),
 		Input:      genai.Ptr(gaos_interactions.NewInteractionsInput("Write a long essay about the history of computing.")),
 		Background: genai.Ptr(true),
 	})
@@ -1094,7 +1094,7 @@ func TestSample_schema_CodeExecution_code_execution(t *testing.T) {
 	tool := gaos_interactions.NewTool(gaos_interactions.CodeExecution{})
 
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-		Model: gaos_interactions.Model("gemini-3.8-flash"),
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
 		Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Calculate the first 10 Fibonacci numbers")),
 		Tools: []gaos_interactions.Tool{tool},
 	})
@@ -1125,7 +1125,7 @@ func TestSample_schema_ComputerUse_computer_use(t *testing.T) {
 	tool := gaos_interactions.NewTool(gaos_interactions.ComputerUse{})
 
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-		Model: gaos_interactions.Model("gemini-3.8-flash"),
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
 		Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Find a flight to Tokyo")),
 		Tools: []gaos_interactions.Tool{tool},
 	})
@@ -1165,7 +1165,7 @@ func TestSample_schema_FileSearch_file_search(t *testing.T) {
 	})
 
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-		Model: gaos_interactions.Model("gemini-3.8-flash"),
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
 		Input: genai.Ptr(gaos_interactions.NewInteractionsInput("What documents are available?")),
 		Tools: []gaos_interactions.Tool{tool},
 	})
@@ -1215,7 +1215,7 @@ func TestSample_schema_Function_function_calling(t *testing.T) {
 	tool := gaos_interactions.NewTool(function)
 
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-		Model: gaos_interactions.Model("gemini-3.8-flash"),
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
 		Input: genai.Ptr(gaos_interactions.NewInteractionsInput("What is the weather like in Boston, MA?")),
 		Tools: []gaos_interactions.Tool{tool},
 	})
@@ -1254,7 +1254,7 @@ func TestSample_schema_GoogleMaps_google_maps(t *testing.T) {
 	})
 
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-		Model: gaos_interactions.Model("gemini-3.8-flash"),
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
 		Input: genai.Ptr(gaos_interactions.NewInteractionsInput("What is the best food near me?")),
 		Tools: []gaos_interactions.Tool{tool},
 	})
@@ -1285,7 +1285,7 @@ func TestSample_schema_GoogleSearch_google_search(t *testing.T) {
 	tool := gaos_interactions.NewTool(gaos_interactions.GoogleSearch{})
 
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-		Model: gaos_interactions.Model("gemini-3.8-flash"),
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
 		Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Who is the current president of France?")),
 		Tools: []gaos_interactions.Tool{tool},
 	})
@@ -1320,7 +1320,7 @@ func TestSample_schema_McpServer_mcp_server(t *testing.T) {
 	tool := gaos_interactions.NewTool(mcpServer)
 
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-		Model: gaos_interactions.Model("gemini-3.8-flash"),
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
 		Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Today is 12-05-2025, what is the temperature today in London?")),
 		Tools: []gaos_interactions.Tool{tool},
 	})
@@ -1351,7 +1351,7 @@ func TestSample_schema_UrlContext_url_context(t *testing.T) {
 	tool := gaos_interactions.NewTool(gaos_interactions.URLContext{})
 
 	body := operations.NewCreateInteractionRequestBody(gaos_interactions.CreateModelInteraction{
-		Model: gaos_interactions.Model("gemini-3.8-flash"),
+		Model: gaos_interactions.Model("gemini-4-hydrogen"),
 		Input: genai.Ptr(gaos_interactions.NewInteractionsInput("Summarize https://www.example.com")),
 		Tools: []gaos_interactions.Tool{tool},
 	})

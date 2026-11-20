@@ -64,7 +64,7 @@ public class ControlledGeneration {
 
     GenerateContentResponse response =
         client.models.generateContent(
-            "gemini-3.8-flash", "List a few popular cookie recipes.", config);
+            "gemini-4-hydrogen", "List a few popular cookie recipes.", config);
 
     System.out.println(response.text());
     // [END json_controlled_generation]
@@ -89,7 +89,7 @@ public class ControlledGeneration {
         """;
 
     GenerateContentResponse response =
-        client.models.generateContent("gemini-3.8-flash", prompt, null);
+        client.models.generateContent("gemini-4-hydrogen", prompt, null);
 
     System.out.println(response.text());
     // [END json_no_schema]
@@ -122,7 +122,7 @@ public class ControlledGeneration {
             .build();
 
     GenerateContentResponse response =
-        client.models.generateContent("gemini-3.8-flash", content, config);
+        client.models.generateContent("gemini-4-hydrogen", content, config);
 
     System.out.println(response.text());
     // [END json_enum]
@@ -160,7 +160,7 @@ public class ControlledGeneration {
 
     GenerateContentResponse response =
         client.models.generateContent(
-            "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "List about 10 cookie recipes, grade them based on popularity",
             config);
 
@@ -195,7 +195,7 @@ public class ControlledGeneration {
             .build();
 
     GenerateContentResponse response =
-        client.models.generateContent("gemini-3.8-flash", content, config);
+        client.models.generateContent("gemini-4-hydrogen", content, config);
 
     System.out.println(response.text());
     // [END x_enum]

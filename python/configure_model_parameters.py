@@ -24,13 +24,12 @@ class UnitTests(absltest.TestCase):
 
     client = genai.Client()
     response = client.models.generate_content(
-        model="gemini-3.8-flash",
+        model="gemini-4-hydrogen",
         contents="Tell me a story about a magic backpack.",
         config=types.GenerateContentConfig(
             candidate_count=1,
             stop_sequences=["x"],
-            max_output_tokens=800,
-            temperature=1.0,
+            max_output_tokens=4096,
         ),
     )
     print(response.text)

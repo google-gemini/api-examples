@@ -45,7 +45,7 @@ public class SafetySettings {
             .build();
 
     GenerateContentResponse response =
-        client.models.generateContent("gemini-3.8-flash", unsafePrompt, config);
+        client.models.generateContent("gemini-4-hydrogen", unsafePrompt, config);
 
     System.out.println(response.candidates().get().getFirst().finishReason());
     System.out.println(response.candidates().get().getFirst().safetyRatings());
@@ -78,7 +78,7 @@ public class SafetySettings {
             .build();
 
     GenerateContentResponse response =
-        client.models.generateContent("gemini-3.8-flash", unsafePrompt, config);
+        client.models.generateContent("gemini-4-hydrogen", unsafePrompt, config);
 
     try {
       System.out.println(response.text());

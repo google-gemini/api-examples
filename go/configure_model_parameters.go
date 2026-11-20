@@ -21,18 +21,16 @@ func ConfigureModelParameters() (*genai.GenerateContentResponse, error) {
 
 	// Create local variables for parameters.
 	candidateCount := int32(1)
-	maxOutputTokens := int32(800)
-	temperature := float32(1.0)
+	maxOutputTokens := int32(4096)
 
 	response, err := client.Models.GenerateContent(
 		ctx,
-		"gemini-3.8-flash",
+		"gemini-4-hydrogen",
 		genai.Text("Tell me a story about a magic backpack."),
 		&genai.GenerateContentConfig{
 			CandidateCount:  candidateCount,
 			StopSequences:   []string{"x"},
 			MaxOutputTokens: maxOutputTokens,
-			Temperature:     &temperature,
 		},
 	)
 	if err != nil {

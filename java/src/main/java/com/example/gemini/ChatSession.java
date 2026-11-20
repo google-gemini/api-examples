@@ -41,7 +41,7 @@ public class ChatSession {
 
     Chat chat =
         client.chats.create(
-            "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             GenerateContentConfig.builder()
                 .systemInstruction(userContent)
                 .systemInstruction(modelContent)
