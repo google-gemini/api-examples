@@ -24,9 +24,9 @@ export async function embedContent() {
   const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
   const text = 'Hello World!';
   const result = await ai.models.embedContent({
-    model: 'gemini-embedding-001',
+    model: 'gemini-embedding-2',
     contents: text,
-    config: {outputDimensionality: 10},
+    config: {outputDimensionality: 768},
   });
   console.log(result.embeddings);
   // [END embed_content]
@@ -44,9 +44,9 @@ export async function batchEmbedContents() {
     'How does the brain work?',
   ];
   const result = await ai.models.embedContent({
-    model: 'gemini-embedding-001',
+    model: 'gemini-embedding-2',
     contents: texts,
-    config: {outputDimensionality: 10},
+    config: {outputDimensionality: 768},
   });
   console.log(result.embeddings);
   // [END batch_embed_contents]

@@ -60,7 +60,7 @@ func ModelsGet() error {
 		log.Fatal(err)
 	}
 
-	modelInfo, err := client.Models.Get(ctx, "gemini-3.8-flash", nil)
+	modelInfo, err := client.Models.Get(ctx, "gemini-4-hydrogen", nil)
 	if err != nil {
 		log.Fatal(err)
 	}

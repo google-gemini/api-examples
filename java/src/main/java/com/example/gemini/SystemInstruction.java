@@ -37,7 +37,7 @@ public class SystemInstruction {
         GenerateContentConfig.builder().systemInstruction(content).build();
 
     GenerateContentResponse response =
-        client.models.generateContent("gemini-3.8-flash", "Good morning! How are you?", config);
+        client.models.generateContent("gemini-4-hydrogen", "Good morning! How are you?", config);
 
     System.out.println(response.text());
     // [END system_instruction]

@@ -35,13 +35,13 @@ export async function tokensTextOnly() {
   const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
   const prompt = 'The quick brown fox jumps over the lazy dog.';
   const countTokensResponse = await ai.models.countTokens({
-    model: 'gemini-3.8-flash',
+    model: 'gemini-4-hydrogen',
     contents: prompt,
   });
   console.log(countTokensResponse.totalTokens);
 
   const generateResponse = await ai.models.generateContent({
-    model: 'gemini-3.8-flash',
+    model: 'gemini-4-hydrogen',
     contents: prompt,
   });
   console.log(generateResponse.usageMetadata);
@@ -63,13 +63,13 @@ export async function tokensChat() {
     {role: 'model', parts: [{text: 'Hi Bob!'}]},
   ];
   const chat = ai.chats.create({
-    model: 'gemini-3.8-flash',
+    model: 'gemini-4-hydrogen',
     history: history,
   });
 
   // Count tokens for the current chat history.
   const countTokensResponse = await ai.models.countTokens({
-    model: 'gemini-3.8-flash',
+    model: 'gemini-4-hydrogen',
     contents: chat.getHistory(),
   });
   console.log(countTokensResponse.totalTokens);
@@ -87,7 +87,7 @@ export async function tokensChat() {
   const combinedHistory = chat.getHistory();
   combinedHistory.push(extraMessage);
   const combinedCountTokensResponse = await ai.models.countTokens({
-    model: 'gemini-3.8-flash',
+    model: 'gemini-4-hydrogen',
     contents: combinedHistory,
   });
   console.log(
@@ -120,13 +120,13 @@ export async function tokensMultimodalImageInline() {
   ]);
 
   const countTokensResponse = await ai.models.countTokens({
-    model: 'gemini-3.8-flash',
+    model: 'gemini-4-hydrogen',
     contents: contents,
   });
   console.log(countTokensResponse.totalTokens);
 
   const generateResponse = await ai.models.generateContent({
-    model: 'gemini-3.8-flash',
+    model: 'gemini-4-hydrogen',
     contents: contents,
   });
   console.log(generateResponse.usageMetadata);
@@ -150,7 +150,7 @@ export async function tokensMultimodalImageFileApi() {
   });
 
   const countTokensResponse = await ai.models.countTokens({
-    model: 'gemini-3.8-flash',
+    model: 'gemini-4-hydrogen',
     contents: createUserContent([
       prompt,
       createPartFromUri(organ.uri, organ.mimeType),
@@ -159,7 +159,7 @@ export async function tokensMultimodalImageFileApi() {
   console.log(countTokensResponse.totalTokens);
 
   const generateResponse = await ai.models.generateContent({
-    model: 'gemini-3.8-flash',
+    model: 'gemini-4-hydrogen',
     contents: createUserContent([
       prompt,
       createPartFromUri(organ.uri, organ.mimeType),
@@ -193,7 +193,7 @@ export async function tokensMultimodalVideoAudioFileApi() {
   }
 
   const countTokensResponse = await ai.models.countTokens({
-    model: 'gemini-3.8-flash',
+    model: 'gemini-4-hydrogen',
     contents: createUserContent([
       prompt,
       createPartFromUri(videoFile.uri, videoFile.mimeType),
@@ -202,7 +202,7 @@ export async function tokensMultimodalVideoAudioFileApi() {
   console.log(countTokensResponse.totalTokens);
 
   const generateResponse = await ai.models.generateContent({
-    model: 'gemini-3.8-flash',
+    model: 'gemini-4-hydrogen',
     contents: createUserContent([
       prompt,
       createPartFromUri(videoFile.uri, videoFile.mimeType),
@@ -228,7 +228,7 @@ export async function tokensMultimodalPdfFileApi() {
   });
   const prompt = 'Give me a summary of this document.';
   const countTokensResponse = await ai.models.countTokens({
-    model: 'gemini-3.8-flash',
+    model: 'gemini-4-hydrogen',
     contents: createUserContent([
       prompt,
       createPartFromUri(samplePdf.uri, samplePdf.mimeType),
@@ -237,7 +237,7 @@ export async function tokensMultimodalPdfFileApi() {
   console.log(countTokensResponse.totalTokens);
 
   const generateResponse = await ai.models.generateContent({
-    model: 'gemini-3.8-flash',
+    model: 'gemini-4-hydrogen',
     contents: createUserContent([
       prompt,
       createPartFromUri(samplePdf.uri, samplePdf.mimeType),

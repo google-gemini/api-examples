@@ -35,7 +35,7 @@ func SafetySettings() error {
 	contents := []*genai.Content{
 		genai.NewContentFromText(unsafePrompt, genai.RoleUser),
 	}
-	response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, config)
+	response, err := client.Models.GenerateContent(ctx, "gemini-4-hydrogen", contents, config)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -84,7 +84,7 @@ func SafetySettingsMulti() error {
 	contents := []*genai.Content{
 		genai.NewContentFromText(unsafePrompt, genai.RoleUser),
 	}
-	response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, config)
+	response, err := client.Models.GenerateContent(ctx, "gemini-4-hydrogen", contents, config)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -31,13 +31,12 @@ public class ConfigureModelParameters {
         GenerateContentConfig.builder()
             .candidateCount(1)
             .stopSequences(List.of("x"))
-            .maxOutputTokens(800)
-            .temperature(1.0F)
+            .maxOutputTokens(4096)
             .build();
 
     GenerateContentResponse response =
         client.models.generateContent(
-            "gemini-3.8-flash", "Tell me a story about a magic backpack.", config);
+            "gemini-4-hydrogen", "Tell me a story about a magic backpack.", config);
 
     System.out.println(response.text());
     // [END configure_model_parameters]

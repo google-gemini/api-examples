@@ -11,7 +11,7 @@ import (
 )
 
 // Define the thinking model centrally
-const modelID = "gemini-3.8-flash"
+const modelID = "gemini-4-hydrogen"
 
 // Helper function to initialize the client
 func newGenAIClient(ctx context.Context) (*genai.Client, error) {

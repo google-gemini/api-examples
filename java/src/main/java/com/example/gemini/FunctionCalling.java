@@ -128,7 +128,7 @@ public class FunctionCalling {
 
     GenerateContentResponse response =
         client.models.generateContent(
-            "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "I have 57 cats, each owns 44 mittens, how many mittens is that in total?",
             config);
 

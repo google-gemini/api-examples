@@ -24,7 +24,7 @@ export async function codeExecutionBasic() {
   const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 
   const response = await ai.models.generateContent({
-    model: 'gemini-3.8-flash',
+    model: 'gemini-4-hydrogen',
     contents:
         `Write and execute code that calculates the sum of the first 50 prime numbers.
                Ensure that only the executable code and its resulting output are generated.`,
@@ -110,7 +110,7 @@ export async function codeExecutionRequestOverride() {
   const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 
   const response = await ai.models.generateContent({
-    model: 'gemini-3.8-flash',
+    model: 'gemini-4-hydrogen',
     contents:
         'What is the sum of the first 50 prime numbers? Generate and run code for the calculation, and make sure you get all 50.',
     config: {
@@ -168,7 +168,7 @@ export async function codeExecutionChat() {
   const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 
   const chat = ai.chats.create({
-    model: 'gemini-3.8-flash',
+    model: 'gemini-4-hydrogen',
   });
 
   const response = await chat.sendMessage({

@@ -68,7 +68,7 @@ func FunctionCalling() error {
 	if err != nil {
 		log.Fatal(err)
 	}
-	modelName := "gemini-3.8-flash"
+	modelName := "gemini-4-hydrogen"
 
 	// Create the function declarations for arithmetic operations.
 	addDeclaration := createArithmeticToolDeclaration("addNumbers", "Return the result of adding two numbers.")

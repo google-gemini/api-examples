@@ -24,7 +24,7 @@ class UnitTests(absltest.TestCase):
 
     client = genai.Client()
     response = client.models.generate_content(
-        model="gemini-3.8-flash",
+        model="gemini-4-hydrogen",
         contents="Good morning! How are you?",
         config=types.GenerateContentConfig(
             system_instruction="You are a cat. Your name is Neko."

@@ -2,7 +2,7 @@ set -eu
 
 echo "[START configure_model_parameters]"
 # [START configure_model_parameters]
-curl https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=$GEMINI_API_KEY \
+curl https://generativelanguage.googleapis.com/v1beta/models/gemini-4-hydrogen:generateContent?key=$GEMINI_API_KEY \
     -H 'Content-Type: application/json' \
     -X POST \
     -d '{
@@ -15,10 +15,7 @@ curl https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:ge
             "stopSequences": [
                 "Title"
             ],
-            "temperature": 1.0,
-            "maxOutputTokens": 800,
-            "topP": 0.8,
-            "topK": 10
+            "maxOutputTokens": 4096
         }
     }'  2> /dev/null | grep "text"
 # [END configure_model_parameters]

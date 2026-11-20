@@ -513,7 +513,7 @@ public class JavaSamplesTest {
     Client client = new Client();
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
+            .model("gemini-4-hydrogen")
             .input(InteractionsInput.of("Hello, how are you?"))
             .build();
     CreateInteractionResponse response =
@@ -545,7 +545,7 @@ public class JavaSamplesTest {
                 .build());
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
+            .model("gemini-4-hydrogen")
             .input(InteractionsInput.ofStep(conversation))
             .build();
     CreateInteractionResponse response =
@@ -570,7 +570,7 @@ public class JavaSamplesTest {
                 .build());
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
+            .model("gemini-4-hydrogen")
             .input(InteractionsInput.ofContent(content))
             .build();
     CreateInteractionResponse response =
@@ -604,7 +604,7 @@ public class JavaSamplesTest {
             .build();
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
+            .model("gemini-4-hydrogen")
             .tools(List.of(functionTool))
             .input(InteractionsInput.of("What is the weather like in Boston, MA?"))
             .build();
@@ -797,7 +797,7 @@ public class JavaSamplesTest {
     // [setup]
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
+            .model("gemini-4-hydrogen")
             .input(InteractionsInput.of("Hello"))
             .build();
     CreateInteractionResponse created =
@@ -819,7 +819,7 @@ public class JavaSamplesTest {
     // [setup]
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
+            .model("gemini-4-hydrogen")
             .input(InteractionsInput.of("Say hello."))
             .build();
     CreateInteractionResponse created =
@@ -846,7 +846,7 @@ public class JavaSamplesTest {
     // Start a background interaction so it stays in-progress.
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
+            .model("gemini-4-hydrogen")
             .input(InteractionsInput.of("Write a long essay about the history of computing."))
             .tools(List.of(new ComputerUse()))
             .background(true)
@@ -872,7 +872,7 @@ public class JavaSamplesTest {
     Client client = new Client();
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
+            .model("gemini-4-hydrogen")
             .tools(List.of(new CodeExecution()))
             .input(InteractionsInput.of("Calculate the first 10 Fibonacci numbers"))
             .build();
@@ -891,7 +891,7 @@ public class JavaSamplesTest {
     Client client = new Client();
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
+            .model("gemini-4-hydrogen")
             .tools(List.of(new ComputerUse()))
             .input(InteractionsInput.of("Find a flight to Tokyo"))
             .build();
@@ -917,7 +917,7 @@ public class JavaSamplesTest {
     FileSearch tool = FileSearch.builder().fileSearchStoreNames(List.of(storeName)).build();
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
+            .model("gemini-4-hydrogen")
             .tools(List.of(tool))
             .input(InteractionsInput.of("What documents are available?"))
             .build();
@@ -956,7 +956,7 @@ public class JavaSamplesTest {
             .build();
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
+            .model("gemini-4-hydrogen")
             .tools(List.of(functionTool))
             .input(InteractionsInput.of("What is the weather like in Boston?"))
             .build();
@@ -979,7 +979,7 @@ public class JavaSamplesTest {
     GoogleMaps tool = GoogleMaps.builder().latitude(37.7749).longitude(-122.4194).build();
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
+            .model("gemini-4-hydrogen")
             .tools(List.of(tool))
             .input(InteractionsInput.of("What is the best food near me?"))
             .build();
@@ -998,7 +998,7 @@ public class JavaSamplesTest {
     Client client = new Client();
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
+            .model("gemini-4-hydrogen")
             .tools(List.of(new GoogleSearch()))
             .input(InteractionsInput.of("Who is the current president of France?"))
             .build();
@@ -1022,7 +1022,7 @@ public class JavaSamplesTest {
             .build();
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
+            .model("gemini-4-hydrogen")
             .tools(List.of(mcpTool))
             .input(
                 InteractionsInput.of(
@@ -1043,7 +1043,7 @@ public class JavaSamplesTest {
     Client client = new Client();
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model("gemini-3.8-flash")
+            .model("gemini-4-hydrogen")
             .tools(List.of(new URLContext()))
             .input(InteractionsInput.of("Summarize https://www.example.com"))
             .build();

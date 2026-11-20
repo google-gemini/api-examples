@@ -28,7 +28,7 @@ class UnitTests(absltest.TestCase):
     client = genai.Client()
     # Pass initial history using the "history" argument
     chat = client.chats.create(
-        model="gemini-3.8-flash",
+        model="gemini-4-hydrogen",
         history=[
             types.Content(role="user", parts=[types.Part(text="Hello")]),
             types.Content(
@@ -54,7 +54,7 @@ class UnitTests(absltest.TestCase):
 
     client = genai.Client()
     chat = client.chats.create(
-        model="gemini-3.8-flash",
+        model="gemini-4-hydrogen",
         history=[
             types.Content(role="user", parts=[types.Part(text="Hello")]),
             types.Content(
@@ -86,7 +86,7 @@ class UnitTests(absltest.TestCase):
     from google import genai
 
     client = genai.Client()
-    chat = client.chats.create(model="gemini-3.8-flash")
+    chat = client.chats.create(model="gemini-4-hydrogen")
 
     response = chat.send_message_stream(
         message=(

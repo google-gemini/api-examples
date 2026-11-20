@@ -145,7 +145,7 @@ export async function functionCalling() {
 
   // Step 1: Call generateContent with function calling enabled.
   const generateContentResponse = await ai.models.generateContent({
-    model: 'gemini-3.8-flash',
+    model: 'gemini-4-hydrogen',
     contents:
         'I have 57 cats, each owns 44 mittens, how many mittens is that in total?',
     config: {
@@ -193,7 +193,7 @@ export async function functionCalling() {
   console.log('Function result:', resultValue);
 
   // Step 4: Use the chat API to send the result as the final answer.
-  const chat = ai.chats.create({model: 'gemini-3.8-flash'});
+  const chat = ai.chats.create({model: 'gemini-4-hydrogen'});
   const chatResponse = await chat.sendMessage({
     message: 'The final result is ' + resultValue,
   });

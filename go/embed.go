@@ -22,11 +22,11 @@ func EmbedContent() error {
 	}
 
 	text := "Hello World!"
-	outputDim := int32(10)
+	outputDim := int32(768)
 	contents := []*genai.Content{
 		genai.NewContentFromText(text, genai.RoleUser),
 	}
-	result, err := client.Models.EmbedContent(ctx, "gemini-embedding-001",
+	result, err := client.Models.EmbedContent(ctx, "gemini-embedding-2",
 		contents, &genai.EmbedContentConfig{
 			OutputDimensionality: &outputDim,
 		})
@@ -60,8 +60,8 @@ func BatchEmbedContents() error {
 		genai.NewContentFromText("How does the brain work?", genai.RoleUser),
 	}
 
-	outputDim := int32(10)
-	result, err := client.Models.EmbedContent(ctx, "gemini-embedding-001", contents, &genai.EmbedContentConfig{
+	outputDim := int32(768)
+	result, err := client.Models.EmbedContent(ctx, "gemini-embedding-2", contents, &genai.EmbedContentConfig{
 		OutputDimensionality: &outputDim,
 	})
 	if err != nil {
