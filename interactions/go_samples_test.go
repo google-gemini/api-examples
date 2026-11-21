@@ -1516,6 +1516,16 @@ func TestSample_api_version_decisions_post_noul(t *testing.T) {
 		}
 	}
 	// [END paths['/{api_version}/decisions'].post:noul]
+	if res.CreateDecisionResponse == nil {
+		t.Fatal("expected non-nil CreateDecisionResponse")
+	}
+	answer, ok := res.CreateDecisionResponse.Answers["needs_billing_refund"]
+	if !ok || answer.NoulAnswer == nil {
+		t.Fatalf("expected non-nil NoulAnswer for needs_billing_refund, got %+v", answer)
+	}
+	if answer.NoulAnswer.Noul <= 0.5 || answer.NoulAnswer.Confidence <= 0.5 {
+		t.Fatalf("expected noul > 0.5 and confidence > 0.5, got noul=%v confidence=%v", answer.NoulAnswer.Noul, answer.NoulAnswer.Confidence)
+	}
 }
 
 func TestSample_api_version_decisions_post_choice(t *testing.T) {
@@ -1556,6 +1566,19 @@ func TestSample_api_version_decisions_post_choice(t *testing.T) {
 		}
 	}
 	// [END paths['/{api_version}/decisions'].post:choice]
+	if res.CreateDecisionResponse == nil {
+		t.Fatal("expected non-nil CreateDecisionResponse")
+	}
+	answer, ok := res.CreateDecisionResponse.Answers["ticket_route"]
+	if !ok || answer.ChoiceAnswer == nil {
+		t.Fatalf("expected non-nil ChoiceAnswer for ticket_route, got %+v", answer)
+	}
+	if answer.ChoiceAnswer.Choice != "technical_support" {
+		t.Fatalf("expected choice=technical_support, got %q", answer.ChoiceAnswer.Choice)
+	}
+	if answer.ChoiceAnswer.Probabilities["technical_support"] <= 0.5 {
+		t.Fatalf("expected P(technical_support) > 0.5, got %v", answer.ChoiceAnswer.Probabilities["technical_support"])
+	}
 }
 
 func TestSample_api_version_decisions_post_score(t *testing.T) {
@@ -1596,6 +1619,19 @@ func TestSample_api_version_decisions_post_score(t *testing.T) {
 		}
 	}
 	// [END paths['/{api_version}/decisions'].post:score]
+	if res.CreateDecisionResponse == nil {
+		t.Fatal("expected non-nil CreateDecisionResponse")
+	}
+	answer, ok := res.CreateDecisionResponse.Answers["clarity"]
+	if !ok || answer.ScoreAnswer == nil {
+		t.Fatalf("expected non-nil ScoreAnswer for clarity, got %+v", answer)
+	}
+	if answer.ScoreAnswer.Score <= 1.0 {
+		t.Fatalf("expected score > 1.0, got %v", answer.ScoreAnswer.Score)
+	}
+	if len(answer.ScoreAnswer.Probabilities) != 3 {
+		t.Fatalf("expected 3 score probabilities, got %v", answer.ScoreAnswer.Probabilities)
+	}
 }
 
 func TestSample_api_version_decisions_post_batch(t *testing.T) {
@@ -1653,6 +1689,21 @@ func TestSample_api_version_decisions_post_batch(t *testing.T) {
 		}
 	}
 	// [END paths['/{api_version}/decisions'].post:batch]
+	if res.CreateDecisionResponse == nil {
+		t.Fatal("expected non-nil CreateDecisionResponse")
+	}
+	outage, ok := res.CreateDecisionResponse.Answers["is_outage"]
+	if !ok || outage.NoulAnswer == nil || outage.NoulAnswer.Noul <= 0.5 {
+		t.Fatalf("expected is_outage noul > 0.5, got %+v", outage)
+	}
+	priority, ok := res.CreateDecisionResponse.Answers["priority"]
+	if !ok || priority.ChoiceAnswer == nil || priority.ChoiceAnswer.Choice != "p1_critical" {
+		t.Fatalf("expected priority choice=p1_critical, got %+v", priority)
+	}
+	urgency, ok := res.CreateDecisionResponse.Answers["urgency"]
+	if !ok || urgency.ScoreAnswer == nil || urgency.ScoreAnswer.Score <= 1.0 {
+		t.Fatalf("expected urgency score > 1.0, got %+v", urgency)
+	}
 }
 
 // Samples for document processing options (go/genai-api-rfc-201).
