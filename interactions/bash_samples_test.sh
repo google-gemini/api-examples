@@ -577,13 +577,11 @@ curl -X POST https://generativelanguage.googleapis.com/v1beta/voices \
   -H "Content-Type: application/json" \
   -d '{
     "store": true,
-    "voice": {
-      "type": "prompted",
-      "display_name": "Warm Narrator",
-      "language_code": "en-US",
-      "prompted": {
-        "input": "A warm, friendly narrator voice with a calm pace."
-      }
+    "type": "prompted",
+    "display_name": "Warm Narrator",
+    "language_code": "en-US",
+    "prompted": {
+      "input": "A warm, friendly narrator voice with a calm pace."
     }
   }'
 # [END paths['/{api_version}/voices'].post:create]

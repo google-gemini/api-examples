@@ -768,13 +768,11 @@ class PythonSamplesTest(parameterized.TestCase):
     client = genai.Client(http_options={"api_version": "v1beta"})
     voice = client.voices.create(
         store=True,
-        voice={
-            "type": "prompted",
-            "display_name": "Warm Narrator",
-            "language_code": "en-US",
-            "prompted": {
-                "input": "A warm, friendly narrator voice with a calm pace.",
-            },
+        type_="prompted",
+        display_name="Warm Narrator",
+        language_code="en-US",
+        prompted={
+            "input": "A warm, friendly narrator voice with a calm pace.",
         },
     )
     print(voice.id)

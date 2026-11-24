@@ -737,13 +737,11 @@ describe('Interactions API TypeScript Samples', () => {
     const ai = new GoogleGenAI({apiVersion: 'v1beta'});
     const voice = await ai.voices.create({
       store: true,
-      voice: {
-        type: 'prompted',
-        display_name: 'Warm Narrator',
-        language_code: 'en-US',
-        prompted: {
-          input: 'A warm, friendly narrator voice with a calm pace.',
-        },
+      type: 'prompted',
+      display_name: 'Warm Narrator',
+      language_code: 'en-US',
+      prompted: {
+        input: 'A warm, friendly narrator voice with a calm pace.',
       },
     });
     console.log(voice.id);
