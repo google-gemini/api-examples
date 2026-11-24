@@ -1407,15 +1407,13 @@ func TestSample_api_version_voices_post_create(t *testing.T) {
 	}
 
 	req := operations.CreateVoiceRequest{
-		Body: gaos_voices.CreateVoiceRequest{
-			Store: genai.Ptr(true),
-			Voice: gaos_voices.VoiceInput{
-				Type:         gaos_voices.VoiceTypePrompted,
-				DisplayName:  genai.Ptr("Warm Narrator"),
-				LanguageCode: genai.Ptr("en-US"),
-				Prompted: &gaos_voices.PromptedVoice{
-					Input: "A warm, friendly narrator voice with a calm pace.",
-				},
+		Body: gaos_voices.VoiceCreateParams{
+			Store:        genai.Ptr(true),
+			Type:         gaos_voices.VoiceTypePrompted,
+			DisplayName:  genai.Ptr("Warm Narrator"),
+			LanguageCode: genai.Ptr("en-US"),
+			Prompted: &gaos_voices.PromptedVoice{
+				Input: "A warm, friendly narrator voice with a calm pace.",
 			},
 		},
 	}
